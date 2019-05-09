@@ -1,0 +1,46 @@
+.settingstable,
+.pickertable {
+  width: 100%;
+  border: none;
+}
+
+.settingstable tr td {
+  width: 50%;
+  border: none;
+}
+
+.pickertable tr td {
+  vertical-align: top;
+}
+
+.pickertable tr td:first-child {
+  width: 290px;
+}
+
+.pickertable tr td:last-child {
+  width: calc(100% - 260px);
+  padding-left: 20px;
+}
+
+.border {
+  padding: 4px;
+  border-radius: 4px;
+  float: right;
+  width: 100%;
+}
+
+.buttondiv {
+  margin: 15px 0;
+}
+
+.okDate {
+  color: #3c764d;
+  background-color: #dff0d6;
+  border: 1px solid #d6e9c2;
+}
+
+.invalidDate {
+  color: #a94444;
+  background-color: #f1dede;
+  border: 1px solid #ebccd2;
+}

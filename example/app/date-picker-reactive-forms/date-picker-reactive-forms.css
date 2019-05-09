@@ -1,0 +1,35 @@
+.table {
+  width: 100%;
+}
+
+.table .td {
+  width: 50%;
+  vertical-align: top;
+  border: none;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.error {
+  width: 202px;
+  padding: 4px;
+  border: 1px solid #ebccd2;
+  color: #a94444;
+  background-color: #f2dede;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.btnGroup {
+  margin-top: 10px;
+}
+
+.form {
+  width: 400px;
+}

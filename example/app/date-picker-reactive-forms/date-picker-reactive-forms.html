@@ -1,0 +1,46 @@
+<table class="table">
+  <tr>
+    <td class="td">
+
+      <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmitReactiveForms()" novalidate>
+        <!-- boostrap 3
+          <div class="input-group">
+              <input class="form-control" placeholder="Select a date" angular-mydatepicker name="reactiveFormsDate" formControlName="myDate"
+                     [options]="myDatePickerOptions" #dp="angular-mydatepicker" autocomplete="off"/>
+
+              <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" (click)="dp.clearDate()"><i class="glyphicon glyphicon-remove"></i></button>
+                  <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+          </div>
+        -->
+
+        <div class="input-group">
+          <input class="form-control" placeholder="Select a date" angular-mydatepicker name="reactiveFormsDate" formControlName="myDate"
+                 [options]="myDatePickerOptions" #dp="angular-mydatepicker" autocomplete="off"/>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-secondary" (click)="dp.clearDate()">
+              <i class="fa fa-close"></i>
+            </button>
+          </div>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-secondary" (click)="dp.toggleCalendar()">
+              <i class="fa fa-calendar-o"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="btnGroup">
+          <button class="button" type="submit">Submit</button>
+          <button class="button" type="button" (click)="setTodayDate()">Set Today</button>
+          <button class="button" type="button" (click)="resetTomorrowDate()">Reset Tomorrow</button>
+          <button class="button" type="button" (click)="clearDate()">Set Empty</button>
+          <button class="button" type="button" (click)="disable()">{{!disabled ? 'Disable' : 'Enable'}}</button>
+          <p class="error" *ngIf="myForm.controls.myDate.errors && myForm.controls.myDate.errors.required">Date is required!</p>
+          <p class="error" *ngIf="myForm.controls.myDate.errors && myForm.controls.myDate.errors.invalidDateFormat">Invalid date format!</p>
+        </div>
+      </form>
+
+    </td>
+  </tr>
+</table>
