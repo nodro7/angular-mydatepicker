@@ -1,9 +1,9 @@
 <div>
-  <h3 class="dpTitle">Date range picker bootstrap 4</h3>
+  <h5 class="dpTitle">Date range picker</h5>
   <div class="datePickerContainer">
 
     <div class="input-group">
-      <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate"
+      <input class="form-control" placeholder="Select a date range" angular-mydatepicker name="mydate"
              [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"/>
       <div class="input-group-append">
         <button type="button" class="btn btn-secondary" (click)="dp.clearDate()">

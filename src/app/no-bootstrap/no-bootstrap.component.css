@@ -1,3 +1,26 @@
 .dpTitle {
   text-align: center;
 }
+
+.datePickerContainer {
+  margin: 0 auto;
+  width: 280px;
+}
+
+.inputGroup {
+  display: flex;
+  position: relative;
+}
+
+.closeIconContainer {
+  margin-left: -26px;
+}
+
+.closeIcon {
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.closeIcon:hover {
+  color: #ccc;
+}

@@ -9,6 +9,7 @@
 
 .content {
   padding: 20px;
+  height: 600px;
 }
 
 .flexContainer {
@@ -17,6 +18,10 @@
 
 .flexElement {
   width: 33%;
+}
+
+.infoText {
+  text-align: center;
 }
 
 @media screen and (max-width: 1200px) {
