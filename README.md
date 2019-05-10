@@ -74,7 +74,7 @@ export class MyTestApp {
 ```
 
 If you are using bootstrap 4 add the following snippet inside your template:
-* example adds bootstrap input group and font-awesome icons
+* example adds __bootstrap__ input group and __font-awesome__ icons
 ```html
 <div class="input-group">
   <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate"
@@ -152,7 +152,7 @@ export class MyTestApp implements OnInit {
 ```
 
 Add the following snippet inside your template:
-* example adds bootstrap input group and font-awesome icons
+* example adds __bootstrap__ input group and __font-awesome__ icons
 ```html
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="input-group">
