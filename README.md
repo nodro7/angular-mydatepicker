@@ -5,6 +5,12 @@
 [![npm](https://img.shields.io/npm/v/angular-mydatepicker.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/angular-mydatepicker)
 [![npm](https://img.shields.io/npm/dm/angular-mydatepicker.svg)](https://www.npmjs.com/package/angular-mydatepicker)
 
+## Browser support (tested)
+
+| Chrome | Firefox | Edge | IE11 | Safari | iOS Safari |
+| :------------- | :------------- | :----| :---------- | :----| :---------- |
+| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+
 ## Description
 
 Highly configurable Angular datepicker and date range picker. No dependencies to other libraries.
@@ -49,7 +55,7 @@ Use one of the following two options.
 
 In this option the ngModel binding is used.
 
-To use ngModel define the application class as follows:
+To use __ngModel__ define the application class as follows:
 
 ```ts
 import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
@@ -111,7 +117,7 @@ There are two ways to set an initial date to the model.
 In this option the value accessor of reactive forms is used. [Here](https://github.com/kekeh/angular-mydatepicker/tree/master/example/app/date-picker-reactive-forms)
 is an example application. It shows how to use the __formControlName__.
 
-To use reactive forms define the application class as follows:
+To use __reactive forms__ define the application class as follows:
 
 ```ts
 import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
@@ -446,15 +452,8 @@ checkDateValidity(): void {
 ## Demo
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
-## Compatibility
-* Firefox (version 66.0.3)
-* Chrome (version 72.0.3626.96)
-* Edge - (version 44.17763.1.0)
-* IE11 - (version 11.437.17763.0)
-* Safari - not tested yet
-
 ## License
-* License: MIT
+* License: [MIT](https://github.com/kekeh/angular-mydatepicker/blob/master/LICENSE)
 
 ## Author
 * Author: kekeh
