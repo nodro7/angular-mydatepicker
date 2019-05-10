@@ -49,7 +49,7 @@ To install this component to an external project, follow the procedure:
     
 ## Usage
 
-Use one of the following two options.
+Use one of the following two options. The examples below use the [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/) and the [font-awesome](https://fontawesome.com/), but you can use datepicker also without them.
 
 ### 1. ngModel binding
 
