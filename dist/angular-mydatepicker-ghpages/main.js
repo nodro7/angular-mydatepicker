@@ -41,7 +41,7 @@ module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  backgrou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h1>angular-mydatepicker</h1>\n  <p>Angular datepicker and date range picker</p>\n</div>\n\n<div class=\"content\">\n  <p class=\"infoText\">Highly configurable Angular date and date range picker. These examples use <a href=\"https://getbootstrap.com/docs/4.3/getting-started/introduction/\">bootstrap</a> and <a href=\"https://fontawesome.com/\">font-awesome</a>, but you can use datepicker also without them.</p>\n  <div class=\"flexContainer\">\n    <div class=\"flexElement\">\n      <app-dp-bootstrap></app-dp-bootstrap>\n    </div>\n    <div class=\"flexElement\">\n      <app-drp-bootstrap></app-drp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-no-bootstrap></app-no-bootstrap>\n    </div>\n\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"header\">\n  <h1>angular-mydatepicker</h1>\n  <p>Angular datepicker and date range picker</p>\n</div>\n\n<div class=\"content\">\n  <p class=\"infoText\">Highly configurable Angular datepicker and date range picker. These examples use <a href=\"https://getbootstrap.com/docs/4.3/getting-started/introduction/\">bootstrap</a> and <a href=\"https://fontawesome.com/\">font-awesome</a>, but you can use datepicker also without them.</p>\n  <div class=\"flexContainer\">\n    <div class=\"flexElement\">\n      <app-dp-bootstrap></app-dp-bootstrap>\n    </div>\n    <div class=\"flexElement\">\n      <app-drp-bootstrap></app-drp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-no-bootstrap></app-no-bootstrap>\n    </div>\n\n  </div>\n</div>\n\n"
 
 /***/ }),
 
