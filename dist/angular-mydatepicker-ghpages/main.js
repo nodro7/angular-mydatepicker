@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  background: rgb(17,12,111);\n  background: linear-gradient(90deg, rgba(17,12,111,1) 0%, rgba(13,13,126,1) 36%, rgba(14,166,196,1) 100%);\n  color: #fff;\n  font-size: 24px;\n}\n\n.content {\n  padding: 20px;\n}\n\n.flexContainer {\n  display: flex;\n}\n\n.flexElement {\n  width: 33%;\n}\n\n@media screen and (max-width: 1200px) {\n  .flexContainer {\n    display: block;\n  }\n\n  .flexElement {\n    width: 100%;\n    margin-bottom: 30px;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLDBCQUEwQjtFQUMxQix3R0FBd0c7RUFDeEcsV0FBVztFQUNYLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxVQUFVO0FBQ1o7O0FBRUE7RUFDRTtJQUNFLGNBQWM7RUFDaEI7O0VBRUE7SUFDRSxXQUFXO0lBQ1gsbUJBQW1CO0VBQ3JCO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXIge1xuICBwYWRkaW5nOiA1MHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQ6IHJnYigxNywxMiwxMTEpO1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHJnYmEoMTcsMTIsMTExLDEpIDAlLCByZ2JhKDEzLDEzLDEyNiwxKSAzNiUsIHJnYmEoMTQsMTY2LDE5NiwxKSAxMDAlKTtcbiAgY29sb3I6ICNmZmY7XG4gIGZvbnQtc2l6ZTogMjRweDtcbn1cblxuLmNvbnRlbnQge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG4uZmxleENvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5mbGV4RWxlbWVudCB7XG4gIHdpZHRoOiAzMyU7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZmxleENvbnRhaW5lciB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gIH1cblxuICAuZmxleEVsZW1lbnQge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi1ib3R0b206IDMwcHg7XG4gIH1cbn1cbiJdfQ== */"
+module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  background: rgb(17,12,111);\n  background: linear-gradient(90deg, rgba(17,12,111,1) 0%, rgba(13,13,126,1) 36%, rgba(14,166,196,1) 100%);\n  color: #fff;\n  font-size: 24px;\n}\n\n.content {\n  padding: 20px;\n  height: 600px;\n}\n\n.flexContainer {\n  display: flex;\n}\n\n.flexElement {\n  width: 33%;\n}\n\n.infoText {\n  text-align: center;\n}\n\n@media screen and (max-width: 1200px) {\n  .flexContainer {\n    display: block;\n  }\n\n  .flexElement {\n    width: 100%;\n    margin-bottom: 30px;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLDBCQUEwQjtFQUMxQix3R0FBd0c7RUFDeEcsV0FBVztFQUNYLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsYUFBYTtBQUNmOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsVUFBVTtBQUNaOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0U7SUFDRSxjQUFjO0VBQ2hCOztFQUVBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQjtFQUNyQjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyIHtcbiAgcGFkZGluZzogNTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiByZ2IoMTcsMTIsMTExKTtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDkwZGVnLCByZ2JhKDE3LDEyLDExMSwxKSAwJSwgcmdiYSgxMywxMywxMjYsMSkgMzYlLCByZ2JhKDE0LDE2NiwxOTYsMSkgMTAwJSk7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IDI0cHg7XG59XG5cbi5jb250ZW50IHtcbiAgcGFkZGluZzogMjBweDtcbiAgaGVpZ2h0OiA2MDBweDtcbn1cblxuLmZsZXhDb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uZmxleEVsZW1lbnQge1xuICB3aWR0aDogMzMlO1xufVxuXG4uaW5mb1RleHQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZmxleENvbnRhaW5lciB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gIH1cblxuICAuZmxleEVsZW1lbnQge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi1ib3R0b206IDMwcHg7XG4gIH1cbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  backgrou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h1>angular-mydatepicker</h1>\n  <p>Angular datepicker and date range picker</p>\n</div>\n\n<div class=\"content\">\n  <div class=\"flexContainer\">\n    <div class=\"flexElement\">\n      <app-dp-bootstrap></app-dp-bootstrap>\n    </div>\n    <div class=\"flexElement\">\n      <app-drp-bootstrap></app-drp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-no-bootstrap></app-no-bootstrap>\n    </div>\n\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"header\">\n  <h1>angular-mydatepicker</h1>\n  <p>Angular datepicker and date range picker</p>\n</div>\n\n<div class=\"content\">\n  <p class=\"infoText\">Highly configurable Angular date and date range picker. These examples use <a href=\"https://getbootstrap.com/docs/4.3/getting-started/introduction/\">bootstrap</a> and <a href=\"https://fontawesome.com/\">font-awesome</a>, but you can use datepicker also without them.</p>\n  <div class=\"flexContainer\">\n    <div class=\"flexElement\">\n      <app-dp-bootstrap></app-dp-bootstrap>\n    </div>\n    <div class=\"flexElement\">\n      <app-drp-bootstrap></app-drp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-no-bootstrap></app-no-bootstrap>\n    </div>\n\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -148,7 +148,7 @@ module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h3 class=\"dpTitle\">Datepicker bootstrap 4</h3>\n  <div class=\"datePickerContainer\">\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div>\n  <h5 class=\"dpTitle\">Datepicker</h5>\n  <div class=\"datePickerContainer\">\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -213,7 +213,7 @@ module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h3 class=\"dpTitle\">Date range picker bootstrap 4</h3>\n  <div class=\"datePickerContainer\">\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div>\n  <h5 class=\"dpTitle\">Date range picker</h5>\n  <div class=\"datePickerContainer\">\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date range\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -267,7 +267,7 @@ var DrpBootstrapComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dpTitle {\n  text-align: center;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbm8tYm9vdHN0cmFwL25vLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvbm8tYm9vdHN0cmFwL25vLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRwVGl0bGUge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4iXX0= */"
+module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {\n  margin: 0 auto;\n  width: 280px;\n}\n\n.inputGroup {\n  display: flex;\n  position: relative;\n}\n\n.closeIconContainer {\n  margin-left: -26px;\n}\n\n.closeIcon {\n  line-height: 36px;\n  cursor: pointer;\n}\n\n.closeIcon:hover {\n  color: #ccc;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbm8tYm9vdHN0cmFwL25vLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztFQUNkLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGFBQWE7RUFDYixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL25vLWJvb3RzdHJhcC9uby1ib290c3RyYXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kcFRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gIG1hcmdpbjogMCBhdXRvO1xuICB3aWR0aDogMjgwcHg7XG59XG5cbi5pbnB1dEdyb3VwIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuXG4uY2xvc2VJY29uQ29udGFpbmVyIHtcbiAgbWFyZ2luLWxlZnQ6IC0yNnB4O1xufVxuXG4uY2xvc2VJY29uIHtcbiAgbGluZS1oZWlnaHQ6IDM2cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmNsb3NlSWNvbjpob3ZlciB7XG4gIGNvbG9yOiAjY2NjO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -278,7 +278,7 @@ module.exports = ".dpTitle {\n  text-align: center;\n}\n\n/*# sourceMappingURL=d
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h3 class=\"dpTitle\">Datepicker without bootstrap</h3>\n\n</div>\n"
+module.exports = "<div>\n  <h5 class=\"dpTitle\">Datepicker</h5>\n\n  <div class=\"datePickerContainer\">\n    <div class=\"inputGroup\">\n      <input class=\"form-control\" placeholder=\"Click to select a date\" angular-mydatepicker name=\"mydate\" (click)=\"dp.toggleCalendar()\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n\n      <div class=\"closeIconContainer\"><i *ngIf=\"model\" class=\"fa fa-close closeIcon\" (click)=\"dp.clearDate()\"></i></div>\n\n    </div>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -298,7 +298,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var NoBootstrapComponent = /** @class */ (function () {
     function NoBootstrapComponent() {
+        this.myOptions = {
+            dateRange: false,
+            dateFormat: 'dd.mm.yyyy'
+        };
+        this.model = null;
     }
+    // optional date changed callback
+    NoBootstrapComponent.prototype.onDateChanged = function (event) {
+        console.log('onDateChanged(): ', event);
+    };
     NoBootstrapComponent.prototype.ngOnInit = function () {
     };
     NoBootstrapComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
