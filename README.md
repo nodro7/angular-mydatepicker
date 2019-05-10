@@ -11,7 +11,7 @@ Highly configurable Angular datepicker and date range picker. No dependencies to
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The library is tested with Angular version 7.2.0.
 
-The datepicker source code is in the __projects/angular-mydatepicker/src/lib__ folder.
+Source code of the datepicker is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
@@ -74,7 +74,7 @@ export class MyTestApp {
 ```
 
 If you are using bootstrap 4 add the following snippet inside your template:
-* example adds bootstrap input group buttons
+* example adds bootstrap input group and font-awesome icons
 ```html
 <div class="input-group">
   <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate"
@@ -152,7 +152,7 @@ export class MyTestApp implements OnInit {
 ```
 
 Add the following snippet inside your template:
-* Input box styling is bootstrap 4.0.0
+* example adds bootstrap input group and font-awesome icons
 ```html
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="input-group">
@@ -449,8 +449,8 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 ## Compatibility
 * Firefox (version 66.0.3)
 * Chrome (version 72.0.3626.96)
-* Edge - not tested yet
-* IE11 - not tested yet
+* Edge - (version 44.17763.1.0)
+* IE11 - (version 11.437.17763.0)
 * Safari - not tested yet
 
 ## License
