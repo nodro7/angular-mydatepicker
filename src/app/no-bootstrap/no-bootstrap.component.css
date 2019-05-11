@@ -1,10 +1,11 @@
 .dpTitle {
-  text-align: center;
+
 }
 
 .datePickerContainer {
-  margin: 0 auto;
   width: 280px;
+
+  float: right;
 }
 
 .inputGroup {
@@ -23,4 +24,11 @@
 
 .closeIcon:hover {
   color: #ccc;
+}
+
+@media screen and (max-width: 1200px) {
+  .datePickerContainer {
+    float: initial;
+    margin: 0 auto;
+  }
 }

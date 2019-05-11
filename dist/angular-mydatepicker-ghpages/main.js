@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  background: rgb(17,12,111);\n  background: linear-gradient(90deg, rgba(17,12,111,1) 0%, rgba(13,13,126,1) 36%, rgba(14,166,196,1) 100%);\n  color: #fff;\n  font-size: 24px;\n}\n\n.content {\n  padding: 20px;\n  height: 600px;\n}\n\n.flexContainer {\n  display: flex;\n}\n\n.flexElement {\n  width: 33%;\n}\n\n.infoText {\n  text-align: center;\n}\n\n@media screen and (max-width: 1200px) {\n  .flexContainer {\n    display: block;\n  }\n\n  .flexElement {\n    width: 100%;\n    margin-bottom: 30px;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLDBCQUEwQjtFQUMxQix3R0FBd0c7RUFDeEcsV0FBVztFQUNYLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsYUFBYTtBQUNmOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsVUFBVTtBQUNaOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0U7SUFDRSxjQUFjO0VBQ2hCOztFQUVBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQjtFQUNyQjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyIHtcbiAgcGFkZGluZzogNTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiByZ2IoMTcsMTIsMTExKTtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDkwZGVnLCByZ2JhKDE3LDEyLDExMSwxKSAwJSwgcmdiYSgxMywxMywxMjYsMSkgMzYlLCByZ2JhKDE0LDE2NiwxOTYsMSkgMTAwJSk7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IDI0cHg7XG59XG5cbi5jb250ZW50IHtcbiAgcGFkZGluZzogMjBweDtcbiAgaGVpZ2h0OiA2MDBweDtcbn1cblxuLmZsZXhDb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uZmxleEVsZW1lbnQge1xuICB3aWR0aDogMzMlO1xufVxuXG4uaW5mb1RleHQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZmxleENvbnRhaW5lciB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gIH1cblxuICAuZmxleEVsZW1lbnQge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi1ib3R0b206IDMwcHg7XG4gIH1cbn1cbiJdfQ== */"
+module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  background: rgb(17,12,111);\n  background: linear-gradient(90deg, rgba(17,12,111,1) 0%, rgba(13,13,126,1) 36%, rgba(14,166,196,1) 100%);\n  color: #fff;\n  font-size: 24px;\n}\n\n.content {\n  padding: 20px;\n}\n\n.flexContainer {\n  margin: 20px 120px;\n  display: flex;\n}\n\n.flexElement {\n  width: 33%;\n}\n\n.infoText {\n  margin: 10px 120px;\n  font-size: 18px;\n}\n\n.dpOptionsContainer {\n  margin-top: 140px;\n  margin-left: 120px;\n  margin-right: 120px;\n}\n\n@media screen and (max-width: 1200px) {\n  .flexContainer {\n    display: block;\n  }\n\n  .flexElement {\n    width: 100%;\n    margin-bottom: 30px;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLDBCQUEwQjtFQUMxQix3R0FBd0c7RUFDeEcsV0FBVztFQUNYLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsYUFBYTtBQUNmOztBQUVBO0VBQ0UsVUFBVTtBQUNaOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFO0lBQ0UsY0FBYztFQUNoQjs7RUFFQTtJQUNFLFdBQVc7SUFDWCxtQkFBbUI7RUFDckI7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlciB7XG4gIHBhZGRpbmc6IDUwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYmFja2dyb3VuZDogcmdiKDE3LDEyLDExMSk7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgxNywxMiwxMTEsMSkgMCUsIHJnYmEoMTMsMTMsMTI2LDEpIDM2JSwgcmdiYSgxNCwxNjYsMTk2LDEpIDEwMCUpO1xuICBjb2xvcjogI2ZmZjtcbiAgZm9udC1zaXplOiAyNHB4O1xufVxuXG4uY29udGVudCB7XG4gIHBhZGRpbmc6IDIwcHg7XG59XG5cbi5mbGV4Q29udGFpbmVyIHtcbiAgbWFyZ2luOiAyMHB4IDEyMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uZmxleEVsZW1lbnQge1xuICB3aWR0aDogMzMlO1xufVxuXG4uaW5mb1RleHQge1xuICBtYXJnaW46IDEwcHggMTIwcHg7XG4gIGZvbnQtc2l6ZTogMThweDtcbn1cblxuLmRwT3B0aW9uc0NvbnRhaW5lciB7XG4gIG1hcmdpbi10b3A6IDE0MHB4O1xuICBtYXJnaW4tbGVmdDogMTIwcHg7XG4gIG1hcmdpbi1yaWdodDogMTIwcHg7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZmxleENvbnRhaW5lciB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gIH1cblxuICAuZmxleEVsZW1lbnQge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi1ib3R0b206IDMwcHg7XG4gIH1cbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".header {\n  padding: 50px;\n  text-align: center;\n  backgrou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h1>angular-mydatepicker</h1>\n  <p>Angular datepicker and date range picker</p>\n</div>\n\n<div class=\"content\">\n  <p class=\"infoText\">Highly configurable Angular datepicker and date range picker. These examples use <a href=\"https://getbootstrap.com/docs/4.3/getting-started/introduction/\">bootstrap</a> and <a href=\"https://fontawesome.com/\">font-awesome</a>, but you can use datepicker also without them.</p>\n  <div class=\"flexContainer\">\n    <div class=\"flexElement\">\n      <app-dp-bootstrap></app-dp-bootstrap>\n    </div>\n    <div class=\"flexElement\">\n      <app-drp-bootstrap></app-drp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-no-bootstrap></app-no-bootstrap>\n    </div>\n\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"header\">\n  <h1>angular-mydatepicker</h1>\n  <p>Angular datepicker and date range picker</p>\n</div>\n\n<div class=\"content\">\n  <p class=\"infoText\">Highly configurable Angular datepicker and date range picker. These examples use <a href=\"https://getbootstrap.com/docs/4.3/getting-started/introduction/\">bootstrap</a> and <a href=\"https://fontawesome.com/\">font-awesome</a>, but you can use datepicker also without them.</p>\n\n  <div class=\"flexContainer\">\n    <div class=\"flexElement\">\n      <app-dp-bootstrap></app-dp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-drp-bootstrap></app-drp-bootstrap>\n    </div>\n\n    <div class=\"flexElement\">\n      <app-no-bootstrap></app-no-bootstrap>\n    </div>\n  </div>\n\n  <div class=\"dpOptionsContainer\">\n    <app-dp-options></app-dp-options>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -96,6 +96,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _drp_bootstrap_drp_bootstrap_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./drp-bootstrap/drp-bootstrap.component */ "./src/app/drp-bootstrap/drp-bootstrap.component.ts");
 /* harmony import */ var _no_bootstrap_no_bootstrap_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./no-bootstrap/no-bootstrap.component */ "./src/app/no-bootstrap/no-bootstrap.component.ts");
 /* harmony import */ var angular_mydatepicker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! angular-mydatepicker */ "./node_modules/angular-mydatepicker/fesm5/angular-mydatepicker.js");
+/* harmony import */ var _dp_options_dp_options_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dp-options/dp-options.component */ "./src/app/dp-options/dp-options.component.ts");
+
 
 
 
@@ -114,7 +116,8 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
                 _dp_bootstrap_dp_bootstrap_component__WEBPACK_IMPORTED_MODULE_5__["DpBootstrapComponent"],
                 _drp_bootstrap_drp_bootstrap_component__WEBPACK_IMPORTED_MODULE_6__["DrpBootstrapComponent"],
-                _no_bootstrap_no_bootstrap_component__WEBPACK_IMPORTED_MODULE_7__["NoBootstrapComponent"]
+                _no_bootstrap_no_bootstrap_component__WEBPACK_IMPORTED_MODULE_7__["NoBootstrapComponent"],
+                _dp_options_dp_options_component__WEBPACK_IMPORTED_MODULE_9__["DpOptionsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], angular_mydatepicker__WEBPACK_IMPORTED_MODULE_8__["AngularMyDatePickerModule"].forRoot()
@@ -137,7 +140,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {\n  margin: 0 auto;\n  width: 280px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZHAtYm9vdHN0cmFwL2RwLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztFQUNkLFlBQVk7QUFDZCIsImZpbGUiOiJzcmMvYXBwL2RwLWJvb3RzdHJhcC9kcC1ib290c3RyYXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kcFRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gIG1hcmdpbjogMCBhdXRvO1xuICB3aWR0aDogMjgwcHg7XG59XG4iXX0= */"
+module.exports = ".dpTitle {\n\n}\n\n.datePickerContainer {\n  width: 280px;\n}\n\n@media screen and (max-width: 1200px) {\n  .datePickerContainer {\n    margin: 0 auto;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZHAtYm9vdHN0cmFwL2RwLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUVBO0VBQ0U7SUFDRSxjQUFjO0VBQ2hCO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9kcC1ib290c3RyYXAvZHAtYm9vdHN0cmFwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZHBUaXRsZSB7XG5cbn1cblxuLmRhdGVQaWNrZXJDb250YWluZXIge1xuICB3aWR0aDogMjgwcHg7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gICAgbWFyZ2luOiAwIGF1dG87XG4gIH1cbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -148,7 +151,7 @@ module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h5 class=\"dpTitle\">Datepicker</h5>\n  <div class=\"datePickerContainer\">\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"datePickerContainer\">\n    <h5 class=\"dpTitle\">Datepicker</h5>\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" *ngIf=\"model\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -195,6 +198,149 @@ var DpBootstrapComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/dp-options/dp-options.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/dp-options/dp-options.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {\n  height: 400px;\n}\n\n.optionsContainer {\n  display: flex;\n}\n\n.localeOptions {\n  margin-top: 20px;\n}\n\n.optionsItem {\n  width: 33%;\n}\n\n.datePicker {\n  width: 280px;\n  margin: 20px auto;\n}\n\n.inputBox {\n  cursor: pointer;\n}\n\n.linkToOptions {\n  margin-top: 10px;\n}\n\n@media screen and (max-width: 1200px) {\n  .optionsContainer {\n    display: block;\n  }\n  .optionsItem {\n    width: 100%;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZHAtb3B0aW9ucy9kcC1vcHRpb25zLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxVQUFVO0FBQ1o7O0FBRUE7RUFDRSxZQUFZO0VBQ1osaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFO0lBQ0UsY0FBYztFQUNoQjtFQUNBO0lBQ0UsV0FBVztFQUNiO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9kcC1vcHRpb25zL2RwLW9wdGlvbnMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kcFRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gIGhlaWdodDogNDAwcHg7XG59XG5cbi5vcHRpb25zQ29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbn1cblxuLmxvY2FsZU9wdGlvbnMge1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufVxuXG4ub3B0aW9uc0l0ZW0ge1xuICB3aWR0aDogMzMlO1xufVxuXG4uZGF0ZVBpY2tlciB7XG4gIHdpZHRoOiAyODBweDtcbiAgbWFyZ2luOiAyMHB4IGF1dG87XG59XG5cbi5pbnB1dEJveCB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmxpbmtUb09wdGlvbnMge1xuICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMjAwcHgpIHtcbiAgLm9wdGlvbnNDb250YWluZXIge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICB9XG4gIC5vcHRpb25zSXRlbSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbn1cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/dp-options/dp-options.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/dp-options/dp-options.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"datePickerContainer\">\n  <h5 class=\"dpTitle\">Options</h5>\n\n  <div class=\"optionsContainer\">\n      <div class=\"form-check optionsItem\">\n        <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"disableUntilYesterday\" (change)=\"onDisableUntilYesterday($event.currentTarget.checked)\" [checked]=\"false\">\n        <label class=\"form-check-label\" for=\"disableUntilYesterday\">\n          Disable until yesterday\n        </label>\n      </div>\n\n      <div class=\"form-check optionsItem\">\n        <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"disableSinceTomorrow\" (change)=\"onDisableSinceTomorrow($event.currentTarget.checked)\" [checked]=\"false\">\n        <label class=\"form-check-label\" for=\"disableSinceTomorrow\">\n          Disable since tomorrow\n        </label>\n      </div>\n\n      <div class=\"form-check optionsItem\">\n        <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"disableThirdDay\" (change)=\"onDisableThirdDay($event.currentTarget.checked)\" [checked]=\"false\">\n        <label class=\"form-check-label\" for=\"disableThirdDay\">\n          Disable 3rd day of every month\n        </label>\n      </div>\n  </div>\n\n  <div class=\"optionsContainer\">\n    <div class=\"form-check optionsItem\">\n      <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"sundayFirstDayOfWeek\" (change)=\"onSundayFirstDayOfWeek($event.currentTarget.checked)\" [checked]=\"false\">\n      <label class=\"form-check-label\" for=\"sundayFirstDayOfWeek\">\n        Sunday first day of week\n      </label>\n    </div>\n\n    <div class=\"form-check optionsItem\">\n      <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"highlightToday\" (change)=\"onHighlightToday($event.currentTarget.checked)\" [checked]=\"false\">\n      <label class=\"form-check-label\" for=\"highlightToday\">\n        Highlight today\n      </label>\n    </div>\n\n    <div class=\"form-check optionsItem\">\n      <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"markToday\" (change)=\"onMarkToday($event.currentTarget.checked)\" [checked]=\"false\">\n      <label class=\"form-check-label\" for=\"markToday\">\n        Mark today\n      </label>\n    </div>\n  </div>\n\n  <div class=\"optionsContainer\">\n    <div class=\"form-check optionsItem\">\n      <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"showWeekNumbers\" (change)=\"onShowWeekNumbers($event.currentTarget.checked)\" [checked]=\"false\">\n      <label class=\"form-check-label\" for=\"showWeekNumbers\">\n        Show week numbers\n      </label>\n    </div>\n\n    <div class=\"form-check optionsItem\">\n      <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"disableWednesday\" (change)=\"onDisableWednesday($event.currentTarget.checked)\" [checked]=\"false\">\n      <label class=\"form-check-label\" for=\"disableWednesday\">\n        Disable Wednesday\n      </label>\n    </div>\n\n    <div class=\"form-check optionsItem\">\n      <input class=\"form-check-input inputBox\" type=\"checkbox\" id=\"dateRangePicker\" (change)=\"onDateRangePicker($event.currentTarget.checked)\" [checked]=\"false\">\n      <label class=\"form-check-label\" for=\"dateRangePicker\">\n        Date range picker\n      </label>\n    </div>\n\n  </div>\n\n  <p class=\"linkToOptions\">All options are listed <a href=\"https://github.com/kekeh/angular-mydatepicker#attributes\">here</a></p>\n\n  <div class=\"optionsContainer localeOptions\">\n\n    <div class=\"form-check optionsItem\">\n      <label for=\"locale\">Locale:</label>\n      <select id=\"locale\" style=\"padding: 2px;cursor: pointer;font-size: 12px;min-width: 60px; margin-left: 10px;\" (change)=\"onChangeLocale($event.target.value)\">\n        <option *ngFor=\"let l of locales\">{{l}}</option>\n      </select>\n    </div>\n\n  </div>\n\n\n  <div class=\"row\">\n    <div class=\"input-group datePicker\">\n      <input class=\"form-control\" placeholder=\"Select a date\" angular-mydatepicker name=\"mydate\" [locale]=\"locale\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" *ngIf=\"model\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n  </div>\n\n\n\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/dp-options/dp-options.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/dp-options/dp-options.component.ts ***!
+  \****************************************************/
+/*! exports provided: DpOptionsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DpOptionsComponent", function() { return DpOptionsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var DpOptionsComponent = /** @class */ (function () {
+    function DpOptionsComponent() {
+        this.myOptions = {
+            dateRange: false,
+            dateFormat: 'dd.mm.yyyy',
+            disableUntil: { year: 0, month: 0, day: 0 },
+            disableSince: { year: 0, month: 0, day: 0 },
+            disableDates: [],
+            firstDayOfWeek: 'mo',
+            highlightDates: [],
+            markDates: [],
+            showWeekNumbers: false,
+            disableWeekdays: []
+        };
+        this.model = null;
+        this.locale = 'en';
+        this.locales = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
+    }
+    DpOptionsComponent.prototype.ngOnInit = function () {
+    };
+    DpOptionsComponent.prototype.onDisableUntilYesterday = function (checked) {
+        var copy = this.getCopyOfOptions();
+        if (checked) {
+            var d = new Date();
+            d.setDate(d.getDate() - 1);
+            copy.disableUntil = { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() };
+        }
+        else {
+            copy.disableUntil = { year: 0, month: 0, day: 0 };
+        }
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onDisableSinceTomorrow = function (checked) {
+        var copy = this.getCopyOfOptions();
+        if (checked) {
+            var d = new Date();
+            d.setDate(d.getDate() + 1);
+            copy.disableSince = { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() };
+        }
+        else {
+            copy.disableSince = { year: 0, month: 0, day: 0 };
+        }
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onDisableThirdDay = function (checked) {
+        var copy = this.getCopyOfOptions();
+        copy.disableDates = checked ? [{ year: 0, month: 0, day: 3 }] : [];
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onSundayFirstDayOfWeek = function (checked) {
+        var copy = this.getCopyOfOptions();
+        copy.firstDayOfWeek = checked ? 'su' : 'mo';
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onHighlightToday = function (checked) {
+        var d = new Date();
+        var copy = this.getCopyOfOptions();
+        copy.highlightDates = checked ? [{ year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() }] : [];
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onMarkToday = function (checked) {
+        var d = new Date();
+        var copy = this.getCopyOfOptions();
+        copy.markDates = checked ? [{ dates: [{ year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() }], color: 'red' }] : [];
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onShowWeekNumbers = function (checked) {
+        var copy = this.getCopyOfOptions();
+        copy.showWeekNumbers = checked;
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onDisableWednesday = function (checked) {
+        var copy = this.getCopyOfOptions();
+        copy.disableWeekdays = checked ? ['we'] : [];
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onDateRangePicker = function (checked) {
+        this.model = null;
+        var copy = this.getCopyOfOptions();
+        copy.dateRange = checked;
+        this.myOptions = copy;
+    };
+    DpOptionsComponent.prototype.onChangeLocale = function (locale) {
+        this.model = null;
+        this.locale = locale;
+    };
+    // optional date changed callback
+    DpOptionsComponent.prototype.onDateChanged = function (event) {
+        console.log('onDateChanged(): ', event);
+    };
+    DpOptionsComponent.prototype.getCopyOfOptions = function () {
+        return JSON.parse(JSON.stringify(this.myOptions));
+    };
+    DpOptionsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-dp-options',
+            template: __webpack_require__(/*! ./dp-options.component.html */ "./src/app/dp-options/dp-options.component.html"),
+            styles: [__webpack_require__(/*! ./dp-options.component.css */ "./src/app/dp-options/dp-options.component.css")]
+        })
+    ], DpOptionsComponent);
+    return DpOptionsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/drp-bootstrap/drp-bootstrap.component.css":
 /*!***********************************************************!*\
   !*** ./src/app/drp-bootstrap/drp-bootstrap.component.css ***!
@@ -202,7 +348,7 @@ var DpBootstrapComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {\n  margin: 0 auto;\n  width: 280px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZHJwLWJvb3RzdHJhcC9kcnAtYm9vdHN0cmFwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvZHJwLWJvb3RzdHJhcC9kcnAtYm9vdHN0cmFwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZHBUaXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmRhdGVQaWNrZXJDb250YWluZXIge1xuICBtYXJnaW46IDAgYXV0bztcbiAgd2lkdGg6IDI4MHB4O1xufVxuIl19 */"
+module.exports = ".dpTitle {\n\n}\n\n.datePickerContainer {\n  margin: 0 auto;\n  width: 280px;\n}\n\n@media screen and (max-width: 1200px) {\n  .datePickerContainer {\n    margin: 0 auto;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZHJwLWJvb3RzdHJhcC9kcnAtYm9vdHN0cmFwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsWUFBWTtBQUNkOztBQUVBO0VBQ0U7SUFDRSxjQUFjO0VBQ2hCO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9kcnAtYm9vdHN0cmFwL2RycC1ib290c3RyYXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kcFRpdGxlIHtcblxufVxuXG4uZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gIG1hcmdpbjogMCBhdXRvO1xuICB3aWR0aDogMjgwcHg7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gICAgbWFyZ2luOiAwIGF1dG87XG4gIH1cbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -213,7 +359,7 @@ module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h5 class=\"dpTitle\">Date range picker</h5>\n  <div class=\"datePickerContainer\">\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date range\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"datePickerContainer\">\n    <h5 class=\"dpTitle\">Date range picker</h5>\n\n    <div class=\"input-group\">\n      <input class=\"form-control\" placeholder=\"Select a date range\" angular-mydatepicker name=\"mydate\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" *ngIf=\"model\" (click)=\"dp.clearDate()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div class=\"input-group-append\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"dp.toggleCalendar()\">\n          <i class=\"fa fa-calendar-o\"></i>\n        </button>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -267,7 +413,7 @@ var DrpBootstrapComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {\n  margin: 0 auto;\n  width: 280px;\n}\n\n.inputGroup {\n  display: flex;\n  position: relative;\n}\n\n.closeIconContainer {\n  margin-left: -26px;\n}\n\n.closeIcon {\n  line-height: 36px;\n  cursor: pointer;\n}\n\n.closeIcon:hover {\n  color: #ccc;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbm8tYm9vdHN0cmFwL25vLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztFQUNkLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGFBQWE7RUFDYixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL25vLWJvb3RzdHJhcC9uby1ib290c3RyYXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kcFRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uZGF0ZVBpY2tlckNvbnRhaW5lciB7XG4gIG1hcmdpbjogMCBhdXRvO1xuICB3aWR0aDogMjgwcHg7XG59XG5cbi5pbnB1dEdyb3VwIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuXG4uY2xvc2VJY29uQ29udGFpbmVyIHtcbiAgbWFyZ2luLWxlZnQ6IC0yNnB4O1xufVxuXG4uY2xvc2VJY29uIHtcbiAgbGluZS1oZWlnaHQ6IDM2cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmNsb3NlSWNvbjpob3ZlciB7XG4gIGNvbG9yOiAjY2NjO1xufVxuIl19 */"
+module.exports = ".dpTitle {\n\n}\n\n.datePickerContainer {\n  width: 280px;\n\n  float: right;\n}\n\n.inputGroup {\n  display: flex;\n  position: relative;\n}\n\n.closeIconContainer {\n  margin-left: -26px;\n}\n\n.closeIcon {\n  line-height: 36px;\n  cursor: pointer;\n}\n\n.closeIcon:hover {\n  color: #ccc;\n}\n\n@media screen and (max-width: 1200px) {\n  .datePickerContainer {\n    float: initial;\n    margin: 0 auto;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbm8tYm9vdHN0cmFwL25vLWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBOztBQUVBO0VBQ0UsWUFBWTs7RUFFWixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxXQUFXO0FBQ2I7O0FBRUE7RUFDRTtJQUNFLGNBQWM7SUFDZCxjQUFjO0VBQ2hCO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9uby1ib290c3RyYXAvbm8tYm9vdHN0cmFwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZHBUaXRsZSB7XG5cbn1cblxuLmRhdGVQaWNrZXJDb250YWluZXIge1xuICB3aWR0aDogMjgwcHg7XG5cbiAgZmxvYXQ6IHJpZ2h0O1xufVxuXG4uaW5wdXRHcm91cCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cblxuLmNsb3NlSWNvbkNvbnRhaW5lciB7XG4gIG1hcmdpbi1sZWZ0OiAtMjZweDtcbn1cblxuLmNsb3NlSWNvbiB7XG4gIGxpbmUtaGVpZ2h0OiAzNnB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi5jbG9zZUljb246aG92ZXIge1xuICBjb2xvcjogI2NjYztcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTIwMHB4KSB7XG4gIC5kYXRlUGlja2VyQ29udGFpbmVyIHtcbiAgICBmbG9hdDogaW5pdGlhbDtcbiAgICBtYXJnaW46IDAgYXV0bztcbiAgfVxufVxuIl19 */"
 
 /***/ }),
 
@@ -278,7 +424,7 @@ module.exports = ".dpTitle {\n  text-align: center;\n}\n\n.datePickerContainer {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h5 class=\"dpTitle\">Datepicker</h5>\n\n  <div class=\"datePickerContainer\">\n    <div class=\"inputGroup\">\n      <input class=\"form-control\" placeholder=\"Click to select a date\" angular-mydatepicker name=\"mydate\" (click)=\"dp.toggleCalendar()\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n\n      <div class=\"closeIconContainer\"><i *ngIf=\"model\" class=\"fa fa-close closeIcon\" (click)=\"dp.clearDate()\"></i></div>\n\n    </div>\n\n  </div>\n\n</div>\n"
+module.exports = "<div>\n  <div class=\"datePickerContainer\">\n    <h5 class=\"dpTitle\">Datepicker</h5>\n\n\n    <div class=\"inputGroup\">\n      <input class=\"form-control\" placeholder=\"Click to select a date\" angular-mydatepicker name=\"mydate\" (click)=\"dp.toggleCalendar()\"\n             [(ngModel)]=\"model\" [options]=\"myOptions\" #dp=\"angular-mydatepicker\" (dateChanged)=\"onDateChanged($event)\"/>\n\n      <div class=\"closeIconContainer\"><i *ngIf=\"model\" class=\"fa fa-close closeIcon\" (click)=\"dp.clearDate()\"></i></div>\n\n    </div>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 

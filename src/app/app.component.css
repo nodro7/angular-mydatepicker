@@ -9,10 +9,10 @@
 
 .content {
   padding: 20px;
-  height: 600px;
 }
 
 .flexContainer {
+  margin: 20px 120px;
   display: flex;
 }
 
@@ -21,7 +21,14 @@
 }
 
 .infoText {
-  text-align: center;
+  margin: 10px 120px;
+  font-size: 18px;
+}
+
+.dpOptionsContainer {
+  margin-top: 140px;
+  margin-left: 120px;
+  margin-right: 120px;
 }
 
 @media screen and (max-width: 1200px) {

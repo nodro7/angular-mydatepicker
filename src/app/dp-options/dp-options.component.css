@@ -1,0 +1,41 @@
+.dpTitle {
+  text-align: center;
+}
+
+.datePickerContainer {
+  height: 400px;
+}
+
+.optionsContainer {
+  display: flex;
+}
+
+.localeOptions {
+  margin-top: 20px;
+}
+
+.optionsItem {
+  width: 33%;
+}
+
+.datePicker {
+  width: 280px;
+  margin: 20px auto;
+}
+
+.inputBox {
+  cursor: pointer;
+}
+
+.linkToOptions {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .optionsContainer {
+    display: block;
+  }
+  .optionsItem {
+    width: 100%;
+  }
+}

@@ -1,8 +1,14 @@
 .dpTitle {
-  text-align: center;
+
 }
 
 .datePickerContainer {
   margin: 0 auto;
   width: 280px;
+}
+
+@media screen and (max-width: 1200px) {
+  .datePickerContainer {
+    margin: 0 auto;
+  }
 }

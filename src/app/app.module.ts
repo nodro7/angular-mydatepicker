@@ -8,13 +8,15 @@ import { DrpBootstrapComponent } from './drp-bootstrap/drp-bootstrap.component';
 import { NoBootstrapComponent } from './no-bootstrap/no-bootstrap.component';
 
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { DpOptionsComponent } from './dp-options/dp-options.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DpBootstrapComponent,
     DrpBootstrapComponent,
-    NoBootstrapComponent
+    NoBootstrapComponent,
+    DpOptionsComponent
   ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule.forRoot()
