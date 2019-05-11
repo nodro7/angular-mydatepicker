@@ -305,7 +305,7 @@ export class UtilService {
   }
 
   isDateInRange(date: IMyDate, dateRange: IMyDateRange): boolean {
-    if (!this.isInitializedDate(dateRange.begin)) {
+    if (!this.isInitializedDate(dateRange.begin) || !this.isInitializedDate(dateRange.end)) {
       return false;
     }
     return this.isDateSameOrEarlier(dateRange.begin, date) && this.isDateSameOrEarlier(date, dateRange.end);

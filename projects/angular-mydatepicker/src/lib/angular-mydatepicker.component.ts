@@ -461,7 +461,7 @@ export class AngularMyDatePicker implements OnDestroy {
   }
 
   isDateInRange(date: IMyDate, dateRange: IMyDateRange): boolean {
-    return this.utilService.isDateInRange(date,dateRange);
+    return this.utilService.isDateInRange(date, dateRange);
   }
 
   isDateSame(firstDate: IMyDate, secondDate: IMyDate): boolean {
