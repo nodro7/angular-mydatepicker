@@ -26,9 +26,7 @@
 }
 
 .dpOptionsContainer {
-  margin-top: 140px;
-  margin-left: 120px;
-  margin-right: 120px;
+  margin: 140px 120px 260px 120px;
 }
 
 @media screen and (max-width: 1200px) {
