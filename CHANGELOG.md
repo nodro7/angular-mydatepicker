@@ -37,3 +37,13 @@
 ### Features
 
 * Added inline mode option and functionality.
+
+# 0.0.5 (2019-05-12)
+
+### Bug Fixes
+
+* Fixed inline calendar position bug.
+
+### Features
+
+* none
