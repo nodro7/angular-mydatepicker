@@ -16,12 +16,19 @@
 }
 
 .myDpSelector {
-  position: absolute;
   padding: 0;
   border: 1px solid #CCC;
   border-radius: 4px;
   z-index: 100000;
   animation: selectorfadein 0.06s;
+}
+
+.myDpSelectorAbsolute {
+  position: absolute;
+}
+
+.myDpSelectorRelative {
+  position: relative;
 }
 
 .myDpSelector:focus {
@@ -237,12 +244,6 @@
   margin-right: 6px;
 }
 
-.myDpDisabled {
-  cursor: default !important;
-  color: #CCC !important;
-  background: #FBEFEF !important;
-}
-
 .myDpHighlight {
   color: #C30000;
 }
@@ -323,6 +324,12 @@
 .myDpMonthLabel:hover,
 .myDpYearLabel:hover {
   color: #777;
+}
+
+.myDpDisabled {
+  cursor: default;
+  color: #999;
+  background: #FBEFEF;
 }
 
 .ng-mydp table {

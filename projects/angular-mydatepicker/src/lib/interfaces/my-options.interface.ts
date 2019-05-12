@@ -7,6 +7,7 @@ import {IMyMarkedDate} from "./my-marked-date.interface";
 
 export interface IMyOptions {
   dateRange?: boolean;
+  inline?: boolean;
   dayLabels?: IMyDayLabels;
   monthLabels?: IMyMonthLabels;
   dateFormat?: string;

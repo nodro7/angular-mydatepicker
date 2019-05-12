@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <label>
+      <span>Date range:</span>
+      <input style="cursor: pointer" type="checkbox" (change)="onDateRange($event.currentTarget.checked)" [checked]="false">
+    </label>
+  </div>
+
+  <div>
+    <input angular-mydatepicker class="datePicker" type="hidden" [(ngModel)]="model" [options]="myDatePickerOptions"
+        (dateChanged)="onDateChanged($event)" (calendarViewChanged)="onCalendarViewChanged($event)"
+        (rangeDateSelection)="onDateRangeSelection($event)"/>
+  </div>
+
+  <div>
+    <button type="button" class="submitButton" (click)="onSubmit()">Submit</button>
+  </div>
+
+</div>
+

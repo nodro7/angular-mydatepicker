@@ -27,3 +27,13 @@
 ### Features
 
 * Now possible to mark or highlight repeatedly. For example value of those options can be {year: 0, month: 0, day: 10} which means that it affects every 10th day.
+
+# 0.0.4 (2019-05-12)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added inline mode option and functionality.

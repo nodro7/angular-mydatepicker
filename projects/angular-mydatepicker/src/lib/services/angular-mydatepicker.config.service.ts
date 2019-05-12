@@ -10,6 +10,7 @@ import {Year} from "../enums";
 @Injectable()
 export class AngularMyDatePickerConfig implements IMyOptions {
   dateRange: boolean = false;
+  inline: boolean = false;
   dayLabels: IMyDayLabels = {su: "Sun", mo: "Mon", tu: "Tue", we: "Wed", th: "Thu", fr: "Fri", sa: "Sat"};
   monthLabels: IMyMonthLabels = {1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"};
   dateFormat: string = "yyyy-mm-dd";

@@ -4,7 +4,7 @@ import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR,
 import {IMyDate, IMyOptions, IMyDateModel, IMyDateRange, IMyRangeDateSelection, IMyCalendarViewChanged, IMyInputFieldChanged, IMySelectorPosition} from "./interfaces";
 import {AngularMyDatePicker} from "./angular-mydatepicker.component";
 import {LocaleService, UtilService, AngularMyDatePickerConfig} from "./services";
-import {CalToggle, Year, KeyCode} from "./enums";
+import {CalToggle, Year, KeyCode, ResetDateType} from "./enums";
 import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX} from "./constants";
 
 const NGX_DP_VALUE_ACCESSOR = {
@@ -175,8 +175,11 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.opts.maxYear > Year.max) {
       this.opts.maxYear = Year.max;
     }
-    if (this.opts.openSelectorTopOfInput) {
+    if (this.opts.openSelectorTopOfInput || this.opts.inline) {
       this.opts.showSelectorArrow = false;
+    }
+    if (this.opts.inline) {
+      this.openCalendar();
     }
   }
 
@@ -188,6 +191,10 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (!value) {
       this.setInputValue(EMPTY_STR);
       this.emitInputFieldChanged(EMPTY_STR, false);
+
+      if (this.cRef !== null && this.opts.inline) {
+        this.cRef.instance.resetDateValue(ResetDateType.both);
+      }
     }
     else if (value.isRange === false && value.singleDate) {
       // single date
@@ -197,6 +204,10 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       if (valid) {
         this.setInputValue(formatted);
         this.emitInputFieldChanged(formatted, valid);
+
+        if (this.cRef !== null && this.opts.inline) {
+          this.cRef.instance.resetDateValue(ResetDateType.dateRange);
+        }
       }
     }
     else if (value.isRange === true && value.dateRange) {
@@ -216,6 +227,10 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         if (valid) {
           this.setInputValue(formatted);
           this.emitInputFieldChanged(formatted, valid);
+
+          if (this.cRef !== null && this.opts.inline) {
+            this.cRef.instance.resetDateValue(ResetDateType.singleDate);
+          }
         }
       }
     }
@@ -352,7 +367,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   private closeSelector(reason: number): void {
-    if (this.cRef !== null) {
+    if (this.cRef !== null && !this.opts.inline) {
       this.vcRef.remove(this.vcRef.indexOf(this.cRef.hostView));
       this.cRef = null;
       this.emitCalendarToggle(reason);

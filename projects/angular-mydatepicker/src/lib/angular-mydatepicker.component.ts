@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, OnDestroy} from "@angular/core";
 import {IMyDate, IMyDateRange, IMyMonth, IMyCalendarDay, IMyCalendarMonth, IMyCalendarYear, IMyWeek, IMyOptions, IMySelectorPosition} from "./interfaces";
 import {UtilService} from "./services";
-import {KeyCode, MonthId} from "./enums";
+import {KeyCode, MonthId, ResetDateType} from "./enums";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK} from "./constants";
 
 @Component({
@@ -100,6 +100,16 @@ export class AngularMyDatePicker implements OnDestroy {
     this.closedByEsc = cbe;
 
     this.setVisibleMonth();
+  }
+
+  resetDateValue(value: ResetDateType): void {
+    if (value === ResetDateType.singleDate || value === ResetDateType.both) {
+      this.selectedDate = this.utilService.resetDate();
+    }
+    if (value === ResetDateType.dateRange || value === ResetDateType.both) {
+      this.selectedDateRange.begin = this.utilService.resetDate();
+      this.selectedDateRange.end = this.utilService.resetDate();
+    }
   }
 
   setCalendarView(date: IMyDate): void {
