@@ -192,7 +192,7 @@ Value of the __options__ attribute is a type of [IAngularMyDpOptions](https://gi
 | Option         | Default        | Type | Description |
 | :------------- | :------------- | :----| :---------- |
 | __dateRange__   | false | boolean | Date picker mode (date picker or date range picker). |
-| __inline__   | false | boolean | Normal mode or inline mode. If __inline__ mode set the input box __type__ attribute to __hidden__ and this option to __true__. |
+| __inline__   | false | boolean | Normal mode or inline mode. If __inline__ mode set the input box __type__ attribute to __hidden__ and this option to __true__. [Here](https://github.com/kekeh/angular-mydatepicker/blob/master/example/app/date-picker-inline/date-picker-inline.html#L10) is an example.|
 | __dayLabels__     | {su: 'Sun', mo: 'Mon', tu: 'Tue', we: 'Wed', th: 'Thu', fr: 'Fri', sa: 'Sat'} | [IMyDayLabels](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-day-labels.interface.ts) | Day labels visible on the selector. |
 | __monthLabels__   | { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec' } | [IMyMonthLabels](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-month-labels.interface.ts) | Month labels visible on the selector. |
 | __dateFormat__    | yyyy-mm-dd | string |  Date format on the selection area and the callback. For example: d.m.yyyy, dd.mm.yyyy, yyyy-m-d, yyyy-mm-dd, d mmm yyyy, dd mmm yyyy (d = Day not leading zero, dd = Day with leading zero, m = Month not leading zero, mm = Month with leading zero, mmm = Month as a text, yyyy = Year four digit) |
