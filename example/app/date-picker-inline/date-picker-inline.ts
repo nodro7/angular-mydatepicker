@@ -8,18 +8,18 @@ import {IAngularMyDpOptions, IMyDateModel, IMyCalendarViewChanged, IMyRangeDateS
 })
 export class DatePickerInline implements OnInit {
 
-  private myDatePickerOptions: IAngularMyDpOptions = {
+  public myDatePickerOptions: IAngularMyDpOptions = {
     dateRange: false,
     inline: true,
     dateFormat: 'dd.mm.yyyy',
   };
 
-  private selectedTextNormal: string = '';
+  public selectedTextNormal: string = '';
 
-  private validDate: boolean = false;
-  private inputText: string = "";
+  public validDate: boolean = false;
+  public inputText: string = "";
 
-  private model: IMyDateModel = null;   // not initial date set
+  public model: IMyDateModel = null;   // not initial date set
 
   constructor() {
   }

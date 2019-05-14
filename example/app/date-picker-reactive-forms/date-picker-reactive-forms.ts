@@ -7,15 +7,15 @@ import {IAngularMyDpOptions, IMyDateModel} from '../../../projects/angular-mydat
   templateUrl: './date-picker-reactive-forms.html',
   styleUrls: ['./date-picker-reactive-forms.css']
 })
-export class DatePickerReacticeForms implements OnInit {
-  private myDatePickerOptions: IAngularMyDpOptions = {
+export class DatePickerReactiveForms implements OnInit {
+  public myDatePickerOptions: IAngularMyDpOptions = {
     dateRange: false,
     dateFormat: 'dd.mm.yyyy'
   };
 
-  private disabled: boolean = false;
+  public disabled: boolean = false;
 
-  private myForm: FormGroup;
+  public myForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private renderer: Renderer2) {
   }

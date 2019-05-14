@@ -9,7 +9,7 @@ import {IAngularMyDpOptions, IMyDateModel, IMyInputFieldChanged, IMyCalendarView
 })
 export class DatePickerNgmodel implements OnInit {
 
-  private myDatePickerOptions: IAngularMyDpOptions = {
+  public myDatePickerOptions: IAngularMyDpOptions = {
     dateRange: true,
     dateFormat: 'dd.mm.yyyy',
     firstDayOfWeek: 'mo',
@@ -44,22 +44,22 @@ export class DatePickerNgmodel implements OnInit {
 
   @ViewChild('dp') ngxdp: AngularMyDatePickerDirective;
 
-  private selectedTextNormal: string = '';
+  public selectedTextNormal: string = '';
 
-  private disabled: boolean = false;
-  private validDate: boolean = false;
-  private inputText: string = "";
+  public disabled: boolean = false;
+  public validDate: boolean = false;
+  public inputText: string = "";
 
-  private model: IMyDateModel = null;   // not initial date set
+  public model: IMyDateModel = null;   // not initial date set
 
-  private defMonth: IMyDefaultMonth = {
+  public defMonth: IMyDefaultMonth = {
     defMonth: ''
   };
 
-  private selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
+  public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
 
-  private locale: string = 'en';
-  private locales: Array<string> = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
+  public locale: string = 'en';
+  public locales: Array<string> = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
 
 
   constructor() {
