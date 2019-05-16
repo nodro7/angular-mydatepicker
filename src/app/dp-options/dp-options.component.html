@@ -75,9 +75,9 @@
 
   <div class="optionsContainer localeOptions">
 
-    <div class="form-check optionsItem">
-      <label for="locale">Locale:</label>
-      <select id="locale" style="padding: 2px;cursor: pointer;font-size: 12px;min-width: 60px; margin-left: 10px;" (change)="onChangeLocale($event.target.value)">
+    <div class="form-check selectItem">
+      <label for="locale" class="col-sm-4 col-form-label localeLabel">Locale:</label>
+      <select id="locale" class="custom-select col-sm-8" (change)="onChangeLocale($event.target.value)">
         <option *ngFor="let l of locales">{{l}}</option>
       </select>
     </div>
@@ -85,7 +85,7 @@
   </div>
 
 
-  <div class="row">
+
     <div class="input-group datePicker">
       <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate" [locale]="locale"
              [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"/>
@@ -100,7 +100,7 @@
         </button>
       </div>
     </div>
-  </div>
+
 
 
 

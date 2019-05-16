@@ -1,5 +1,5 @@
 .dpTitle {
-  text-align: center;
+
 }
 
 .datePickerContainer {
@@ -19,7 +19,16 @@
 
 .datePicker {
   width: 280px;
-  margin: 20px auto;
+  margin-top: 20px;
+}
+
+.localeLabel {
+  padding-left: 0;
+}
+
+.selectItem {
+  width: 280px;
+  padding-left: 0;
 }
 
 .inputBox {

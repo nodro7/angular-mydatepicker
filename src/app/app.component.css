@@ -7,17 +7,12 @@
   font-size: 24px;
 }
 
-.content {
-  padding: 20px;
+.dpContainer {
+  margin: 0 120px;
 }
 
-.flexContainer {
-  margin: 20px 120px;
-  display: flex;
-}
-
-.flexElement {
-  width: 33%;
+.col {
+  margin-top: 10px;
 }
 
 .infoText {
@@ -29,13 +24,3 @@
   margin: 140px 120px 260px 120px;
 }
 
-@media screen and (max-width: 1200px) {
-  .flexContainer {
-    display: block;
-  }
-
-  .flexElement {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-}

@@ -4,8 +4,7 @@
 
 .datePickerContainer {
   width: 280px;
-
-  float: right;
+  margin: 0 auto;
 }
 
 .inputGroup {
@@ -26,9 +25,3 @@
   color: #ccc;
 }
 
-@media screen and (max-width: 1200px) {
-  .datePickerContainer {
-    float: initial;
-    margin: 0 auto;
-  }
-}
