@@ -47,3 +47,13 @@
 ### Features
 
 * none
+
+# 0.0.6 (2019-05-19)
+
+### Bug Fixes
+
+* Global configuration removed, because --prod flag compilation error.
+
+### Features
+
+* none

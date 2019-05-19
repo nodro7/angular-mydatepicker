@@ -1,11 +1,23 @@
 import {Directive, Input, ComponentRef, ElementRef, ViewContainerRef, Renderer2, ChangeDetectorRef, ComponentFactoryResolver, forwardRef, EventEmitter, Output, SimpleChanges, OnChanges, HostListener, OnDestroy} from "@angular/core";
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator} from "@angular/forms";
+import {AngularMyDatePickerComponent} from "./angular-mydatepicker.component";
+import {IMyDate} from "./interfaces/my-date.interface";
+import {IMyOptions} from "./interfaces/my-options.interface";
+import {IMyDateModel} from "./interfaces/my-date-model.interface";
+import {IMyDateRange} from "./interfaces/my-date-range.interface";
+import {IMyRangeDateSelection} from "./interfaces/my-range-date-selection.interface";
+import {IMyCalendarViewChanged} from "./interfaces/my-calendar-view-changed.interface";
+import {IMyInputFieldChanged} from "./interfaces/my-input-field-changed.interface";
+import {IMySelectorPosition} from "./interfaces/my-selector-pos.interface";
+import {LocaleService} from "./services/angular-mydatepicker.locale.service";
+import {UtilService} from "./services/angular-mydatepicker.util.service";
+import {DefaultConfigService} from "./services/angular-mydatepicker.config.service";
+import {CalToggle} from "./enums/cal-toggle.enum";
+import {Year} from "./enums/year.enum";
+import {KeyCode} from "./enums/key-code.enum";
+import {ResetDateType} from "./enums/reset-date-type.enum";
 
-import {IMyDate, IMyOptions, IMyDateModel, IMyDateRange, IMyRangeDateSelection, IMyCalendarViewChanged, IMyInputFieldChanged, IMySelectorPosition} from "./interfaces";
-import {AngularMyDatePicker} from "./angular-mydatepicker.component";
-import {LocaleService, UtilService, AngularMyDatePickerConfig} from "./services";
-import {CalToggle, Year, KeyCode, ResetDateType} from "./enums";
-import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX} from "./constants";
+import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX} from "./constants/constants";
 
 const NGX_DP_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -22,7 +34,7 @@ const NGX_DP_VALIDATORS = {
 @Directive({
   selector: "[angular-mydatepicker]",
   exportAs: "angular-mydatepicker",
-  providers: [UtilService, LocaleService, NGX_DP_VALUE_ACCESSOR, NGX_DP_VALIDATORS]
+  providers: [UtilService, LocaleService, DefaultConfigService, NGX_DP_VALUE_ACCESSOR, NGX_DP_VALIDATORS]
 })
 export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, ControlValueAccessor, Validator {
   @Input() options: IMyOptions;
@@ -35,7 +47,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   @Output() calendarToggle: EventEmitter<number> = new EventEmitter<number>();
   @Output() rangeDateSelection: EventEmitter<IMyRangeDateSelection> = new EventEmitter<IMyRangeDateSelection>();
 
-  private cRef: ComponentRef<AngularMyDatePicker> = null;
+  private cRef: ComponentRef<AngularMyDatePickerComponent> = null;
   private inputText: string = "";
   private preventClose: boolean = false;
   private disabled = false;
@@ -52,9 +64,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
               private renderer: Renderer2,
               private cdr: ChangeDetectorRef,
               private elem: ElementRef,
-              private config: AngularMyDatePickerConfig) {
-    this.opts = Object.assign({}, config);
-    this.parseOptions(config);
+              private config: DefaultConfigService) {
+    this.opts = this.config.getDefaultConfig();
+    this.parseOptions(this.opts);
   }
 
   @HostListener(KEYUP, ["$event"]) onKeyUp(event: KeyboardEvent) {
@@ -271,7 +283,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.preventClose = true;
     this.cdr.detectChanges();
     if (this.cRef === null) {
-      this.cRef = this.vcRef.createComponent(this.cfr.resolveComponentFactory(AngularMyDatePicker));
+      this.cRef = this.vcRef.createComponent(this.cfr.resolveComponentFactory(AngularMyDatePickerComponent));
       this.appendSelector(this.cRef.location.nativeElement);
       this.cRef.instance.initialize(
         this.opts,

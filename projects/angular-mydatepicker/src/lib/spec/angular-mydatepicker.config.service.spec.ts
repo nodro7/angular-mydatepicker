@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AngularMyDatePickerConfig } from '../services/angular-mydatepicker.config.service';
+import { DefaultConfigService } from '../services/angular-mydatepicker.config.service';
 
-describe('AngularMyDatePickerConfig', () => {
+describe('DefaultConfigService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: AngularMyDatePickerConfig = TestBed.get(AngularMyDatePickerConfig);
+    const service: DefaultConfigService = TestBed.get(DefaultConfigService);
     expect(service).toBeTruthy();
   });
 });

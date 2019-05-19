@@ -39,7 +39,7 @@ To install this component to an external project, follow the procedure:
         AppComponent
       ],
       imports: [
-        BrowserModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule.forRoot()
+        BrowserModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule
       ],
       providers: [],
       bootstrap: [AppComponent]

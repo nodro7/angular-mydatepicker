@@ -1,7 +1,18 @@
 import {Injectable} from "@angular/core";
-import {IMyDateModel, IMySingleDateModel, IMyDateRangeModel, IMyDate, IMyDateRange, IMyMonth, IMyMonthLabels, IMyMarkedDates, IMyMarkedDate, IMyDateFormat, IMyOptions} from "../interfaces";
-import {KeyCode, KeyName} from "../enums";
-import {D, DD, M, MM, MMM, YYYY, SU, MO, TU, WE, TH, FR, SA, ZERO_STR, EMPTY_STR} from "../constants";
+import {IMyDateModel} from "../interfaces/my-date-model.interface";
+import {IMySingleDateModel} from "../interfaces/my-single-date-model.interface";
+import {IMyDateRangeModel} from "../interfaces/my-date-range-model.interface";
+import {IMyDate} from "../interfaces/my-date.interface";
+import {IMyDateRange} from "../interfaces/my-date-range.interface";
+import {IMyMonth} from "../interfaces/my-month.interface";
+import {IMyMonthLabels} from "../interfaces/my-month-labels.interface";
+import {IMyMarkedDates} from "../interfaces/my-marked-dates.interface";
+import {IMyMarkedDate} from "../interfaces/my-marked-date.interface";
+import {IMyDateFormat} from "../interfaces/my-date-format.interface";
+import {IMyOptions} from "../interfaces/my-options.interface";
+import {KeyCode} from "../enums/key-code.enum";
+import {KeyName} from "../enums/key-name.enum";
+import {D, DD, M, MM, MMM, YYYY, SU, MO, TU, WE, TH, FR, SA, ZERO_STR, EMPTY_STR} from "../constants/constants";
 
 @Injectable()
 export class UtilService {

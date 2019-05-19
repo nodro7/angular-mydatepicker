@@ -13,7 +13,7 @@ import { AngularMyDatePickerModule } from '../../projects/angular-mydatepicker/s
     AppComponent, DatePickerNgmodel, DatePickerReactiveForms, DatePickerInline
   ],
   imports: [
-    BrowserModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule.forRoot()
+    BrowserModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

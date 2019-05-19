@@ -1,5 +1,5 @@
 import {Directive, ElementRef, AfterViewInit, Input} from "@angular/core";
-import {ZERO_STR} from "../constants";
+import {ZERO_STR} from "../constants/constants";
 
 @Directive({
   selector: "[angular-mydatepicker-focus]"

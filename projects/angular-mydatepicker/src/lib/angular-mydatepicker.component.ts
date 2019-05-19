@@ -1,8 +1,18 @@
 import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, OnDestroy} from "@angular/core";
-import {IMyDate, IMyDateRange, IMyMonth, IMyCalendarDay, IMyCalendarMonth, IMyCalendarYear, IMyWeek, IMyOptions, IMySelectorPosition} from "./interfaces";
-import {UtilService} from "./services";
-import {KeyCode, MonthId, ResetDateType} from "./enums";
-import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK} from "./constants";
+import {IMyDate} from "./interfaces/my-date.interface";
+import {IMyDateRange} from "./interfaces/my-date-range.interface";
+import {IMyMonth} from "./interfaces/my-month.interface";
+import {IMyCalendarDay} from "./interfaces/my-calendar-day.interface";
+import {IMyCalendarMonth} from "./interfaces/my-calendar-month.interface";
+import {IMyCalendarYear} from "./interfaces/my-calendar-year.interface";
+import {IMyWeek} from "./interfaces/my-week.interface";
+import {IMyOptions} from "./interfaces/my-options.interface";
+import {IMySelectorPosition} from "./interfaces/my-selector-pos.interface";
+import {UtilService} from "./services/angular-mydatepicker.util.service";
+import {KeyCode} from "./enums/key-code.enum";
+import {MonthId} from "./enums/month-id.enum";
+import {ResetDateType} from "./enums/reset-date-type.enum";
+import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK} from "./constants/constants";
 
 @Component({
   selector: "angular-mydatepicker-component",
@@ -11,7 +21,7 @@ import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUN
   providers: [UtilService],
   encapsulation: ViewEncapsulation.None
 })
-export class AngularMyDatePicker implements OnDestroy {
+export class AngularMyDatePickerComponent implements OnDestroy {
   @ViewChild("selectorEl") selectorEl: any;
   opts: IMyOptions;
   visibleMonth: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
@@ -619,4 +629,3 @@ export class AngularMyDatePicker implements OnDestroy {
     this.nextMonthDisabled = m === 12 && y === this.opts.maxYear || dnm;
   }
 }
-
