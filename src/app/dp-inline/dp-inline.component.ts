@@ -9,14 +9,14 @@ import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
 })
 export class DpInlineComponent implements OnInit {
 
-  private myOptions: IAngularMyDpOptions = {
+  public myOptions: IAngularMyDpOptions = {
     dateRange: false,
     inline: true,
     dateFormat: 'dd.mm.yyyy',
     selectorWidth: '100%'
   };
 
-  private model: IMyDateModel = null;
+  public model: IMyDateModel = null;
 
   constructor() { }
 

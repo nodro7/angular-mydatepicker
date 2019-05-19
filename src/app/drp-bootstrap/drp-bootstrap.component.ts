@@ -9,12 +9,12 @@ import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
 })
 export class DrpBootstrapComponent implements OnInit {
 
-  private myOptions: IAngularMyDpOptions = {
+  public myOptions: IAngularMyDpOptions = {
     dateRange: true,
     dateFormat: 'dd.mm.yyyy'
   };
 
-  private model: IMyDateModel = null;
+  public model: IMyDateModel = null;
 
   constructor() { }
 
