@@ -27,8 +27,8 @@
   position: absolute;
 }
 
-.myDpSelectorRelative {
-  position: relative;
+.myDpSelectorPosInitial {
+  position: initial;
 }
 
 .myDpSelector:focus {
