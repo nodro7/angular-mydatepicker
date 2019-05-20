@@ -24,3 +24,16 @@
   margin: 140px 120px 260px 120px;
 }
 
+@media only screen and (max-width: 1000px) {
+  .dpContainer {
+    margin: 0 20px;
+  }
+
+  .infoText {
+    margin: 10px 20px;
+  }
+
+  .dpOptionsContainer {
+    margin: 140px 20px 260px 20px;
+  }
+}
