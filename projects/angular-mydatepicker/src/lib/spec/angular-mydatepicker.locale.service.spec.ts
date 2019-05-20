@@ -3,7 +3,11 @@ import { TestBed } from '@angular/core/testing';
 import { LocaleService } from '../services/angular-mydatepicker.locale.service';
 
 describe('LocaleService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      LocaleService
+    ]
+  }));
 
   it('should be created', () => {
     const service: LocaleService = TestBed.get(LocaleService);

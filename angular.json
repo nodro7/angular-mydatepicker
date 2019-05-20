@@ -133,7 +133,7 @@
     },
     "AngularMyDatePicker": {
       "root": "projects/angular-mydatepicker",
-      "sourceRoot": "projects/angular-mydatepicker/example",
+      "sourceRoot": "projects/angular-mydatepicker/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
@@ -147,7 +147,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-mydatepicker/example/test.ts",
+            "main": "projects/angular-mydatepicker/src/test.ts",
             "tsConfig": "projects/angular-mydatepicker/tsconfig.spec.json",
             "karmaConfig": "projects/angular-mydatepicker/karma.conf.js"
           }
