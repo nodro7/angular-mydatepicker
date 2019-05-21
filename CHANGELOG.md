@@ -57,3 +57,13 @@
 ### Features
 
 * none
+
+# 0.0.7 (2019-05-21)
+
+### Bug Fixes
+
+* tslint related changes.
+
+### Features
+
+* none
