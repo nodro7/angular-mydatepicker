@@ -19,24 +19,24 @@ export class UtilService {
   weekDays: Array<string> = [SU, MO, TU, WE, TH, FR, SA];
 
   isDateValid(dateStr: string, options: IMyOptions): IMyDate {
-    let {dateFormat, minYear, maxYear, monthLabels} = options;
+    const {dateFormat, minYear, maxYear, monthLabels} = options;
 
-    let returnDate: IMyDate = this.resetDate();
-    let daysInMonth: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    let isMonthStr: boolean = dateFormat.indexOf(MMM) !== -1;
-    let delimeters: Array<string> = dateFormat.match(/[^(dmy)]{1,}/g);
+    const returnDate: IMyDate = this.resetDate();
+    const daysInMonth: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const isMonthStr: boolean = dateFormat.indexOf(MMM) !== -1;
+    const delimeters: Array<string> = dateFormat.match(/[^(dmy)]{1,}/g);
 
-    let dateValue: Array<IMyDateFormat> = this.getDateValue(dateStr, dateFormat, delimeters);
-    let year: number = this.getNumberByValue(dateValue[0]);
-    let month: number = isMonthStr ? this.getMonthNumberByMonthName(dateValue[1], monthLabels) : this.getNumberByValue(dateValue[1]);
-    let day: number = this.getNumberByValue(dateValue[2]);
+    const dateValue: Array<IMyDateFormat> = this.getDateValue(dateStr, dateFormat, delimeters);
+    const year: number = this.getNumberByValue(dateValue[0]);
+    const month: number = isMonthStr ? this.getMonthNumberByMonthName(dateValue[1], monthLabels) : this.getNumberByValue(dateValue[1]);
+    const day: number = this.getNumberByValue(dateValue[2]);
 
     if (month !== -1 && day !== -1 && year !== -1) {
       if (year < minYear || year > maxYear || month < 1 || month > 12) {
         return returnDate;
       }
 
-      let date: IMyDate = {year: year, month: month, day: day};
+      const date: IMyDate = {year, month, day};
 
       if (this.isDisabledDate(date, options)) {
         return returnDate;
@@ -59,13 +59,13 @@ export class UtilService {
   isDateValidDateRange(dateRangeStr: string, options: IMyOptions): IMyDateRange {
     let dateRange: IMyDateRange = {begin: this.resetDate(), end: this.resetDate()};
     if (dateRangeStr && dateRangeStr.length) {
-      let dates: Array<string> = dateRangeStr.split(options.dateRangeDatesDelimiter);
-      if(dates && dates.length === 2) {
-        let [beginDate, endDate] = dates;
-        let begin: IMyDate = this.isDateValid(beginDate, options);
+      const dates: Array<string> = dateRangeStr.split(options.dateRangeDatesDelimiter);
+      if (dates && dates.length === 2) {
+        const [beginDate, endDate] = dates;
+        const begin: IMyDate = this.isDateValid(beginDate, options);
 
         if (this.isInitializedDate(begin)) {
-          let end: IMyDate = this.isDateValid(endDate, options);
+          const end: IMyDate = this.isDateValid(endDate, options);
 
           if (this.isInitializedDate(end) && this.isDateSameOrEarlier(begin, end)) {
             dateRange = {begin, end};
@@ -82,10 +82,10 @@ export class UtilService {
       del = delimeters[0] + delimeters[1];
     }
 
-    let re: any = new RegExp("[" + del + "]");
-    let ds: Array<string> = dateStr.split(re);
-    let df: Array<string> = dateFormat.split(re);
-    let da: Array<IMyDateFormat> = [];
+    const re: any = new RegExp("[" + del + "]");
+    const ds: Array<string> = dateStr.split(re);
+    const df: Array<string> = dateFormat.split(re);
+    const da: Array<IMyDateFormat> = [];
 
     for (let i = 0; i < df.length; i++) {
       if (df[i].indexOf(YYYY) !== -1) {
@@ -128,19 +128,19 @@ export class UtilService {
   }
 
   parseDefaultMonth(monthString: string): IMyMonth {
-    let month: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
+    const month: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
     if (monthString !== EMPTY_STR) {
-      let split = monthString.split(monthString.match(/[^0-9]/)[0]);
-      month.monthNbr = split[0].length === 2 ? parseInt(split[0]) : parseInt(split[1]);
-      month.year = split[0].length === 2 ? parseInt(split[1]) : parseInt(split[0]);
+      const split = monthString.split(monthString.match(/[^0-9]/)[0]);
+      month.monthNbr = split[0].length === 2 ? Number(split[0]) : Number(split[1]);
+      month.year = split[0].length === 2 ? Number(split[1]) : Number(split[0]);
     }
     return month;
   }
 
   isDisabledDate(date: IMyDate, options: IMyOptions): boolean {
-    let {minYear, maxYear, disableUntil, disableSince, disableWeekends, disableDates, disableDateRanges, disableWeekdays, enableDates} = options;
+    const {minYear, maxYear, disableUntil, disableSince, disableWeekends, disableDates, disableDateRanges, disableWeekdays, enableDates} = options;
 
-    for (let d of enableDates) {
+    for (const d of enableDates) {
       if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
         return false;
       }
@@ -150,7 +150,7 @@ export class UtilService {
       return true;
     }
 
-    let dateMs: number = this.getTimeInMilliseconds(date);
+    const dateMs: number = this.getTimeInMilliseconds(date);
     if (this.isInitializedDate(disableUntil) && dateMs <= this.getTimeInMilliseconds(disableUntil)) {
       return true;
     }
@@ -160,28 +160,28 @@ export class UtilService {
     }
 
     if (disableWeekends) {
-      let dayNbr = this.getDayNumber(date);
+      const dayNbr = this.getDayNumber(date);
       if (dayNbr === 0 || dayNbr === 6) {
         return true;
       }
     }
 
-    let dn = this.getDayNumber(date);
+    const dn = this.getDayNumber(date);
     if (disableWeekdays.length > 0) {
-      for (let wd of disableWeekdays) {
+      for (const wd of disableWeekdays) {
         if (dn === this.getWeekdayIndex(wd)) {
           return true;
         }
       }
     }
 
-    for (let d of disableDates) {
+    for (const d of disableDates) {
       if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
         return true;
       }
     }
 
-    for (let d of disableDateRanges) {
+    for (const d of disableDateRanges) {
       if (this.isInitializedDate(d.begin) && this.isInitializedDate(d.end) && dateMs >= this.getTimeInMilliseconds(d.begin) && dateMs <= this.getTimeInMilliseconds(d.end)) {
         return true;
       }
@@ -190,15 +190,15 @@ export class UtilService {
   }
 
   isMarkedDate(date: IMyDate, markedDates: Array<IMyMarkedDates>, markWeekends: IMyMarkedDate): IMyMarkedDate {
-    for (let md of markedDates) {
-      for (let d of md.dates) {
+    for (const md of markedDates) {
+      for (const d of md.dates) {
         if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
           return {marked: true, color: md.color};
         }
       }
     }
     if (markWeekends && markWeekends.marked) {
-      let dayNbr = this.getDayNumber(date);
+      const dayNbr = this.getDayNumber(date);
       if (dayNbr === 0 || dayNbr === 6) {
         return {marked: true, color: markWeekends.color};
       }
@@ -207,11 +207,11 @@ export class UtilService {
   }
 
   isHighlightedDate(date: IMyDate, sunHighlight: boolean, satHighlight: boolean, highlightDates: Array<IMyDate>): boolean {
-    let dayNbr: number = this.getDayNumber(date);
+    const dayNbr: number = this.getDayNumber(date);
     if (sunHighlight && dayNbr === 0 || satHighlight && dayNbr === 6) {
       return true;
     }
-    for (let d of highlightDates) {
+    for (const d of highlightDates) {
       if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
         return true;
       }
@@ -220,7 +220,7 @@ export class UtilService {
   }
 
   getWeekNumber(date: IMyDate): number {
-    let d: Date = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
+    const d: Date = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
     d.setDate(d.getDate() + (d.getDay() === 0 ? -3 : 4 - d.getDay()));
     return Math.round(((d.getTime() - new Date(d.getFullYear(), 0, 4).getTime()) / 86400000) / 7) + 1;
   }
@@ -239,7 +239,7 @@ export class UtilService {
 
     if (date) {
       singleDateModel = {
-        date: date,
+        date,
         jsDate: this.getDate(date),
         formatted: dateStr.length ? dateStr : this.formatDate(date, dateFormat, monthLabels),
         epoc: this.getEpocTime(date)
@@ -311,7 +311,7 @@ export class UtilService {
   }
 
   isDateRangeBeginOrEndSame(dateRange: IMyDateRange, date: IMyDate): boolean {
-    let dateMs: number = this.getTimeInMilliseconds(date);
+    const dateMs: number = this.getTimeInMilliseconds(date);
     return this.getTimeInMilliseconds(dateRange.begin) === dateMs || this.getTimeInMilliseconds(dateRange.end) === dateMs;
   }
 
@@ -347,7 +347,7 @@ export class UtilService {
   }
 
   getKeyCodeFromEvent(event: any): number {
-    let key: any = event.key || event.keyCode;
+    const key: any = event.key || event.keyCode;
 
     if (key === KeyName.enter || key === KeyCode.enter) {
       return KeyCode.enter;

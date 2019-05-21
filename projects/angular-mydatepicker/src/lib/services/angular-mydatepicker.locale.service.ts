@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {IMyLocales} from "../interfaces/my-locale.interface";
 import {IMyOptions} from "../interfaces/my-options.interface";
 
+import {DEFAULT_LOCALE} from "../constants/constants";
+
 @Injectable()
 export class LocaleService {
   private locales: IMyLocales = {
@@ -327,6 +329,6 @@ export class LocaleService {
       return this.locales[locale];
     }
     // Default: en
-    return this.locales["en"];
+    return this.locales[DEFAULT_LOCALE];
   }
 }

@@ -15,7 +15,7 @@ import {ResetDateType} from "./enums/reset-date-type.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK} from "./constants/constants";
 
 @Component({
-  selector: "angular-mydatepicker-component",
+  selector: "lib-angular-mydatepicker-component",
   templateUrl: './template/angular-mydatepicker.component.html',
   styleUrls: ['./css/angular-mydatepicker.component.css'],
   providers: [UtilService],

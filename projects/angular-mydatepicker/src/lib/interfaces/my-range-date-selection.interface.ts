@@ -6,5 +6,5 @@ export interface IMyRangeDateSelection {
   jsDate: Date;
   dateFormat: string;
   formatted: string;
-  epoc: number
+  epoc: number;
 }

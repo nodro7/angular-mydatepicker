@@ -27,6 +27,8 @@ const TH = "th";
 const FR = "fr";
 const SA = "sa";
 
+const DEFAULT_LOCALE = "en";
+
 const ZERO_STR = "0";
 const EMPTY_STR = "";
 
@@ -67,6 +69,7 @@ export {
   TH,
   FR,
   SA,
+  DEFAULT_LOCALE,
   ZERO_STR,
   EMPTY_STR,
   CLICK,
