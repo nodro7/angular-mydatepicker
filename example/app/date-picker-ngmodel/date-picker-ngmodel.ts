@@ -311,8 +311,8 @@ export class DatePickerNgmodel implements OnInit {
     console.log('onCalendarViewChanged(): Year: ', event.year, ' - month: ', event.month, ' - first: ', event.first, ' - last: ', event.last);
   }
 
-  onDateRangeSelection(event: IMyRangeDateSelection): void {
-    console.log('onDateRangeSelection(): event: ', event);
+  onRangeDateSelection(event: IMyRangeDateSelection): void {
+    console.log('onRangeDateSelection(): event: ', event);
   }
 
 }

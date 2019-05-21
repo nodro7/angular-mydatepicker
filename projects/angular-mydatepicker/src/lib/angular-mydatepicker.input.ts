@@ -70,7 +70,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   @HostListener(KEYUP, ["$event"]) onKeyUp(event: KeyboardEvent) {
-    let keyCode: number = this.utilService.getKeyCodeFromEvent(event);
+    const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
     if (this.ignoreKeyPress(keyCode)) {
       return;
     }
@@ -80,11 +80,11 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     else {
       let valid: boolean = false;
       if (!this.opts.dateRange) {
-        let date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+        const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
         valid = this.utilService.isInitializedDate(date);
       }
       else {
-        let {begin, end} = this.utilService.isDateValidDateRange(this.elem.nativeElement.value, this.opts);
+        const {begin, end} = this.utilService.isDateValidDateRange(this.elem.nativeElement.value, this.opts);
         valid = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
       }
       this.emitInputFieldChanged(this.elem.nativeElement.value, valid);
@@ -95,11 +95,11 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.opts.inputFieldValidation) {
       let valid: boolean = false;
       if (!this.opts.dateRange) {
-        let date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+        const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
         valid = this.utilService.isInitializedDate(date);
         if (valid && this.inputText !== this.elem.nativeElement.value) {
           // Valid date
-          let dateModel: IMyDateModel = this.utilService.getDateModel(date, null, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter);
+          const dateModel: IMyDateModel = this.utilService.getDateModel(date, null, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter);
           this.emitDateChanged(dateModel);
           this.updateModel(dateModel);
           if (this.opts.closeSelectorOnDateSelect) {
@@ -108,12 +108,12 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         }
       }
       else {
-        let dateRange: IMyDateRange = this.utilService.isDateValidDateRange(this.elem.nativeElement.value, this.opts);
-        let {begin, end} = dateRange;
+        const dateRange: IMyDateRange = this.utilService.isDateValidDateRange(this.elem.nativeElement.value, this.opts);
+        const {begin, end} = dateRange;
         valid = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
         if (valid && this.inputText !== this.elem.nativeElement.value) {
           // Valid date range
-          let dateModel: IMyDateModel = this.utilService.getDateModel(null, dateRange, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter);
+          const dateModel: IMyDateModel = this.utilService.getDateModel(null, dateRange, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter);
           this.emitDateChanged(dateModel);
           this.updateModel(dateModel);
           if (this.opts.closeSelectorOnDateSelect) {
@@ -169,16 +169,16 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   setLocaleOptions(): void {
-    let opts: IMyOptions = this.localeService.getLocaleOptions(this.locale);
+    const opts: IMyOptions = this.localeService.getLocaleOptions(this.locale);
     Object.keys(opts).forEach((k) => {
-      (<IMyOptions>this.opts)[k] = opts[k];
+      (<IMyOptions> this.opts)[k] = opts[k];
     });
   }
 
   public parseOptions(opts: IMyOptions): void {
     if (opts !== undefined) {
       Object.keys(opts).forEach((k) => {
-        (<IMyOptions>this.opts)[k] = opts[k];
+        (<IMyOptions> this.opts)[k] = opts[k];
       });
     }
     if (this.opts.minYear < Year.min) {
@@ -210,9 +210,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     }
     else if (value.isRange === false && value.singleDate) {
       // single date
-      let {date, jsDate} = value.singleDate;
-      let formatted: string = this.utilService.formatDate(date ? date : this.jsDateToMyDate(jsDate), this.opts.dateFormat, this.opts.monthLabels);
-      let valid: boolean = this.utilService.isInitializedDate(this.utilService.isDateValid(formatted, this.opts));
+      const {date, jsDate} = value.singleDate;
+      const formatted: string = this.utilService.formatDate(date ? date : this.jsDateToMyDate(jsDate), this.opts.dateFormat, this.opts.monthLabels);
+      const valid: boolean = this.utilService.isInitializedDate(this.utilService.isDateValid(formatted, this.opts));
       if (valid) {
         this.setInputValue(formatted);
         this.emitInputFieldChanged(formatted, valid);
@@ -231,11 +231,11 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       }
 
       if (beginDate && endDate) {
-        let formatted: string = this.utilService.formatDate(beginDate, this.opts.dateFormat, this.opts.monthLabels) +
+        const formatted: string = this.utilService.formatDate(beginDate, this.opts.dateFormat, this.opts.monthLabels) +
           this.opts.dateRangeDatesDelimiter +
           this.utilService.formatDate(endDate, this.opts.dateFormat, this.opts.monthLabels);
-        let {begin, end} = this.utilService.isDateValidDateRange(formatted, this.opts);
-        let valid: boolean = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
+        const {begin, end} = this.utilService.isDateValidDateRange(formatted, this.opts);
+        const valid: boolean = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
         if (valid) {
           this.setInputValue(formatted);
           this.emitInputFieldChanged(formatted, valid);
@@ -269,7 +269,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.elem.nativeElement.value === null || this.elem.nativeElement.value === EMPTY_STR) {
       return null;
     }
-    let date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+    const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
     if (!this.utilService.isInitializedDate(date)) {
       return {invalidDateFormat: true};
     }
@@ -364,7 +364,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
 
   public isDateValid(): boolean {
     if (this.elem.nativeElement.value !== EMPTY_STR) {
-      let date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+      const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
       if (this.utilService.isInitializedDate(date)) {
         this.emitInputFieldChanged(this.elem.nativeElement.value, true);
         return true;
@@ -410,7 +410,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   private emitInputFieldChanged(value: string, valid: boolean): void {
-    this.inputFieldChanged.emit({value: value, dateFormat: this.opts.dateFormat, valid: valid});
+    this.inputFieldChanged.emit({value, dateFormat: this.opts.dateFormat, valid});
   }
 
   private emitCalendarChanged(cvc: IMyCalendarViewChanged) {
@@ -440,8 +440,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     let left: number = 0;
 
     if (this.opts.appendSelectorToBody) {
-      let b: any = document.body.getBoundingClientRect();
-      let e: any = elem.getBoundingClientRect();
+      const b: any = document.body.getBoundingClientRect();
+      const e: any = elem.getBoundingClientRect();
       top = e.top - b.top;
       left = e.left - b.left;
     }

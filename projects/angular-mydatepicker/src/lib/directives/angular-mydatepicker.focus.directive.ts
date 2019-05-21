@@ -2,10 +2,10 @@ import {Directive, ElementRef, AfterViewInit, Input} from "@angular/core";
 import {ZERO_STR} from "../constants/constants";
 
 @Directive({
-  selector: "[angular-mydatepicker-focus]"
+  selector: "[libAngularMyDatePickerFocus]"
 })
 export class AngularMyDatePickerFocusDirective implements AfterViewInit {
-  @Input("angular-mydatepicker-focus") value: string;
+  @Input("libAngularMyDatePickerFocus") value: string;
 
   constructor(private el: ElementRef) {
   }
