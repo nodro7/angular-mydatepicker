@@ -8,7 +8,7 @@
     "build-lib": "ng build AngularMyDatePicker && node scripts/copy-artifacts.js",
     "build-all": "ng build AngularMyDatePicker && node scripts/copy-artifacts.js && ng build",
     "test-lib": "ng test AngularMyDatePicker",
-    "lint": "ng lint",
+    "lint-lib": "ng lint AngularMyDatePicker",
     "e2e": "ng e2e"
   },
   "private": true,

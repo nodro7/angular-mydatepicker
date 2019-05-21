@@ -17,7 +17,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      340
     ],
     "member-access": false,
     "member-ordering": [
@@ -42,7 +42,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
@@ -57,7 +57,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "trailing-comma": false,
@@ -70,6 +70,11 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "one-line": [
+      false,
+      "check-catch",
+      "check-else"
+    ]
   }
 }

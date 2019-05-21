@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component, ViewChild} from '@angular/core';
 import {AngularMyDatePickerModule} from '../angular-mydatepicker.module';
 import {AngularMyDatePickerDirective} from '../angular-mydatepicker.input';
-import {IMyOptions} from "../interfaces/my-options.interface";
+import {IMyOptions} from '../interfaces/my-options.interface';
 
 let comp: AngularMyDatepickerTestComponent;
 let fixture: ComponentFixture<AngularMyDatepickerTestComponent>;
