@@ -13,4 +13,12 @@ describe('LocaleService', () => {
     const service: LocaleService = TestBed.get(LocaleService);
     expect(service).toBeTruthy();
   });
+
+  it('get locale', () => {
+    const service: LocaleService = TestBed.get(LocaleService);
+    expect(service).toBeTruthy();
+
+    let locale = service.getLocaleOptions('ja');
+    expect(locale).not.toBe(null);
+  });
 });

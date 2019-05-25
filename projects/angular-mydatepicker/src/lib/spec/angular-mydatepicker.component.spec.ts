@@ -13,10 +13,6 @@ let fixture: ComponentFixture<AngularMyDatepickerTestComponent>;
 let de: DebugElement;
 let el: HTMLElement;
 
-function getDefaultDateString(date: Date): string {
-  return date.getFullYear() + '-' + ((date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1)) + '-' + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
-}
-
 function getElement(id: string): any {
   return document.body.querySelector(id);
 }

@@ -13,4 +13,12 @@ describe('DefaultConfigService', () => {
     const service: DefaultConfigService = TestBed.get(DefaultConfigService);
     expect(service).toBeTruthy();
   });
+
+  it('get default config', () => {
+    const service: DefaultConfigService = TestBed.get(DefaultConfigService);
+    expect(service).toBeTruthy();
+
+    let config = service.getDefaultConfig();
+    expect(config).not.toBe(null);
+  });
 });
