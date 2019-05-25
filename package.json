@@ -1,6 +1,18 @@
 {
   "name": "angular-mydatepicker-example",
   "version": "0.0.2",
+  "description": "Angular datepicker and date range picker",
+  "keywords": [
+    "Angular",
+    "datepicker",
+    "date range picker"
+  ],
+  "author": "kekeh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kekeh/angular-mydatepicker.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
