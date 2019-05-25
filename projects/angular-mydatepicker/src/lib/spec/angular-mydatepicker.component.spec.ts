@@ -26,13 +26,12 @@ function getElements(id: string): any {
 }
 
 @Component({
-  template: '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" name="mydate" [(ngModel)]="model" angular-mydatepicker #dp="angular-mydatepicker" />'
+  template: '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" name="mydate" angular-mydatepicker #dp="angular-mydatepicker" />'
 })
 class AngularMyDatepickerTestComponent {
   @ViewChild('dp') vcDp: AngularMyDatePickerDirective;
 
   inputType: string = 'text';
-  model: IMyDateModel = null;
 
   openCalendar(): void {
     this.vcDp.openCalendar();
@@ -68,7 +67,7 @@ class AngularMyDatepickerTestComponent {
   }
 
   initDateModel(model: IMyDateModel): void {
-    this.model = model;
+    this.vcDp.writeValue(model);
   }
 }
 
@@ -100,24 +99,26 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     comp.initDateModel({isRange: false, singleDate: {date: { year: 2019, month: 5, day: 21 }}});
 
-    /*
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      let selection = getElement('.myDateInput');
-      expect(selection.value).toBe('21.5.2019');
-    });
-    */
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+    expect(selection.value).toBe('21.5.2019');
+
+
+    fixture.detectChanges();
+    comp.initDateModel({isRange: false, singleDate: {jsDate: new Date(2019, 5, 22)}});
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('22.6.2019');
+
 
     fixture.detectChanges();
     comp.initDateModel(null);
 
-    /*
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      let selection = getElement('.myDateInput');
-      expect(selection.value).toBe('');
-    });
-    */
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('');
+
 
     opts.dateRange = true;
     comp.parseOptions(opts);
@@ -125,13 +126,9 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     comp.initDateModel({isRange: true, dateRange: {beginDate: {year: 2019, month: 5, day: 24}, endDate: {year: 2019, month: 6, day: 10}}});
 
-    /*
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      let selection = getElement('.myDateInput');
-      expect(selection.value).toBe('24.5.2019 - 10.6.2019');
-    });
-    */
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('24.5.2019 - 10.6.2019');
   });
 
   it('test open/close/toggle calendar functions', () => {
