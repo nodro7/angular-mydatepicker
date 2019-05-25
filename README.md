@@ -438,6 +438,10 @@ checkDateValidity(): void {
   1. __ng serve__
   2. Navigate to __http://localhost:4200__
   
+* Run tests and lint:
+  1. Tests: __npm run test-lib__
+  2. Lint: __npm run lint-lib__
+  
 * Build datepicker library:
   1. __npm run build-lib__ (dist/angular-mydatepicker folder will be created under the root folder)
 
