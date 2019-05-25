@@ -54,6 +54,11 @@ class AngularMyDatepickerTestComponent {
     this.vcDp.parseOptions(opts);
   }
 
+  setLocale(locale: string): void {
+    this.vcDp.locale = locale;
+    this.vcDp.setLocaleOptions();
+  }
+
   setDefaultMonth(defMonth: string): void {
     this.vcDp.defaultMonth = defMonth;
   }
@@ -84,7 +89,7 @@ describe('AngularMyDatePickerComponent', () => {
     expect(comp).toBeTruthy();
   });
 
-  it('init date model', () => {
+  it('init date model',() => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'd.m.yyyy'
@@ -95,19 +100,38 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     comp.initDateModel({isRange: false, singleDate: {date: { year: 2019, month: 5, day: 21 }}});
 
-    // TODO: validate
+    /*
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      let selection = getElement('.myDateInput');
+      expect(selection.value).toBe('21.5.2019');
+    });
+    */
 
     fixture.detectChanges();
     comp.initDateModel(null);
 
-    // TODO: validate
+    /*
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      let selection = getElement('.myDateInput');
+      expect(selection.value).toBe('');
+    });
+    */
 
     opts.dateRange = true;
+    comp.parseOptions(opts);
 
     fixture.detectChanges();
     comp.initDateModel({isRange: true, dateRange: {beginDate: {year: 2019, month: 5, day: 24}, endDate: {year: 2019, month: 6, day: 10}}});
 
-    // TODO: validate
+    /*
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      let selection = getElement('.myDateInput');
+      expect(selection.value).toBe('24.5.2019 - 10.6.2019');
+    });
+    */
   });
 
   it('test open/close/toggle calendar functions', () => {
@@ -744,6 +768,948 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     let markcurryear = getElement('.myDpMarkCurrYear');
     expect(markcurryear).not.toBe(null);
+
+    comp.closeCalendar();
+  });
+
+  it('options - monthSelector', () => {
+    comp.setDefaultMonth('2019/05');
+
+    let opts: IMyOptions = {
+      monthSelector: true
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    montlabel.click();
+
+    fixture.detectChanges();
+    let monthtable = getElement('.myDpMonthTable');
+    expect(monthtable).not.toBe(null);
+
+    fixture.detectChanges();
+    let monthcell = getElements('.myDpMonthcell');
+    expect(monthcell).not.toBe(null);
+    expect(monthcell.length).toBe(12);
+
+    fixture.detectChanges();
+    expect(monthcell[0].textContent.trim()).toBe('Jan');
+
+    fixture.detectChanges();
+    expect(monthcell[11].textContent.trim()).toBe('Dec');
+
+    fixture.detectChanges();
+    let selectedmonth = getElement('.myDpSelectedMonth');
+    expect(selectedmonth).not.toBe(null);
+    expect(selectedmonth.textContent.trim()).toBe('May');
+    selectedmonth.click();
+
+    fixture.detectChanges();
+    monthtable = getElement('.myDpMonthTable');
+    expect(monthtable).toBe(null);
+
+    comp.closeCalendar();
+  });
+
+  it('options - yearSelector', () => {
+    comp.setDefaultMonth('2019/05');
+
+    let opts: IMyOptions = {
+      yearSelector: true
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    yearlabel.click();
+
+    fixture.detectChanges();
+    let yeartable = getElement('.myDpYearTable');
+    expect(yeartable).not.toBe(null);
+
+    fixture.detectChanges();
+    let yearcell = getElements('.myDpYearcell');
+    expect(yearcell).not.toBe(null);
+    expect(yearcell.length).toBe(25);
+
+    fixture.detectChanges();
+    expect(yearcell[0].textContent.trim()).toBe('2007');
+
+    fixture.detectChanges();
+    expect(yearcell[24].textContent.trim()).toBe('2031');
+
+    fixture.detectChanges();
+    let selectedyear = getElement('.myDpSelectedYear');
+    expect(selectedyear).not.toBe(null);
+    expect(selectedyear.textContent.trim()).toBe('2019');
+
+    selectedyear.click();
+
+    fixture.detectChanges();
+    yeartable = getElement('.myDpYearTable');
+    expect(yeartable).toBe(null);
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableHeaderButtons', () => {
+    comp.setDefaultMonth('2016/05');
+
+    let opts: IMyOptions = {
+      disableHeaderButtons: true,
+      disableUntil: {year: 2016, month: 4, day: 10}
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    expect(montlabel.textContent).toBe('May');
+
+    fixture.detectChanges();
+    let prevmonth = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevmonth).not.toBe(null);
+    prevmonth.click();
+
+    fixture.detectChanges();
+    montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    expect(montlabel.textContent).toBe('Apr');
+
+    fixture.detectChanges();
+    let headerbtndisabled = getElements('.myDpHeaderBtnDisabled');
+    expect(headerbtndisabled).not.toBe(null);
+    expect(headerbtndisabled.length).toBe(1);
+
+    prevmonth.click();
+
+    fixture.detectChanges();
+    montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    expect(montlabel.textContent).toBe('Apr');
+
+    comp.closeCalendar();
+
+
+    opts.disableSince = {year: 2016, month: 6, day: 10};
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    expect(montlabel.textContent).toBe('May');
+
+    fixture.detectChanges();
+    let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextmonth).not.toBe(null);
+    nextmonth.click();
+
+    fixture.detectChanges();
+    montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    expect(montlabel.textContent).toBe('Jun');
+
+    fixture.detectChanges();
+    headerbtndisabled = getElements('.myDpHeaderBtnDisabled');
+    expect(headerbtndisabled).not.toBe(null);
+    expect(headerbtndisabled.length).toBe(1);
+
+    prevmonth.click();
+
+    fixture.detectChanges();
+    montlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(montlabel).not.toBe(null);
+    expect(montlabel.textContent).toBe('Jun');
+
+    comp.closeCalendar();
+  });
+
+  it('options - showWeekNmbers', () => {
+    comp.setDefaultMonth('2019/05');
+
+    let opts: IMyOptions = {
+      showWeekNumbers: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let weekdaytitleweeknbr = getElement('.myDpWeekDayTitleWeekNbr');
+    expect(weekdaytitleweeknbr).not.toBe(null);
+
+    fixture.detectChanges();
+    let daycellweeknbr = getElements('.myDpDaycellWeekNbr');
+    expect(daycellweeknbr.length).toBe(6);
+
+    expect(daycellweeknbr[0].textContent.trim()).toBe('18');
+    expect(daycellweeknbr[1].textContent.trim()).toBe('19');
+    expect(daycellweeknbr[2].textContent.trim()).toBe('20');
+    expect(daycellweeknbr[3].textContent.trim()).toBe('21');
+    expect(daycellweeknbr[4].textContent.trim()).toBe('22');
+    expect(daycellweeknbr[5].textContent.trim()).toBe('23');
+
+    fixture.detectChanges();
+    let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextmonth).not.toBe(null);
+    nextmonth.click();
+
+    fixture.detectChanges();
+    daycellweeknbr = getElements('.myDpDaycellWeekNbr');
+    expect(daycellweeknbr.length).toBe(6);
+
+    expect(daycellweeknbr[0].textContent.trim()).toBe('22');
+    expect(daycellweeknbr[1].textContent.trim()).toBe('23');
+    expect(daycellweeknbr[2].textContent.trim()).toBe('24');
+    expect(daycellweeknbr[3].textContent.trim()).toBe('25');
+    expect(daycellweeknbr[4].textContent.trim()).toBe('26');
+    expect(daycellweeknbr[5].textContent.trim()).toBe('27');
+
+    comp.closeCalendar();
+
+    comp.setDefaultMonth('2017/01');
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    daycellweeknbr = getElements('.myDpDaycellWeekNbr');
+    expect(daycellweeknbr.length).toBe(6);
+
+    expect(daycellweeknbr[0].textContent.trim()).toBe('52');
+    expect(daycellweeknbr[1].textContent.trim()).toBe('1');
+    expect(daycellweeknbr[2].textContent.trim()).toBe('2');
+    expect(daycellweeknbr[3].textContent.trim()).toBe('3');
+    expect(daycellweeknbr[4].textContent.trim()).toBe('4');
+    expect(daycellweeknbr[5].textContent.trim()).toBe('5');
+
+    comp.closeCalendar();
+  });
+
+  it('options - selectorHeight', () => {
+    comp.setDefaultMonth('2019/05');
+
+    let opts: IMyOptions = {
+      selectorHeight: '333px'
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+    expect(selector.style['height']).toBe('333px');
+
+    comp.closeCalendar();
+  });
+
+  it('options - selectorWidth', () => {
+    comp.setDefaultMonth('2019/05');
+
+    let opts: IMyOptions = {
+      selectorWidth: '333px'
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+    expect(selector.style['width']).toBe('333px');
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableUntil', () => {
+    comp.setDefaultMonth('2017/01');
+    let opts: IMyOptions = {
+      disableUntil: {year: 2017, month: 1, day: 26},
+      disableHeaderButtons: false
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(32);
+
+    fixture.detectChanges();
+    let prevmonth = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevmonth).not.toBe(null);
+
+    prevmonth.click();
+
+    fixture.detectChanges();
+    disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(42);
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableSince', () => {
+    comp.setDefaultMonth('2017/01');
+    let opts: IMyOptions = {
+      disableSince: {year: 2017, month: 1, day: 12},
+      disableHeaderButtons: false
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(25);
+
+    fixture.detectChanges();
+    let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextmonth).not.toBe(null);
+
+    nextmonth.click();
+
+    fixture.detectChanges();
+    disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(42);
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableDates', () => {
+    comp.setDefaultMonth('2017/01');
+    let opts: IMyOptions = {
+      disableDates: [{year: 2017, month: 1, day: 12}, {year: 2017, month: 1, day: 14}]
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(2);
+
+    fixture.detectChanges();
+    let daycell = getElements('.myDpDaycell');
+    expect(daycell).not.toBe(null);
+    expect(daycell.length).toBe(42);
+
+    daycell[17].click();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+    expect(selection.value).toBe('');
+
+    daycell[18].click();
+
+    fixture.detectChanges();
+    selector = getElement('.myDpSelector');
+    expect(selector).toBe(null);
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('2017-01-13');
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableDateRanges', () => {
+    comp.setDefaultMonth('2019/10');
+    let opts: IMyOptions = {
+      disableDateRanges: [
+        {begin: {year: 2019, month: 10, day: 5}, end: {year: 2019, month: 10, day: 7}},
+        {begin: {year: 2019, month: 10, day: 10}, end: {year: 2019, month: 10, day: 12}}
+      ]
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(6);
+
+    expect(disabled[0].textContent.trim()).toBe('5');
+    expect(disabled[1].textContent.trim()).toBe('6');
+    expect(disabled[2].textContent.trim()).toBe('7');
+
+    expect(disabled[3].textContent.trim()).toBe('10');
+    expect(disabled[4].textContent.trim()).toBe('11');
+    expect(disabled[5].textContent.trim()).toBe('12');
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableWeekends', () => {
+    comp.setDefaultMonth('2019/10');
+    let opts: IMyOptions = {
+      firstDayOfWeek: 'mo',
+      disableWeekends: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(12);
+
+    let firstDisabled = disabled[0];
+    expect(firstDisabled.textContent.trim()).toBe('5');
+
+    let secondDisabled = disabled[1];
+    expect(secondDisabled.textContent.trim()).toBe('6');
+
+
+    let thirdDisabled = disabled[2];
+    expect(thirdDisabled.textContent.trim()).toBe('12');
+
+    let fourthDisabled = disabled[3];
+    expect(fourthDisabled.textContent.trim()).toBe('13');
+
+
+    let lastDisabled = disabled[disabled.length - 1];
+    expect(lastDisabled.textContent.trim()).toBe('10');
+
+    comp.closeCalendar();
+  });
+
+  it('options - disableWeekdays', () => {
+    comp.setDefaultMonth('2018/3');
+    let opts: IMyOptions = {
+      firstDayOfWeek: 'su',
+      disableWeekdays: ['mo']
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(6);
+
+    let firstDisabled = disabled[0];
+    expect(firstDisabled.textContent.trim()).toBe('26');
+
+    let secondDisabled = disabled[1];
+    expect(secondDisabled.textContent.trim()).toBe('5');
+
+
+    let thirdDisabled = disabled[2];
+    expect(thirdDisabled.textContent.trim()).toBe('12');
+
+    let fourthDisabled = disabled[3];
+    expect(fourthDisabled.textContent.trim()).toBe('19');
+
+
+    let lastDisabled = disabled[4];
+    expect(lastDisabled.textContent.trim()).toBe('26');
+
+    comp.closeCalendar();
+  });
+
+  it('options - enableDates', () => {
+    comp.setDefaultMonth('2017/01');
+    let opts: IMyOptions = {
+      disableUntil: {year: 2017, month: 1, day: 31},
+      enableDates: [{year: 2017, month: 1, day: 14}, {year: 2017, month: 1, day: 15}],
+      dateFormat: 'yyyy-mm-dd'
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let disabled = getElements('.myDpDisabled');
+    expect(disabled).not.toBe(null);
+    expect(disabled.length).toBe(35);
+
+    fixture.detectChanges();
+    let daycell = getElements('.myDpDaycell');
+    expect(daycell).not.toBe(null);
+    expect(daycell.length).toBe(42);
+
+    daycell[19].click();
+
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+    expect(selection.value).toBe('2017-01-14');
+
+    comp.closeCalendar();
+  });
+
+  it('options - markDates', () => {
+    comp.setDefaultMonth('2017/01');
+    let opts: IMyOptions = {
+      markDates: [{dates: [{year: 2017, month: 1, day: 14}, {year: 2017, month: 1, day: 15}], color: 'red'}]
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let markdate = getElements('.myDpMarkDate');
+    expect(markdate).not.toBe(null);
+    expect(markdate.length).toBe(2);
+    expect(markdate[0].style['background-color']).toBe('red');
+
+    comp.closeCalendar();
+
+    opts.markDates = [];
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    markdate = getElements('.myDpMarkDate');
+    expect(markdate).not.toBe(null);
+    expect(markdate.length).toBe(0);
+
+    comp.closeCalendar();
+  });
+
+  it('options - markWeekends', () => {
+    comp.setDefaultMonth('2017/01');
+    let opts: IMyOptions = {
+      markWeekends: {marked: true, color: 'blue'}
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let markdate = getElements('.myDpMarkDate');
+    expect(markdate).not.toBe(null);
+    expect(markdate.length).toBe(12);
+    expect(markdate[0].style['background-color']).toBe('blue');
+
+    comp.closeCalendar();
+
+    opts.markWeekends = {marked: false, color: ''};
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    markdate = getElements('.myDpMarkDate');
+    expect(markdate).not.toBe(null);
+    expect(markdate.length).toBe(0);
+
+    comp.closeCalendar();
+  });
+
+  it('options - alignSelectorRight', () => {
+    comp.setDefaultMonth('2020/02');
+    let opts: IMyOptions = {
+      alignSelectorRight: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+    let posSelector = selector.getBoundingClientRect();
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input).not.toBe(null);
+    let posInput = input.getBoundingClientRect();
+
+    expect(posSelector.right).toBe(posInput.width);
+
+    comp.closeCalendar();
+  });
+
+  it('options - openSelectorTopOfInput', () => {
+    comp.setDefaultMonth('2020/02');
+    let opts: IMyOptions = {
+      openSelectorTopOfInput: true,
+      appendSelectorToBody: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+    let posSelector = selector.getBoundingClientRect();
+    //expect(posSelector.bottom).toBe(0);
+
+    comp.closeCalendar();
+  });
+
+  it('options - closeSelectorOnDateSelect', () => {
+    comp.setDefaultMonth('2020/05');
+    let opts: IMyOptions = {
+      closeSelectorOnDateSelect: false
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let daycell = getElements('.myDpDaycell');
+    expect(daycell).not.toBe(null);
+    expect(daycell.length).toBe(42);
+
+    daycell[0].click();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    comp.closeCalendar();
+
+    opts.closeSelectorOnDateSelect = true;
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    daycell = getElements('.myDpDaycell');
+    expect(daycell).not.toBe(null);
+    expect(daycell.length).toBe(42);
+
+    daycell[0].click();
+
+    fixture.detectChanges();
+    selector = getElement('.myDpSelector');
+    expect(selector).toBe(null);
+
+    comp.closeCalendar();
+  });
+
+  it('options - minYear', () => {
+    comp.setDefaultMonth('2018/01');
+    let opts: IMyOptions = {
+      minYear: 2018
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let prevmonth = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevmonth).not.toBe(null);
+
+    prevmonth.click();
+
+    fixture.detectChanges();
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2018');
+
+    prevmonth.click();
+
+    fixture.detectChanges();
+    yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2018');
+
+    comp.closeCalendar();
+
+    opts.minYear = 2017;
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    prevmonth = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevmonth).not.toBe(null);
+
+    prevmonth.click();
+
+    fixture.detectChanges();
+    yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2017');
+
+    comp.closeCalendar();
+  });
+
+  it('options - maxYear', () => {
+    comp.setDefaultMonth('2019/12');
+    let opts: IMyOptions = {
+      maxYear: 2019
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextmonth).not.toBe(null);
+
+    nextmonth.click();
+
+    fixture.detectChanges();
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2019');
+
+    nextmonth.click();
+
+    fixture.detectChanges();
+    yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2019');
+
+    comp.closeCalendar();
+
+    opts.maxYear = 2020;
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextmonth).not.toBe(null);
+
+    nextmonth.click();
+
+    fixture.detectChanges();
+    yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2020');
+
+    comp.closeCalendar();
+  });
+
+  it('options - showSelectorArrow', () => {
+    comp.setDefaultMonth('2019/12');
+    let opts: IMyOptions = {
+      showSelectorArrow: false
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let selectorarrow = getElement('.myDpSelectorArrow');
+    expect(selectorarrow).toBe(null);
+
+    comp.closeCalendar();
+
+    opts.showSelectorArrow = true;
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    selectorarrow = getElement('.myDpSelectorArrow');
+    expect(selectorarrow).not.toBe(null);
+
+    comp.closeCalendar();
+  });
+
+  it('options - appendSelectorToBody', () => {
+    comp.setDefaultMonth('2019/12');
+    let opts: IMyOptions = {
+      appendSelectorToBody: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let rootElem = getElement('lib-angular-mydatepicker-component');
+    expect(rootElem).not.toBe(null);
+
+    let body = rootElem.parentElement.nodeName;
+    expect(body.toLowerCase).not.toBe('body');
+
+    comp.closeCalendar();
+  });
+
+  it('options - dateRangeDatesDelimiter', () => {
+    comp.setDefaultMonth('2019/05');
+    let opts: IMyOptions = {
+      dateRange: true,
+      dateRangeDatesDelimiter: ' * ',
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    comp.openCalendar();
+    fixture.detectChanges();
+    let date = getElement('.d_0_0');
+    expect(date).not.toBe(null);
+
+    fixture.detectChanges();
+    date.click();
+
+
+    fixture.detectChanges();
+    date = getElement('.d_0_1');
+    expect(date).not.toBe(null);
+
+    fixture.detectChanges();
+    date.click();
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input.value).toBe('29.04.2019 * 30.04.2019');
+  });
+
+  it('options - ariaLabelPrevMonth', () => {
+    comp.setDefaultMonth('2019/10');
+    let opts: IMyOptions = {
+      ariaLabelPrevMonth: 'aria-label prev month'
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let prevmonth = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevmonth).not.toBe(null);
+    expect(prevmonth.attributes['aria-label'].textContent).toBe(opts.ariaLabelPrevMonth);
+
+    comp.closeCalendar();
+  });
+
+  it('options - ariaLabelNextMonth', () => {
+    comp.setDefaultMonth('2019/10');
+    let opts: IMyOptions = {
+      ariaLabelNextMonth: 'aria-label next month'
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextmonth).not.toBe(null);
+    expect(nextmonth.attributes['aria-label'].textContent).toBe(opts.ariaLabelNextMonth);
+
+    comp.closeCalendar();
+  });
+
+  it('locale attribute', () => {
+    comp.setLocale('ja');
+    comp.setDefaultMonth('2019/05');
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let titles = getElements('.myDpWeekDayTitle');
+    expect(titles).not.toBe(null);
+    expect(titles.length).toBe(7);
+
+    expect(titles[0].textContent.trim()).toBe('月');
+    expect(titles[6].textContent.trim()).toBe('日');
+
+    fixture.detectChanges();
+    let highlight = getElements('.myDpHighlight');
+    expect(highlight).not.toBe(null);
+    expect(highlight.length).toBe(0);
+
+    fixture.detectChanges();
+    let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+
+    monthlabel.click();
+
+    fixture.detectChanges();
+    let monthvalue = getElements('.monthvalue');
+    expect(monthvalue).not.toBe(null);
+    expect(monthvalue.length).toBe(12);
+
+    expect(monthvalue[0].textContent.trim()).toBe('１月');
+    expect(monthvalue[11].textContent.trim()).toBe('１２月');
+
+    fixture.detectChanges();
+    let firstcell = getElement('.m_0_0');
+    expect(firstcell).not.toBe(null);
+    firstcell.click();
+
+    fixture.detectChanges();
+    firstcell = getElement('.d_0_0');
+    expect(firstcell).not.toBe(null);
+    firstcell.click();
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input.value).toBe('2018.12.31');
+  });
+
+  it('defaultMonth attribute', () => {
+    comp.setDefaultMonth('2016/02');
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent.trim()).toBe('Feb');
+
+    fixture.detectChanges();
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent.trim()).toBe('2016');
+
+    comp.closeCalendar();
+
+
+    comp.setDefaultMonth('2019/08');
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent.trim()).toBe('Aug');
+
+    fixture.detectChanges();
+    yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent.trim()).toBe('2019');
 
     comp.closeCalendar();
   });
