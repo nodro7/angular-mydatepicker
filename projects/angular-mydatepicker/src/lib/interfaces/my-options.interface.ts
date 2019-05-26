@@ -4,6 +4,8 @@ import {IMyDate} from "./my-date.interface";
 import {IMyDateRange} from "./my-date-range.interface";
 import {IMyMarkedDates} from "./my-marked-dates.interface";
 import {IMyMarkedDate} from "./my-marked-date.interface";
+import {DefaultView} from "../enums/default-view.enum";
+import {Year} from "../enums/year.enum";
 
 export interface IMyOptions {
   dateRange?: boolean;
@@ -11,6 +13,7 @@ export interface IMyOptions {
   dayLabels?: IMyDayLabels;
   monthLabels?: IMyMonthLabels;
   dateFormat?: string;
+  defaultView?: DefaultView;
   firstDayOfWeek?: string;
   satHighlight?: boolean;
   sunHighlight?: boolean;
@@ -37,8 +40,8 @@ export interface IMyOptions {
   openSelectorTopOfInput?: boolean;
   closeSelectorOnDateSelect?: boolean;
   closeSelectorOnDocumentClick?: boolean;
-  minYear?: number;
-  maxYear?: number;
+  minYear?: Year;
+  maxYear?: Year;
   showSelectorArrow?: boolean;
   appendSelectorToBody?: boolean;
   focusInputOnDateSelect?: boolean;

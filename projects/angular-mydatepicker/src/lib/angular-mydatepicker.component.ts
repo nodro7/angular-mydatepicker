@@ -12,6 +12,7 @@ import {UtilService} from "./services/angular-mydatepicker.util.service";
 import {KeyCode} from "./enums/key-code.enum";
 import {MonthId} from "./enums/month-id.enum";
 import {ResetDateType} from "./enums/reset-date-type.enum";
+import {DefaultView} from "./enums/default-view.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK} from "./constants/constants";
 import {IMyCalendarViewChanged, IMyDateModel, IMyRangeDateSelection} from "./interfaces";
 
@@ -73,16 +74,18 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectorPos = selectorPos;
     this.weekDays.length = 0;
 
-    this.dayIdx = this.weekDayOpts.indexOf(this.opts.firstDayOfWeek);
+    const {defaultView, dateRange, firstDayOfWeek, dayLabels} = this.opts;
+
+    this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
     if (this.dayIdx !== -1) {
       let idx: number = this.dayIdx;
       for (let i = 0; i < this.weekDayOpts.length; i++) {
-        this.weekDays.push(this.opts.dayLabels[this.weekDayOpts[idx]]);
+        this.weekDays.push(dayLabels[this.weekDayOpts[idx]]);
         idx = this.weekDayOpts[idx] === SA ? 0 : idx + 1;
       }
     }
 
-    if (!this.opts.dateRange) {
+    if (!dateRange) {
       // Single date mode
       const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts);
 
@@ -111,6 +114,13 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.closedByEsc = cbe;
 
     this.setVisibleMonth();
+
+    if (defaultView === DefaultView.Month) {
+      this.onSelectMonthClicked();
+    }
+    else if (defaultView === DefaultView.Year) {
+      this.onSelectYearClicked();
+    }
   }
 
   resetDateValue(value: ResetDateType): void {
@@ -133,8 +143,10 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectYear = false;
   }
 
-  onSelectMonthClicked(event: any): void {
-    event.stopPropagation();
+  onSelectMonthClicked(event: any = null): void {
+    if (event) {
+      event.stopPropagation();
+    }
     this.selectMonth = !this.selectMonth;
     this.selectYear = false;
     this.cdr.detectChanges();
@@ -184,9 +196,10 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  onSelectYearClicked(event: any): void {
-    event.stopPropagation();
-
+  onSelectYearClicked(event: any = null): void {
+    if (event) {
+      event.stopPropagation();
+    }
     this.cdr.detectChanges();
     if (!this.selectYear) {
       this.generateYears(this.visibleMonth.year);

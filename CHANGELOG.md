@@ -67,3 +67,13 @@
 ### Features
 
 * none
+
+# 0.0.8 (2019-05-26)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added the defaultView option.

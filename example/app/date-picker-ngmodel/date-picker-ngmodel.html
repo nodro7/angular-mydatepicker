@@ -175,6 +175,21 @@
                 </label>
             </td>
         </tr>
+      <tr>
+        <td>
+          <label>
+            <span style="margin-right: 10px">Default view:</span>
+            <span>
+                <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onDefaultView($event.target.value)">
+                    <option *ngFor="let df of defaultViews">{{df}}</option>
+                </select>
+            </span>
+          </label>
+        </td>
+        <td>
+
+        </td>
+      </tr>
     </table>
 
 

@@ -4,3 +4,5 @@ export * from "./angular-mydatepicker.module";
 export * from "./services";
 export * from "./directives";
 export * from "./interfaces";
+export * from "./enums";
+export * from "./constants";

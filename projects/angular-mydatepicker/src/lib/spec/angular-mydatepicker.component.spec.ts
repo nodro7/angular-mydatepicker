@@ -1,12 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {DebugElement, Component, ViewChild} from '@angular/core';
+import {Component, DebugElement, ViewChild} from '@angular/core';
 import {AngularMyDatePickerModule} from '../angular-mydatepicker.module';
 import {AngularMyDatePickerDirective} from '../angular-mydatepicker.input';
 import {IMyOptions} from '../interfaces/my-options.interface';
 import {IMyDateModel} from '../interfaces/my-date-model.interface';
+import {DefaultView} from '../enums/default-view.enum';
 
 let comp: AngularMyDatepickerTestComponent;
 let fixture: ComponentFixture<AngularMyDatepickerTestComponent>;
@@ -659,6 +660,80 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('01 Jan 2016');
+
+    comp.closeCalendar();
+  });
+
+
+  it('options - defaultView', () => {
+    // default
+    comp.setDefaultMonth('2019/06');
+
+    let opts: IMyOptions = {
+      defaultView: DefaultView.Month
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+
+    let date = getElements('.myDpDaycell');
+    expect(date).not.toBe(null);
+    expect(date.length).toBe(0);
+
+    let month = getElements('.myDpMonthcell');
+    expect(month).not.toBe(null);
+    expect(month.length).toBe(12);
+
+    let year = getElements('.myDpYearcell');
+    expect(year).not.toBe(null);
+    expect(year.length).toBe(0);
+
+    comp.closeCalendar();
+
+    opts.defaultView = DefaultView.Year;
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+
+    date = getElements('.myDpDaycell');
+    expect(date).not.toBe(null);
+    expect(date.length).toBe(0);
+
+    month = getElements('.myDpMonthcell');
+    expect(month).not.toBe(null);
+    expect(month.length).toBe(0);
+
+    year = getElements('.myDpYearcell');
+    expect(year).not.toBe(null);
+    expect(year.length).toBe(25);
+
+    comp.closeCalendar();
+
+    opts.defaultView = DefaultView.Date;
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+
+    date = getElements('.myDpDaycell');
+    expect(date).not.toBe(null);
+    expect(date.length).toBe(42);
+
+    month = getElements('.myDpMonthcell');
+    expect(month).not.toBe(null);
+    expect(month.length).toBe(0);
+
+    year = getElements('.myDpYearcell');
+    expect(year).not.toBe(null);
+    expect(year.length).toBe(0);
 
     comp.closeCalendar();
   });

@@ -1,6 +1,16 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AngularMyDatePickerDirective} from '../../../projects/angular-mydatepicker/src/lib';
-import {IAngularMyDpOptions, IMyDateModel, IMyInputFieldChanged, IMyCalendarViewChanged, IMyMarkedDate, IMyDate, IMyRangeDateSelection, IMyDefaultMonth} from '../../../projects/angular-mydatepicker/src/lib';
+import {
+  AngularMyDatePickerDirective,
+  DefaultView,
+  IAngularMyDpOptions,
+  IMyCalendarViewChanged,
+  IMyDate,
+  IMyDateModel,
+  IMyDefaultMonth,
+  IMyInputFieldChanged,
+  IMyMarkedDate,
+  IMyRangeDateSelection
+} from '../../../projects/angular-mydatepicker/src/lib';
 
 @Component({
   selector: 'date-picker-ngmodel',
@@ -39,7 +49,8 @@ export class DatePickerNgmodel implements OnInit {
     closeSelectorOnDateSelect: true,
     closeSelectorOnDocumentClick: true,
     appendSelectorToBody: false,
-    focusInputOnDateSelect: true
+    focusInputOnDateSelect: true,
+    defaultView: DefaultView.Date
   };
 
   @ViewChild('dp') ngxdp: AngularMyDatePickerDirective;
@@ -57,6 +68,7 @@ export class DatePickerNgmodel implements OnInit {
   };
 
   public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
+  public defaultViews: Array<string> = new Array('date', 'month', 'year');
 
   public locale: string = 'en';
   public locales: Array<string> = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
@@ -254,6 +266,23 @@ export class DatePickerNgmodel implements OnInit {
     else {
       copy.selectorHeight = '260px';
       copy.selectorWidth = '290px';
+      this.myDatePickerOptions = copy;
+    }
+  }
+
+  onDefaultView(size: string) {
+    let copy = this.getCopyOfOptions();
+
+    if (size === 'date') {
+      copy.defaultView = DefaultView.Date;
+      this.myDatePickerOptions = copy;
+    }
+    else if (size === 'month') {
+      copy.defaultView = DefaultView.Month;
+      this.myDatePickerOptions = copy;
+    }
+    else {
+      copy.defaultView = DefaultView.Year;
       this.myDatePickerOptions = copy;
     }
   }

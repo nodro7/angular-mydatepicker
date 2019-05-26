@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {IMyOptions} from "../interfaces/my-options.interface";
 import {Year} from "../enums/year.enum";
+import {DefaultView} from "../enums/default-view.enum";
 
 @Injectable()
 export class DefaultConfigService {
@@ -10,6 +11,7 @@ export class DefaultConfigService {
     dayLabels: {su: "Sun", mo: "Mon", tu: "Tue", we: "Wed", th: "Thu", fr: "Fri", sa: "Sat"},
     monthLabels: {1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"},
     dateFormat: "yyyy-mm-dd",
+    defaultView: DefaultView.Date,
     firstDayOfWeek: "mo",
     satHighlight: false,
     sunHighlight:  true,
