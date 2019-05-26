@@ -416,12 +416,12 @@ checkDateValidity(): void {
 
   * Example of the range date selection callback:
   ```html
-   <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (rangeDateSelection)="onDateRangeSelection($event)"/>
+   <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (rangeDateSelection)="onRangeDateSelection($event)"/>
   ```
   
   ```js
-  onDateRangeSelection(event: IMyRangeDateSelection): void {
-    console.log('onDateRangeSelection(): event: ', event);
+  onRangeDateSelection(event: IMyRangeDateSelection): void {
+    console.log('onRangeDateSelection(): event: ', event);
   }
   ```
   
@@ -447,7 +447,8 @@ checkDateValidity(): void {
   2. Lint: __npm run lint-lib__
   
 * Build datepicker library:
-  1. __npm run build-lib__ (dist/angular-mydatepicker folder will be created under the root folder)
+  1. __npm run build-lib__ 
+     * the __dist/angular-mydatepicker__ folder will be created under the root folder
 
 * Build a local npm installation package:
   1. __npm run build-lib__
