@@ -23,6 +23,12 @@ Source code of the datepicker is in the [projects/angular-mydatepicker/src](http
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
+
+## Code examples
+
+Code examples are [here](https://github.com/kekeh/angular-mydatepicker/wiki).
+
+
 ## Installation
 
 To install this component to an external project, follow the procedure:
