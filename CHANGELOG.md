@@ -77,3 +77,13 @@
 ### Features
 
 * Added the defaultView option.
+
+# 0.0.9 (2019-05-26)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README file changes.
