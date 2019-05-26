@@ -335,16 +335,8 @@ checkDateValidity(): void {
   
   * Type of event parameter is [IMyDateModel](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date-model.interface.ts)
 
-  * Example of the __dateChanged__ callback:
-  ```html
-  <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"/>
-  ```
-  
-  ```js
-  onDateChanged(event: IMyDateModel) {
-    console.log('onDateChanged(): ', event);
-  }
-  ```
+  * Example of the __dateChanged__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/dateChanged-callback).
+
 
 ### inputFieldChanged callback
   * called when the value change in the input field, date or date range is selected or date is cleared.
@@ -354,16 +346,8 @@ checkDateValidity(): void {
     * __event.valid__: Boolean value indicating is the value of input field valid or not. For example: true
   * Type of event parameter is [IMyInputFieldChanged](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-input-field-changed.interface.ts)
 
-  * Example of the input field changed callback:
-  ```html
-  <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (inputFieldChanged)="onInputFieldChanged($event)"/>
-  ```
-  
-  ```js
-  onInputFieldChanged(event: IMyInputFieldChanged) {
-    console.log('onInputFieldChanged(): Value: ', event);
-  }
-  ```
+  * Example of the __inputFieldChanged__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/inputFieldChanged-callback).
+
 
 ### calendarViewChanged callback
   * called when the calendar view change
@@ -375,16 +359,8 @@ checkDateValidity(): void {
   * event parameter type is [IMyCalendarViewChanged](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-calendar-view-changed.interface.ts)
   * values of the weekday property are same as values of the __firstDayOfWeek__ option
 
-  * Example of the calendar view changed callback:
-  ```html
-  <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (calendarViewChanged)="onCalendarViewChanged($event)"/>
-  ```
-  
-  ```js
-  onCalendarViewChanged(event: IMyCalendarViewChanged) {
-    console.log('onCalendarViewChanged(): Year: ', event);
-  }
-  ```
+  * Example of the __calendarViewChanged__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/calendarViewChanged-callback).
+
 
 ### calendarToggle callback
   * called when the calendar is opened or closed
@@ -395,16 +371,9 @@ checkDateValidity(): void {
       * __4__ = calendar closed by outside click (document click)
       * __5__ = calendar closed by ESC key
 
-  * Example of the calendar toggle callback:
-  ```html
-   <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (calendarToggle)="onCalendarToggle($event)"/>
-  ```
-  
-  ```js
-  onCalendarToggle(event: number): void {
-      console.log('onCalendarClosed(): Reason: ', event);
-  }
-  ```
+  * Example of the __calendarToggle__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/calendarToggle-callback).
+
+
 ### rangeDateSelection callback
   * called in date range mode when a date is selected
     * event parameter:
@@ -414,16 +383,8 @@ checkDateValidity(): void {
       * __event.formatted__: Selected date (format based on __dateFormat__ option). For example '2019-05-10'
       * __event.epoc__: Epoc time stamp. For example: 1557435600
 
-  * Example of the range date selection callback:
-  ```html
-   <input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (rangeDateSelection)="onRangeDateSelection($event)"/>
-  ```
-  
-  ```js
-  onRangeDateSelection(event: IMyRangeDateSelection): void {
-    console.log('onRangeDateSelection(): event: ', event);
-  }
-  ```
+  * Example of the __rangeDateSelection__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/rangeDateSelection-callback).
+
   
 ## Development of this component
 
