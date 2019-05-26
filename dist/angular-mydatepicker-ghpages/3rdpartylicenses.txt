@@ -36,6 +36,7 @@ MIT
 MIT
 
 angular-mydatepicker
+MIT
 The MIT License (MIT)
 
 Copyright (c) 2019 kekeh
