@@ -257,8 +257,10 @@ Visible month/year when calendar is opened:
 * If none of above => calendar opens to the month and year of current date
 
 Value of the __defaultMonth__ attribute can be:
-  * [IMyDefaultMonth](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-default-month.interface.ts) object. The value of __defMonth__ property can be a string which contain year number and month number separated by delimiter. The delimiter can be any special character. For example: __08-2016__ or __08/2016__.
-  * a string which contain year number and month number separated by delimiter. The delimiter can be any special character. For example: __08-2016__ or __08/2016__.
+  * [IMyDefaultMonth](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-default-month.interface.ts) object. The value of __defMonth__ property can be a string which contain year number and month number separated by delimiter. The delimiter can be any special character. For example: __08-2019__ or __08/2019__.
+  * a string which contain year number and month number separated by delimiter. The delimiter can be any special character. For example: __08-2019__ or __08/2019__.
+
+Example of the __defaultMonth__ attribute is [here](https://github.com/kekeh/angular-mydatepicker/wiki/defaultMonth-attribute).
 
 ## Functions
 
@@ -271,47 +273,28 @@ for example __(click)="dp.openCalendar()"__.
 
 ### openCalendar function
 
-Opens the calendar. For example:
-```html
-<button type="button" (click)="dp.openCalendar()">Open</button>
-```
+Opens the calendar. Example of the __openCalendar__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+
 
 ### closeCalendar function
 
-Closes the calendar. For example:
-```html
-<button type="button" (click)="dp.closeCalendar()">Close</button>
-```
+Closes the calendar. Example of the __closeCalendar__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+
 
 ### toggleCalendar function
 
-Closes the calendar if it is open and opens the calendar if it is closed. For example:
-```html
-<button type="button" (click)="dp.toggleCalendar()">Toggle</button>
-```
+Closes the calendar if it is open and opens the calendar if it is closed. Example of the __toggleCalendar__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+
 
 ### clearDate function
 
-Clears the date from the input box and model. For example:
-```html
-<button type="button" (click)="dp.clearDate()">Clear</button>
-```
+Clears the date from the input box and model. Example of the __clearDate__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+
 
 ### isDateValid function
 
-Returns true if the date in the input box is valid. Otherwise it returns false. This function also calls the __inputFieldChanged__ callback.
-```html
-<input angular-mydatepicker [(ngModel)]="model" [options]="myDatePickerOptions" #dp="angular-mydatepicker"/>
-```
+Returns __true__ if the date in the input box is valid. Otherwise it returns __false__. This function also calls the __inputFieldChanged__ callback. Example of the __isDateValid__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
 
-```ts
-@ViewChild('dp') mdpd: AngularMyDatePickerDirective;
-
-checkDateValidity(): void {
-    let valid: boolean = this.mdpd.isDateValid();
-    console.log('Valid date in the input box: ', valid);
-}
-```
 
 ## Callbacks
 
