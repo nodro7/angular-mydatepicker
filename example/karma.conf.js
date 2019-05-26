@@ -16,7 +16,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../coverage/angular-mydatepicker'),
+      dir: require('path').join(__dirname, '../test-output/angular-mydatepicker-example'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
@@ -27,6 +27,7 @@ module.exports = function (config) {
     autoWatch: false,
     browsers: ['ChromeHeadless'],
     singleRun: true,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    browserNoActivityTimeout: 30000
   });
 };
