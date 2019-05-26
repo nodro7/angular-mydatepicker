@@ -8,4 +8,6 @@ before_script:
   - npm install
 script:
   - npm run test-lib
+after_success:
+  - ./node_modules/.bin/codecov -f test-output/angular-mydatepicker/coverage-final.json
 sudo: required
