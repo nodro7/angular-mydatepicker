@@ -127,6 +127,123 @@ describe('AngularMyDatePickerComponent', () => {
     expect(selection.value).toBe('24.5.2019 - 10.6.2019');
   });
 
+  it('validate date selection on calendar',() => {
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    fixture.detectChanges();
+    comp.initDateModel({isRange: false, singleDate: {date: {year: 2020, month: 8, day: 24}}});
+
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+    expect(selection.value).toBe('24.08.2020');
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent).toBe('Aug');
+
+    fixture.detectChanges();
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2020');
+
+    fixture.detectChanges();
+    let selecteddate = getElement('.myDpSelectedDay');
+    expect(selecteddate).not.toBe(null);
+    expect(selecteddate.textContent).toBe('24');
+
+    fixture.detectChanges();
+    monthlabel.click();
+
+    fixture.detectChanges();
+    let selectedmonth = getElement('.myDpSelectedMonth');
+    expect(selectedmonth).not.toBe(null);
+    expect(selectedmonth.textContent).toBe('Aug');
+
+    fixture.detectChanges();
+    yearlabel.click();
+
+    fixture.detectChanges();
+    let selectedyear = getElement('.myDpSelectedYear');
+    expect(selectedyear).not.toBe(null);
+    expect(selectedyear.textContent).toBe('2020');
+
+    comp.closeCalendar();
+  });
+
+  it('validate date range selection on calendar',() => {
+    let opts: IMyOptions = {
+      dateRange: true,
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    fixture.detectChanges();
+    comp.initDateModel({isRange: true, dateRange: {beginDate: {year: 2021, month: 9, day: 14}, endDate: {year: 2021, month: 9, day: 19}}});
+
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+    expect(selection.value).toBe('14.09.2021 - 19.09.2021');
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent).toBe('Sep');
+
+    fixture.detectChanges();
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2021');
+
+    fixture.detectChanges();
+    let selecteddates = getElements('.myDpSelectedDay');
+    expect(selecteddates).not.toBe(null);
+    expect(selecteddates.length).toBe(2);
+    expect(selecteddates[0].textContent).toBe('14');
+    expect(selecteddates[1].textContent).toBe('19');
+
+    fixture.detectChanges();
+    let selectedrange = getElements('.myDpRangeColor');
+    expect(selectedrange).not.toBe(null);
+    expect(selectedrange.length).toBe(6);
+
+    fixture.detectChanges();
+    monthlabel.click();
+
+    fixture.detectChanges();
+    let selectedmonth = getElement('.myDpSelectedMonth');
+    expect(selectedmonth).not.toBe(null);
+    expect(selectedmonth.textContent).toBe('Sep');
+
+    fixture.detectChanges();
+    yearlabel.click();
+
+    fixture.detectChanges();
+    let selectedyear = getElement('.myDpSelectedYear');
+    expect(selectedyear).not.toBe(null);
+    expect(selectedyear.textContent).toBe('2021');
+
+    comp.closeCalendar();
+  });
+
   it('test open/close/toggle calendar functions', () => {
     comp.openCalendar();
     fixture.detectChanges();

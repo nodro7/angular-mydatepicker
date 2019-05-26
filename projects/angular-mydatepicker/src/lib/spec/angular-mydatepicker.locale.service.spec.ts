@@ -18,7 +18,13 @@ describe('LocaleService', () => {
     const service: LocaleService = TestBed.get(LocaleService);
     expect(service).toBeTruthy();
 
-    let locale = service.getLocaleOptions('ja');
-    expect(locale).not.toBe(null);
+    const locales: Array<string> = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
+
+    for (const locale of locales) {
+      let l = service.getLocaleOptions(locale);
+      expect(l).not.toBe(null);
+      expect(l.hasOwnProperty('dayLabels')).toBe(true);
+      expect(l.hasOwnProperty('monthLabels')).toBe(true);
+    }
   });
 });
