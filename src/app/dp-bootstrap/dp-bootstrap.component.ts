@@ -11,7 +11,8 @@ export class DpBootstrapComponent implements OnInit {
 
   public myOptions: IAngularMyDpOptions = {
     dateRange: false,
-    dateFormat: 'dd.mm.yyyy'
+    dateFormat: 'dd.mm.yyyy',
+    styleFileName: 'normal.css'
   };
 
   public model: IMyDateModel = null;
