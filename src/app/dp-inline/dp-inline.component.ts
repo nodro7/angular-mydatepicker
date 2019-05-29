@@ -13,8 +13,7 @@ export class DpInlineComponent implements OnInit {
     dateRange: false,
     inline: true,
     dateFormat: 'dd.mm.yyyy',
-    selectorWidth: '100%',
-    styleFileName: 'inline.css'
+    selectorWidth: '100%'
   };
 
   public model: IMyDateModel = null;
