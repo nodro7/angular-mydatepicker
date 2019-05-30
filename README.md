@@ -239,6 +239,7 @@ Value of the __options__ attribute is a type of [IAngularMyDpOptions](https://gi
 | __moveFocusByArrowKeys__   | true | boolean | Is focus moved or not on the calendar by arrow keys. |
 | __dateRangeDatesDelimiter__   | " - " | string | The delimiter of dates in a date range. |
 | __inputFieldValidation__   | true | boolean | Input field validation enabled or not after __blur__ event of input field. |
+| __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example of usage of the option. See also the chapter below. |
 | __ariaLabelPrevMonth__   | Previous Month | string | Aria label text of previous month button. |
 | __ariaLabelNextMonth__   | Next Month | string | Aria label text of next month button. |
 
@@ -374,7 +375,16 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 
   * Example of the __rangeDateSelection__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/rangeDateSelection-callback).
 
-  
+
+## Override styles of component
+
+It is possible to override styles of datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
+It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.component.css) styles. 
+
+Examples of the option:
+* [single date picker on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-single-datepicker)
+* [multiple datepickers on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page)
+
 ## Development of this component
 
 * At first fork and clone this repo:

@@ -43,6 +43,7 @@ const DEFAULT_MONTH = "defaultMonth";
 const LOCALE = "locale";
 const OBJECT = "object";
 const PX = "px";
+const STYLE = "style";
 
 const PREVENT_CLOSE_TIMEOUT = 50;
 
@@ -83,5 +84,6 @@ export {
   LOCALE,
   OBJECT,
   PX,
+  STYLE,
   PREVENT_CLOSE_TIMEOUT
 };

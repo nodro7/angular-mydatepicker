@@ -165,14 +165,10 @@
                 </label>
             </td>
             <td>
-                <label>
-                    <span style="margin-right: 10px">Selector size:</span>
-                    <span>
-                        <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onSelectorSize($event.target.value)">
-                            <option *ngFor="let s of selectorSizes">{{s}}</option>
-                        </select>
-                    </span>
-                </label>
+              <label>
+                <span>Override styles (red navigate buttons):</span>
+                <input style="cursor: pointer" type="checkbox" (change)="onOverrideStyles($event.currentTarget.checked)" [checked]="false">
+              </label>
             </td>
         </tr>
       <tr>
@@ -187,7 +183,14 @@
           </label>
         </td>
         <td>
-
+          <label>
+            <span style="margin-right: 10px">Selector size:</span>
+            <span>
+                <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onSelectorSize($event.target.value)">
+                    <option *ngFor="let s of selectorSizes">{{s}}</option>
+                </select>
+            </span>
+          </label>
         </td>
       </tr>
     </table>

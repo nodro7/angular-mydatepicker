@@ -46,6 +46,7 @@ export class DefaultConfigService {
     moveFocusByArrowKeys: true,
     dateRangeDatesDelimiter: " - ",
     inputFieldValidation: true,
+    stylesData: {selector: "", styles: ""},
     ariaLabelPrevMonth: "Previous Month",
     ariaLabelNextMonth: "Next Month"
   };

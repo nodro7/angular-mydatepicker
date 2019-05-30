@@ -87,3 +87,13 @@
 ### Features
 
 * README file changes.
+
+# 0.0.10 (2019-05-30)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added stylesData option, which allows override styles of component.

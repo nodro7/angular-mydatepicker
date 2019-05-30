@@ -34,6 +34,7 @@ export {IMySelectorPosition} from "./lib/interfaces/my-selector-pos.interface";
 export {IMySingleDateModel} from "./lib/interfaces/my-single-date-model.interface";
 export {IMyWeek} from "./lib/interfaces/my-week.interface";
 export {IMyWeekday} from "./lib/interfaces/my-weekday.interface";
+export {IMyStyles} from "./lib/interfaces/my-styles.interface";
 
 export {CalToggle} from "./lib/enums/cal-toggle.enum";
 export {KeyCode} from "./lib/enums/key-code.enum";

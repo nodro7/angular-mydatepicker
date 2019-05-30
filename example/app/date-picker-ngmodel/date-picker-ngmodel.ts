@@ -1,16 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {
-  AngularMyDatePickerDirective,
-  DefaultView,
-  IAngularMyDpOptions,
-  IMyCalendarViewChanged,
-  IMyDate,
-  IMyDateModel,
-  IMyDefaultMonth,
-  IMyInputFieldChanged,
-  IMyMarkedDate,
-  IMyRangeDateSelection
-} from '../../../projects/angular-mydatepicker/src/lib';
+import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection} from '../../../projects/angular-mydatepicker/src/lib';
 
 @Component({
   selector: 'date-picker-ngmodel',
@@ -50,7 +39,12 @@ export class DatePickerNgmodel implements OnInit {
     closeSelectorOnDocumentClick: true,
     appendSelectorToBody: false,
     focusInputOnDateSelect: true,
-    defaultView: DefaultView.Date
+    defaultView: DefaultView.Date,
+    stylesData:
+      {
+        selector: '',
+        styles: ''
+      }
   };
 
   @ViewChild('dp') ngxdp: AngularMyDatePickerDirective;
@@ -243,6 +237,23 @@ export class DatePickerNgmodel implements OnInit {
   onFocusInputOnDateSelect(checked: boolean): void {
     let copy = this.getCopyOfOptions();
     copy.focusInputOnDateSelect = checked;
+    this.myDatePickerOptions = copy;
+  }
+
+  onOverrideStyles(checked: boolean): void {
+    let copy = this.getCopyOfOptions();
+
+    copy.stylesData = checked ?
+    {
+      selector: 'dp1',
+      styles: `
+        .dp1 .myDpIconLeftArrow,
+        .dp1 .myDpIconRightArrow {
+          color: red;
+        }  
+      `
+    } : {selector: '', styles: ''}
+
     this.myDatePickerOptions = copy;
   }
 

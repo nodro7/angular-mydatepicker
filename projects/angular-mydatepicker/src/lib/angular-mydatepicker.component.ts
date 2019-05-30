@@ -8,13 +8,15 @@ import {IMyCalendarYear} from "./interfaces/my-calendar-year.interface";
 import {IMyWeek} from "./interfaces/my-week.interface";
 import {IMyOptions} from "./interfaces/my-options.interface";
 import {IMySelectorPosition} from "./interfaces/my-selector-pos.interface";
+import {IMyCalendarViewChanged} from "./interfaces/my-calendar-view-changed.interface";
+import {IMyDateModel} from "./interfaces/my-date-model.interface";
+import {IMyRangeDateSelection} from "./interfaces/my-range-date-selection.interface";
 import {UtilService} from "./services/angular-mydatepicker.util.service";
 import {KeyCode} from "./enums/key-code.enum";
 import {MonthId} from "./enums/month-id.enum";
 import {ResetDateType} from "./enums/reset-date-type.enum";
 import {DefaultView} from "./enums/default-view.enum";
-import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK} from "./constants/constants";
-import {IMyCalendarViewChanged, IMyDateModel, IMyRangeDateSelection} from "./interfaces";
+import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE} from "./constants/constants";
 
 @Component({
   selector: "lib-angular-mydatepicker-component",
@@ -24,7 +26,9 @@ import {IMyCalendarViewChanged, IMyDateModel, IMyRangeDateSelection} from "./int
   encapsulation: ViewEncapsulation.None
 })
 export class AngularMyDatePickerComponent implements OnDestroy {
-  @ViewChild("selectorEl") selectorEl: any;
+  @ViewChild("selectorEl") selectorEl: ElementRef;
+  @ViewChild("styleEl") styleEl: ElementRef;
+
   opts: IMyOptions;
   visibleMonth: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
   selectedMonth: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
@@ -57,7 +61,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
 
   clickListener: () => void;
 
-  constructor(public elem: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef, private utilService: UtilService) {
+  constructor(private elem: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef, private utilService: UtilService) {
     this.clickListener = renderer.listen(elem.nativeElement, CLICK, (event: MouseEvent) => {
       if ((this.opts.monthSelector || this.opts.yearSelector) && event.target) {
         this.resetMonthYearSelect();
@@ -74,7 +78,13 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectorPos = selectorPos;
     this.weekDays.length = 0;
 
-    const {defaultView, dateRange, firstDayOfWeek, dayLabels} = this.opts;
+    const {defaultView, dateRange, firstDayOfWeek, dayLabels, stylesData} = this.opts;
+
+    if (stylesData.styles.length) {
+      const styleElem: any = this.renderer.createElement(STYLE);
+      this.renderer.appendChild(styleElem, this.renderer.createText(stylesData.styles));
+      this.renderer.appendChild(this.styleEl.nativeElement, styleElem);
+    }
 
     this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
     if (this.dayIdx !== -1) {
