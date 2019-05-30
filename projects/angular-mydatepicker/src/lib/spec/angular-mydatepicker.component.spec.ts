@@ -1780,6 +1780,64 @@ describe('AngularMyDatePickerComponent', () => {
     expect(input.value).toBe('29.04.2019 * 30.04.2019');
   });
 
+  it('options - stylesData', () => {
+    comp.setDefaultMonth('2019/10');
+    let opts: IMyOptions = {
+      stylesData: {selector: '', styles: ''}
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let leftarrow = getElement('.myDpIconLeftArrow');
+    expect(leftarrow).not.toBe(null);
+    expect(window.getComputedStyle(leftarrow).color).toBe('rgb(34, 34, 34)');
+
+    fixture.detectChanges();
+    let rightarrow = getElement('.myDpIconRightArrow');
+    expect(rightarrow).not.toBe(null);
+    expect(window.getComputedStyle(rightarrow).color).toBe('rgb(34, 34, 34)');
+
+    comp.closeCalendar();
+
+    opts.stylesData =
+      {
+        selector: 'dp1',
+        styles: `
+        .dp1 .myDpIconLeftArrow {
+          color: red;
+        }
+        .dp1 .myDpIconRightArrow {
+          color: blue;
+        }  
+      `
+      };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    leftarrow = getElement('.myDpIconLeftArrow');
+    expect(leftarrow).not.toBe(null);
+    expect(window.getComputedStyle(leftarrow).color).toBe('rgb(255, 0, 0)');
+
+    fixture.detectChanges();
+    rightarrow = getElement('.myDpIconRightArrow');
+    expect(rightarrow).not.toBe(null);
+    expect(window.getComputedStyle(rightarrow).color).toBe('rgb(0, 0, 255)');
+
+    comp.closeCalendar();
+  });
+
   it('options - ariaLabelPrevMonth', () => {
     comp.setDefaultMonth('2019/10');
     let opts: IMyOptions = {
