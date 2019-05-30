@@ -71,6 +71,24 @@
 
   </div>
 
+  <div class="optionsContainer">
+    <div class="form-check optionsItem">
+      <input class="form-check-input inputBox" type="checkbox" id="overrideStyles" (change)="onOverrideStyles($event.currentTarget.checked)" [checked]="false">
+      <label class="form-check-label" for="overrideStyles">
+        Override styles (blue navigate buttons)
+      </label>
+    </div>
+
+    <div class="form-check optionsItem">
+
+    </div>
+
+    <div class="form-check optionsItem">
+
+    </div>
+
+  </div>
+
   <p class="linkToOptions">All options are listed <a href="https://github.com/kekeh/angular-mydatepicker#attributes">here</a></p>
 
   <div class="optionsContainer localeOptions">

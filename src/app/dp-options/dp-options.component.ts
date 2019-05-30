@@ -19,7 +19,8 @@ export class DpOptionsComponent implements OnInit {
     highlightDates: [],
     markDates: [],
     showWeekNumbers: false,
-    disableWeekdays: []
+    disableWeekdays: [],
+    stylesData: {selector: '', styles: ''}
   };
 
   public model: IMyDateModel = null;
@@ -99,6 +100,22 @@ export class DpOptionsComponent implements OnInit {
     this.model = null;
     let copy = this.getCopyOfOptions();
     copy.dateRange = checked;
+    this.myOptions = copy;
+  }
+
+  onOverrideStyles(checked: boolean): void {
+    this.model = null;
+    let copy = this.getCopyOfOptions();
+    copy.stylesData = checked ?
+      {
+        selector: 'dp1',
+        styles: `
+        .dp1 .myDpIconLeftArrow,
+        .dp1 .myDpIconRightArrow {
+          color: blue;
+        }  
+      `
+      } : {selector: '', styles: ''}
     this.myOptions = copy;
   }
 
