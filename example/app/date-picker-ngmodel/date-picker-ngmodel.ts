@@ -30,6 +30,8 @@ export class DatePickerNgmodel implements OnInit {
       {begin: {year: 2016, month: 10, day: 5}, end: {year: 2016, month: 10, day: 7}},
       {begin: {year: 2016, month: 10, day: 10}, end: {year: 2016, month: 10, day: 12}}
     ],
+    disableUntil: {year: 0, month: 0, day: 0},
+    disableSince: {year: 0, month: 0, day: 0},
     disableWeekdays: [],
     markDates: [],
     markWeekends: <IMyMarkedDate>{},
@@ -254,6 +256,22 @@ export class DatePickerNgmodel implements OnInit {
       `
     } : {selector: '', styles: ''}
 
+    this.myDatePickerOptions = copy;
+  }
+
+  onDisableUntilYesterday(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+    let d: Date = new Date();
+    d.setDate(d.getDate() - 1);
+    copy.disableUntil = checked ? {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()} : {year: 0, month: 0, day: 0};
+    this.myDatePickerOptions = copy;
+  }
+
+  onDisableSinceTomorrow(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+    let d: Date = new Date();
+    d.setDate(d.getDate() + 1);
+    copy.disableSince = checked ? {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()} : {year: 0, month: 0, day: 0};
     this.myDatePickerOptions = copy;
   }
 

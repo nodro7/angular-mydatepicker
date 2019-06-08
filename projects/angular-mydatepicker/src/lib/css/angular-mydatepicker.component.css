@@ -226,15 +226,6 @@
   cursor: default;
 }
 
-.myDpHeaderBtnDisabled {
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-
-.myDpHeaderBtnEnabled {
-  cursor: pointer;
-}
-
 .myDpMonthBtn,
 .myDpYearBtn {
   font-size: 16px;
@@ -324,6 +315,15 @@
 .myDpMonthLabel:hover,
 .myDpYearLabel:hover {
   color: #777;
+}
+
+.myDpHeaderBtnEnabled {
+  cursor: pointer;
+}
+
+.myDpHeaderBtnDisabled {
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 
 .myDpDisabled {

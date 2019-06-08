@@ -171,6 +171,22 @@
               </label>
             </td>
         </tr>
+
+      <tr>
+        <td>
+          <label>
+            <span>Disable until yesterday:</span>
+            <input style="cursor: pointer" type="checkbox" (change)="onDisableUntilYesterday($event.currentTarget.checked)" [checked]="false">
+          </label>
+        </td>
+        <td>
+          <label>
+            <span>Disable since tomorrow:</span>
+            <input style="cursor: pointer" type="checkbox" (change)="onDisableSinceTomorrow($event.currentTarget.checked)" [checked]="false">
+          </label>
+        </td>
+      </tr>
+
       <tr>
         <td>
           <label>

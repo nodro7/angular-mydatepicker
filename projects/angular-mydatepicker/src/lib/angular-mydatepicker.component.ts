@@ -95,6 +95,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
       }
     }
 
+    let checkDefaultMonth: boolean = false;
     if (!dateRange) {
       // Single date mode
       const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts);
@@ -103,12 +104,10 @@ export class AngularMyDatePickerComponent implements OnDestroy {
         this.selectedDate = date;
       }
       else {
-        if (defaultMonth && defaultMonth.length) {
-          this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
-        }
+        checkDefaultMonth = true;
       }
     }
-    else if (inputValue && inputValue.length) {
+    else {
       // Date range mode
       const {begin, end} = this.utilService.isDateValidDateRange(inputValue, this.opts);
 
@@ -116,6 +115,13 @@ export class AngularMyDatePickerComponent implements OnDestroy {
         this.selectedDateRange = {begin, end};
         this.selectedMonth = {monthTxt: EMPTY_STR, monthNbr: begin.month, year: begin.year};
       }
+      else {
+        checkDefaultMonth = true;
+      }
+    }
+
+    if (checkDefaultMonth && defaultMonth && defaultMonth.length) {
+      this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
     }
 
     this.dateChanged = dc;
@@ -315,7 +321,9 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.generateCalendar(m, y, true);
   }
 
-  onPrevMonth(): void {
+  onPrevMonth(event: any): void {
+    event.stopPropagation();
+
     // Previous month from calendar
     const d: Date = this.getDate(this.visibleMonth.year, this.visibleMonth.monthNbr, 1);
     d.setMonth(d.getMonth() - 1);
@@ -327,7 +335,9 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.generateCalendar(m, y, true);
   }
 
-  onNextMonth(): void {
+  onNextMonth(event: any): void {
+    event.stopPropagation();
+
     // Next month from calendar
     const d: Date = this.getDate(this.visibleMonth.year, this.visibleMonth.monthNbr, 1);
     d.setMonth(d.getMonth() + 1);
@@ -641,14 +651,10 @@ export class AngularMyDatePickerComponent implements OnDestroy {
 
   setHeaderBtnDisabledState(m: number, y: number): void {
     let dpm: boolean = false;
-    let dpy: boolean = false;
     let dnm: boolean = false;
-    let dny: boolean = false;
     if (this.opts.disableHeaderButtons) {
       dpm = this.utilService.isMonthDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, this.opts.disableUntil);
-      dpy = this.utilService.isMonthDisabledByDisableUntil({year: y - 1, month: m, day: this.daysInMonth(m, y - 1)}, this.opts.disableUntil);
       dnm = this.utilService.isMonthDisabledByDisableSince({year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1}, this.opts.disableSince);
-      dny = this.utilService.isMonthDisabledByDisableSince({year: y + 1, month: m, day: 1}, this.opts.disableSince);
     }
     this.prevMonthDisabled = m === 1 && y === this.opts.minYear || dpm;
     this.nextMonthDisabled = m === 12 && y === this.opts.maxYear || dnm;

@@ -97,3 +97,13 @@
 ### Features
 
 * Added stylesData option, which allows override styles of component.
+
+# 0.0.11 (2019-06-08)
+
+### Bug Fixes
+
+* Fixed: [Year navigation buttons messed up with disabled years](https://github.com/kekeh/angular-mydatepicker/issues/4)
+
+### Features
+
+* none
