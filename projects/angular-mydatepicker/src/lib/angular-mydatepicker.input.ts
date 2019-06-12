@@ -78,52 +78,58 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       this.closeSelector(CalToggle.CloseByEsc);
     }
     else {
+      const {value} = this.elem.nativeElement;
+
       let valid: boolean = false;
       if (!this.opts.dateRange) {
-        const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+        const date: IMyDate = this.utilService.isDateValid(value, this.opts);
         valid = this.utilService.isInitializedDate(date);
       }
       else {
-        const {begin, end} = this.utilService.isDateValidDateRange(this.elem.nativeElement.value, this.opts);
+        const {begin, end} = this.utilService.isDateValidDateRange(value, this.opts);
         valid = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
       }
-      this.emitInputFieldChanged(this.elem.nativeElement.value, valid);
+      this.emitInputFieldChanged(value, valid);
     }
   }
 
   @HostListener(BLUR) onBlur() {
-    if (this.opts.inputFieldValidation) {
+    const {inputFieldValidation, dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter, closeSelectorOnDateSelect} = this.opts;
+
+    if (inputFieldValidation) {
+      const {value} = this.elem.nativeElement;
+
       let valid: boolean = false;
-      if (!this.opts.dateRange) {
-        const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+      if (!dateRange) {
+        const date: IMyDate = this.utilService.isDateValid(value, this.opts);
         valid = this.utilService.isInitializedDate(date);
-        if (valid && this.inputText !== this.elem.nativeElement.value) {
+        if (valid && this.inputText !== value) {
           // Valid date
-          const dateModel: IMyDateModel = this.utilService.getDateModel(date, null, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter);
+          const dateModel: IMyDateModel = this.utilService.getDateModel(date, null, dateFormat, monthLabels, dateRangeDatesDelimiter);
           this.emitDateChanged(dateModel);
           this.updateModel(dateModel);
-          if (this.opts.closeSelectorOnDateSelect) {
+          if (closeSelectorOnDateSelect) {
             this.closeSelector(CalToggle.CloseByDateSel);
           }
         }
       }
       else {
-        const dateRange: IMyDateRange = this.utilService.isDateValidDateRange(this.elem.nativeElement.value, this.opts);
+        const dateRange: IMyDateRange = this.utilService.isDateValidDateRange(value, this.opts);
         const {begin, end} = dateRange;
         valid = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
-        if (valid && this.inputText !== this.elem.nativeElement.value) {
+        if (valid && this.inputText !== value) {
           // Valid date range
-          const dateModel: IMyDateModel = this.utilService.getDateModel(null, dateRange, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter);
+          const dateModel: IMyDateModel = this.utilService.getDateModel(null, dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter);
           this.emitDateChanged(dateModel);
           this.updateModel(dateModel);
-          if (this.opts.closeSelectorOnDateSelect) {
+          if (closeSelectorOnDateSelect) {
             this.closeSelector(CalToggle.CloseByDateSel);
           }
         }
       }
 
-      if (!valid && this.inputText !== this.elem.nativeElement.value) {
-        if (this.elem.nativeElement.value === EMPTY_STR) {
+      if (!valid && this.inputText !== value) {
+        if (value === EMPTY_STR) {
           this.clearDate();
         }
         else {
@@ -131,7 +137,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         }
       }
 
-      this.inputText = this.elem.nativeElement.value;
+      this.inputText = value;
     }
 
     this.onTouchedCb();
@@ -200,24 +206,26 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       return;
     }
 
+    const {inline, dateFormat, monthLabels, dateRangeDatesDelimiter} = this.opts;
+
     if (!value) {
       this.setInputValue(EMPTY_STR);
       this.emitInputFieldChanged(EMPTY_STR, false);
 
-      if (this.cRef !== null && this.opts.inline) {
+      if (this.cRef !== null && inline) {
         this.cRef.instance.resetDateValue(ResetDateType.both);
       }
     }
     else if (value.isRange === false && value.singleDate) {
       // single date
       const {date, jsDate} = value.singleDate;
-      const formatted: string = this.utilService.formatDate(date ? date : this.jsDateToMyDate(jsDate), this.opts.dateFormat, this.opts.monthLabels);
+      const formatted: string = this.utilService.formatDate(date ? date : this.jsDateToMyDate(jsDate), dateFormat, monthLabels);
       const valid: boolean = this.utilService.isInitializedDate(this.utilService.isDateValid(formatted, this.opts));
       if (valid) {
         this.setInputValue(formatted);
         this.emitInputFieldChanged(formatted, valid);
 
-        if (this.cRef !== null && this.opts.inline) {
+        if (this.cRef !== null && inline) {
           this.cRef.instance.resetDateValue(ResetDateType.dateRange);
         }
       }
@@ -231,16 +239,17 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       }
 
       if (beginDate && endDate) {
-        const formatted: string = this.utilService.formatDate(beginDate, this.opts.dateFormat, this.opts.monthLabels) +
-          this.opts.dateRangeDatesDelimiter +
-          this.utilService.formatDate(endDate, this.opts.dateFormat, this.opts.monthLabels);
+        const formatted: string =
+          this.utilService.formatDate(beginDate, dateFormat, monthLabels) +
+          dateRangeDatesDelimiter +
+          this.utilService.formatDate(endDate, dateFormat, monthLabels);
         const {begin, end} = this.utilService.isDateValidDateRange(formatted, this.opts);
         const valid: boolean = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
         if (valid) {
           this.setInputValue(formatted);
           this.emitInputFieldChanged(formatted, valid);
 
-          if (this.cRef !== null && this.opts.inline) {
+          if (this.cRef !== null && inline) {
             this.cRef.instance.resetDateValue(ResetDateType.singleDate);
           }
         }
@@ -266,10 +275,12 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   public validate(c: AbstractControl): { [p: string]: any } {
-    if (this.elem.nativeElement.value === null || this.elem.nativeElement.value === EMPTY_STR) {
+    const {value} = this.elem.nativeElement;
+
+    if (value === null || value === EMPTY_STR) {
       return null;
     }
-    const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+    const date: IMyDate = this.utilService.isDateValid(value, this.opts);
     if (!this.utilService.isInitializedDate(date)) {
       return {invalidDateFormat: true};
     }
@@ -363,14 +374,16 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   public isDateValid(): boolean {
-    if (this.elem.nativeElement.value !== EMPTY_STR) {
-      const date: IMyDate = this.utilService.isDateValid(this.elem.nativeElement.value, this.opts);
+    const {value} = this.elem.nativeElement;
+
+    if (value !== EMPTY_STR) {
+      const date: IMyDate = this.utilService.isDateValid(value, this.opts);
       if (this.utilService.isInitializedDate(date)) {
-        this.emitInputFieldChanged(this.elem.nativeElement.value, true);
+        this.emitInputFieldChanged(value, true);
         return true;
       }
     }
-    this.emitInputFieldChanged(this.elem.nativeElement.value, false);
+    this.emitInputFieldChanged(value, false);
     return false;
   }
 
@@ -439,22 +452,24 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     let top: number = 0;
     let left: number = 0;
 
-    if (this.opts.appendSelectorToBody) {
+    const {appendSelectorToBody, openSelectorTopOfInput, selectorHeight, selectorWidth, showSelectorArrow, alignSelectorRight} = this.opts;
+
+    if (appendSelectorToBody) {
       const b: any = document.body.getBoundingClientRect();
       const e: any = elem.getBoundingClientRect();
       top = e.top - b.top;
       left = e.left - b.left;
     }
 
-    if (this.opts.openSelectorTopOfInput) {
-      top = top - this.getSelectorDimension(this.opts.selectorHeight) - 2;
+    if (openSelectorTopOfInput) {
+      top = top - this.getSelectorDimension(selectorHeight) - 2;
     }
     else {
-      top = top + elem.offsetHeight + (this.opts.showSelectorArrow ? 12 : 2);
+      top = top + elem.offsetHeight + (showSelectorArrow ? 12 : 2);
     }
 
-    if (this.opts.alignSelectorRight) {
-      left = left + elem.offsetWidth - this.getSelectorDimension(this.opts.selectorWidth);
+    if (alignSelectorRight) {
+      left = left + elem.offsetWidth - this.getSelectorDimension(selectorWidth);
     }
     return {top: top + PX, left: left + PX};
   }

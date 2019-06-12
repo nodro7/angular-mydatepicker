@@ -107,3 +107,13 @@
 ### Features
 
 * none
+
+# 0.0.12 (2019-06-12)
+
+### Bug Fixes
+
+* Fixed: [Navigation on month selection screen behaves oddly](https://github.com/kekeh/angular-mydatepicker/issues/6)
+
+### Features
+
+* none

@@ -31,7 +31,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
 
   opts: IMyOptions;
   visibleMonth: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
-  selectedMonth: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
+  selectedMonth: IMyMonth = {monthNbr: 0, year: 0};
   selectedDate: IMyDate = {year: 0, month: 0, day: 0};
   selectedDateRange: IMyDateRange = {begin: {year: 0, month: 0, day: 0}, end: {year: 0, month: 0, day: 0}};
   weekDays: Array<string> = [];
@@ -50,10 +50,8 @@ export class AngularMyDatePickerComponent implements OnDestroy {
   closedByEsc: () => void;
   selectorPos: IMySelectorPosition = null;
 
-  prevMonthDisabled: boolean = false;
-  nextMonthDisabled: boolean = false;
-  prevYearsDisabled: boolean = false;
-  nextYearsDisabled: boolean = false;
+  prevViewDisabled: boolean = false;
+  nextViewDisabled: boolean = false;
 
   prevMonthId: number = MonthId.prev;
   currMonthId: number = MonthId.curr;
@@ -95,16 +93,20 @@ export class AngularMyDatePickerComponent implements OnDestroy {
       }
     }
 
-    let checkDefaultMonth: boolean = false;
+    const today: IMyDate = this.getToday();
+    this.selectedMonth = {monthNbr: today.month, year: today.year};
+
+    if (defaultMonth && defaultMonth.length) {
+      this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
+    }
+
     if (!dateRange) {
       // Single date mode
       const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts);
 
       if (this.utilService.isInitializedDate(date)) {
         this.selectedDate = date;
-      }
-      else {
-        checkDefaultMonth = true;
+        this.selectedMonth = {monthNbr: date.month, year: date.year};
       }
     }
     else {
@@ -113,15 +115,8 @@ export class AngularMyDatePickerComponent implements OnDestroy {
 
       if (this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end)) {
         this.selectedDateRange = {begin, end};
-        this.selectedMonth = {monthTxt: EMPTY_STR, monthNbr: begin.month, year: begin.year};
+        this.selectedMonth = {monthNbr: begin.month, year: begin.year};
       }
-      else {
-        checkDefaultMonth = true;
-      }
-    }
-
-    if (checkDefaultMonth && defaultMonth && defaultMonth.length) {
-      this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
     }
 
     this.dateChanged = dc;
@@ -129,7 +124,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.rangeDateSelection = rds;
     this.closedByEsc = cbe;
 
-    this.setVisibleMonth();
+    this.setCalendarVisibleMonth();
 
     if (defaultView === DefaultView.Month) {
       this.onSelectMonthClicked();
@@ -149,11 +144,6 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  setCalendarView(date: IMyDate): void {
-    this.selectedDate = date;
-    this.setVisibleMonth();
-  }
-
   resetMonthYearSelect(): void {
     this.selectMonth = false;
     this.selectYear = false;
@@ -167,17 +157,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectYear = false;
     this.cdr.detectChanges();
     if (this.selectMonth) {
-      const today: IMyDate = this.getToday();
-      this.months.length = 0;
-      for (let i = 1; i <= 12; i += 3) {
-        const row: Array<IMyCalendarMonth> = [];
-        for (let j = i; j < i + 3; j++) {
-          const disabled: boolean = this.utilService.isMonthDisabledByDisableUntil({year: this.visibleMonth.year, month: j, day: this.daysInMonth(j, this.visibleMonth.year)}, this.opts.disableUntil)
-            || this.utilService.isMonthDisabledByDisableSince({year: this.visibleMonth.year, month: j, day: 1}, this.opts.disableSince);
-          row.push({nbr: j, name: this.opts.monthLabels[j], currMonth: j === today.month && this.visibleMonth.year === today.year, selected: j === this.visibleMonth.monthNbr, disabled});
-        }
-        this.months.push(row);
-      }
+      this.generateMonths();
     }
   }
 
@@ -187,9 +167,12 @@ export class AngularMyDatePickerComponent implements OnDestroy {
       return;
     }
 
-    const mc: boolean = cell.nbr !== this.visibleMonth.monthNbr;
-    this.visibleMonth = {monthTxt: this.opts.monthLabels[cell.nbr], monthNbr: cell.nbr, year: this.visibleMonth.year};
-    this.generateCalendar(cell.nbr, this.visibleMonth.year, mc);
+    const {year, monthNbr} = this.visibleMonth;
+
+    const mc: boolean = cell.nbr !== monthNbr;
+    this.visibleMonth = {monthTxt: this.opts.monthLabels[cell.nbr], monthNbr: cell.nbr, year: year};
+    this.selectedMonth.year = this.visibleMonth.year;
+    this.generateCalendar(cell.nbr, year, mc);
     this.selectMonth = false;
     this.selectorEl.nativeElement.focus();
   }
@@ -230,9 +213,11 @@ export class AngularMyDatePickerComponent implements OnDestroy {
       return;
     }
 
-    const yc: boolean = cell.year !== this.visibleMonth.year;
-    this.visibleMonth = {monthTxt: this.visibleMonth.monthTxt, monthNbr: this.visibleMonth.monthNbr, year: cell.year};
-    this.generateCalendar(this.visibleMonth.monthNbr, cell.year, yc);
+    const {year, monthNbr, monthTxt} = this.visibleMonth;
+
+    const yc: boolean = cell.year !== year;
+    this.visibleMonth = {monthTxt: monthTxt, monthNbr: monthNbr, year: cell.year};
+    this.generateCalendar(monthNbr, cell.year, yc);
     this.selectYear = false;
     this.selectorEl.nativeElement.focus();
   }
@@ -255,25 +240,39 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  onPrevYears(event: any, year: number): void {
-    event.stopPropagation();
-    this.generateYears(year - 25);
-  }
+  generateMonths(): void {
+    const today: IMyDate = this.getToday();
+    this.months.length = 0;
 
-  onNextYears(event: any, year: number): void {
-    event.stopPropagation();
-    this.generateYears(year + 25);
-  }
+    const {year, monthNbr} = this.visibleMonth;
+    const {disableUntil, disableSince} = this.opts;
 
-  generateYears(year: number): void {
-    let y: number = year - 12;
-    if (year < this.opts.minYear) {
-      y = this.opts.minYear;
+    for (let i = 1; i <= 12; i += 3) {
+      const row: Array<IMyCalendarMonth> = [];
+      for (let j = i; j < i + 3; j++) {
+        const disabled: boolean = this.utilService.isMonthDisabledByDisableUntil({year: year, month: j, day: this.daysInMonth(j, year)}, disableUntil)
+          || this.utilService.isMonthDisabledByDisableSince({year: year, month: j, day: 1}, disableSince);
+        row.push({nbr: j, name: this.opts.monthLabels[j], currMonth: j === today.month && year === today.year, selected: j === monthNbr && year === this.selectedMonth.year, disabled});
+      }
+      this.months.push(row);
     }
 
-    if (year + 25 > this.opts.maxYear) {
-      y = this.opts.maxYear - 24;
+    this.setMonthViewHeaderBtnDisabledState(year);
+  }
+
+  generateYears(inputYear: number): void {
+    const {minYear, maxYear, disableUntil, disableSince} = this.opts;
+
+    let y: number = inputYear - 12;
+    if (inputYear < minYear) {
+      y = minYear;
     }
+
+    if (inputYear + 25 > maxYear) {
+      y = maxYear - 24;
+    }
+
+    const {year, monthNbr} = this.visibleMonth;
 
     this.years.length = 0;
     const today: IMyDate = this.getToday();
@@ -283,64 +282,65 @@ export class AngularMyDatePickerComponent implements OnDestroy {
       for (let j = i; j < i + 5; j++) {
         const disabled: boolean = this.utilService.isMonthDisabledByDisableUntil({
             year: j,
-            month: this.visibleMonth.monthNbr,
-            day: this.daysInMonth(this.visibleMonth.monthNbr, j)
-          },
-          this.opts.disableUntil) || this.utilService.isMonthDisabledByDisableSince({year: j, month: this.visibleMonth.monthNbr, day: 1}, this.opts.disableSince);
+            month: monthNbr,
+            day: this.daysInMonth(monthNbr, j)
+          }, disableUntil) || this.utilService.isMonthDisabledByDisableSince({year: j, month: monthNbr, day: 1}, disableSince);
 
-        const minMax: boolean = j < this.opts.minYear || j > this.opts.maxYear;
-        row.push({year: j, currYear: j === today.year, selected: j === this.visibleMonth.year, disabled: disabled || minMax});
+        const minMax: boolean = j < minYear || j > maxYear;
+        row.push({year: j, currYear: j === today.year, selected: j === year, disabled: disabled || minMax});
       }
       this.years.push(row);
     }
-    this.prevYearsDisabled = this.years[0][0].year <= this.opts.minYear || this.utilService.isMonthDisabledByDisableUntil({year: this.years[0][0].year - 1, month: this.visibleMonth.monthNbr, day: this.daysInMonth(this.visibleMonth.monthNbr, this.years[0][0].year - 1)}, this.opts.disableUntil);
-    this.nextYearsDisabled = this.years[4][4].year >= this.opts.maxYear || this.utilService.isMonthDisabledByDisableSince({year: this.years[4][4].year + 1, month: this.visibleMonth.monthNbr, day: 1}, this.opts.disableSince);
+
+    this.setYearViewHeaderBtnDisabledState(this.years[0][0].year, this.years[4][4].year);
   }
 
-  setVisibleMonth(): void {
+  setCalendarVisibleMonth(): void {
     // Sets visible month of calendar
-    let y: number = 0;
-    let m: number = 0;
-    if (this.selectedDate.year === 0 && this.selectedDate.month === 0 && this.selectedDate.day === 0) {
-      if (this.selectedMonth.year === 0 && this.selectedMonth.monthNbr === 0) {
-        const today: IMyDate = this.getToday();
-        y = today.year;
-        m = today.month;
-      } else {
-        y = this.selectedMonth.year;
-        m = this.selectedMonth.monthNbr;
-      }
-    }
-    else {
-      y = this.selectedDate.year;
-      m = this.selectedDate.month;
-    }
-    this.visibleMonth = {monthTxt: this.opts.monthLabels[m], monthNbr: m, year: y};
+    const {year, monthNbr} = this.selectedMonth;
+    this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr: monthNbr, year: year};
 
     // Create current month
-    this.generateCalendar(m, y, true);
+    this.generateCalendar(monthNbr, year, true);
   }
 
-  onPrevMonth(event: any): void {
+  onPrevNavigateBtnClicked(event: any): void {
     event.stopPropagation();
 
-    // Previous month from calendar
-    const d: Date = this.getDate(this.visibleMonth.year, this.visibleMonth.monthNbr, 1);
-    d.setMonth(d.getMonth() - 1);
-
-    const y: number = d.getFullYear();
-    const m: number = d.getMonth() + 1;
-
-    this.visibleMonth = {monthTxt: this.opts.monthLabels[m], monthNbr: m, year: y};
-    this.generateCalendar(m, y, true);
+    if (!this.selectMonth && !this.selectYear) {
+      this.setDateViewMonth(false);
+    }
+    else if (this.selectMonth) {
+      this.visibleMonth.year--;
+      this.generateMonths();
+    }
+    else if (this.selectYear) {
+      this.generateYears(this.years[2][2].year - 25);
+    }
   }
 
-  onNextMonth(event: any): void {
+  onNextNavigateBtnClicked(event: any): void {
     event.stopPropagation();
 
-    // Next month from calendar
-    const d: Date = this.getDate(this.visibleMonth.year, this.visibleMonth.monthNbr, 1);
-    d.setMonth(d.getMonth() + 1);
+    if (!this.selectMonth && !this.selectYear) {
+      this.setDateViewMonth(true);
+    }
+    else if (this.selectMonth) {
+      this.visibleMonth.year++;
+      this.generateMonths();
+    }
+    else if (this.selectYear) {
+      this.generateYears(this.years[2][2].year + 25);
+    }
+  }
+
+  setDateViewMonth(isNext: boolean): void {
+    let change: number = isNext ? 1 : -1;
+
+    const {year, monthNbr} = this.visibleMonth;
+
+    const d: Date = this.getDate(year, monthNbr, 1);
+    d.setMonth(d.getMonth() + change);
 
     const y: number = d.getFullYear();
     const m: number = d.getMonth() + 1;
@@ -449,6 +449,8 @@ export class AngularMyDatePickerComponent implements OnDestroy {
   }
 
   selectDate(date: IMyDate): void {
+    const {dateFormat, monthLabels, dateRangeDatesDelimiter, closeSelectorOnDateSelect} = this.opts;
+
     if (this.opts.dateRange) {
       // Date range
       const isBeginDateInitialized: boolean = this.utilService.isInitializedDate(this.selectedDateRange.begin);
@@ -461,8 +463,8 @@ export class AngularMyDatePickerComponent implements OnDestroy {
           isBegin: true,
           date,
           jsDate: this.utilService.getDate(date),
-          dateFormat: this.opts.dateFormat,
-          formatted: this.utilService.formatDate(date, this.opts.dateFormat, this.opts.monthLabels),
+          dateFormat: dateFormat,
+          formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
           epoc: this.utilService.getEpocTime(date)
         });
       }
@@ -473,8 +475,8 @@ export class AngularMyDatePickerComponent implements OnDestroy {
           isBegin: true,
           date,
           jsDate: this.utilService.getDate(date),
-          dateFormat: this.opts.dateFormat,
-          formatted: this.utilService.formatDate(date, this.opts.dateFormat, this.opts.monthLabels),
+          dateFormat: dateFormat,
+          formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
           epoc: this.utilService.getEpocTime(date)
         });
 
@@ -488,8 +490,8 @@ export class AngularMyDatePickerComponent implements OnDestroy {
             isBegin: true,
             date,
             jsDate: this.utilService.getDate(date),
-            dateFormat: this.opts.dateFormat,
-            formatted: this.utilService.formatDate(date, this.opts.dateFormat, this.opts.monthLabels),
+            dateFormat: dateFormat,
+            formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
             epoc: this.utilService.getEpocTime(date)
           });
         }
@@ -499,19 +501,19 @@ export class AngularMyDatePickerComponent implements OnDestroy {
             isBegin: false,
             date,
             jsDate: this.utilService.getDate(date),
-            dateFormat: this.opts.dateFormat,
-            formatted: this.utilService.formatDate(date, this.opts.dateFormat, this.opts.monthLabels),
+            dateFormat: dateFormat,
+            formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
             epoc: this.utilService.getEpocTime(date)
           });
 
-          this.dateChanged(this.utilService.getDateModel(null, this.selectedDateRange, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter), this.opts.closeSelectorOnDateSelect);
+          this.dateChanged(this.utilService.getDateModel(null, this.selectedDateRange, dateFormat, monthLabels, dateRangeDatesDelimiter), closeSelectorOnDateSelect);
         }
       }
     }
     else {
       // Single date
       this.selectedDate = date;
-      this.dateChanged(this.utilService.getDateModel(this.selectedDate, null, this.opts.dateFormat, this.opts.monthLabels, this.opts.dateRangeDatesDelimiter), this.opts.closeSelectorOnDateSelect);
+      this.dateChanged(this.utilService.getDateModel(this.selectedDate, null, dateFormat, monthLabels, dateRangeDatesDelimiter), closeSelectorOnDateSelect);
     }
   }
 
@@ -641,7 +643,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
       this.dates.push({week, weekNbr});
     }
 
-    this.setHeaderBtnDisabledState(m, y);
+    this.setDateViewHeaderBtnDisabledState(m, y);
 
     if (notifyChange) {
       // Notify parent
@@ -649,14 +651,45 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  setHeaderBtnDisabledState(m: number, y: number): void {
+  setDateViewHeaderBtnDisabledState(m: number, y: number): void {
     let dpm: boolean = false;
     let dnm: boolean = false;
-    if (this.opts.disableHeaderButtons) {
-      dpm = this.utilService.isMonthDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, this.opts.disableUntil);
-      dnm = this.utilService.isMonthDisabledByDisableSince({year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1}, this.opts.disableSince);
+
+    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
+
+    if (disableHeaderButtons) {
+      dpm = this.utilService.isMonthDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, disableUntil);
+      dnm = this.utilService.isMonthDisabledByDisableSince({year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1}, disableSince);
     }
-    this.prevMonthDisabled = m === 1 && y === this.opts.minYear || dpm;
-    this.nextMonthDisabled = m === 12 && y === this.opts.maxYear || dnm;
+    this.prevViewDisabled = m === 1 && y === minYear || dpm;
+    this.nextViewDisabled = m === 12 && y === maxYear || dnm;
+  }
+
+  setMonthViewHeaderBtnDisabledState(y: number): void {
+    let dpm: boolean = false;
+    let dnm: boolean = false;
+
+    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
+
+    if (disableHeaderButtons) {
+      dpm = this.utilService.isMonthDisabledByDisableUntil({year: y - 1, month: 12, day: 31}, disableUntil);
+      dnm = this.utilService.isMonthDisabledByDisableSince({year: y + 1, month: 1, day: 1}, disableSince);
+    }
+    this.prevViewDisabled = y === minYear || dpm;
+    this.nextViewDisabled = y === maxYear || dnm;
+  }
+
+  setYearViewHeaderBtnDisabledState(yp: number, yn: number): void {
+    let dpy: boolean = false;
+    let dny: boolean = false;
+
+    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
+
+    if (disableHeaderButtons) {
+      dpy = this.utilService.isMonthDisabledByDisableUntil({year: yp - 1, month: 12, day: 31}, disableUntil);
+      dny = this.utilService.isMonthDisabledByDisableSince({year: yn + 1, month: 1, day: 1}, disableSince);
+    }
+    this.prevViewDisabled = yp <= minYear || dpy;
+    this.nextViewDisabled = yn >= maxYear || dny;
   }
 }

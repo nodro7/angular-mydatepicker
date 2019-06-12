@@ -1,5 +1,5 @@
 export interface IMyMonth {
-  monthTxt: string;
+  monthTxt?: string;
   monthNbr: number;
   year: number;
 }
