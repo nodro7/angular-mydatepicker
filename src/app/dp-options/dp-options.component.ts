@@ -112,18 +112,22 @@ export class DpOptionsComponent implements OnInit {
         styles: `
         .dp1 .myDpIconLeftArrow,
         .dp1 .myDpIconRightArrow,
-        .dp1 .myDpHeaderBtn,
+        .dp1 .myDpHeaderBtn {
+          color: #3855c1;
+        }
         .dp1 .myDpDaycell, 
         .dp1 .myDpMonthcell,
         .dp1 .myDpYearcell {
-          color: #3855c1;
-        }
-        .dp1 .myDpCurrMonth {
-          background-color: #e6e6fa;
+          color: #057f1f;
         }
         .dp1 .myDpWeekDayTitle {
           background-color: #decdab;
           color: #781bb3;
+        }
+        .dp1 .myDpHeaderBtnEnabled:hover,
+        .dp1 .myDpMonthLabel:hover,
+        .dp1 .myDpYearLabel:hover {
+          color: #777;
         }
         
       `
