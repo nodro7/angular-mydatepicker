@@ -17,6 +17,13 @@
 
 Highly configurable Angular datepicker and date range picker.
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The component is tested with Angular version 7.2.0.
+
+Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
+
+Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
+
+
 ### Features
 
 * no dependencies to other libraries
@@ -27,12 +34,6 @@ Highly configurable Angular datepicker and date range picker.
   * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
   * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
 * change value of any [option](https://github.com/kekeh/angular-mydatepicker#options-attribute) dynamically 
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The component is tested with Angular version 7.2.0.
-
-Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
-
-Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
 
 ## Code examples
@@ -149,14 +150,60 @@ Value of the __options__ attribute is a type of [IAngularMyDpOptions](https://gi
 
 ### locale attribute
 
-An ISO 639-1 language code can be provided as shorthand for the following options (dayLabels, monthLabels, dateFormat, firstDayOfWeek and sunHighlight).
-Currently supported languages: __en__, __fr__, __fr-ch__, __ja__, __fi__, __es__, __hu__, __sv__, __nl__, __ru__, __uk__, __no__, __tr__,
-__pt-br__, __de__, __de-ch__, __it__, __it-ch__, __pl__, __my__, __sk__, __sl__, __zh-cn__, __he__, __ro__, __ca__, __id__, __en-au__, __am-et__, __cs__, __el__, __kk__,
-__th__, __ko-kr__, __da__, __lt__, __vi__, __bn__, __bg__, __hr__, __ar__,  __is__, __tw__, __lv__ and __et__.
+An __ISO 639-1__ language code can be provided as shorthand for the following options (dayLabels, monthLabels, dateFormat, firstDayOfWeek and sunHighlight).
+Currently supported locales are: 
+
+| Locale id | Description |
+| :------------- | :------------- |
+| __en__   | English |
+| __fr__   | French |
+| __fr-ch__ | French - Switzerland |
+| __ja__ | Japanese |
+| __fi__ | Finnish |
+| __es__ | Spanish |
+| __hu__ | Hungarian |
+| __sv__ | Swedish |
+| __nl__ | Dutch |
+| __ru__ | Russian |
+| __uk__ | Ukrainian |
+| __no__ | Norwegian |
+| __tr__ | Turkish |
+| __pt-br__ | Portuguese - Brazil |
+| __de__ | German |
+| __de-ch__ | German - Switzerland |
+| __it__ | Italian |
+| __it-ch__ | Italian - Switzerland |
+| __pl__ | Polish |
+| __my__ | Burmese |
+| __sk__ | Slovak |
+| __sl__ | Slovenian |
+| __zh-cn__ | Chinese - China |
+| __he__ | Hebrew |
+| __ro__ | Romanian - Romania |
+| __ca__ | Catalan |
+| __id__ | Indonesian |
+| __en-au__ | English - Australia |
+| __am-et__ | Amharic |
+| __cs__ | Czech |
+| __el__ | Greek |
+| __kk__ | Kazakh |
+| __th__ | Thai |
+| __ko-kr__ | Korean |
+| __da__ | Danish |
+| __lt__ | Lithuanian |
+| __vi__ | Vietnamese |
+| __bn__ | Bengali |
+| __bg__ | Bulgarian |
+| __hr__ | Croatian |
+| __ar__ | Arabic |
+| __is__ | Icelandic |
+| __tw__ | Chinese - Taiwan |
+| __lv__ | Latvian |
+| __et__ | Estonian |
 
 The __locale__ options can be overridden by __options__ attribute.
 
-* new locale data can be added to [this](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/services/angular-mydatepicker.locale.service.ts)
+* a new locale data will be added to [this](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/services/angular-mydatepicker.locale.service.ts)
 file. If you want to add a new locale create a pull request.
 
 ### defaultMonth attribute

@@ -137,3 +137,13 @@
 ### Features
 
 * none
+
+# 0.0.15 (2019-06-15)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Just updating the README file.
