@@ -206,6 +206,8 @@ The __locale__ options can be overridden by __options__ attribute.
 * a new locale data will be added to [this](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/services/angular-mydatepicker.locale.service.ts)
 file. If you want to add a new locale create a pull request.
 
+[Here](https://github.com/kekeh/angular-mydatepicker/wiki/locale-attribute) is an example on how to use the __locale__ attribute.
+
 ### defaultMonth attribute
 
 Visible month/year when calendar is opened:
