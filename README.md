@@ -91,7 +91,7 @@ Example:
 In this option the value accessor of reactive forms is used.
 
 Examples:
-* [reactive forms (bootstrap 4 and font awesome)](https://github.com/kekeh/angular-mydatepicker/wiki/reactive-forms-(bootstrap-4-and-font-awesome)))
+* [reactive forms (bootstrap 4 and font awesome)](https://github.com/kekeh/angular-mydatepicker/wiki/reactive-forms-(bootstrap-4-and-font-awesome))
 * [example application](https://github.com/kekeh/angular-mydatepicker/tree/master/example/app/date-picker-reactive-forms)
 
 
