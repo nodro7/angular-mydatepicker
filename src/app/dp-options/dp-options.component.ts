@@ -113,25 +113,44 @@ export class DpOptionsComponent implements OnInit {
         .dp1 .myDpIconLeftArrow,
         .dp1 .myDpIconRightArrow,
         .dp1 .myDpHeaderBtn {
-          color: #3855c1;
+            color: #3855c1;
         }
-        .dp1 .myDpDaycell, 
+        .dp1 .myDpCurrMonth,
         .dp1 .myDpMonthcell,
         .dp1 .myDpYearcell {
-          color: #057f1f;
+            color: #3855c1;
+        }
+        .dp1 .myDpPrevMonth,
+        .dp1 .myDpNextMonth {
+            color: #5f9ea0;
         }
         .dp1 .myDpWeekDayTitle {
-          background-color: #decdab;
-          color: #781bb3;
+            background-color: #5289ec;
+            color: #ffffff;
         }
         .dp1 .myDpHeaderBtnEnabled:hover,
         .dp1 .myDpMonthLabel:hover,
         .dp1 .myDpYearLabel:hover {
-          color: #777;
+            color: #add8e6;
         }
-        
+        .dp1 .myDpMarkCurrDay, 
+        .dp1 .myDpMarkCurrMonth, 
+        .dp1 .myDpMarkCurrYear {
+            border-bottom: 2px solid #3855c1;
+        }
+        .dp1 .myDpDisabled {
+            color: #999;
+        }
+        .dp1 .myDpHighlight {
+            color: #cd5c5c;
+        }
+        .dp1 .myDpTableSingleDay:hover, 
+        .dp1 .myDpTableSingleMonth:hover, 
+        .dp1 .myDpTableSingleYear:hover {
+            background-color: #add8e6;
+        }
       `
-      } : {selector: '', styles: ''}
+      } : {selector: '', styles: ''};
     this.myOptions = copy;
   }
 
