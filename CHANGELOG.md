@@ -117,3 +117,13 @@
 ### Features
 
 * none
+
+# 0.0.13 (2019-06-15)
+
+### Bug Fixes
+
+* Fixed disabled cell hover bug in the month and the year view.
+
+### Features
+
+* none

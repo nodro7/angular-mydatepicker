@@ -15,6 +15,19 @@
   margin: 0;
 }
 
+.ng-mydp table {
+  display: table;
+  border-spacing: 0;
+}
+
+.ng-mydp table td,
+.ng-mydp table th {
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  border: none;
+}
+
 .myDpSelector {
   padding: 0;
   border: 1px solid #CCC;
@@ -139,6 +152,10 @@
   text-align: center;
 }
 
+.myDpDaycell {
+  position: relative;
+}
+
 .myDpWeekDayTitle {
   background-color: #DDD;
   font-size: 11px;
@@ -153,7 +170,6 @@
 
 .myDpWeekDayTitleWeekNbr {
   width: 20px;
-  border-right: 1px solid #BBB;
 }
 
 .myDpMonthcell {
@@ -167,20 +183,16 @@
   width: 20%;
 }
 
-.myDpDaycell .myDpDateValue {
-  background-color: inherit;
-  vertical-align: middle;
-}
-
-.myDpDaycell .myDpDateValue span {
-  vertical-align: middle;
-}
-
 .myDpDaycellWeekNbr {
   font-size: 10px;
-  border-right: 1px solid #CCC;
   cursor: default;
-  color: #000;
+  text-align: center;
+  color: #003366;
+}
+
+.myDpCalTable th.myDpWeekDayTitleWeekNbr,
+.myDpCalTable td.myDpDaycellWeekNbr {
+  border-right: 1px solid #CCC;
 }
 
 .myDpPrevMonth,
@@ -253,7 +265,8 @@
   width: 4px;
   height: 4px;
   border-radius: 4px;
-  margin-left: 5px;
+  top: 4px;
+  left: 4px;
 }
 
 .myDpMarkCurrDay,
@@ -330,23 +343,6 @@
   cursor: default;
   color: #999;
   background: #FBEFEF;
-}
-
-.ng-mydp table {
-  display: table;
-  border-spacing: 0;
-}
-
-.ng-mydp table,
-.ng-mydp td {
-  border: none;
-}
-
-.ng-mydp table td,
-.ng-mydp table th {
-  padding: 0;
-  vertical-align: middle;
-  border-bottom: initial;
 }
 
 @font-face {

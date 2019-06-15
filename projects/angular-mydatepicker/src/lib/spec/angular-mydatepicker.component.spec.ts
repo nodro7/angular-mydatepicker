@@ -1902,7 +1902,7 @@ describe('AngularMyDatePickerComponent', () => {
     monthlabel.click();
 
     fixture.detectChanges();
-    let monthvalue = getElements('.monthvalue');
+    let monthvalue = getElements('.myDpMonthValue');
     expect(monthvalue).not.toBe(null);
     expect(monthvalue.length).toBe(12);
 

@@ -17,18 +17,19 @@
       <thead><tr><th class="myDpWeekDayTitle myDpWeekDayTitleWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">#</th><th class="myDpWeekDayTitle" scope="col" *ngFor="let d of weekDays">{{d}}</th></tr></thead>
       <tbody>
         <tr *ngFor="let w of dates; let di = index">
-          <td class="myDpDaycell myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
+          <td class="myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
           <td id="d_{{di}}_{{i}}" class="d_{{di}}_{{i}} myDpDaycell" *ngFor="let d of w.week; let i = index"
               [ngClass]="{'myDpRangeColor': isDateInRange(d.dateObj, selectedDateRange) || d.range,
+              'myDpPrevMonth': d.cmo === prevMonthId,
               'myDpCurrMonth':d.cmo === currMonthId && !d.disabled,
+              'myDpNextMonth': d.cmo === nextMonthId,
               'myDpSelectedDay':!this.opts.dateRange && isDateSame(selectedDate, d.dateObj) || this.opts.dateRange && isDateRangeBeginOrEndSame(selectedDateRange, d.dateObj),
-              'myDpDisabled': d.disabled,'myDpTableSingleDay': !d.disabled}"
+              'myDpDisabled': d.disabled,
+              'myDpTableSingleDay': !d.disabled}"
               (click)="onDateCellClicked($event, d)" (keydown)="onDateCellKeyDown($event, d)"
               (mouseenter)="onDateCellMouseEnter(d)" (mouseleave)="onDateCellMouseLeave()" tabindex="0">
-            <div *ngIf="d.markedDate.marked" class="myDpMarkDate" [ngStyle]="{'background-color': d.markedDate.color}"></div>
-            <div class="myDpDateValue" [ngClass]="{'myDpPrevMonth': d.cmo === prevMonthId, 'myDpCurrMonth': d.cmo === currMonthId, 'myDpNextMonth': d.cmo === nextMonthId, 'myDpHighlight': d.highlight}">
-              <span [ngClass]="{'myDpMarkCurrDay': d.currDay&&opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabled)}">{{d.dateObj.day}}</span>
-            </div>
+            <span *ngIf="d.markedDate.marked" class="myDpMarkDate" [ngStyle]="{'background-color': d.markedDate.color}"></span>
+            <span  class="myDpDayValue" [ngClass]="{'myDpMarkCurrDay': d.currDay && opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabled), 'myDpHighlight': d.highlight}">{{d.dateObj.day}}</span>
           </td>
         </tr>
       </tbody>
@@ -36,10 +37,10 @@
     <table class="myDpMonthTable" *ngIf="selectMonth">
       <tbody>
         <tr *ngFor="let mr of months; let mi = index">
-          <td id="m_{{mi}}_{{i}}" class="m_{{mi}}_{{i}} myDpMonthcell myDpTableSingleMonth" [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled}" *ngFor="let m of mr; let i = index" (click)="onMonthCellClicked($event, m)" (keydown)="onMonthCellKeyDown($event, m)" tabindex="0">
-            <div class="monthvalue">
-              <span [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
-            </div>
+          <td id="m_{{mi}}_{{i}}" class="m_{{mi}}_{{i}} myDpMonthcell"
+              [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled, 'myDpTableSingleMonth': !m.disabled}"
+              *ngFor="let m of mr; let i = index" (click)="onMonthCellClicked($event, m)" (keydown)="onMonthCellKeyDown($event, m)" tabindex="0">
+            <span class="myDpMonthValue" [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
           </td>
         </tr>
       </tbody>
@@ -47,10 +48,10 @@
     <table class="myDpYearTable" *ngIf="selectYear">
       <tbody>
         <tr *ngFor="let yr of years; let yi = index">
-          <td id="y_{{yi}}_{{i}}" class="y_{{yi}}_{{i}} myDpYearcell myDpTableSingleYear" [ngClass]="{'myDpSelectedYear': y.selected, 'myDpDisabled': y.disabled}" *ngFor="let y of yr; let i = index" (click)="onYearCellClicked($event, y)" (keydown)="onYearCellKeyDown($event, y)" tabindex="0">
-            <div class="yearvalue">
-              <span [ngClass]="{'myDpMarkCurrYear': y.currYear && opts.markCurrentYear}">{{y.year}}</span>
-            </div>
+          <td id="y_{{yi}}_{{i}}" class="y_{{yi}}_{{i}} myDpYearcell"
+              [ngClass]="{'myDpSelectedYear': y.selected, 'myDpDisabled': y.disabled, 'myDpTableSingleYear': !y.disabled}"
+              *ngFor="let y of yr; let i = index" (click)="onYearCellClicked($event, y)" (keydown)="onYearCellKeyDown($event, y)" tabindex="0">
+            <span class="myDpYearValue" [ngClass]="{'myDpMarkCurrYear': y.currYear && opts.markCurrentYear}">{{y.year}}</span>
           </td>
         </tr>
       </tbody>
