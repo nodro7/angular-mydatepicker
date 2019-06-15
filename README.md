@@ -150,7 +150,7 @@ Value of the __options__ attribute is a type of [IAngularMyDpOptions](https://gi
 
 ### locale attribute
 
-An __ISO 639-1__ language code can be provided as shorthand for the following options (dayLabels, monthLabels, dateFormat, firstDayOfWeek and sunHighlight).
+An __ISO 639-1__ language code can be provided as shorthand for the following options (__dayLabels__, __monthLabels__, __dateFormat__, __firstDayOfWeek__ and __sunHighlight__).
 Currently supported locales are: 
 
 | Locale id | Description |
