@@ -127,3 +127,13 @@
 ### Features
 
 * none
+
+# 0.0.14 (2019-06-15)
+
+### Bug Fixes
+
+* Fixed month view visible month bug.
+
+### Features
+
+* none

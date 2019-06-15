@@ -127,10 +127,10 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.setCalendarVisibleMonth();
 
     if (defaultView === DefaultView.Month) {
-      this.onSelectMonthClicked();
+      this.onMonthViewClicked();
     }
     else if (defaultView === DefaultView.Year) {
-      this.onSelectYearClicked();
+      this.onYearViewClicked();
     }
   }
 
@@ -149,7 +149,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectYear = false;
   }
 
-  onSelectMonthClicked(event: any = null): void {
+  onMonthViewClicked(event: any = null): void {
     if (event) {
       event.stopPropagation();
     }
@@ -158,6 +158,9 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.cdr.detectChanges();
     if (this.selectMonth) {
       this.generateMonths();
+    }
+    else {
+      this.visibleMonth.year = this.selectedMonth.year;
     }
   }
 
@@ -195,10 +198,13 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  onSelectYearClicked(event: any = null): void {
+  onYearViewClicked(event: any = null): void {
     if (event) {
       event.stopPropagation();
     }
+
+    this.visibleMonth.year = this.selectedMonth.year;
+
     this.cdr.detectChanges();
     if (!this.selectYear) {
       this.generateYears(this.visibleMonth.year);
