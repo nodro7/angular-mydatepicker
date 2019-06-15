@@ -228,7 +228,7 @@
                 <form>
                   <!-- bootstrap 3
                     <div class="input-group">
-                        <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate"
+                        <input class="form-control" placeholder="{{!myDatePickerOptions.dateRange ? 'Select a date' : 'Select a date range'}}" angular-mydatepicker name="mydate"
                                [(ngModel)]="model" [options]="myDatePickerOptions" [defaultMonth]="defMonth" [locale]="locale" #dp="angular-mydatepicker"
                                (dateChanged)="onDateChanged($event)" (calendarViewChanged)="onCalendarViewChanged($event)"
                                (calendarToggle)="onCalendarToggle($event)" (inputFieldChanged)="onInputFieldChanged($event)" [attr.disabled]="disabled?'':null" autocomplete="off"/>
@@ -241,7 +241,7 @@
                   -->
 
                   <div class="input-group">
-                    <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate"
+                    <input class="form-control" placeholder="{{!myDatePickerOptions.dateRange ? 'Select a date' : 'Select a date range'}}" angular-mydatepicker name="mydate"
                            [(ngModel)]="model" [options]="myDatePickerOptions" [defaultMonth]="defMonth" [locale]="locale" #dp="angular-mydatepicker"
                            (dateChanged)="onDateChanged($event)" (calendarViewChanged)="onCalendarViewChanged($event)"
                            (calendarToggle)="onCalendarToggle($event)" (inputFieldChanged)="onInputFieldChanged($event)"

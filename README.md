@@ -15,11 +15,22 @@
 
 ## Description
 
-Highly configurable Angular datepicker and date range picker. No dependencies to other libraries.
+Highly configurable Angular datepicker and date range picker.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The library is tested with Angular version 7.2.0.
+### Features
 
-Source code of the datepicker is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
+* no dependencies to other libraries
+* currently [localized](https://github.com/kekeh/angular-mydatepicker#locale-attribute) to 45 languages
+* datepicker and date range picker
+* normal and inline mode
+* set styles to the component which are in line with your page theme
+  * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
+  * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
+* change value of any [option](https://github.com/kekeh/angular-mydatepicker#options-attribute) dynamically 
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The component is tested with Angular version 7.2.0.
+
+Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
@@ -57,139 +68,32 @@ To install this component to an external project, follow the procedure:
     
 ## Usage
 
-Use one of the following two options. The examples below use the [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/) and the [font-awesome](https://fontawesome.com/), but you can use datepicker also without them.
+Use one of the following two options.
 
 ### 1. ngModel binding
 
-In this option the ngModel binding is used.
+In this option the __ngModel__ binding is used.
 
-To use __ngModel__ define the application class as follows:
+Examples:
+* [bootstrap 4 and font awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example)
+* [own style in input box (no bootstrap)](https://github.com/kekeh/angular-mydatepicker/wiki/Own-style-in-input-box-(no-bootstrap))
+* [example application](https://github.com/kekeh/angular-mydatepicker/tree/master/example/app/date-picker-ngmodel)
 
-```ts
-import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
-// other imports are here...
-
-export class MyTestApp {
-  private myOptions: IAngularMyDpOptions = {
-    dateRange: false,      // If false = date picker, if true = date range picker
-    dateFormat: 'dd.mm.yyyy'
-    // other options are here...
-  };
-
-  private model: IMyDateModel = null;
-
-  constructor() { }
-
-  // optional date changed callback
-  onDateChanged(event: IMyDateModel): void {
-    // date selected
-  }
-}
-```
-
-If you are using bootstrap 4 add the following snippet inside your template:
-* example adds __bootstrap__ input group and __font-awesome__ icons
-```html
-<div class="input-group">
-  <input class="form-control" placeholder="Select a date" angular-mydatepicker name="mydate"
-         [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"/>
-  <div class="input-group-append">
-    <button type="button" class="btn btn-secondary" (click)="dp.clearDate()">
-      <i class="fa fa-close"></i>
-    </button>
-  </div>
-  <div class="input-group-append">
-    <button type="button" class="btn btn-secondary" (click)="dp.toggleCalendar()">
-      <i class="fa fa-calendar-o"></i>
-    </button>
-  </div>
-</div>
-```
 
 There are two ways to set an initial date to the model.
 
-  * Initialize with the __IMyDate__ object:
-  ```ts
-  // Initialized to specific date (05.05.2019)
-  model: IMyDateModel = {isRange: false, singleDate: {date: { year: 2019, month: 5, day: 5 }}};
-  ```
+Example:
+* [initialize date model](https://github.com/kekeh/angular-mydatepicker/wiki/initialize-date-model)
 
-  * Initialize with the __javascript date__ object:
-  ```ts
-  // Initialized to today
-  model: IMyDateModel = {isRange: false, singleDate: {jsDate: new Date()}};
-  ```
   
 ### 2. Reactive forms
 
-In this option the value accessor of reactive forms is used. [Here](https://github.com/kekeh/angular-mydatepicker/tree/master/example/app/date-picker-reactive-forms)
-is an example application. It shows how to use the __formControlName__.
+In this option the value accessor of reactive forms is used.
 
-To use __reactive forms__ define the application class as follows:
+Examples:
+* [reactive forms (bootstrap 4 and font awesome)](https://github.com/kekeh/angular-mydatepicker/wiki/reactive-forms-(bootstrap-4-and-font-awesome)))
+* [example application](https://github.com/kekeh/angular-mydatepicker/tree/master/example/app/date-picker-reactive-forms)
 
-```ts
-import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
-// other imports are here...
-
-export class MyTestApp implements OnInit {
-
-  myOptions: IAngularMyDpOptions = {
-    dateRange: false,      // If false = date picker, if true = date range picker
-    dateFormat: 'dd.mm.yyyy'
-    // other options...
-  };
-
-  private myForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
-
-  ngOnInit() {
-    // Initialize to today date
-    let model: IMyDateModel = {isRange: false, singleDate: {jsDate: new Date()}, dateRange: null};
-    this.myForm = this.formBuilder.group({
-      myDate: [model, Validators.required]
-      // other controls are here...
-    });
-  }
-
-  setDate(): void {
-    // Set today date using the patchValue function
-    let model: IMyDateModel = {isRange: false, singleDate: {jsDate: new Date()}, dateRange: null};
-    this.myForm.patchValue({myDate: model);
-  }
-
-  clearDate(): void {
-    // Clear the date using the patchValue function
-    this.myForm.patchValue({myDate: null});
-  }
-}
-```
-
-Add the following snippet inside your template:
-* example adds __bootstrap__ input group and __font-awesome__ icons
-```html
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="input-group">
-        <input class="form-control" placeholder="Select a date" angular-mydatepicker name="myDate" 
-          formControlName="myDate"[options]="myOptions" #dp="angular-mydatepicker"/>
-        <div class="input-group-append">
-          <button type="button" class="btn btn-secondary" (click)="dp.clearDate()">
-            <i class="fa fa-close"></i>
-          </button>
-        </div>
-        <div class="input-group-append">
-          <button type="button" class="btn btn-secondary" (click)="dp.toggleCalendar()">
-            <i class="fa fa-calendar-o"></i>
-          </button>
-        </div>
-    </div>
-
-    <div class="btnGroup">
-        <button class="button" type="submit" [disabled]="myForm.controls.myDate.errors">Submit</button>
-        <p class="error" *ngIf="myForm.controls.myDate.errors">Date is required!</p>
-    </div>
-</form>
-```
 
 ## Attributes
 
@@ -381,9 +285,10 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 It is possible to override styles of datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
 It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.component.css) styles. 
 
-Examples of the option:
+Usage examples of the __stylesData__ option:
 * [single date picker on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-single-datepicker)
 * [multiple datepickers on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page)
+* [change color theme of datepicker](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker)
 
 ## Development of this component
 
