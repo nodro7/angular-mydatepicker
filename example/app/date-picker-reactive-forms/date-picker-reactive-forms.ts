@@ -1,6 +1,6 @@
 import {Component, OnInit, Renderer2,} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {IAngularMyDpOptions, IMyDateModel} from '../../../projects/angular-mydatepicker/src/lib';
+import {IAngularMyDpOptions, IMyDateModel} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
   selector: 'date-picker-reactive-forms',

@@ -147,3 +147,13 @@
 ### Features
 
 * Just updating the README file.
+
+# 0.1.0 (2019-06-16)
+
+### Bug Fixes
+
+* Fixed year view selection bug.
+
+### Features
+
+* Refactoring code.

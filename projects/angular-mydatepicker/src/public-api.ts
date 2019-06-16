@@ -3,13 +3,17 @@
  */
 export {AngularMyDatePickerModule} from "./lib/angular-mydatepicker.module";
 export {AngularMyDatePickerDirective} from "./lib/angular-mydatepicker.input";
-export {AngularMyDatePickerComponent} from "./lib/angular-mydatepicker.component";
+export {CalendarComponent} from "./lib/components/calendar/calendar.component";
+export {DayViewComponent} from "./lib/components/day-view/day-view.component";
+export {MonthViewComponent} from "./lib/components/month-view/month-view.component";
+export {YearViewComponent} from "./lib/components/year-view/year-view.component";
+export {SelectionBarComponent} from "./lib/components/selection-bar/selection-bar.component";
 
 export {UtilService} from "./lib/services/angular-mydatepicker.util.service";
 export {DefaultConfigService} from "./lib/services/angular-mydatepicker.config.service";
 export {LocaleService} from "./lib/services/angular-mydatepicker.locale.service";
 
-export {AngularMyDatePickerFocusDirective} from "./lib/directives/angular-mydatepicker.focus.directive";
+export {AngularMyDatePickerFocusDirective} from "./lib/directives/angular-mydatepicker-focus.directive";
 
 export {IMyCalendarDay} from "./lib/interfaces/my-calendar-day.interface";
 export {IMyCalendarMonth} from "./lib/interfaces/my-calendar-month.interface";

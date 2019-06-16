@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IAngularMyDpOptions, IMyDateModel, IMyCalendarViewChanged, IMyRangeDateSelection} from '../../../projects/angular-mydatepicker/src/lib';
+import {IAngularMyDpOptions, IMyDateModel, IMyCalendarViewChanged, IMyRangeDateSelection} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
   selector: 'date-picker-inline',

@@ -1,0 +1,11 @@
+<table class="myDpMonthTable">
+  <tbody>
+    <tr *ngFor="let mr of months; let mi = index">
+      <td id="m_{{mi}}_{{i}}" class="m_{{mi}}_{{i}} myDpMonthcell"
+          [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled, 'myDpTableSingleMonth': !m.disabled}"
+          *ngFor="let m of mr; let i = index" (click)="onMonthCellClicked($event, m)" (keydown)="onMonthCellKeyDown($event, m)" tabindex="0">
+        <span class="myDpMonthValue" [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

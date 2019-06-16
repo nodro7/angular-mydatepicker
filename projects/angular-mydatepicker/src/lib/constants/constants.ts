@@ -45,6 +45,19 @@ const OBJECT = "object";
 const PX = "px";
 const STYLE = "style";
 
+const OPTS = "opts";
+const YEARS = "years";
+const VISIBLE_MONTH = "visibleMonth";
+const SELECT_MONTH = "selectMonth";
+const SELECT_YEAR = "selectYear";
+const PREV_VIEW_DISABLED = "prevViewDisabled";
+const NEXT_VIEW_DISABLED = "nextViewDisabled";
+const DATES = "dates";
+const WEEK_DAYS = "weekDays";
+const SELECTED_DATE = "selectedDate";
+const SELECTED_DATE_RANGE = "selectedDateRange";
+const MONTHS = "months";
+
 const PREVENT_CLOSE_TIMEOUT = 50;
 
 export {
@@ -85,5 +98,17 @@ export {
   OBJECT,
   PX,
   STYLE,
+  OPTS,
+  YEARS,
+  VISIBLE_MONTH,
+  SELECT_MONTH,
+  SELECT_YEAR,
+  PREV_VIEW_DISABLED,
+  NEXT_VIEW_DISABLED,
+  DATES,
+  WEEK_DAYS,
+  SELECTED_DATE,
+  SELECTED_DATE_RANGE,
+  MONTHS,
   PREVENT_CLOSE_TIMEOUT
 };

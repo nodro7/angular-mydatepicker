@@ -1,31 +1,31 @@
 import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, OnDestroy} from "@angular/core";
-import {IMyDate} from "./interfaces/my-date.interface";
-import {IMyDateRange} from "./interfaces/my-date-range.interface";
-import {IMyMonth} from "./interfaces/my-month.interface";
-import {IMyCalendarDay} from "./interfaces/my-calendar-day.interface";
-import {IMyCalendarMonth} from "./interfaces/my-calendar-month.interface";
-import {IMyCalendarYear} from "./interfaces/my-calendar-year.interface";
-import {IMyWeek} from "./interfaces/my-week.interface";
-import {IMyOptions} from "./interfaces/my-options.interface";
-import {IMySelectorPosition} from "./interfaces/my-selector-pos.interface";
-import {IMyCalendarViewChanged} from "./interfaces/my-calendar-view-changed.interface";
-import {IMyDateModel} from "./interfaces/my-date-model.interface";
-import {IMyRangeDateSelection} from "./interfaces/my-range-date-selection.interface";
-import {UtilService} from "./services/angular-mydatepicker.util.service";
-import {KeyCode} from "./enums/key-code.enum";
-import {MonthId} from "./enums/month-id.enum";
-import {ResetDateType} from "./enums/reset-date-type.enum";
-import {DefaultView} from "./enums/default-view.enum";
-import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE} from "./constants/constants";
+import {IMyDate} from "../../interfaces/my-date.interface";
+import {IMyDateRange} from "../../interfaces/my-date-range.interface";
+import {IMyMonth} from "../../interfaces/my-month.interface";
+import {IMyCalendarDay} from "../../interfaces/my-calendar-day.interface";
+import {IMyCalendarMonth} from "../../interfaces/my-calendar-month.interface";
+import {IMyCalendarYear} from "../../interfaces/my-calendar-year.interface";
+import {IMyWeek} from "../../interfaces/my-week.interface";
+import {IMyOptions} from "../../interfaces/my-options.interface";
+import {IMySelectorPosition} from "../../interfaces/my-selector-pos.interface";
+import {IMyCalendarViewChanged} from "../../interfaces/my-calendar-view-changed.interface";
+import {IMyDateModel} from "../../interfaces/my-date-model.interface";
+import {IMyRangeDateSelection} from "../../interfaces/my-range-date-selection.interface";
+import {UtilService} from "../../services/angular-mydatepicker.util.service";
+import {KeyCode} from "../../enums/key-code.enum";
+import {MonthId} from "../../enums/month-id.enum";
+import {ResetDateType} from "../../enums/reset-date-type.enum";
+import {DefaultView} from "../../enums/default-view.enum";
+import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE} from "../../constants/constants";
 
 @Component({
-  selector: "lib-angular-mydatepicker-component",
-  templateUrl: './template/angular-mydatepicker.component.html',
-  styleUrls: ['./css/angular-mydatepicker.component.css'],
+  selector: "lib-angular-mydatepicker-calendar",
+  templateUrl: './calendar.component.html',
+  styleUrls: ['../../css/angular-mydatepicker.style.css'],
   providers: [UtilService],
   encapsulation: ViewEncapsulation.None
 })
-export class AngularMyDatePickerComponent implements OnDestroy {
+export class CalendarComponent implements OnDestroy {
   @ViewChild("selectorEl") selectorEl: ElementRef;
   @ViewChild("styleEl") styleEl: ElementRef;
 
@@ -53,10 +53,6 @@ export class AngularMyDatePickerComponent implements OnDestroy {
   prevViewDisabled: boolean = false;
   nextViewDisabled: boolean = false;
 
-  prevMonthId: number = MonthId.prev;
-  currMonthId: number = MonthId.curr;
-  nextMonthId: number = MonthId.next;
-
   clickListener: () => void;
 
   constructor(private elem: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef, private utilService: UtilService) {
@@ -79,9 +75,9 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     const {defaultView, dateRange, firstDayOfWeek, dayLabels, stylesData} = this.opts;
 
     if (stylesData.styles.length) {
-      const styleElem: any = this.renderer.createElement(STYLE);
-      this.renderer.appendChild(styleElem, this.renderer.createText(stylesData.styles));
-      this.renderer.appendChild(this.styleEl.nativeElement, styleElem);
+      const styleElTemp: any = this.renderer.createElement(STYLE);
+      this.renderer.appendChild(styleElTemp, this.renderer.createText(stylesData.styles));
+      this.renderer.appendChild(this.styleEl.nativeElement, styleElTemp);
     }
 
     this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
@@ -127,10 +123,10 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.setCalendarVisibleMonth();
 
     if (defaultView === DefaultView.Month) {
-      this.onMonthViewClicked();
+      this.onMonthViewBtnClicked();
     }
     else if (defaultView === DefaultView.Year) {
-      this.onYearViewClicked();
+      this.onYearViewBtnClicked();
     }
   }
 
@@ -149,10 +145,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectYear = false;
   }
 
-  onMonthViewClicked(event: any = null): void {
-    if (event) {
-      event.stopPropagation();
-    }
+  onMonthViewBtnClicked(): void {
     this.selectMonth = !this.selectMonth;
     this.selectYear = false;
     this.cdr.detectChanges();
@@ -164,12 +157,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  onMonthCellClicked(event: any, cell: IMyCalendarMonth): void {
-    event.stopPropagation();
-    if (cell.disabled) {
-      return;
-    }
-
+  onMonthCellClicked(cell: IMyCalendarMonth): void {
     const {year, monthNbr} = this.visibleMonth;
 
     const mc: boolean = cell.nbr !== monthNbr;
@@ -180,29 +168,17 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectorEl.nativeElement.focus();
   }
 
-  onMonthCellKeyDown(event: KeyboardEvent, cell: IMyCalendarMonth) {
-    event.preventDefault();
-    const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
-    if (keyCode === KeyCode.enter || keyCode === KeyCode.space) {
-      this.onMonthCellClicked(event, cell);
-    }
+  onMonthCellKeyDown(cell: IMyCalendarMonth) {
+    // Make possible to move focus by arrow keys
+    const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
+    const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, MONTH_ROW_COUNT, MONTH_COL_COUNT);
 
-    if (this.opts.moveFocusByArrowKeys) {
-      // Make possible to move focus by arrow keys
-      const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
-      const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, MONTH_ROW_COUNT, MONTH_COL_COUNT);
-
-      if (moveFocus) {
-        this.focusCellElement(M, targetRow, targetCol);
-      }
+    if (moveFocus) {
+      this.focusCellElement(M, targetRow, targetCol);
     }
   }
 
-  onYearViewClicked(event: any = null): void {
-    if (event) {
-      event.stopPropagation();
-    }
-
+  onYearViewBtnClicked(): void {
     this.visibleMonth.year = this.selectedMonth.year;
 
     this.cdr.detectChanges();
@@ -213,36 +189,24 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.selectMonth = false;
   }
 
-  onYearCellClicked(event: any, cell: IMyCalendarYear): void {
-    event.stopPropagation();
-    if (cell.disabled) {
-      return;
-    }
-
+  onYearCellClicked(cell: IMyCalendarYear): void {
     const {year, monthNbr, monthTxt} = this.visibleMonth;
 
     const yc: boolean = cell.year !== year;
     this.visibleMonth = {monthTxt: monthTxt, monthNbr: monthNbr, year: cell.year};
+    this.selectedMonth.year = this.visibleMonth.year;
     this.generateCalendar(monthNbr, cell.year, yc);
     this.selectYear = false;
     this.selectorEl.nativeElement.focus();
   }
 
-  onYearCellKeyDown(event: KeyboardEvent, cell: IMyCalendarYear) {
-    event.preventDefault();
-    const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
-    if (keyCode === KeyCode.enter || keyCode === KeyCode.space) {
-      this.onYearCellClicked(event, cell);
-    }
+  onYearCellKeyDown(cell: IMyCalendarYear) {
+    // Make possible to move focus by arrow keys
+    const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
+    const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, YEAR_ROW_COUNT, YEAR_COL_COUNT);
 
-    if (this.opts.moveFocusByArrowKeys) {
-      // Make possible to move focus by arrow keys
-      const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
-      const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, YEAR_ROW_COUNT, YEAR_COL_COUNT);
-
-      if (moveFocus) {
-        this.focusCellElement(Y, targetRow, targetCol);
-      }
+    if (moveFocus) {
+      this.focusCellElement(Y, targetRow, targetCol);
     }
   }
 
@@ -310,9 +274,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     this.generateCalendar(monthNbr, year, true);
   }
 
-  onPrevNavigateBtnClicked(event: any): void {
-    event.stopPropagation();
-
+  onPrevNavigateBtnClicked(): void {
     if (!this.selectMonth && !this.selectYear) {
       this.setDateViewMonth(false);
     }
@@ -325,9 +287,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  onNextNavigateBtnClicked(event: any): void {
-    event.stopPropagation();
-
+  onNextNavigateBtnClicked(): void {
     if (!this.selectMonth && !this.selectYear) {
       this.setDateViewMonth(true);
     }
@@ -362,51 +322,19 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  onDateCellClicked(event: any, cell: any): void {
-    event.stopPropagation();
-    if (cell.disabled) {
-      return;
-    }
-
+  onDayCellClicked(cell: IMyCalendarDay): void {
     // Cell clicked on the calendar
     this.selectDate(cell.dateObj);
     this.resetMonthYearSelect();
   }
 
-  onDateCellKeyDown(event: KeyboardEvent, cell: any) {
-    // Cell keyboard handling
-    event.preventDefault();
-    const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
-    if (keyCode === KeyCode.enter || keyCode === KeyCode.space) {
-      this.onDateCellClicked(event, cell);
-    }
+  onDayCellKeyDown(cell: IMyCalendarDay) {
+    // Make possible to move focus by arrow keys
+    const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
+    const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, DATE_ROW_COUNT, DATE_COL_COUNT);
 
-    if (this.opts.moveFocusByArrowKeys) {
-      // Make possible to move focus by arrow keys
-      const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
-      const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, DATE_ROW_COUNT, DATE_COL_COUNT);
-
-      if (moveFocus) {
-        this.focusCellElement(D, targetRow, targetCol);
-      }
-    }
-  }
-
-  onDateCellMouseEnter(cell: any): void {
-    if (this.utilService.isInitializedDate(this.selectedDateRange.begin) && !this.utilService.isInitializedDate(this.selectedDateRange.end)) {
-      for (const w of this.dates) {
-        for (const day of w.week) {
-          day.range = this.utilService.isDateSameOrEarlier(this.selectedDateRange.begin, day.dateObj) && this.utilService.isDateSameOrEarlier(day.dateObj, cell.dateObj);
-        }
-      }
-    }
-  }
-
-  onDateCellMouseLeave(): void {
-    for (const w of this.dates) {
-      for (const day of w.week) {
-        day.range = false;
-      }
+    if (moveFocus) {
+      this.focusCellElement(D, targetRow, targetCol);
     }
   }
 
@@ -523,18 +451,6 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     }
   }
 
-  isDateInRange(date: IMyDate, dateRange: IMyDateRange): boolean {
-    return this.utilService.isDateInRange(date, dateRange);
-  }
-
-  isDateSame(firstDate: IMyDate, secondDate: IMyDate): boolean {
-    return this.utilService.isDateSame(firstDate, secondDate);
-  }
-
-  isDateRangeBeginOrEndSame(dateRange: IMyDateRange, date: IMyDate): boolean {
-    return this.utilService.isDateRangeBeginOrEndSame(dateRange, date);
-  }
-
   monthStartIdx(y: number, m: number): number {
     // Month start index
     const d: Date = new Date();
@@ -559,7 +475,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
 
   isCurrDay(d: number, m: number, y: number, cmo: number, today: IMyDate): boolean {
     // Check is a given date the today
-    return d === today.day && m === today.month && y === today.year && cmo === this.currMonthId;
+    return d === today.day && m === today.month && y === today.year && cmo === MonthId.curr;
   }
 
   getToday(): IMyDate {
@@ -596,7 +512,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
     const dInPrevM: number = this.daysInPrevMonth(m, y);
 
     let dayNbr: number = 1;
-    let cmo: number = this.prevMonthId;
+    let cmo: number = MonthId.prev;
     for (let i = 1; i < 7; i++) {
       const week: Array<IMyCalendarDay> = [];
       if (i === 1) {
@@ -613,7 +529,7 @@ export class AngularMyDatePickerComponent implements OnDestroy {
             highlight: this.utilService.isHighlightedDate(date, this.opts.sunHighlight, this.opts.satHighlight, this.opts.highlightDates)});
         }
 
-        cmo = this.currMonthId;
+        cmo = MonthId.curr;
         // Current month
         const daysLeft: number = 7 - week.length;
         for (let j = 0; j < daysLeft; j++) {
@@ -633,9 +549,9 @@ export class AngularMyDatePickerComponent implements OnDestroy {
           if (dayNbr > dInThisM) {
             // Next month
             dayNbr = 1;
-            cmo = this.nextMonthId;
+            cmo = MonthId.next;
           }
-          const date: IMyDate = {year: cmo === this.nextMonthId && m === 12 ? y + 1 : y, month: cmo === this.currMonthId ? m : cmo === this.nextMonthId && m < 12 ? m + 1 : 1, day: dayNbr};
+          const date: IMyDate = {year: cmo === MonthId.next && m === 12 ? y + 1 : y, month: cmo === MonthId.curr ? m : cmo === MonthId.next && m < 12 ? m + 1 : 1, day: dayNbr};
           week.push({dateObj: date,
             cmo,
             currDay: this.isCurrDay(dayNbr, m, y, cmo, today),

@@ -1,0 +1,26 @@
+<table class="myDpCalTable">
+  <thead>
+    <tr>
+      <th class="myDpWeekDayTitle myDpWeekDayTitleWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">#</th>
+      <th class="myDpWeekDayTitle" scope="col" *ngFor="let d of weekDays">{{d}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let w of dates; let di = index">
+      <td class="myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
+      <td id="d_{{di}}_{{i}}" class="d_{{di}}_{{i}} myDpDaycell" *ngFor="let d of w.week; let i = index"
+          [ngClass]="{'myDpRangeColor': isDateInRange(d.dateObj) || d.range,
+                'myDpPrevMonth': d.cmo === prevMonthId,
+                'myDpCurrMonth':d.cmo === currMonthId && !d.disabled,
+                'myDpNextMonth': d.cmo === nextMonthId,
+                'myDpSelectedDay':!this.opts.dateRange && isDateSame(d.dateObj) || this.opts.dateRange && isDateRangeBeginOrEndSame(d.dateObj),
+                'myDpDisabled': d.disabled,
+                'myDpTableSingleDay': !d.disabled}"
+          (click)="onDayCellClicked($event, d)" (keydown)="onDayCellKeyDown($event, d)"
+          (mouseenter)="onDayCellMouseEnter(d)" (mouseleave)="onDayCellMouseLeave()" tabindex="0">
+        <span *ngIf="d.markedDate.marked" class="myDpMarkDate" [ngStyle]="{'background-color': d.markedDate.color}"></span>
+        <span  class="myDpDayValue" [ngClass]="{'myDpMarkCurrDay': d.currDay && opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabled), 'myDpHighlight': d.highlight}">{{d.dateObj.day}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

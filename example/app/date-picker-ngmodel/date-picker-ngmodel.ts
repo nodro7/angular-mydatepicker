@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection} from '../../../projects/angular-mydatepicker/src/lib';
+import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
   selector: 'date-picker-ngmodel',
@@ -253,6 +253,11 @@ export class DatePickerNgmodel implements OnInit {
         .dp1 .myDpIconRightArrow,
         .dp1 .myDpHeaderBtn {
             color: #3855c1;
+        }
+        .dp1 .myDpHeaderBtn:focus,
+        .dp1 .myDpMonthLabel:focus,
+        .dp1 .myDpYearLabel:focus {
+          color: #66afe9;
         }
         .dp1 .myDpCurrMonth,
         .dp1 .myDpMonthcell,

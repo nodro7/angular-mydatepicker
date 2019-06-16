@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { DatePickerNgmodel } from './date-picker-ngmodel';
 import { DatePickerReactiveForms } from './date-picker-reactive-forms';
 import { DatePickerInline} from './date-picker-inline';
-import { AngularMyDatePickerModule } from '../../projects/angular-mydatepicker/src/lib';
+import { AngularMyDatePickerModule } from '../../projects/angular-mydatepicker/src/public-api';
 
 @NgModule({
   declarations: [

@@ -1735,7 +1735,7 @@ describe('AngularMyDatePickerComponent', () => {
     expect(selector).not.toBe(null);
 
     fixture.detectChanges();
-    let rootElem = getElement('lib-angular-mydatepicker-component');
+    let rootElem = getElement('lib-angular-mydatepicker-calendar');
     expect(rootElem).not.toBe(null);
 
     let body = rootElem.parentElement.nodeName;

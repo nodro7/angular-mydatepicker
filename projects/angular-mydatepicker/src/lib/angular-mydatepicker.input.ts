@@ -1,6 +1,6 @@
 import {Directive, Input, ComponentRef, ElementRef, ViewContainerRef, Renderer2, ChangeDetectorRef, ComponentFactoryResolver, forwardRef, EventEmitter, Output, SimpleChanges, OnChanges, HostListener, OnDestroy} from "@angular/core";
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator} from "@angular/forms";
-import {AngularMyDatePickerComponent} from "./angular-mydatepicker.component";
+import {CalendarComponent} from "./components/calendar/calendar.component";
 import {IMyDate} from "./interfaces/my-date.interface";
 import {IMyOptions} from "./interfaces/my-options.interface";
 import {IMyDateModel} from "./interfaces/my-date-model.interface";
@@ -47,7 +47,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   @Output() calendarToggle: EventEmitter<number> = new EventEmitter<number>();
   @Output() rangeDateSelection: EventEmitter<IMyRangeDateSelection> = new EventEmitter<IMyRangeDateSelection>();
 
-  private cRef: ComponentRef<AngularMyDatePickerComponent> = null;
+  private cRef: ComponentRef<CalendarComponent> = null;
   private inputText: string = "";
   private preventClose: boolean = false;
   private disabled = false;
@@ -294,7 +294,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.preventClose = true;
     this.cdr.detectChanges();
     if (this.cRef === null) {
-      this.cRef = this.vcRef.createComponent(this.cfr.resolveComponentFactory(AngularMyDatePickerComponent));
+      this.cRef = this.vcRef.createComponent(this.cfr.resolveComponentFactory(CalendarComponent));
       this.appendSelector(this.cRef.location.nativeElement);
       this.cRef.instance.initialize(
         this.opts,

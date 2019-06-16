@@ -228,7 +228,8 @@ Example of the __defaultMonth__ attribute is [here](https://github.com/kekeh/ang
 
 You can can call functions of the directive. Define local variable to input field like below:
 ```html
-<input angular-mydatepicker name="mydate" [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker"/>
+<input angular-mydatepicker name="mydate" [(ngModel)]="model" 
+    [options]="myOptions" #dp="angular-mydatepicker"/>
 ```
 The __#dp="angular-mydatepicker"__ defines the local variable named __dp__. You can use it to call functions of the directive
 for example __(click)="dp.openCalendar()"__.
@@ -334,7 +335,7 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 ## Override styles of component
 
 It is possible to override styles of datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
-It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.component.css) styles. 
+It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.style.css) styles. 
 
 Usage examples of the __stylesData__ option:
 * [single date picker on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-single-datepicker)
