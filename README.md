@@ -29,7 +29,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 * no dependencies to other libraries
 * currently [localized](https://github.com/kekeh/angular-mydatepicker#locale-attribute) to 45 languages
 * datepicker and date range picker
-* normal and inline mode
+* popup and inline mode
 * set styles to the component which are in line with your page theme
   * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
   * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
@@ -144,7 +144,7 @@ Value of the __options__ attribute is a type of [IAngularMyDpOptions](https://gi
 | __moveFocusByArrowKeys__   | true | boolean | Is focus moved or not on the calendar by arrow keys. |
 | __dateRangeDatesDelimiter__   | " - " | string | The delimiter of dates in a date range. |
 | __inputFieldValidation__   | true | boolean | Input field validation enabled or not after __blur__ event of input field. |
-| __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example of usage of the option. See also the chapter below. |
+| __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example on how to use this option. See also the [chapter](https://github.com/kekeh/angular-mydatepicker#override-styles-of-component) below. |
 | __ariaLabelPrevMonth__   | Previous Month | string | Aria label text of previous month button. |
 | __ariaLabelNextMonth__   | Next Month | string | Aria label text of next month button. |
 
@@ -207,6 +207,8 @@ The __locale__ options can be overridden by __options__ attribute.
 file. If you want to add a new locale create a pull request.
 
 [Here](https://github.com/kekeh/angular-mydatepicker/wiki/locale-attribute) is an example on how to use the __locale__ attribute.
+
+Try locales [here](https://kekeh.github.io/angular-mydatepicker/) (last datepicker on the page).
 
 ### defaultMonth attribute
 
