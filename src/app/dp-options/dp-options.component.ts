@@ -115,6 +115,11 @@ export class DpOptionsComponent implements OnInit {
         .dp1 .myDpHeaderBtn {
             color: #3855c1;
         }
+        .dp1 .myDpHeaderBtn:focus,
+        .dp1 .myDpMonthLabel:focus,
+        .dp1 .myDpYearLabel:focus {
+          color: #66afe9;
+        }
         .dp1 .myDpCurrMonth,
         .dp1 .myDpMonthcell,
         .dp1 .myDpYearcell {
