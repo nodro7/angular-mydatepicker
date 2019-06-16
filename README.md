@@ -100,7 +100,7 @@ Examples:
 
 ### options attribute
 
-Value of the __options__ attribute is a type of [IAngularMyDpOptions](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-options.interface.ts). It can contain the following properties.
+The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribute) attribute is a type of [IAngularMyDpOptions](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-options.interface.ts). It has the following optional properties.
 
 | Option         | Default        | Type | Description |
 | :------------- | :------------- | :----| :---------- |
