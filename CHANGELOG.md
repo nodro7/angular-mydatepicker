@@ -157,3 +157,13 @@
 ### Features
 
 * Refactoring code.
+
+# 0.1.1 (2019-06-17)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README file updated.
