@@ -24,17 +24,19 @@ Source code of the component is in the [projects/angular-mydatepicker/src](https
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
 
-### Features
+### Main features
 
 * no dependencies to other libraries
 * currently [localized](https://github.com/kekeh/angular-mydatepicker#locale-attribute) to 45 languages
 * datepicker and date range picker
 * popup and inline mode
 * supports keyboard
-* set styles to the component which are in line with your page theme
-  * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
-  * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
-* change value of any [option](https://github.com/kekeh/angular-mydatepicker#options-attribute) dynamically
+* awesome configuration possibilities 
+  * easily set styles to the component which are in line with your page theme
+    * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
+    * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
+  * 40+ options
+    * change value of any [option](https://github.com/kekeh/angular-mydatepicker#options-attribute) dynamically
 
 
 ## Code examples
@@ -60,7 +62,10 @@ To install this component to an external project, follow the procedure:
         AppComponent
       ],
       imports: [
-        BrowserModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule
+        BrowserModule, 
+        ReactiveFormsModule, 
+        FormsModule, 
+        AngularMyDatePickerModule
       ],
       providers: [],
       bootstrap: [AppComponent]
