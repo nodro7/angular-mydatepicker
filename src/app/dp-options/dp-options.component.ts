@@ -26,8 +26,53 @@ export class DpOptionsComponent implements OnInit {
   public model: IMyDateModel = null;
 
   public locale: string = 'en';
-  public locales: Array<string> = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
-
+  public locales: Array<string> = [
+    'en | English',
+    'fr | French',
+    'fr-ch | French - Switzerland',
+    'ja | Japanese',
+    'fi | Finnish',
+    'es | Spanish',
+    'hu | Hungarian',
+    'sv | Swedish',
+    'nl | Dutch',
+    'ru | Russian',
+    'uk | Ukrainian',
+    'no | Norwegian',
+    'tr | Turkish',
+    'pt-br | Portuguese - Brazil',
+    'de | German',
+    'de-ch | German - Switzerland',
+    'it | Italian',
+    'it-ch | Italian - Switzerland',
+    'pl | Polish',
+    'my | Burmese',
+    'sk | Slovak',
+    'sl | Slovenian',
+    'zh-cn | Chinese - China',
+    'he | Hebrew',
+    'ro | Romanian - Romania',
+    'ca | Catalan',
+    'id | Indonesian',
+    'en-au | English - Australia',
+    'am-et | Amharic',
+    'cs | Czech',
+    'el | Greek',
+    'kk | Kazakh',
+    'th | Thai',
+    'ko-kr | Korean',
+    'da | Danish',
+    'lt | Lithuanian',
+    'vi | Vietnamese',
+    'bn | Bengali',
+    'bg | Bulgarian',
+    'hr | Croatian',
+    'ar | Arabic',
+    'is | Icelandic',
+    'tw | Chinese - Taiwan',
+    'lv | Latvian',
+    'et | Estonian'
+  ];
 
   ngOnInit() {
   }
@@ -161,7 +206,7 @@ export class DpOptionsComponent implements OnInit {
 
   onChangeLocale(locale: string): void {
     this.model = null;
-    this.locale = locale;
+    this.locale = locale.split(' | ')[0];
   }
 
   // optional date changed callback
