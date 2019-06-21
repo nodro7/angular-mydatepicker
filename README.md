@@ -35,7 +35,8 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
     * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
   * 40+ [options](https://github.com/kekeh/angular-mydatepicker#options-attribute)
     * change value of any option dynamically
-* well [tested](https://codecov.io/gh/kekeh/angular-mydatepicker)
+* well tested
+  * coverage [report](https://codecov.io/gh/kekeh/angular-mydatepicker)
   * most of the code based on my old components which are widely used
 
 
