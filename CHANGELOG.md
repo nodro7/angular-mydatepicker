@@ -167,3 +167,13 @@
 ### Features
 
 * README file updated.
+
+# 0.1.2 (2019-06-21)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README file updated.

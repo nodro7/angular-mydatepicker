@@ -5,7 +5,8 @@
 [![Build Status](https://travis-ci.org/kekeh/angular-mydatepicker.svg?branch=master)](https://travis-ci.org/kekeh/angular-mydatepicker)
 [![codecov](https://codecov.io/gh/kekeh/angular-mydatepicker/branch/master/graph/badge.svg)](https://codecov.io/gh/kekeh/angular-mydatepicker)
 [![npm](https://img.shields.io/npm/v/angular-mydatepicker.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/angular-mydatepicker)
-[![npm](https://img.shields.io/npm/dm/angular-mydatepicker.svg)](https://www.npmjs.com/package/angular-mydatepicker)
+[![npm](https://img.shields.io/npm/dt/angular-mydatepicker.svg)](https://www.npmjs.com/package/angular-mydatepicker)
+
 
 ## Browser support (tested)
 
@@ -15,11 +16,8 @@
 
 ## Description
 
-Highly configurable Angular datepicker and date range picker.
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The component is tested with Angular version 7.2.0.
-
-Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
+Highly configurable Angular datepicker and date range picker. Basic idea to create this library was to make it as configurable as possible. 
+The library is implemented as an [attribute directive](https://angular.io/guide/attribute-directives). It is done this way because then you have more choices to configure it. 
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
@@ -27,7 +25,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 ### Main features
 
 * no dependencies to other libraries
-* currently [localized](https://github.com/kekeh/angular-mydatepicker#locale-attribute) to 45 languages
+* currently localized to 45 [languages](https://github.com/kekeh/angular-mydatepicker#locale-attribute)
 * datepicker and date range picker
 * popup and inline mode
 * supports keyboard
@@ -35,8 +33,17 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
   * easily set styles to the component which are in line with your page theme
     * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
     * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
-  * 40+ options
-    * change value of any [option](https://github.com/kekeh/angular-mydatepicker#options-attribute) dynamically
+  * 40+ [options](https://github.com/kekeh/angular-mydatepicker#options-attribute)
+    * change value of any option dynamically
+* well [tested](https://codecov.io/gh/kekeh/angular-mydatepicker)
+  * most of the code based on my old components which are widely used
+
+
+### Project
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The component is tested with Angular version 7.2.0.
+
+Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
 
 
 ## Code examples
@@ -50,7 +57,7 @@ To install this component to an external project, follow the procedure:
 
 1. __npm install angular-mydatepicker --save__
 
-2. Add __AngularMyDatePickerModule__ import to your __@NgModule__ as follows
+2. Add __AngularMyDatePickerModule__ import to your __@NgModule__ as follows:
     ```ts
     import { BrowserModule } from '@angular/platform-browser';
     import { NgModule } from '@angular/core';
@@ -150,14 +157,14 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | __moveFocusByArrowKeys__   | true | boolean | Is focus moved or not on the calendar by arrow keys. |
 | __dateRangeDatesDelimiter__   | " - " | string | The delimiter of dates in a date range. |
 | __inputFieldValidation__   | true | boolean | Input field validation enabled or not after __blur__ event of input field. |
-| __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example on how to use this option. See also the [chapter](https://github.com/kekeh/angular-mydatepicker#override-styles-of-component) below. |
+| __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example on how to use this option. See also [chapter](https://github.com/kekeh/angular-mydatepicker#override-styles-of-component) below. |
 | __ariaLabelPrevMonth__   | Previous Month | string | Aria label text of previous month button. |
 | __ariaLabelNextMonth__   | Next Month | string | Aria label text of next month button. |
 
 ### locale attribute
 
 An __ISO 639-1__ language code can be provided as shorthand for the following options (__dayLabels__, __monthLabels__, __dateFormat__, __firstDayOfWeek__ and __sunHighlight__).
-Currently supported locales are: 
+Currently supported languages are: 
 
 | Language code | Description |
 | :------------- | :------------- |
@@ -221,7 +228,7 @@ Try locales [here](https://kekeh.github.io/angular-mydatepicker/) (last datepick
 Visible month/year when calendar is opened:
 * If date is already selected => calendar opens to the month and year of the selected date
   * In date range mode => calendar opens to the month and year of the selected begin date
-* If the __defaultMonth__ is set => calendar opens to the month and year specified in the the ___defaultMonth_ attribute
+* If the __defaultMonth__ is set => calendar opens to the month and year specified in the the __defaultMonth__ attribute
 * If none of above => calendar opens to the month and year of current date
 
 Value of the __defaultMonth__ attribute can be:
@@ -380,7 +387,7 @@ Usage examples of the __stylesData__ option:
     * local installation package is created to the __dist/angular-mydatepicker__ folder. For example: __angular-mydatepicker-0.0.1.tgz__
 
 * Install local npm package to your project:
-  1. __npm install path_to_dist/angular-mydatepicker-0.0.1.tgz__
+  1. __npm install <path>/angular-mydatepicker-0.0.1.tgz__
 
 ## Demo
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
