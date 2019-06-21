@@ -68,7 +68,7 @@ export class DatePickerNgmodel implements OnInit {
 
   public locale: string = 'en';
 
-  public locales: Array<any> = [
+  public locales: Array<string> = [
     'en | English',
     'fr | French',
     'fr-ch | French - Switzerland',
