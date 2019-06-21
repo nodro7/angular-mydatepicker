@@ -9,7 +9,7 @@ import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalen
 export class DatePickerNgmodel implements OnInit {
 
   public myDatePickerOptions: IAngularMyDpOptions = {
-    dateRange: true,
+    dateRange: false,
     dateFormat: 'dd.mm.yyyy',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
@@ -67,11 +67,57 @@ export class DatePickerNgmodel implements OnInit {
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
 
   public locale: string = 'en';
-  public locales: Array<string> = new Array('en', 'fr', 'ja', 'fi', 'es', 'hu', 'sv', 'nl', 'ru', 'uk', 'no', 'tr', 'pt-br', 'de', 'it', 'it-ch', 'pl', 'my', 'sk', 'sl', 'zh-cn', 'he', 'ro', 'ca', 'id', 'en-au', 'am-et', 'cs', 'el', 'kk', 'th', 'ko-kr', 'da', 'lt', 'vi', 'bn', 'bg', 'hr', 'ar', 'is', 'de-ch', 'fr-ch', 'tw', 'lv', 'et');
+
+  public locales: Array<any> = [
+    'en | English',
+    'fr | French',
+    'fr-ch | French - Switzerland',
+    'ja | Japanese',
+    'fi | Finnish',
+    'es | Spanish',
+    'hu | Hungarian',
+    'sv | Swedish',
+    'nl | Dutch',
+    'ru | Russian',
+    'uk | Ukrainian',
+    'no | Norwegian',
+    'tr | Turkish',
+    'pt-br | Portuguese - Brazil',
+    'de | German',
+    'de-ch | German - Switzerland',
+    'it | Italian',
+    'it-ch | Italian - Switzerland',
+    'pl | Polish',
+    'my | Burmese',
+    'sk | Slovak',
+    'sl | Slovenian',
+    'zh-cn | Chinese - China',
+    'he | Hebrew',
+    'ro | Romanian - Romania',
+    'ca | Catalan',
+    'id | Indonesian',
+    'en-au | English - Australia',
+    'am-et | Amharic',
+    'cs | Czech',
+    'el | Greek',
+    'kk | Kazakh',
+    'th | Thai',
+    'ko-kr | Korean',
+    'da | Danish',
+    'lt | Lithuanian',
+    'vi | Vietnamese',
+    'bn | Bengali',
+    'bg | Bulgarian',
+    'hr | Croatian',
+    'ar | Arabic',
+    'is | Icelandic',
+    'tw | Chinese - Taiwan',
+    'lv | Latvian',
+    'et | Estonian'
+  ];
 
 
-  constructor() {
-  }
+  constructor() {}
 
   clearDate(): void {
     this.ngxdp.clearDate();
@@ -356,8 +402,8 @@ export class DatePickerNgmodel implements OnInit {
     }
   }
 
-  onChangeLocale(locale: string) {
-    this.locale = locale;
+  onChangeLocale(locale: any) {
+    this.locale = locale.split(' | ')[0];
   }
 
   getCopyOfOptions(): IAngularMyDpOptions {
