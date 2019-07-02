@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, OnDestroy} from "@angular/core";
+import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, OnDestroy, HostBinding} from "@angular/core";
 import {IMyDate} from "../../interfaces/my-date.interface";
 import {IMyDateRange} from "../../interfaces/my-date-range.interface";
 import {IMyMonth} from "../../interfaces/my-month.interface";
@@ -28,6 +28,7 @@ import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUN
 export class CalendarComponent implements OnDestroy {
   @ViewChild("selectorEl") selectorEl: ElementRef;
   @ViewChild("styleEl") styleEl: ElementRef;
+  @HostBinding("style.position") position = "static";
 
   opts: IMyOptions;
   visibleMonth: IMyMonth = {monthTxt: EMPTY_STR, monthNbr: 0, year: 0};
