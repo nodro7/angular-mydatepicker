@@ -182,7 +182,7 @@
 
 ### Bug Fixes
 
-* Fixed bug: [`position: relative` can mess up the layout](https://github.com/kekeh/angular-mydatepicker/issues/8)
+* Fixed bug: [position: relative can mess up the layout](https://github.com/kekeh/angular-mydatepicker/issues/8)
 
 ### Features
 
