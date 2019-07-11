@@ -14,7 +14,6 @@ import {IMyRangeDateSelection} from "../../interfaces/my-range-date-selection.in
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
-import {ResetDateType} from "../../enums/reset-date-type.enum";
 import {DefaultView} from "../../enums/default-view.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE} from "../../constants/constants";
 
@@ -132,14 +131,23 @@ export class CalendarComponent implements OnDestroy {
     }
   }
 
-  resetDateValue(value: ResetDateType): void {
-    if (value === ResetDateType.singleDate || value === ResetDateType.both) {
+  resetDateValue(): void {
+    if (!this.opts.dateRange) {
       this.selectedDate = this.utilService.resetDate();
     }
-    if (value === ResetDateType.dateRange || value === ResetDateType.both) {
+    else {
       this.selectedDateRange.begin = this.utilService.resetDate();
       this.selectedDateRange.end = this.utilService.resetDate();
     }
+  }
+
+  setDateValue(date: IMyDate): void {
+    this.selectedDate = date;
+  }
+
+  setDateRangeValue(begin: IMyDate, end: IMyDate): void {
+      this.selectedDateRange.begin = begin;
+      this.selectedDateRange.end = end;
   }
 
   resetMonthYearSelect(): void {

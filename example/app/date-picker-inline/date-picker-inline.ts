@@ -39,6 +39,30 @@ export class DatePickerInline implements OnInit {
     console.log('onSubmit(): model: ', this.model);
   }
 
+  onTodayPlus3(): void {
+    let today: Date = new Date();
+    let date: Date = new Date();
+    date.setDate(date.getDate() + 3);
+
+    this.model = {isRange: true, singleDate: null, dateRange: {
+      beginDate: {year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate()},
+      endDate: {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()}
+    }}; 
+  }
+
+  onYesterdayPlus3(): void {
+    let today: Date = new Date();
+    today.setDate(today.getDate() - 1);
+
+    let date: Date = new Date();
+    date.setDate(date.getDate() + 2);
+    
+    this.model = {isRange: true, singleDate: null, dateRange: {
+      beginDate: {year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate()},
+      endDate: {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()}
+    }}; 
+  }
+
   // callbacks
   onDateChanged(event: IMyDateModel): void {
     console.log('onDateChanged(): ', event);

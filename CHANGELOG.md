@@ -187,3 +187,13 @@
 ### Features
 
 * none
+
+# 0.1.4 (2019-07-11)
+
+### Bug Fixes
+
+* Fixed bug: [Unable to set values on inline calendar](https://github.com/kekeh/angular-mydatepicker/issues/10)
+
+### Features
+
+* none

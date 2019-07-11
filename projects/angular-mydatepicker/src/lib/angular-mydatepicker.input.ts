@@ -15,7 +15,6 @@ import {DefaultConfigService} from "./services/angular-mydatepicker.config.servi
 import {CalToggle} from "./enums/cal-toggle.enum";
 import {Year} from "./enums/year.enum";
 import {KeyCode} from "./enums/key-code.enum";
-import {ResetDateType} from "./enums/reset-date-type.enum";
 
 import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX} from "./constants/constants";
 
@@ -206,27 +205,30 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       return;
     }
 
-    const {inline, dateFormat, monthLabels, dateRangeDatesDelimiter} = this.opts;
+    const {dateFormat, monthLabels, dateRangeDatesDelimiter} = this.opts;
 
     if (!value) {
       this.setInputValue(EMPTY_STR);
       this.emitInputFieldChanged(EMPTY_STR, false);
 
-      if (this.cRef !== null && inline) {
-        this.cRef.instance.resetDateValue(ResetDateType.both);
+      if (this.cRef !== null) {
+        this.cRef.instance.resetDateValue();
       }
     }
     else if (value.isRange === false && value.singleDate) {
       // single date
-      const {date, jsDate} = value.singleDate;
-      const formatted: string = this.utilService.formatDate(date ? date : this.jsDateToMyDate(jsDate), dateFormat, monthLabels);
+      let {date, jsDate} = value.singleDate;
+      if (jsDate) {
+        date = this.jsDateToMyDate(jsDate);
+      }
+      const formatted: string = this.utilService.formatDate(date, dateFormat, monthLabels);
       const valid: boolean = this.utilService.isInitializedDate(this.utilService.isDateValid(formatted, this.opts));
       if (valid) {
         this.setInputValue(formatted);
         this.emitInputFieldChanged(formatted, valid);
 
-        if (this.cRef !== null && inline) {
-          this.cRef.instance.resetDateValue(ResetDateType.dateRange);
+        if (this.cRef !== null) {
+          this.cRef.instance.setDateValue(date);
         }
       }
     }
@@ -249,8 +251,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
           this.setInputValue(formatted);
           this.emitInputFieldChanged(formatted, valid);
 
-          if (this.cRef !== null && inline) {
-            this.cRef.instance.resetDateValue(ResetDateType.singleDate);
+          if (this.cRef !== null) {
+            this.cRef.instance.setDateRangeValue(beginDate, endDate);
           }
         }
       }

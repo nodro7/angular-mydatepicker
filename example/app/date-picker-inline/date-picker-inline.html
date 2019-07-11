@@ -14,6 +14,8 @@
 
   <div>
     <button type="button" class="submitButton" (click)="onSubmit()">Submit</button>
+    <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onTodayPlus3()">Range today + 3</button>
+    <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onYesterdayPlus3()">Range yesterday + 3</button>
   </div>
 
 </div>

@@ -324,7 +324,7 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 
 ### calendarToggle callback
   * called when the calendar is opened or closed
-    * __event__: number from 1 to 4 indicating the reason of the event
+    * __event__: number from __1__ to __5__ indicating the reason of the event
       * __1__ = calendar opened
       * __2__ = calendar closed by date select
       * __3__ = calendar closed by calendar button
