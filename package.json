@@ -2,6 +2,7 @@
   "name": "angular-mydatepicker-example",
   "version": "0.0.2",
   "description": "Angular datepicker and date range picker",
+  "homepage": "https://kekeh.github.io/angular-mydatepicker/",
   "keywords": [
     "Angular",
     "datepicker",
