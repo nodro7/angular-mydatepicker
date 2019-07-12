@@ -197,3 +197,13 @@
 ### Features
 
 * none
+
+# 0.1.5 (2019-07-12)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README file updated.

@@ -21,13 +21,17 @@ The library is implemented as an [attribute directive](https://angular.io/guide/
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
+Start from [here](https://github.com/kekeh/angular-mydatepicker#development-of-this-component) if want to develop or create own version of the library.
+
 
 ### Main features
 
 * no dependencies to other libraries
 * currently localized to 45 [languages](https://github.com/kekeh/angular-mydatepicker#locale-attribute)
-* datepicker and date range picker
-* popup and inline mode
+* datepicker
+* date range picker
+* popup mode
+* inline mode
 * supports keyboard
 * awesome configuration possibilities 
   * easily set styles to the component which are in line with your page theme
@@ -37,12 +41,12 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
     * change value of any option dynamically
 * well tested
   * coverage [report](https://codecov.io/gh/kekeh/angular-mydatepicker)
-  * most of the code based on my old components which are widely used
+  * most of the code based on my old libraries which are widely used
 
 
 ### Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The component is tested with Angular version 7.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The library is tested with Angular version 7.2.0.
 
 Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
 
@@ -95,11 +99,11 @@ Examples:
 * [example application](https://github.com/kekeh/angular-mydatepicker/tree/master/example/app/date-picker-ngmodel)
 
 
-There are two ways to set an initial date to the model.
+There are two ways to initialize date or date range to the model.
 
-Example:
-* [initialize date model](https://github.com/kekeh/angular-mydatepicker/wiki/initialize-date-model)
-
+Examples:
+* [initialize date model (single date mode)](https://github.com/kekeh/angular-mydatepicker/wiki/initialize-date-model-(single-date-mode))
+* [initialize date model (date range mode)](https://github.com/kekeh/angular-mydatepicker/wiki/initialize-date-model-(date-range-mode))
   
 ### 2. Reactive forms
 
@@ -280,18 +284,18 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
   * event parameter:
     * __event.isRange__: __true__ if a date range is selected, __false__ if a single date is selected
     * __event.singleDate__: event data if __isRange__ is __false__, if __isRange__ is __true__ this property is __null__
-      * __date__: IMyDate object for example: { day: 22, month: 11, year: 2019 }
+      * __date__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { day: 22, month: 11, year: 2019 }
       * __jsDate__: Javascript Date object
-      * __formatted__: Date string in the same format as the __dateFormat__ option is. For example '2016-11-22'
+      * __formatted__: Date as a string in the same format as the __dateFormat__ option is. For example '2016-11-22'
       * __epoc__: Epoc time stamp. For example: 1479765600
     * __event.dateRange__: event data if __isRange__ is __true__, if __isRange__ is __false__ this property is __null__
-      * __beginDate__: IMyDate object for example: { day: 22, month: 11, year: 2019 }
+      * __beginDate__: IMyDate object for example: { year: 2019, month: 11, day: 7 }
       * __beginJsDate__: Javascript Date object
       * __beginEpoc__: Epoc time stamp for example: 1479765600
-      * __endDate__: IMyDate object for example: { day: 22, month: 11, year: 2019 }
+      * __endDate__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { year: 2019, month: 11, day: 7 }
       * __endJsDate__: Javascript Date object
       * __endEpoc__: Epoc time stamp. For example: 1479765600
-      * __formatted__: Date range string. The date is in the same format as the __dateFormat__ option is. For example '2019-11-22 - 2019-11-24'
+      * __formatted__: Date range as a string. The date is in the same format as the __dateFormat__ option is. For example '2019-11-22 - 2019-11-24'
   
   * Type of event parameter is [IMyDateModel](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date-model.interface.ts)
 
@@ -310,9 +314,9 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 
 
 ### calendarViewChanged callback
-  * called when the calendar view change
+  * called when the calendar view changes
   * event parameter:
-    * __event.year__: Year number in calendar. For example: 2016
+    * __event.year__: Year number in calendar. For example: 2018
     * __event.month__: Month number in calendar. For example: 11
     * __event.first__: First day of selected month and year. Type of [IMyWeekday](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-weekday.interface.ts). For example: {number: 1, weekday: "tu"}
     * __event.last__: Last day of selected month and year. Type of [IMyWeekday](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-weekday.interface.ts). For example: {number: 30, weekday: "we"}
@@ -335,12 +339,12 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 
 
 ### rangeDateSelection callback
-  * called in date range mode when a date is selected
+  * called in a date range mode when a date is selected
     * event parameter:
       * __event.isBegin__: Is begin date. __true__ if begin date, __false__ if end date
-      * __event.date__: Selected date (IMyDate)
+      * __event.date__: Selected date as an [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object
       * __event.dateFormat__: Date format given in options. For example 'yyyy-mm-dd'
-      * __event.formatted__: Selected date (format based on __dateFormat__ option). For example '2019-05-10'
+      * __event.formatted__: Selected date as a string (format based on __dateFormat__ option). For example '2019-05-10'
       * __event.epoc__: Epoc time stamp. For example: 1557435600
 
   * Example of the __rangeDateSelection__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/rangeDateSelection-callback).
@@ -357,6 +361,8 @@ Usage examples of the __stylesData__ option:
 * [change color theme of datepicker](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker)
 
 ## Development of this component
+
+In order the following commands work you need a __git client__ and __npm__.
 
 * At first fork and clone this repo:
   1. __git clone https://github.com/kekeh/angular-mydatepicker.git__
@@ -388,16 +394,16 @@ Usage examples of the __stylesData__ option:
     * local installation package is created to the __dist/angular-mydatepicker__ folder. For example: __angular-mydatepicker-0.0.1.tgz__
 
 * Install local npm package to your project:
-  1. __npm install <path>/angular-mydatepicker-0.0.1.tgz__
+  1. __npm install path_to_folder/angular-mydatepicker-0.0.1.tgz__
 
 ## Demo
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
 ## License
-* License: [MIT](https://github.com/kekeh/angular-mydatepicker/blob/master/LICENSE)
+* [MIT](https://github.com/kekeh/angular-mydatepicker/blob/master/LICENSE)
 
 ## Author
-* Author: kekeh
+* kekeh
 
 ## Keywords
 * datepicker
