@@ -284,15 +284,15 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
   * event parameter:
     * __event.isRange__: __true__ if a date range is selected, __false__ if a single date is selected
     * __event.singleDate__: event data if __isRange__ is __false__, if __isRange__ is __true__ this property is __null__
-      * __date__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { day: 22, month: 11, year: 2019 }
+      * __date__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { year: 2019, month: 9, day: 7 }
       * __jsDate__: Javascript Date object
       * __formatted__: Date as a string in the same format as the __dateFormat__ option is. For example '2016-11-22'
       * __epoc__: Epoc time stamp. For example: 1479765600
     * __event.dateRange__: event data if __isRange__ is __true__, if __isRange__ is __false__ this property is __null__
-      * __beginDate__: IMyDate object for example: { year: 2019, month: 11, day: 7 }
+      * __beginDate__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { year: 2019, month: 11, day: 7 }
       * __beginJsDate__: Javascript Date object
       * __beginEpoc__: Epoc time stamp for example: 1479765600
-      * __endDate__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { year: 2019, month: 11, day: 7 }
+      * __endDate__: [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) object for example: { year: 2019, month: 11, day: 9 }
       * __endJsDate__: Javascript Date object
       * __endEpoc__: Epoc time stamp. For example: 1479765600
       * __formatted__: Date range as a string. The date is in the same format as the __dateFormat__ option is. For example '2019-11-22 - 2019-11-24'
