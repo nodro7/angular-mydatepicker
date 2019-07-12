@@ -207,3 +207,13 @@
 ### Features
 
 * README file updated.
+
+# 0.1.6 (2019-07-12)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Code refactored. Added more test cases.

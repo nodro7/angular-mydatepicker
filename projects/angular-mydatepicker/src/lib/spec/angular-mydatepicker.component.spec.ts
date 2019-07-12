@@ -66,6 +66,10 @@ class AngularMyDatepickerTestComponent {
   initDateModel(model: IMyDateModel): void {
     this.vcDp.writeValue(model);
   }
+
+  isDateValid(): boolean {
+    return this.vcDp.isDateValid();
+  }
 }
 
 describe('AngularMyDatePickerComponent', () => {
@@ -390,6 +394,7 @@ describe('AngularMyDatePickerComponent', () => {
 
   it('edit date in input box', () => {
     let opts: IMyOptions = {
+      dateRange: false,
       dateFormat: 'dd mmm yyyy'
     };
 
@@ -404,6 +409,47 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('12 Feb 2017');
+
+
+    opts.dateRange = true;
+
+    comp.parseOptions(opts);
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+
+    selection.value = '12 Feb 2017 - 13 Feb 2017';
+    selection.dispatchEvent(new Event('blur'));
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('12 Feb 2017 - 13 Feb 2017');
+  });
+
+  it('isDateValid() call', () => {
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd mmm yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+
+    selection.value = '12 Feb 2017';
+    selection.dispatchEvent(new Event('blur'));
+
+    let valid = comp.isDateValid();
+    expect(valid).not.toBe(null);
+    expect(valid).toBe(true);
+
+    selection.value = '';
+    selection.dispatchEvent(new Event('blur'));
+
+    valid = comp.isDateValid();
+    expect(valid).not.toBe(null);
+    expect(valid).toBe(false);
   });
 
   it('test calendar year 2016 month one by one - next month button', () => {
@@ -485,6 +531,193 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
   });
+
+  it('day view move focus', () => {
+    comp.setDefaultMonth('2019/07');
+
+    let opts: IMyOptions = {
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    const arrowEvent = new KeyboardEvent('keydown',{
+      'key': 'ArrowRight'
+    });
+
+    fixture.detectChanges();
+    let daycell = getElement('.d_0_0');
+    expect(daycell).not.toBe(null);
+
+    daycell.dispatchEvent(arrowEvent);
+
+    expect(document.activeElement.id).toBe('d_0_1');
+
+    fixture.detectChanges();
+    daycell = getElement('.d_0_1');
+    expect(daycell).not.toBe(null);
+
+    const enterEvent = new KeyboardEvent('keydown',{
+      'key': 'Enter'
+    });
+
+    daycell.dispatchEvent(enterEvent);
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input.value).toBe('02.07.2019');
+
+    comp.closeCalendar();
+  });
+
+  it('month view move focus', () => {
+    comp.setDefaultMonth('2019/07');
+
+    let opts: IMyOptions = {
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let monthbtn = getElement('.myDpMonthBtn');
+    expect(monthbtn).not.toBe(null);
+    monthbtn.click();
+
+    const arrowEvent = new KeyboardEvent('keydown',{
+      'key': 'ArrowRight'
+    });
+
+    fixture.detectChanges();
+    let monthcell = getElement('.m_0_0');
+    expect(monthcell).not.toBe(null);
+
+    monthcell.dispatchEvent(arrowEvent);
+
+    expect(document.activeElement.id).toBe('m_0_1');
+
+    const enterEvent = new KeyboardEvent('keydown',{
+      'key': 'Enter'
+    });
+
+    fixture.detectChanges();
+    monthcell = getElement('.m_0_1');
+    expect(monthcell).not.toBe(null);
+
+    monthcell.dispatchEvent(enterEvent);
+
+    fixture.detectChanges();
+    let daycell = getElement('.d_0_0');
+    expect(daycell).not.toBe(null);
+    daycell.click();
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input).not.toBe(null);
+    expect(input.value).toBe('28.01.2019');
+
+    comp.closeCalendar();
+  });
+
+  it('year view move focus', () => {
+    comp.setDefaultMonth('2019/07');
+
+    let opts: IMyOptions = {
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let yearbtn = getElement('.myDpYearBtn');
+    expect(yearbtn).not.toBe(null);
+    yearbtn.click();
+
+    const arrowEvent = new KeyboardEvent('keydown',{
+      'key': 'ArrowRight'
+    });
+
+    fixture.detectChanges();
+    let yearcell = getElement('.y_0_0');
+    expect(yearcell).not.toBe(null);
+
+    yearcell.dispatchEvent(arrowEvent);
+
+    expect(document.activeElement.id).toBe('y_0_1');
+
+    const enterEvent = new KeyboardEvent('keydown',{
+      'key': 'Enter'
+    });
+
+    fixture.detectChanges();
+    yearcell = getElement('.y_0_1');
+    expect(yearcell).not.toBe(null);
+
+    yearcell.dispatchEvent(enterEvent);
+
+    fixture.detectChanges();
+    let daycell = getElement('.d_0_0');
+    expect(daycell).not.toBe(null);
+    daycell.click();
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input).not.toBe(null);
+    expect(input.value).toBe('30.06.2008');
+
+    comp.closeCalendar();
+  });
+
+  it('input keyup event', () => {
+    comp.setDefaultMonth('2019/07');
+
+    let opts: IMyOptions = {
+      dateRange: false
+    };
+
+    comp.parseOptions(opts);
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input).not.toBe(null);
+
+    input.click();
+
+    const keyupEvent1 = new KeyboardEvent('keyup',{
+      'key': '1'
+    });
+
+    input.dispatchEvent(keyupEvent1);
+
+    opts.dateRange = true;
+
+    comp.parseOptions(opts);
+
+    input.dispatchEvent(keyupEvent1);
+
+    const keyupEventEsc = new KeyboardEvent('keyup',{
+      'key': 'Escape'
+    });
+
+    input.dispatchEvent(keyupEventEsc);
+
+    const keyupEventIgnore = new KeyboardEvent('keyup',{
+      'key': 'Tab'
+    });
+
+    input.dispatchEvent(keyupEventIgnore);
+  });
+
+
+
+
+  
 
   // options
   it('options - dateRange (true/false)', () => {

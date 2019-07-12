@@ -15,7 +15,7 @@ export class MonthViewComponent implements OnChanges {
   @Input() opts: IMyOptions;
   @Input() months: Array<Array<IMyCalendarMonth>>;
   @Output() monthCellClicked: EventEmitter<IMyCalendarMonth> = new EventEmitter<IMyCalendarMonth>();
-  @Output() monthCellKeyDown: EventEmitter<IMyCalendarMonth> = new EventEmitter<IMyCalendarMonth>();
+  @Output() monthCellKeyDown: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
 
   constructor(private utilService: UtilService) { }
 
@@ -47,7 +47,7 @@ export class MonthViewComponent implements OnChanges {
         this.onMonthCellClicked(event, cell);
       }
       else if (this.opts.moveFocusByArrowKeys) {
-        this.monthCellKeyDown.emit(cell)
+        this.monthCellKeyDown.emit(event)
       }
     }
   }

@@ -23,7 +23,7 @@ export class DayViewComponent implements OnChanges {
   @Input() selectedDateRange: IMyDateRange;
 
   @Output() dayCellClicked: EventEmitter<IMyCalendarDay> = new EventEmitter<IMyCalendarDay>();
-  @Output() dayCellKeyDown: EventEmitter<IMyCalendarDay> = new EventEmitter<IMyCalendarDay>();
+  @Output() dayCellKeyDown: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
 
   prevMonthId: number = MonthId.prev;
   currMonthId: number = MonthId.curr;
@@ -68,7 +68,7 @@ export class DayViewComponent implements OnChanges {
         this.onDayCellClicked(event, cell);
       }
       else if (this.opts.moveFocusByArrowKeys) {
-        this.dayCellKeyDown.emit(cell)
+        this.dayCellKeyDown.emit(event)
       }
     }
   }

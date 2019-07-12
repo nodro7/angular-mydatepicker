@@ -146,8 +146,8 @@ export class CalendarComponent implements OnDestroy {
   }
 
   setDateRangeValue(begin: IMyDate, end: IMyDate): void {
-      this.selectedDateRange.begin = begin;
-      this.selectedDateRange.end = end;
+    this.selectedDateRange.begin = begin;
+    this.selectedDateRange.end = end;
   }
 
   resetMonthYearSelect(): void {
@@ -178,8 +178,8 @@ export class CalendarComponent implements OnDestroy {
     this.selectorEl.nativeElement.focus();
   }
 
-  onMonthCellKeyDown(cell: IMyCalendarMonth) {
-    // Make possible to move focus by arrow keys
+  onMonthCellKeyDown(event: KeyboardEvent) {
+    // Move focus by arrow keys
     const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
     const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, MONTH_ROW_COUNT, MONTH_COL_COUNT);
 
@@ -210,8 +210,8 @@ export class CalendarComponent implements OnDestroy {
     this.selectorEl.nativeElement.focus();
   }
 
-  onYearCellKeyDown(cell: IMyCalendarYear) {
-    // Make possible to move focus by arrow keys
+  onYearCellKeyDown(event: KeyboardEvent) {
+    // Move focus by arrow keys
     const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
     const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, YEAR_ROW_COUNT, YEAR_COL_COUNT);
 
@@ -338,8 +338,8 @@ export class CalendarComponent implements OnDestroy {
     this.resetMonthYearSelect();
   }
 
-  onDayCellKeyDown(cell: IMyCalendarDay) {
-    // Make possible to move focus by arrow keys
+  onDayCellKeyDown(event: KeyboardEvent) {
+    // Move focus by arrow keys
     const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
     const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, DATE_ROW_COUNT, DATE_COL_COUNT);
 

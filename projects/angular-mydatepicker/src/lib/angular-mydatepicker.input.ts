@@ -73,7 +73,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.ignoreKeyPress(keyCode)) {
       return;
     }
-    else if (keyCode === KeyCode.esc) {
+    
+    if (keyCode === KeyCode.esc) {
       this.closeSelector(CalToggle.CloseByEsc);
     }
     else {

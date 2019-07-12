@@ -15,7 +15,7 @@ export class YearViewComponent implements OnChanges {
   @Input() opts: IMyOptions;
   @Input() years: Array<Array<IMyCalendarYear>>;
   @Output() yearCellClicked: EventEmitter<IMyCalendarYear> = new EventEmitter<IMyCalendarYear>();
-  @Output() yearCellKeyDown: EventEmitter<IMyCalendarYear> = new EventEmitter<IMyCalendarYear>();
+  @Output() yearCellKeyDown: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
 
   constructor(private utilService: UtilService) { }
 
@@ -47,7 +47,7 @@ export class YearViewComponent implements OnChanges {
         this.onYearCellClicked(event, cell);
       }
       else if (this.opts.moveFocusByArrowKeys) {
-        this.yearCellKeyDown.emit(cell)
+        this.yearCellKeyDown.emit(event)
       }
     }
   }
