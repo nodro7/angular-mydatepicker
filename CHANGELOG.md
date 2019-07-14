@@ -227,3 +227,13 @@
 ### Features
 
 * Added more test cases.
+
+# 0.1.8 (2019-07-14)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README file updated.

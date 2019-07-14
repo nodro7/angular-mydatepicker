@@ -21,8 +21,6 @@ The library is implemented as an [attribute directive](https://angular.io/guide/
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
-Start from [here](https://github.com/kekeh/angular-mydatepicker#development-of-this-component) if want to develop or create own version of the library.
-
 
 ### Main features
 
@@ -41,7 +39,7 @@ Start from [here](https://github.com/kekeh/angular-mydatepicker#development-of-t
     * change value of any option dynamically
 * well tested
   * coverage [report](https://codecov.io/gh/kekeh/angular-mydatepicker)
-  * most of the code based on my old libraries which are widely used
+  * most of the codes are from my old libraries which are widely used
 
 
 ### Project
