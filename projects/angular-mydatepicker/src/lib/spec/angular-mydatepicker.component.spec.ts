@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {AngularMyDatePickerModule} from '../angular-mydatepicker.module';
 import {AngularMyDatePickerDirective} from '../angular-mydatepicker.input';
-import {IMyOptions} from '../interfaces/my-options.interface';
+import {IAngularMyDpOptions, IMyOptions} from '../interfaces/my-options.interface';
 import {IMyDateModel} from '../interfaces/my-date-model.interface';
 import {DefaultView} from '../enums/default-view.enum';
 
@@ -23,12 +23,14 @@ function getElements(id: string): any {
 }
 
 @Component({
-  template: '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" name="mydate" angular-mydatepicker #dp="angular-mydatepicker" />'
+  template: '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" [options]="options" name="mydate" angular-mydatepicker #dp="angular-mydatepicker" />'
 })
 class AngularMyDatepickerTestComponent {
   @ViewChild('dp') vcDp: AngularMyDatePickerDirective;
 
   inputType: string = 'text';
+
+  options: IAngularMyDpOptions = {};
 
   openCalendar(): void {
     this.vcDp.openCalendar();
@@ -97,6 +99,8 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.parseOptions(opts);
 
+    comp.openCalendar();
+
     fixture.detectChanges();
     comp.initDateModel({isRange: false, singleDate: {date: { year: 2019, month: 5, day: 21 }}});
 
@@ -130,6 +134,26 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('24.5.2019 - 10.6.2019');
+
+
+    fixture.detectChanges();
+    let begin = new Date(2019, 9, 12);
+    let end = new Date(2019, 9, 14);
+    comp.initDateModel({isRange: true, dateRange: {beginJsDate: begin, endJsDate: end}});
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('12.10.2019 - 14.10.2019');
+
+
+    fixture.detectChanges();
+    comp.initDateModel(null);
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('');
+
+    comp.closeCalendar();
   });
 
   it('validate date selection on calendar',() => {
@@ -714,10 +738,58 @@ describe('AngularMyDatePickerComponent', () => {
     input.dispatchEvent(keyupEventIgnore);
   });
 
+  it('day view cell mouse enter and leave', () => {
+    comp.setDefaultMonth('2019/07');
+
+    let opts: IMyOptions = {
+      dateRange: true,
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let daycell = getElement('.d_0_0');
+    expect(daycell).not.toBe(null);
+
+    daycell.click();
+
+    fixture.detectChanges();
+    daycell = getElement('.d_0_1');
+    expect(daycell).not.toBe(null);
+    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(246, 246, 246)');
+
+    fixture.detectChanges();
+    daycell = getElement('.d_0_2');
+    expect(daycell).not.toBe(null);
+
+    const mouseEnterEvent = new MouseEvent('mouseenter');
+    daycell.dispatchEvent(mouseEnterEvent);
+
+    fixture.detectChanges();
+    daycell = getElement('.d_0_1');
+    expect(daycell).not.toBe(null);
+    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(219, 234, 255)');
+
+    fixture.detectChanges();
+    daycell = getElement('.d_0_2');
+    expect(daycell).not.toBe(null);
+
+    const mouseLeaveEvent = new MouseEvent('mouseleave');
+    daycell.dispatchEvent(mouseLeaveEvent);
 
 
+    fixture.detectChanges();
+    daycell = getElement('.d_0_1');
+    expect(daycell).not.toBe(null);
+    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(246, 246, 246)');
 
-  
+    comp.closeCalendar();
+  });
+
+
 
   // options
   it('options - dateRange (true/false)', () => {

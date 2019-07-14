@@ -217,3 +217,13 @@
 ### Features
 
 * Code refactored. Added more test cases.
+
+# 0.1.7 (2019-07-14)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added more test cases.
