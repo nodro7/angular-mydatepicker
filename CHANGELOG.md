@@ -237,3 +237,13 @@
 ### Features
 
 * README file updated.
+
+# 0.1.9 (2019-07-17)
+
+### Bug Fixes
+
+* Fixed bug: Change of options doesn't update component every time.
+
+### Features
+
+* none

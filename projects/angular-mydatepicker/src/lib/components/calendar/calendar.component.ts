@@ -131,6 +131,22 @@ export class CalendarComponent implements OnDestroy {
     }
   }
 
+  refreshComponent(opts: IMyOptions): void {
+    this.opts = opts;
+
+    const {selectMonth, selectYear, years} = this;
+    if (!selectMonth && !selectYear) {
+      const {monthNbr, year} = this.visibleMonth;
+      this.generateCalendar(monthNbr, year, false);
+    }
+    else if (selectMonth) {
+      this.generateMonths();
+    }
+    else if (selectYear) {
+      this.generateYears(years[2][2].year);
+    }
+  }
+
   resetDateValue(): void {
     if (!this.opts.dateRange) {
       this.selectedDate = this.utilService.resetDate();

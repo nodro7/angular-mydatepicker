@@ -168,6 +168,10 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (changes.hasOwnProperty(OPTIONS)) {
       this.parseOptions(changes[OPTIONS].currentValue);
     }
+
+    if (this.cRef !== null) {
+      this.cRef.instance.refreshComponent(this.opts);
+    }
   }
 
   public ngOnDestroy(): void {
