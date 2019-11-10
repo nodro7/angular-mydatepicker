@@ -9,7 +9,7 @@ import {MonthViewComponent} from "./components/month-view/month-view.component";
 import {YearViewComponent} from "./components/year-view/year-view.component";
 
 import {AngularMyDatePickerDirective} from "./angular-mydatepicker.input";
-import {AngularMyDatePickerFocusDirective} from "./directives/angular-mydatepicker-focus.directive";
+import {AngularMyDatePickerCalendarDirective} from "./directives/angular-mydatepicker-calendar.directive";
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -20,7 +20,7 @@ import {AngularMyDatePickerFocusDirective} from "./directives/angular-mydatepick
     MonthViewComponent,
     YearViewComponent,
     AngularMyDatePickerDirective,
-    AngularMyDatePickerFocusDirective
+    AngularMyDatePickerCalendarDirective
   ],
   entryComponents: [CalendarComponent],
   exports: [
@@ -30,7 +30,7 @@ import {AngularMyDatePickerFocusDirective} from "./directives/angular-mydatepick
     MonthViewComponent,
     YearViewComponent,
     AngularMyDatePickerDirective,
-    AngularMyDatePickerFocusDirective
+    AngularMyDatePickerCalendarDirective
   ]
 })
 export class AngularMyDatePickerModule { }

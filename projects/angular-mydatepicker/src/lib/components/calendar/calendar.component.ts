@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, OnDestroy, HostBinding} from "@angular/core";
+import {Component, ElementRef, ViewEncapsulation, ViewChild, Renderer2, ChangeDetectorRef, AfterViewInit, OnDestroy, HostBinding} from "@angular/core";
 import {IMyDate} from "../../interfaces/my-date.interface";
 import {IMyDateRange} from "../../interfaces/my-date-range.interface";
 import {IMyMonth} from "../../interfaces/my-month.interface";
@@ -24,7 +24,7 @@ import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUN
   providers: [UtilService],
   encapsulation: ViewEncapsulation.None
 })
-export class CalendarComponent implements OnDestroy {
+export class CalendarComponent implements AfterViewInit, OnDestroy {
   @ViewChild("selectorEl") selectorEl: ElementRef;
   @ViewChild("styleEl") styleEl: ElementRef;
   
@@ -64,23 +64,32 @@ export class CalendarComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.clickListener();
-  }
-
-  initialize(opts: IMyOptions, defaultMonth: string, selectorPos: IMySelectorPosition, inputValue: string, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, cbe: () => void): void {
-    this.opts = opts;
-    this.selectorPos = selectorPos;
-    this.weekDays.length = 0;
-
-    const {defaultView, dateRange, firstDayOfWeek, dayLabels, stylesData} = this.opts;
+  ngAfterViewInit(): void {
+    const {stylesData} = this.opts;
 
     if (stylesData.styles.length) {
       const styleElTemp: any = this.renderer.createElement(STYLE);
       this.renderer.appendChild(styleElTemp, this.renderer.createText(stylesData.styles));
       this.renderer.appendChild(this.styleEl.nativeElement, styleElTemp);
     }
+  }
 
+  ngOnDestroy(): void {
+    this.clickListener();
+  }
+
+  initializeComponent(opts: IMyOptions, defaultMonth: string, selectorPos: IMySelectorPosition, inputValue: string, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, cbe: () => void): void {
+    this.opts = opts;
+    this.selectorPos = selectorPos;
+    
+    this.dateChanged = dc;
+    this.calendarViewChanged = cvc;
+    this.rangeDateSelection = rds;
+    this.closedByEsc = cbe;
+
+    const {defaultView, dateRange, firstDayOfWeek, dayLabels} = this.opts;
+
+    this.weekDays.length = 0;
     this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
     if (this.dayIdx !== -1) {
       let idx: number = this.dayIdx;
@@ -115,11 +124,6 @@ export class CalendarComponent implements OnDestroy {
         this.selectedMonth = {monthNbr: begin.month, year: begin.year};
       }
     }
-
-    this.dateChanged = dc;
-    this.calendarViewChanged = cvc;
-    this.rangeDateSelection = rds;
-    this.closedByEsc = cbe;
 
     this.setCalendarVisibleMonth();
 

@@ -143,10 +143,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.onTouchedCb();
   }
 
-  // wrapper with arrow function to preserve the use of 'this' word
-  private onClickWrapper = (ev: MouseEvent) => { this.onClick(ev); };
+  private onClickWrapper = (evt: MouseEvent) => this.onClick(evt);
 
-  onClick(evt: MouseEvent) {
+  private onClick(evt: MouseEvent) {
     if (this.opts.closeSelectorOnDocumentClick && !this.preventClose && evt.target && this.cRef !== null && this.elem.nativeElement !== evt.target && !this.cRef.location.nativeElement.contains(evt.target) && !this.disabled) {
       this.closeSelector(CalToggle.CloseByOutClick);
     }
@@ -178,7 +177,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.closeCalendar();
   }
 
-  setLocaleOptions(): void {
+  public setLocaleOptions(): void {
     const opts: IMyOptions = this.localeService.getLocaleOptions(this.locale);
     Object.keys(opts).forEach((k) => {
       (<IMyOptions> this.opts)[k] = opts[k];
@@ -303,7 +302,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.cRef === null) {
       this.cRef = this.vcRef.createComponent(this.cfr.resolveComponentFactory(CalendarComponent));
       this.appendSelector(this.cRef.location.nativeElement);
-      this.cRef.instance.initialize(
+      this.cRef.instance.initializeComponent(
         this.opts,
         this.defaultMonth,
         this.getSelectorPosition(this.elem.nativeElement),
@@ -328,6 +327,10 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         }
       );
       this.emitCalendarToggle(CalToggle.Open);
+
+      if (!this.opts.inline) {
+        document.addEventListener(CLICK, this.onClickWrapper);
+      }
     }
     setTimeout(() => {
       this.preventClose = false;
@@ -343,11 +346,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       return;
     }
     if (this.cRef === null) {
-      document.addEventListener(CLICK, this.onClickWrapper);
       this.openCalendar();
     }
     else {
-      document.removeEventListener(CLICK, this.onClickWrapper);
       this.closeSelector(CalToggle.CloseByCalBtn);
     }
   }
@@ -403,6 +404,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       this.vcRef.remove(this.vcRef.indexOf(this.cRef.hostView));
       this.cRef = null;
       this.emitCalendarToggle(reason);
+
+      document.removeEventListener(CLICK, this.onClickWrapper);
     }
   }
 

@@ -247,3 +247,13 @@
 ### Features
 
 * none
+
+# 0.2.0 (2019-11-10)
+
+### Bug Fixes
+
+* Fixed bug: [angular Ivy](https://github.com/kekeh/angular-mydatepicker/issues/20)
+
+### Features
+
+* none

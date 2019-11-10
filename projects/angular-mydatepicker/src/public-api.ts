@@ -13,7 +13,7 @@ export {UtilService} from "./lib/services/angular-mydatepicker.util.service";
 export {DefaultConfigService} from "./lib/services/angular-mydatepicker.config.service";
 export {LocaleService} from "./lib/services/angular-mydatepicker.locale.service";
 
-export {AngularMyDatePickerFocusDirective} from "./lib/directives/angular-mydatepicker-focus.directive";
+export {AngularMyDatePickerCalendarDirective} from "./lib/directives/angular-mydatepicker-calendar.directive";
 
 export {IMyCalendarDay} from "./lib/interfaces/my-calendar-day.interface";
 export {IMyCalendarMonth} from "./lib/interfaces/my-calendar-month.interface";
