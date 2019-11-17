@@ -47,6 +47,7 @@ export class DefaultConfigService {
     dateRangeDatesDelimiter: " - ",
     inputFieldValidation: true,
     stylesData: {selector: "", styles: ""},
+    divHostElement: {enabled: false, placeholder: ""},
     ariaLabelPrevMonth: "Previous Month",
     ariaLabelNextMonth: "Next Month"
   };

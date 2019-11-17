@@ -16,7 +16,7 @@ import {CalToggle} from "./enums/cal-toggle.enum";
 import {Year} from "./enums/year.enum";
 import {KeyCode} from "./enums/key-code.enum";
 
-import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX} from "./constants/constants";
+import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX, INNER_HTML} from "./constants/constants";
 
 const NGX_DP_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -47,7 +47,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   @Output() rangeDateSelection: EventEmitter<IMyRangeDateSelection> = new EventEmitter<IMyRangeDateSelection>();
 
   private cRef: ComponentRef<CalendarComponent> = null;
-  private inputText: string = "";
+  private hostText: string = "";
   private preventClose: boolean = false;
   private disabled = false;
 
@@ -78,7 +78,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       this.closeSelector(CalToggle.CloseByEsc);
     }
     else {
-      const {value} = this.elem.nativeElement;
+      const value: string = this.getHostValue();
 
       let valid: boolean = false;
       if (!this.opts.dateRange) {
@@ -97,13 +97,13 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     const {inputFieldValidation, dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter, closeSelectorOnDateSelect} = this.opts;
 
     if (inputFieldValidation) {
-      const {value} = this.elem.nativeElement;
+      const value: string = this.getHostValue();
 
       let valid: boolean = false;
       if (!dateRange) {
         const date: IMyDate = this.utilService.isDateValid(value, this.opts);
         valid = this.utilService.isInitializedDate(date);
-        if (valid && this.inputText !== value) {
+        if (valid && this.hostText !== value) {
           // Valid date
           const dateModel: IMyDateModel = this.utilService.getDateModel(date, null, dateFormat, monthLabels, dateRangeDatesDelimiter);
           this.emitDateChanged(dateModel);
@@ -117,7 +117,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         const dateRange: IMyDateRange = this.utilService.isDateValidDateRange(value, this.opts);
         const {begin, end} = dateRange;
         valid = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
-        if (valid && this.inputText !== value) {
+        if (valid && this.hostText !== value) {
           // Valid date range
           const dateModel: IMyDateModel = this.utilService.getDateModel(null, dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter);
           this.emitDateChanged(dateModel);
@@ -128,7 +128,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         }
       }
 
-      if (!valid && this.inputText !== value) {
+      if (!valid && this.hostText !== value) {
         if (value === EMPTY_STR) {
           this.clearDate();
         }
@@ -137,7 +137,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         }
       }
 
-      this.inputText = value;
+      this.hostText = value;
     }
 
     this.onTouchedCb();
@@ -212,7 +212,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     const {dateFormat, monthLabels, dateRangeDatesDelimiter} = this.opts;
 
     if (!value) {
-      this.setInputValue(EMPTY_STR);
+      this.setHostValue(EMPTY_STR);
       this.emitInputFieldChanged(EMPTY_STR, false);
 
       if (this.cRef !== null) {
@@ -228,7 +228,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       const formatted: string = this.utilService.formatDate(date, dateFormat, monthLabels);
       const valid: boolean = this.utilService.isInitializedDate(this.utilService.isDateValid(formatted, this.opts));
       if (valid) {
-        this.setInputValue(formatted);
+        this.setHostValue(formatted);
         this.emitInputFieldChanged(formatted, valid);
 
         if (this.cRef !== null) {
@@ -252,7 +252,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         const {begin, end} = this.utilService.isDateValidDateRange(formatted, this.opts);
         const valid: boolean = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
         if (valid) {
-          this.setInputValue(formatted);
+          this.setHostValue(formatted);
           this.emitInputFieldChanged(formatted, valid);
 
           if (this.cRef !== null) {
@@ -281,7 +281,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   public validate(c: AbstractControl): { [p: string]: any } {
-    const {value} = this.elem.nativeElement;
+    const value: string = this.getHostValue();
 
     if (value === null || value === EMPTY_STR) {
       return null;
@@ -306,7 +306,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         this.opts,
         this.defaultMonth,
         this.getSelectorPosition(this.elem.nativeElement),
-        this.elem.nativeElement.value,
+        this.getHostValue(),
         (dm: IMyDateModel, close: boolean) => {
           this.focusToInput();
           this.emitDateChanged(dm);
@@ -357,7 +357,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.disabled) {
       return;
     }
-    this.setInputValue(EMPTY_STR);
+    this.setHostValue(EMPTY_STR);
     this.emitDateChanged({
       isRange: this.opts.dateRange,
       singleDate: {
@@ -382,7 +382,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   public isDateValid(): boolean {
-    const {value} = this.elem.nativeElement;
+    const value: string = this.getHostValue();
 
     if (value !== EMPTY_STR) {
       const date: IMyDate = this.utilService.isDateValid(value, this.opts);
@@ -410,18 +410,27 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   private updateModel(model: IMyDateModel): void {
-    this.setInputValue(this.utilService.getFormattedDate(model));
+    this.setHostValue(this.utilService.getFormattedDate(model));
     this.onChangeCb(model);
     this.onTouchedCb();
   }
 
-  private setInputValue(value: string): void {
-    this.inputText = value;
-    this.renderer.setProperty(this.elem.nativeElement, VALUE, value);
+  private setHostValue(value: string): void {
+    const {divHostElement} = this.opts;
+    this.hostText = value;
+    const valueType: string = !divHostElement.enabled ? VALUE : INNER_HTML;
+    value = valueType === INNER_HTML && value === EMPTY_STR ? divHostElement.placeholder : value;
+    this.renderer.setProperty(this.elem.nativeElement, valueType, value);
+  }
+
+  private getHostValue(): string {
+    const {value, innerHTML} = this.elem.nativeElement;
+    return !this.opts.divHostElement.enabled ? value : innerHTML;
   }
 
   private focusToInput(): void {
-    if (this.opts.focusInputOnDateSelect) {
+    const {focusInputOnDateSelect, divHostElement} = this.opts;
+    if (focusInputOnDateSelect && !divHostElement.enabled) {
       setTimeout(() => {
         this.elem.nativeElement.focus();
       });

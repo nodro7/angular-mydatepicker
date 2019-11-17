@@ -26,6 +26,10 @@ export class UtilService {
     const isMonthStr: boolean = dateFormat.indexOf(MMM) !== -1;
     const delimeters: Array<string> = dateFormat.match(/[^(dmy)]{1,}/g);
 
+    if (!dateStr || dateStr === EMPTY_STR) {
+      return returnDate;
+    }
+
     const dateValue: Array<IMyDateFormat> = this.getDateValue(dateStr, dateFormat, delimeters);
     const year: number = this.getNumberByValue(dateValue[0]);
     const month: number = isMonthStr ? this.getMonthNumberByMonthName(dateValue[1], monthLabels) : this.getNumberByValue(dateValue[1]);

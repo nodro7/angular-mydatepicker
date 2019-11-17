@@ -1,5 +1,5 @@
 .pagecontent {
-  margin: 20px 300px;
+  margin: 20px 200px;
 }
 
 .maintitle {
@@ -30,9 +30,27 @@
   margin-bottom: 20px;
 }
 
+.flexcontainer {
+  display: flex;
+}
+
+.flexitem {
+  width: 400px;
+}
 
 @media screen and (max-width: 1200px) {
   .pagecontent {
     margin: 20px 10px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .flexcontainer {
+    display: block;
+  }
+
+  .flexitem {
+    width: 50%;
+    margin: 0 auto;
   }
 }

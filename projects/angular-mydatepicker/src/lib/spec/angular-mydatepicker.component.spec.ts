@@ -759,7 +759,7 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     daycell = getElement('.d_0_1');
     expect(daycell).not.toBe(null);
-    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(246, 246, 246)');
+    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(255, 255, 255)');
 
     fixture.detectChanges();
     daycell = getElement('.d_0_2');
@@ -784,7 +784,7 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     daycell = getElement('.d_0_1');
     expect(daycell).not.toBe(null);
-    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(246, 246, 246)');
+    expect(window.getComputedStyle(daycell).backgroundColor).toBe('rgb(255, 255, 255)');
 
     comp.closeCalendar();
   });

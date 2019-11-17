@@ -44,6 +44,7 @@ const LOCALE = "locale";
 const OBJECT = "object";
 const PX = "px";
 const STYLE = "style";
+const INNER_HTML = "innerHTML";
 
 const OPTS = "opts";
 const YEARS = "years";
@@ -98,6 +99,7 @@ export {
   OBJECT,
   PX,
   STYLE,
+  INNER_HTML,
   OPTS,
   YEARS,
   VISIBLE_MONTH,

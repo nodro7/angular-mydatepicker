@@ -16,8 +16,9 @@
 
 ## Description
 
-Highly configurable Angular datepicker and date range picker. Basic idea to create this library was to make it as configurable as possible. 
-The library is implemented as an [attribute directive](https://angular.io/guide/attribute-directives). It is done this way because then you have more choices to configure it. 
+Highly configurable Angular datepicker and date range picker. 
+
+Basic idea to create this library was to make it as configurable as possible. The library is implemented as a directive. It is done this way, because then there is more choices to configure it. 
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
@@ -39,7 +40,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
     * change value of any option dynamically
 * well tested
   * coverage [report](https://codecov.io/gh/kekeh/angular-mydatepicker)
-  * most of the codes are from my old libraries which are widely used
+  * most of the codes are from the existing libraries which are widely used
 
 
 ### Project
@@ -161,6 +162,7 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | __dateRangeDatesDelimiter__   | " - " | string | The delimiter of dates in a date range. |
 | __inputFieldValidation__   | true | boolean | Input field validation enabled or not after __blur__ event of input field. |
 | __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example on how to use this option. See also [chapter](https://github.com/kekeh/angular-mydatepicker#override-styles-of-component) below. |
+| __divHostElement__   | no default value | [IMyDivHostElement](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-div-host-element.interface.ts) | Div as a host element. In case of non-editable date field enable this option and put a __angular-mydatepicker__ directive inside a __div__ element. Placeholder text is an additional property of this option. Functionality is limited if this option is enabled. |
 | __ariaLabelPrevMonth__   | Previous Month | string | Aria label text of previous month button. |
 | __ariaLabelNextMonth__   | Next Month | string | Aria label text of next month button. |
 

@@ -257,3 +257,13 @@
 ### Features
 
 * none
+
+# 0.2.1 (2019-11-17)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added option divHostElement.
