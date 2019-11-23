@@ -280,3 +280,12 @@
 * Added option calendarAnimation.
 
 
+# 0.2.3 (2019-11-23)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README updated.
