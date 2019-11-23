@@ -9,7 +9,8 @@
   display: flex;
 }
 
-.localeOptions {
+.localeOptions,
+.calendarAnimationOptions {
   margin-top: 20px;
 }
 
@@ -22,7 +23,8 @@
   margin-top: 20px;
 }
 
-.localeLabel {
+.localeLabel,
+.calendarAnimationLabel {
   padding-left: 0;
 }
 
@@ -37,6 +39,7 @@
 
 .linkToOptions {
   margin-top: 10px;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 1000px) {

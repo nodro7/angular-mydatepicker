@@ -89,6 +89,17 @@
 
   </div>
 
+  <div class="optionsContainer calendarAnimationOptions">
+
+    <div class="form-check selectItem">
+      <label for="animation" class="col-sm-4 col-form-label calendarAnimationLabel">Animation:</label>
+      <select id="animation" class="custom-select col-sm-8" (change)="onChangeCalendarAnimation($event.target.value)">
+        <option *ngFor="let a of animations">{{a}}</option>
+      </select>
+    </div>
+  
+  </div>
+
   <p class="linkToOptions">All options are listed <a href="https://github.com/kekeh/angular-mydatepicker#attributes">here</a></p>
 
   <div class="optionsContainer localeOptions">

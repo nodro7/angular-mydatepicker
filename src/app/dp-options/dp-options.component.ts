@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates} from 'angular-mydatepicker';
+import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, CalAnimation} from 'angular-mydatepicker';
 
 @Component({
   selector: 'app-dp-options',
@@ -20,10 +20,20 @@ export class DpOptionsComponent implements OnInit {
     markDates: [],
     showWeekNumbers: false,
     disableWeekdays: [],
-    stylesData: {selector: '', styles: ''}
+    stylesData: {selector: '', styles: ''},
+    calendarAnimation: CalAnimation.None
   };
 
   public model: IMyDateModel = null;
+
+  public animations: Array<string> = [
+    'None', 
+    'Fade', 
+    'ScaleTop', 
+    'ScaleCenter', 
+    'Rotate', 
+    'FlipDiagonal'
+  ];
 
   public locale: string = 'en';
   public locales: Array<string> = [
@@ -201,6 +211,31 @@ export class DpOptionsComponent implements OnInit {
         }
       `
       } : {selector: '', styles: ''};
+    this.myOptions = copy;
+  }
+
+  onChangeCalendarAnimation(animation: string): void {
+    let copy = this.getCopyOfOptions();
+   
+    if (animation === 'None') {
+      copy.calendarAnimation = CalAnimation.None;
+    }
+    else if (animation === 'Fade') {
+      copy.calendarAnimation = CalAnimation.Fade;
+    }
+    else if (animation === 'ScaleTop') {
+      copy.calendarAnimation = CalAnimation.ScaleTop;
+    }
+    else if (animation === 'ScaleCenter') {
+      copy.calendarAnimation = CalAnimation.ScaleCenter;
+    }
+    else if (animation === 'Rotate') {
+      copy.calendarAnimation = CalAnimation.Rotate;
+    }
+    else if (animation === 'FlipDiagonal') {
+      copy.calendarAnimation = CalAnimation.FlipDiagonal;
+    }
+
     this.myOptions = copy;
   }
 
