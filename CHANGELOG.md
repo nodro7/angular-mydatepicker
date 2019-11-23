@@ -267,3 +267,16 @@
 ### Features
 
 * Added option divHostElement.
+
+
+# 0.2.2 (2019-11-23)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added option calendarAnimation.
+
+

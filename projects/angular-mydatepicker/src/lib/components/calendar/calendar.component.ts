@@ -15,6 +15,7 @@ import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
 import {DefaultView} from "../../enums/default-view.enum";
+import {CalAnimation} from "../../enums/cal-animation.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE} from "../../constants/constants";
 
 @Component({
@@ -54,6 +55,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   prevViewDisabled: boolean = false;
   nextViewDisabled: boolean = false;
 
+  calAnimation: number = CalAnimation.None;
+
   clickListener: () => void;
 
   constructor(private elem: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef, private utilService: UtilService) {
@@ -87,7 +90,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.rangeDateSelection = rds;
     this.closedByEsc = cbe;
 
-    const {defaultView, dateRange, firstDayOfWeek, dayLabels} = this.opts;
+    const {defaultView, dateRange, firstDayOfWeek, dayLabels, calendarAnimation} = this.opts;
+
+    this.setCalendarAnimation(calendarAnimation);
 
     this.weekDays.length = 0;
     this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
@@ -149,6 +154,10 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     else if (selectYear) {
       this.generateYears(years[2][2].year);
     }
+  }
+
+  setCalendarAnimation(value: number): void {
+    this.calAnimation = value;
   }
 
   resetDateValue(): void {

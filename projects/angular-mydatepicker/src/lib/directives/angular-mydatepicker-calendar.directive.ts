@@ -18,7 +18,7 @@ export class AngularMyDatePickerCalendarDirective implements AfterViewInit {
     style.top = !inline ? selectorPos.top : "0";
     style.left = !inline ? selectorPos.left : "0";
 
-    if (focus !== ZERO_STR) {
+    if (focus !== ZERO_STR && !inline) {
       this.el.nativeElement.focus();
     }
   }

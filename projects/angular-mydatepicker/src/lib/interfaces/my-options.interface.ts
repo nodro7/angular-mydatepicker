@@ -8,6 +8,7 @@ import {IMyStyles} from "./my-styles.interface";
 import {IMyDivHostElement} from "./my-div-host-element.interface";
 import {DefaultView} from "../enums/default-view.enum";
 import {Year} from "../enums/year.enum";
+import {CalAnimation} from "../enums/cal-animation.enum";
 
 export interface IMyOptions {
   dateRange?: boolean;
@@ -50,6 +51,7 @@ export interface IMyOptions {
   moveFocusByArrowKeys?: boolean;
   dateRangeDatesDelimiter?: string;
   inputFieldValidation?: boolean;
+  calendarAnimation?: CalAnimation;
   stylesData?: IMyStyles;
   divHostElement?: IMyDivHostElement;
   ariaLabelPrevMonth?: string;

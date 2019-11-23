@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection} from '../../../projects/angular-mydatepicker/src/public-api';
+import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection, CalAnimation} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
   selector: 'date-picker-ngmodel',
@@ -42,6 +42,7 @@ export class DatePickerNgmodel implements OnInit {
     appendSelectorToBody: false,
     focusInputOnDateSelect: true,
     defaultView: DefaultView.Date,
+    calendarAnimation: CalAnimation.None,
     stylesData:
       {
         selector: '',
@@ -65,6 +66,7 @@ export class DatePickerNgmodel implements OnInit {
 
   public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
+  public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop', 'ScaleCenter', 'Rotate', 'FlipDiagonal');
 
   public locale: string = 'en';
 
@@ -371,35 +373,62 @@ export class DatePickerNgmodel implements OnInit {
     if (size === '232px x 252px') {
       copy.selectorHeight = '232px';
       copy.selectorWidth = '252px';
-      this.myDatePickerOptions = copy;
     }
     else if (size === '200px x 220px') {
       copy.selectorHeight = '200px';
       copy.selectorWidth = '220px';
-      this.myDatePickerOptions = copy;
     }
     else {
       copy.selectorHeight = '260px';
       copy.selectorWidth = '290px';
-      this.myDatePickerOptions = copy;
     }
+
+    this.myDatePickerOptions = copy;
   }
+
+
+  onCalendarAnimation(animation: string) {
+    let copy = this.getCopyOfOptions();
+
+    if (animation === 'None') {
+      copy.calendarAnimation = CalAnimation.None;
+    }
+    else if (animation === 'Fade') {
+      copy.calendarAnimation = CalAnimation.Fade;
+    }
+    else if (animation === 'ScaleTop') {
+      copy.calendarAnimation = CalAnimation.ScaleTop;
+    }
+    else if (animation === 'ScaleCenter') {
+      copy.calendarAnimation = CalAnimation.ScaleCenter;
+    }
+    else if (animation === 'Rotate') {
+      copy.calendarAnimation = CalAnimation.Rotate;
+    }
+    else if (animation === 'FlipDiagonal') {
+      copy.calendarAnimation = CalAnimation.FlipDiagonal;
+    }
+
+    this.myDatePickerOptions = copy;
+  }
+
+
+
 
   onDefaultView(size: string) {
     let copy = this.getCopyOfOptions();
 
     if (size === 'date') {
       copy.defaultView = DefaultView.Date;
-      this.myDatePickerOptions = copy;
     }
     else if (size === 'month') {
       copy.defaultView = DefaultView.Month;
-      this.myDatePickerOptions = copy;
     }
     else {
       copy.defaultView = DefaultView.Year;
-      this.myDatePickerOptions = copy;
     }
+
+    this.myDatePickerOptions = copy;
   }
 
   onChangeLocale(locale: any) {

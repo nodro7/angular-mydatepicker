@@ -8,6 +8,7 @@ import {AngularMyDatePickerDirective} from '../angular-mydatepicker.input';
 import {IAngularMyDpOptions, IMyOptions} from '../interfaces/my-options.interface';
 import {IMyDateModel} from '../interfaces/my-date-model.interface';
 import {DefaultView} from '../enums/default-view.enum';
+import {CalAnimation} from '../enums/cal-animation.enum';
 
 let comp: AngularMyDatepickerTestComponent;
 let fixture: ComponentFixture<AngularMyDatepickerTestComponent>;
@@ -2083,6 +2084,37 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     let input = getElement('.myDateInput');
     expect(input.value).toBe('29.04.2019 * 30.04.2019');
+  });
+
+  it('options - calendarAnimation', () => {
+    comp.setDefaultMonth('2019/11');
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd.mm.yyyy',
+      calendarAnimation: CalAnimation.ScaleTop
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let animationElem = getElement('.myDpAnimationScaleTopIn');
+    expect(animationElem).not.toBe(null);
+
+    fixture.detectChanges();
+    let date = getElement('.d_0_0');
+    expect(date).not.toBe(null);
+
+    fixture.detectChanges();
+    date.click();
+
+    fixture.detectChanges();
+    animationElem = getElement('.myDpAnimationScaleTopOut');
+    expect(animationElem).not.toBe(null);
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    expect(input.value).toBe('28.10.2019');
   });
 
   it('options - stylesData', () => {

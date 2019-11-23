@@ -1,4 +1,5 @@
-import {Directive, Input, ComponentRef, ElementRef, ViewContainerRef, Renderer2, ChangeDetectorRef, ComponentFactoryResolver, forwardRef, EventEmitter, Output, SimpleChanges, OnChanges, HostListener, OnDestroy} from "@angular/core";
+import {Directive, Input, ComponentRef, ElementRef, ViewContainerRef, Renderer2, ChangeDetectorRef, 
+  ComponentFactoryResolver, forwardRef, EventEmitter, Output, SimpleChanges, OnChanges, HostListener, OnDestroy} from "@angular/core";
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator} from "@angular/forms";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 import {IMyDate} from "./interfaces/my-date.interface";
@@ -15,8 +16,10 @@ import {DefaultConfigService} from "./services/angular-mydatepicker.config.servi
 import {CalToggle} from "./enums/cal-toggle.enum";
 import {Year} from "./enums/year.enum";
 import {KeyCode} from "./enums/key-code.enum";
+import {CalAnimation} from "./enums/cal-animation.enum";
+import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, 
+  LOCALE, OBJECT, PX, INNER_HTML, ANIMATION_END, ANIMATION_COUNT, ANIMATION_TIMEOUT} from "./constants/constants";
 
-import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, LOCALE, OBJECT, PX, INNER_HTML} from "./constants/constants";
 
 const NGX_DP_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -399,16 +402,44 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     return keyCode === KeyCode.leftArrow || keyCode === KeyCode.rightArrow || keyCode === KeyCode.upArrow || keyCode === KeyCode.downArrow || keyCode === KeyCode.tab || keyCode === KeyCode.shift;
   }
 
-  private closeSelector(reason: number): void {
-    if (this.cRef !== null && !this.opts.inline) {
-      this.vcRef.remove(this.vcRef.indexOf(this.cRef.hostView));
-      this.cRef = null;
+  private onAnimateWrapper = (reason: number) => this.animationEnd(reason);
+
+  private animationEnd(reason: number): void {
+    if (this.cRef !== null) {
+      this.cRef.instance.selectorEl.nativeElement.removeEventListener(ANIMATION_END, this.onAnimateWrapper);
+      this.removeCalendar();
       this.emitCalendarToggle(reason);
+    }
+  }
+
+  private closeSelector(reason: number): void {
+    const {inline, calendarAnimation} = this.opts;
+    
+    if (this.cRef !== null && !inline) {
+      if (calendarAnimation !== CalAnimation.None) {
+        const {instance} = this.cRef;
+        instance.selectorEl.nativeElement.addEventListener(ANIMATION_END, this.onAnimateWrapper.bind(this, reason));
+        instance.setCalendarAnimation(calendarAnimation + ANIMATION_COUNT);
+
+        // In case the animationend event is not fired
+        setTimeout(this.onAnimateWrapper.bind(this, reason), ANIMATION_TIMEOUT);
+      }
+      else {
+        this.removeCalendar();
+        this.emitCalendarToggle(reason);
+      }
 
       document.removeEventListener(CLICK, this.onClickWrapper);
     }
   }
 
+  private removeCalendar(): void {
+    if (this.vcRef !== null) {
+      this.vcRef.remove(this.vcRef.indexOf(this.cRef.hostView));
+      this.cRef = null;
+    }
+  }
+  
   private updateModel(model: IMyDateModel): void {
     this.setHostValue(this.utilService.getFormattedDate(model));
     this.onChangeCb(model);

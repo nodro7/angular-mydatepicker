@@ -58,6 +58,9 @@ const WEEK_DAYS = "weekDays";
 const SELECTED_DATE = "selectedDate";
 const SELECTED_DATE_RANGE = "selectedDateRange";
 const MONTHS = "months";
+const ANIMATION_END = "animationend";
+const ANIMATION_COUNT = 5;
+const ANIMATION_TIMEOUT = 550;
 
 const PREVENT_CLOSE_TIMEOUT = 50;
 
@@ -112,5 +115,8 @@ export {
   SELECTED_DATE,
   SELECTED_DATE_RANGE,
   MONTHS,
+  ANIMATION_END,
+  ANIMATION_COUNT,
+  ANIMATION_TIMEOUT,
   PREVENT_CLOSE_TIMEOUT
 };

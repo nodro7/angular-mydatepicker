@@ -209,6 +209,21 @@
           </label>
         </td>
       </tr>
+      <tr>
+        <td>
+            <label>
+                <span style="margin-right: 10px">Calendar animation:</span>
+                <span>
+                    <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onCalendarAnimation($event.target.value)">
+                        <option *ngFor="let a of calAnimations">{{a}}</option>
+                    </select>
+                </span>
+              </label>
+        </td>
+        <td>
+
+        </td>
+      </tr>
     </table>
 
 

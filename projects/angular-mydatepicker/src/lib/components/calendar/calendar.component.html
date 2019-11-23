@@ -2,7 +2,10 @@
 <div class="ng-mydp {{opts.stylesData.selector}}">
   <div class="myDpSelector" #selectorEl 
     [libAngularMyDatePickerCalendar]="{focus: '1', inline: opts.inline, selectorWidth: opts.selectorWidth, selectorHeight: opts.selectorHeight, selectorPos: selectorPos}" 
-    [ngClass]="{'myDpSelectorArrow': opts.showSelectorArrow, 'myDpSelectorArrowLeft': opts.showSelectorArrow && !opts.alignSelectorRight, 'myDpSelectorArrowRight': opts.showSelectorArrow&&opts.alignSelectorRight, 'myDpSelectorAbsolute': !opts.inline, 'myDpSelectorPosInitial': opts.inline}" 
+    [ngClass]="{'myDpSelectorArrow': opts.showSelectorArrow, 'myDpSelectorArrowLeft': opts.showSelectorArrow && !opts.alignSelectorRight, 
+      'myDpSelectorArrowRight': opts.showSelectorArrow&&opts.alignSelectorRight, 'myDpSelectorAbsolute': !opts.inline, 'myDpSelectorPosInitial': opts.inline,
+      'myDpAnimationFadeIn': calAnimation === 1, 'myDpAnimationScaleTopIn': calAnimation === 2, 'myDpAnimationScaleCenterIn': calAnimation === 3, 'myDpAnimationRotateIn': calAnimation === 4, 'myDpAnimationFlipDiagonalIn': calAnimation === 5,
+      'myDpAnimationFadeOut': calAnimation === 6, 'myDpAnimationScaleTopOut': calAnimation === 7, 'myDpAnimationScaleCenterOut': calAnimation === 8, 'myDpAnimationRotateOut': calAnimation === 9, 'myDpAnimationFlipDiagonalOut': calAnimation === 10}" 
     (keyup)="onCloseSelector($event)" tabindex="0">
 
     <lib-selection-bar [opts]="opts" [years]="years" [visibleMonth]="visibleMonth" [selectMonth]="selectMonth" [selectYear]="selectYear"

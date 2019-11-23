@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {IMyOptions} from "../interfaces/my-options.interface";
 import {Year} from "../enums/year.enum";
 import {DefaultView} from "../enums/default-view.enum";
+import {CalAnimation} from "../enums/cal-animation.enum";
 
 @Injectable()
 export class DefaultConfigService {
@@ -46,6 +47,7 @@ export class DefaultConfigService {
     moveFocusByArrowKeys: true,
     dateRangeDatesDelimiter: " - ",
     inputFieldValidation: true,
+    calendarAnimation: CalAnimation.None,
     stylesData: {selector: "", styles: ""},
     divHostElement: {enabled: false, placeholder: ""},
     ariaLabelPrevMonth: "Previous Month",
