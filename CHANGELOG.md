@@ -300,3 +300,14 @@
 ### Features
 
 * Changes to the animation functionality.
+
+
+# 0.3.1 (2019-11-24)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Changes to the animation functionality.

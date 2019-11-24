@@ -131,11 +131,11 @@
 
 @keyframes myDpAnimationRotateIn {
   0% {
-    transform: rotate(-28deg);
-    opacity: 0.2;
+    transform: scale(0.3) rotate(-45deg);
+    opacity: 0;
   }
   100% {
-    transform: rotate(0);
+    transform: scale(1) rotate(0);
     opacity: 1;
   }
 }
@@ -146,11 +146,11 @@
 
 @keyframes myDpAnimationRotateOut {
   0% {
-    transform: rotate(0);
+    transform: scale(1) rotate(0);
     opacity: 1;
   }
   100% {
-    transform: rotate(-28deg);
+    transform: scale(0.3) rotate(-45deg);
     opacity: 0;
   }
 }
