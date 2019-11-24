@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, CalAnimation} from 'angular-mydatepicker';
+import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyCalendarAnimation, CalAnimation} from 'angular-mydatepicker';
 
 @Component({
   selector: 'app-dp-options',
@@ -21,7 +21,7 @@ export class DpOptionsComponent implements OnInit {
     showWeekNumbers: false,
     disableWeekdays: [],
     stylesData: {selector: '', styles: ''},
-    calendarAnimation: CalAnimation.None
+    calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None}
   };
 
   public model: IMyDateModel = null;
@@ -29,8 +29,8 @@ export class DpOptionsComponent implements OnInit {
   public animations: Array<string> = [
     'None', 
     'Fade', 
-    'ScaleTop', 
-    'ScaleCenter', 
+    'ScaleTop-ScaleCenter', 
+    'ScaleCenter-ScaleTop', 
     'Rotate', 
     'FlipDiagonal'
   ];
@@ -218,22 +218,22 @@ export class DpOptionsComponent implements OnInit {
     let copy = this.getCopyOfOptions();
    
     if (animation === 'None') {
-      copy.calendarAnimation = CalAnimation.None;
+      copy.calendarAnimation = {in: CalAnimation.None, out: CalAnimation.None};
     }
     else if (animation === 'Fade') {
-      copy.calendarAnimation = CalAnimation.Fade;
+      copy.calendarAnimation = {in: CalAnimation.Fade, out: CalAnimation.Fade};
     }
-    else if (animation === 'ScaleTop') {
-      copy.calendarAnimation = CalAnimation.ScaleTop;
+    else if (animation === 'ScaleTop-ScaleCenter') {
+      copy.calendarAnimation = {in: CalAnimation.ScaleTop, out: CalAnimation.ScaleCenter};
     }
-    else if (animation === 'ScaleCenter') {
-      copy.calendarAnimation = CalAnimation.ScaleCenter;
+    else if (animation === 'ScaleCenter-ScaleTop') {
+      copy.calendarAnimation = {in: CalAnimation.ScaleCenter, out: CalAnimation.ScaleTop};
     }
     else if (animation === 'Rotate') {
-      copy.calendarAnimation = CalAnimation.Rotate;
+      copy.calendarAnimation = {in: CalAnimation.Rotate, out: CalAnimation.Rotate};
     }
     else if (animation === 'FlipDiagonal') {
-      copy.calendarAnimation = CalAnimation.FlipDiagonal;
+      copy.calendarAnimation = {in: CalAnimation.FlipDiagonal, out: CalAnimation.FlipDiagonal};
     }
 
     this.myOptions = copy;
