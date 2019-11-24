@@ -42,7 +42,7 @@ export class DatePickerNgmodel implements OnInit {
     appendSelectorToBody: false,
     focusInputOnDateSelect: true,
     defaultView: DefaultView.Date,
-    calendarAnimation: CalAnimation.None,
+    calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
     stylesData:
       {
         selector: '',
@@ -66,7 +66,7 @@ export class DatePickerNgmodel implements OnInit {
 
   public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
-  public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop', 'ScaleCenter', 'Rotate', 'FlipDiagonal');
+  public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop-ScaleCenter', 'ScaleCenter-ScaleTop', 'Rotate', 'FlipDiagonal');
 
   public locale: string = 'en';
 
@@ -391,29 +391,26 @@ export class DatePickerNgmodel implements OnInit {
     let copy = this.getCopyOfOptions();
 
     if (animation === 'None') {
-      copy.calendarAnimation = CalAnimation.None;
+      copy.calendarAnimation = {in: CalAnimation.None, out: CalAnimation.None};
     }
     else if (animation === 'Fade') {
-      copy.calendarAnimation = CalAnimation.Fade;
+      copy.calendarAnimation = {in: CalAnimation.Fade, out: CalAnimation.Fade};
     }
-    else if (animation === 'ScaleTop') {
-      copy.calendarAnimation = CalAnimation.ScaleTop;
+    else if (animation === 'ScaleTop-ScaleCenter') {
+      copy.calendarAnimation = {in: CalAnimation.ScaleTop, out: CalAnimation.ScaleCenter};
     }
-    else if (animation === 'ScaleCenter') {
-      copy.calendarAnimation = CalAnimation.ScaleCenter;
+    else if (animation === 'ScaleCenter-ScaleTop') {
+      copy.calendarAnimation = {in: CalAnimation.ScaleCenter, out: CalAnimation.ScaleTop};
     }
     else if (animation === 'Rotate') {
-      copy.calendarAnimation = CalAnimation.Rotate;
+      copy.calendarAnimation = {in: CalAnimation.Rotate, out: CalAnimation.Rotate};
     }
     else if (animation === 'FlipDiagonal') {
-      copy.calendarAnimation = CalAnimation.FlipDiagonal;
+      copy.calendarAnimation = {in: CalAnimation.FlipDiagonal, out: CalAnimation.FlipDiagonal};
     }
 
     this.myDatePickerOptions = copy;
   }
-
-
-
 
   onDefaultView(size: string) {
     let copy = this.getCopyOfOptions();

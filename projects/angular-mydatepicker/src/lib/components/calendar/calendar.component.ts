@@ -11,12 +11,14 @@ import {IMySelectorPosition} from "../../interfaces/my-selector-pos.interface";
 import {IMyCalendarViewChanged} from "../../interfaces/my-calendar-view-changed.interface";
 import {IMyDateModel} from "../../interfaces/my-date-model.interface";
 import {IMyRangeDateSelection} from "../../interfaces/my-range-date-selection.interface";
+import {IMyCalendarAnimation} from "../../interfaces/my-calendar-animation.interface";
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
 import {DefaultView} from "../../enums/default-view.enum";
 import {CalAnimation} from "../../enums/cal-animation.enum";
-import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE} from "../../constants/constants";
+import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, 
+  SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT} from "../../constants/constants";
 
 @Component({
   selector: "lib-angular-mydatepicker-calendar",
@@ -55,8 +57,6 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   prevViewDisabled: boolean = false;
   nextViewDisabled: boolean = false;
 
-  calAnimation: number = CalAnimation.None;
-
   clickListener: () => void;
 
   constructor(private elem: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef, private utilService: UtilService) {
@@ -68,12 +68,16 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const {stylesData} = this.opts;
+    const {stylesData, calendarAnimation} = this.opts;
 
     if (stylesData.styles.length) {
       const styleElTemp: any = this.renderer.createElement(STYLE);
       this.renderer.appendChild(styleElTemp, this.renderer.createText(stylesData.styles));
       this.renderer.appendChild(this.styleEl.nativeElement, styleElTemp);
+    }
+
+    if (calendarAnimation.in !== CalAnimation.None) {
+      this.setCalendarAnimation(calendarAnimation, true);
     }
   }
 
@@ -90,9 +94,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.rangeDateSelection = rds;
     this.closedByEsc = cbe;
 
-    const {defaultView, dateRange, firstDayOfWeek, dayLabels, calendarAnimation} = this.opts;
-
-    this.setCalendarAnimation(calendarAnimation);
+    const {defaultView, dateRange, firstDayOfWeek, dayLabels} = this.opts;
 
     this.weekDays.length = 0;
     this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
@@ -156,8 +158,19 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  setCalendarAnimation(value: number): void {
-    this.calAnimation = value;
+  setCalendarAnimation(calAnimation: IMyCalendarAnimation, isOpen: boolean): void {
+    const {nativeElement} = this.selectorEl;
+    const {renderer} = this;
+
+    const classIn = MY_DP_ANIMATION + ANIMATION_NAMES[calAnimation.in - 1];
+    if (isOpen) {
+      renderer.addClass(nativeElement, classIn + IN);
+    }
+    else {
+      const classOut = MY_DP_ANIMATION + ANIMATION_NAMES[calAnimation.out - 1];
+      renderer.removeClass(nativeElement, classIn + IN);
+      renderer.addClass(nativeElement, classOut + OUT);
+    }
   }
 
   resetDateValue(): void {

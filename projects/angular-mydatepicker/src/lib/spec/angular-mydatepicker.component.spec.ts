@@ -2091,7 +2091,7 @@ describe('AngularMyDatePickerComponent', () => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'dd.mm.yyyy',
-      calendarAnimation: CalAnimation.ScaleTop
+      calendarAnimation: {in: CalAnimation.ScaleTop, out: CalAnimation.Rotate}
     };
 
     comp.parseOptions(opts);
@@ -2109,7 +2109,7 @@ describe('AngularMyDatePickerComponent', () => {
     date.click();
 
     fixture.detectChanges();
-    animationElem = getElement('.myDpAnimationScaleTopOut');
+    animationElem = getElement('.myDpAnimationRotateOut');
     expect(animationElem).not.toBe(null);
 
     fixture.detectChanges();

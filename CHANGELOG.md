@@ -289,3 +289,14 @@
 ### Features
 
 * README updated.
+
+
+# 0.3.0 (2019-11-24)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Changes to the animation functionality.

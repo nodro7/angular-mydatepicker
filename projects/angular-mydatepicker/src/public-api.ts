@@ -40,6 +40,7 @@ export {IMyWeek} from "./lib/interfaces/my-week.interface";
 export {IMyWeekday} from "./lib/interfaces/my-weekday.interface";
 export {IMyStyles} from "./lib/interfaces/my-styles.interface";
 export {IMyDivHostElement} from "./lib/interfaces/my-div-host-element.interface";
+export {IMyCalendarAnimation} from "./lib/interfaces/my-calendar-animation.interface";
 
 export {CalToggle} from "./lib/enums/cal-toggle.enum";
 export {KeyCode} from "./lib/enums/key-code.enum";

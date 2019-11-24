@@ -41,11 +41,11 @@
 
 @keyframes myDpAnimationFadeIn {
   0% {
-    transform: translateZ(80px);
+    transform: translateY(-50px);
     opacity: 0;
   }
   100% {
-    transform: translateZ(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -56,11 +56,11 @@
 
 @keyframes myDpAnimationFadeOut {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
   100% {
-    transform: translateX(-48);
+    transform: translateY(-50px);
     opacity: 0;
   }
 }
@@ -131,8 +131,8 @@
 
 @keyframes myDpAnimationRotateIn {
   0% {
-    transform: rotate(-25deg);
-    opacity: 0.4;
+    transform: rotate(-28deg);
+    opacity: 0.2;
   }
   100% {
     transform: rotate(0);
@@ -150,7 +150,7 @@
     opacity: 1;
   }
   100% {
-    transform: rotate(-25deg);
+    transform: rotate(-28deg);
     opacity: 0;
   }
 }

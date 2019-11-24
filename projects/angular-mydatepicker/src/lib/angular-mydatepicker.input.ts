@@ -18,7 +18,7 @@ import {Year} from "./enums/year.enum";
 import {KeyCode} from "./enums/key-code.enum";
 import {CalAnimation} from "./enums/cal-animation.enum";
 import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, 
-  LOCALE, OBJECT, PX, INNER_HTML, ANIMATION_END, ANIMATION_COUNT, ANIMATION_TIMEOUT} from "./constants/constants";
+  LOCALE, OBJECT, PX, INNER_HTML, ANIMATION_END, ANIMATION_TIMEOUT} from "./constants/constants";
 
 
 const NGX_DP_VALUE_ACCESSOR = {
@@ -407,7 +407,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   private animationEnd(reason: number): void {
     if (this.cRef !== null) {
       this.cRef.instance.selectorEl.nativeElement.removeEventListener(ANIMATION_END, this.onAnimateWrapper);
-      this.removeCalendar();
+      this.removeComponent();
       this.emitCalendarToggle(reason);
     }
   }
@@ -416,16 +416,16 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     const {inline, calendarAnimation} = this.opts;
     
     if (this.cRef !== null && !inline) {
-      if (calendarAnimation !== CalAnimation.None) {
+      if (calendarAnimation.out !== CalAnimation.None) {
         const {instance} = this.cRef;
         instance.selectorEl.nativeElement.addEventListener(ANIMATION_END, this.onAnimateWrapper.bind(this, reason));
-        instance.setCalendarAnimation(calendarAnimation + ANIMATION_COUNT);
+        instance.setCalendarAnimation(calendarAnimation, false);
 
         // In case the animationend event is not fired
         setTimeout(this.onAnimateWrapper.bind(this, reason), ANIMATION_TIMEOUT);
       }
       else {
-        this.removeCalendar();
+        this.removeComponent();
         this.emitCalendarToggle(reason);
       }
 
@@ -433,7 +433,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     }
   }
 
-  private removeCalendar(): void {
+  private removeComponent(): void {
     if (this.vcRef !== null) {
       this.vcRef.remove(this.vcRef.indexOf(this.cRef.hostView));
       this.cRef = null;

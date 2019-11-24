@@ -47,7 +47,7 @@ export class DefaultConfigService {
     moveFocusByArrowKeys: true,
     dateRangeDatesDelimiter: " - ",
     inputFieldValidation: true,
-    calendarAnimation: CalAnimation.None,
+    calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
     stylesData: {selector: "", styles: ""},
     divHostElement: {enabled: false, placeholder: ""},
     ariaLabelPrevMonth: "Previous Month",
