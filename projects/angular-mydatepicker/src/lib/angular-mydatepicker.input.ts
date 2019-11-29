@@ -344,15 +344,17 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.closeSelector(CalToggle.CloseByCalBtn);
   }
 
-  public toggleCalendar(): void {
+  public toggleCalendar(): boolean | null {
     if (this.disabled) {
       return;
     }
     if (this.cRef === null) {
       this.openCalendar();
+      return true;
     }
     else {
       this.closeSelector(CalToggle.CloseByCalBtn);
+      return false;
     }
   }
 
