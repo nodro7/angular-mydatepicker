@@ -311,3 +311,14 @@
 ### Features
 
 * Changes to the animation functionality.
+
+
+# 0.3.2 (2019-12-01)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Merged: [Make toggleCalendar method return true on opening #23](https://github.com/kekeh/angular-mydatepicker/pull/23).

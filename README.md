@@ -266,7 +266,7 @@ Closes the calendar. Example of the __closeCalendar__ function is [here](https:/
 
 ### toggleCalendar function
 
-Closes the calendar if it is open and opens the calendar if it is closed. Example of the __toggleCalendar__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+Closes the calendar if it is open and opens the calendar if it is closed. Returns __true__ if the operation was open the calendar, otherwise returns __false__. Example of the __toggleCalendar__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
 
 
 ### clearDate function

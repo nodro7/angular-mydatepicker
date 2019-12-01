@@ -348,14 +348,16 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.disabled) {
       return;
     }
-    if (this.cRef === null) {
+
+    const isOpen: boolean = this.cRef === null;
+
+    if (isOpen) {
       this.openCalendar();
-      return true;
     }
     else {
       this.closeSelector(CalToggle.CloseByCalBtn);
-      return false;
     }
+    return isOpen;
   }
 
   public clearDate(): void {
