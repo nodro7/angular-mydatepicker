@@ -435,9 +435,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   selectDate(date: IMyDate): void {
-    const {dateFormat, monthLabels, dateRangeDatesDelimiter, closeSelectorOnDateSelect} = this.opts;
+    const {dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter, closeSelectorOnDateSelect} = this.opts;
 
-    if (this.opts.dateRange) {
+    if (dateRange) {
       // Date range
       const isBeginDateInitialized: boolean = this.utilService.isInitializedDate(this.selectedDateRange.begin);
       const isEndDateInitialized: boolean = this.utilService.isInitializedDate(this.selectedDateRange.end);

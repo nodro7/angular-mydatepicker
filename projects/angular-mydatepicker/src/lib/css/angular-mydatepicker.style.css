@@ -402,11 +402,9 @@
 
 .myDpMarkDate {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 4px;
-  top: 4px;
-  left: 4px;
+  top: 2px;
+  left: 2px;
+  border-right: 8px solid transparent;
 }
 
 .myDpMarkCurrDay,

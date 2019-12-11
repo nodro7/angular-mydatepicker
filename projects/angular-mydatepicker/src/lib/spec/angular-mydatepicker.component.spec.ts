@@ -1765,7 +1765,7 @@ describe('AngularMyDatePickerComponent', () => {
     let markdate = getElements('.myDpMarkDate');
     expect(markdate).not.toBe(null);
     expect(markdate.length).toBe(2);
-    expect(markdate[0].style['background-color']).toBe('red');
+    expect(markdate[0].style['border-top']).toBe('8px solid red');
 
     comp.closeCalendar();
 
@@ -1795,7 +1795,7 @@ describe('AngularMyDatePickerComponent', () => {
     let markdate = getElements('.myDpMarkDate');
     expect(markdate).not.toBe(null);
     expect(markdate.length).toBe(12);
-    expect(markdate[0].style['background-color']).toBe('blue');
+    expect(markdate[0].style['border-top']).toBe('8px solid blue');
 
     comp.closeCalendar();
 

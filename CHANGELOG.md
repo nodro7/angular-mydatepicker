@@ -322,3 +322,14 @@
 ### Features
 
 * Merged: [Make toggleCalendar method return true on opening #23](https://github.com/kekeh/angular-mydatepicker/pull/23).
+
+
+# 0.3.3 (2019-12-11)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Show marked dates as a triangle on the calendar.
