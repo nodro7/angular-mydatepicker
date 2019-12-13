@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
+import {IAngularMyDpOptions, IMyDateModel, CalAnimation} from 'angular-mydatepicker';
 
 @Component({
   selector: 'app-drp-bootstrap',
@@ -11,7 +11,8 @@ export class DrpBootstrapComponent implements OnInit {
 
   public myOptions: IAngularMyDpOptions = {
     dateRange: true,
-    dateFormat: 'dd.mm.yyyy'
+    dateFormat: 'dd.mm.yyyy',
+    calendarAnimation: {in: CalAnimation.FlipDiagonal, out: CalAnimation.Rotate}
   };
 
   public model: IMyDateModel = null;
