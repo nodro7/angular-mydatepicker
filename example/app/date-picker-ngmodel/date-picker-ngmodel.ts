@@ -39,6 +39,7 @@ export class DatePickerNgmodel implements OnInit {
     selectorWidth: '252px',
     closeSelectorOnDateSelect: true,
     closeSelectorOnDocumentClick: true,
+    showMonthNumber: true,
     appendSelectorToBody: false,
     focusInputOnDateSelect: true,
     defaultView: DefaultView.Date,
@@ -360,6 +361,12 @@ export class DatePickerNgmodel implements OnInit {
     let d: Date = new Date();
     d.setDate(d.getDate() + 1);
     copy.disableSince = checked ? {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()} : {year: 0, month: 0, day: 0};
+    this.myDatePickerOptions = copy;
+  }
+
+  onShowMonthNumber(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+    copy.showMonthNumber = checked;
     this.myDatePickerOptions = copy;
   }
 

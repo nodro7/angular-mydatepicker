@@ -190,6 +190,18 @@
       <tr>
         <td>
           <label>
+            <span>Show month number:</span>
+            <input style="cursor: pointer" type="checkbox" (change)="onShowMonthNumber($event.currentTarget.checked)" [checked]="true">
+          </label>
+        </td>
+        <td>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>
             <span style="margin-right: 10px">Default view:</span>
             <span>
                 <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onDefaultView($event.target.value)">

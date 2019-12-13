@@ -333,3 +333,14 @@
 ### Features
 
 * Show marked dates as a triangle on the calendar.
+
+
+# 0.3.4 (2019-12-13)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added option showMonthNumber.

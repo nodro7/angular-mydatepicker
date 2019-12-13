@@ -51,6 +51,7 @@ export interface IMyOptions {
   moveFocusByArrowKeys?: boolean;
   dateRangeDatesDelimiter?: string;
   inputFieldValidation?: boolean;
+  showMonthNumber?: boolean;
   calendarAnimation?: IMyCalendarAnimation;
   stylesData?: IMyStyles;
   divHostElement?: IMyDivHostElement;

@@ -47,6 +47,7 @@ export class DefaultConfigService {
     moveFocusByArrowKeys: true,
     dateRangeDatesDelimiter: " - ",
     inputFieldValidation: true,
+    showMonthNumber: true,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
     stylesData: {selector: "", styles: ""},
     divHostElement: {enabled: false, placeholder: ""},

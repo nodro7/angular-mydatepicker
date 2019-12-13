@@ -322,6 +322,11 @@
   width: 20%;
 }
 
+.myDpMonthNbr {
+  font-size: 10px; 
+  display: block;
+}
+
 .myDpDaycellWeekNbr {
   font-size: 10px;
   cursor: default;

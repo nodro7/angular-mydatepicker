@@ -160,7 +160,8 @@ describe('AngularMyDatePickerComponent', () => {
   it('validate date selection on calendar',() => {
     let opts: IMyOptions = {
       dateRange: false,
-      dateFormat: 'dd.mm.yyyy'
+      dateFormat: 'dd.mm.yyyy',
+      showMonthNumber: false
     };
 
     comp.parseOptions(opts);
@@ -215,7 +216,8 @@ describe('AngularMyDatePickerComponent', () => {
   it('validate date range selection on calendar',() => {
     let opts: IMyOptions = {
       dateRange: true,
-      dateFormat: 'dd.mm.yyyy'
+      dateFormat: 'dd.mm.yyyy',
+      showMonthNumber: false
     };
 
     comp.parseOptions(opts);
@@ -1267,7 +1269,8 @@ describe('AngularMyDatePickerComponent', () => {
     comp.setDefaultMonth('2019/05');
 
     let opts: IMyOptions = {
-      monthSelector: true
+      monthSelector: true,
+      showMonthNumber: false
     };
 
     comp.parseOptions(opts);
@@ -2084,6 +2087,82 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     let input = getElement('.myDateInput');
     expect(input.value).toBe('29.04.2019 * 30.04.2019');
+  });
+
+  it('options - showMonthNumber', () => {
+    comp.setDefaultMonth('2019/12');
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd.mm.yyyy',
+      showMonthNumber: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    comp.openCalendar();
+    fixture.detectChanges();
+    let monthBtn = getElement('.myDpMonthBtn');
+    expect(monthBtn).not.toBe(null);
+
+    fixture.detectChanges();
+    monthBtn.click();
+
+    fixture.detectChanges();
+    let monthsNbrs = getElements('.myDpMonthNbr');
+    expect(monthsNbrs).not.toBe(null);
+    expect(monthsNbrs.length).toBe(12);
+    expect(monthsNbrs[0].textContent.trim()).toBe('1');
+    expect(monthsNbrs[3].textContent.trim()).toBe('4');
+    expect(monthsNbrs[6].textContent.trim()).toBe('7');
+    expect(monthsNbrs[9].textContent.trim()).toBe('10');
+    expect(monthsNbrs[11].textContent.trim()).toBe('12');
+
+    fixture.detectChanges();
+    let prevMonth = getElement('.myDpIconLeftArrow');
+    expect(prevMonth).not.toBe(null);
+
+    fixture.detectChanges();
+    prevMonth.click();
+
+    fixture.detectChanges();
+    monthsNbrs = getElements('.myDpMonthNbr');
+    expect(monthsNbrs).not.toBe(null);
+    expect(monthsNbrs.length).toBe(12);
+    expect(monthsNbrs[0].textContent.trim()).toBe('1');
+    expect(monthsNbrs[3].textContent.trim()).toBe('4');
+    expect(monthsNbrs[6].textContent.trim()).toBe('7');
+    expect(monthsNbrs[9].textContent.trim()).toBe('10');
+    expect(monthsNbrs[11].textContent.trim()).toBe('12');
+
+    comp.closeCalendar();
+
+    opts.showMonthNumber = false;
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    comp.openCalendar();
+    fixture.detectChanges();
+    monthBtn = getElement('.myDpMonthBtn');
+    expect(monthBtn).not.toBe(null);
+
+    fixture.detectChanges();
+    monthBtn.click();
+
+    fixture.detectChanges();
+    monthsNbrs = getElement('.myDpMonthNbr');
+    expect(monthsNbrs).toBe(null);
+
+    comp.closeCalendar();
   });
 
   it('options - calendarAnimation', () => {
