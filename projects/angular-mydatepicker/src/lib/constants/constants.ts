@@ -67,6 +67,9 @@ const ANIMATION_NAMES = ["Fade", "ScaleTop", "ScaleCenter", "Rotate", "FlipDiago
 const IN = "In";
 const OUT = "Out";
 
+const TABINDEX = "tabindex";
+const TD_SELECTOR = "table tbody tr td";
+
 const PREVENT_CLOSE_TIMEOUT = 50;
 
 export {
@@ -127,5 +130,7 @@ export {
   ANIMATION_NAMES,
   IN,
   OUT,
+  TABINDEX,
+  TD_SELECTOR,
   PREVENT_CLOSE_TIMEOUT
 };

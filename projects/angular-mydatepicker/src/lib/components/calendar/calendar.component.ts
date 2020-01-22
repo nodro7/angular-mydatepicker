@@ -18,7 +18,7 @@ import {MonthId} from "../../enums/month-id.enum";
 import {DefaultView} from "../../enums/default-view.enum";
 import {CalAnimation} from "../../enums/cal-animation.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, 
-  SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT} from "../../constants/constants";
+  SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT, TABINDEX, TD_SELECTOR, ZERO_STR} from "../../constants/constants";
 
 @Component({
   selector: "lib-angular-mydatepicker-calendar",
@@ -223,10 +223,10 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   onMonthCellKeyDown(event: KeyboardEvent) {
     // Move focus by arrow keys
     const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
-    const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, MONTH_ROW_COUNT, MONTH_COL_COUNT);
+    const {moveFocus, targetRow, targetCol, direction} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, MONTH_ROW_COUNT, MONTH_COL_COUNT);
 
     if (moveFocus) {
-      this.focusCellElement(M, targetRow, targetCol);
+      this.focusCellElement(M, targetRow, targetCol, direction, MONTH_COL_COUNT);
     }
   }
 
@@ -255,10 +255,10 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   onYearCellKeyDown(event: KeyboardEvent) {
     // Move focus by arrow keys
     const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
-    const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, YEAR_ROW_COUNT, YEAR_COL_COUNT);
+    const {moveFocus, targetRow, targetCol, direction} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, YEAR_ROW_COUNT, YEAR_COL_COUNT);
 
     if (moveFocus) {
-      this.focusCellElement(Y, targetRow, targetCol);
+      this.focusCellElement(Y, targetRow, targetCol, direction, YEAR_COL_COUNT);
     }
   }
 
@@ -267,13 +267,11 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.months.length = 0;
 
     const {year, monthNbr} = this.visibleMonth;
-    const {disableUntil, disableSince} = this.opts;
 
     for (let i = 1; i <= 12; i += 3) {
       const row: Array<IMyCalendarMonth> = [];
       for (let j = i; j < i + 3; j++) {
-        const disabled: boolean = this.utilService.isMonthDisabledByDisableUntil({year: year, month: j, day: this.daysInMonth(j, year)}, disableUntil)
-          || this.utilService.isMonthDisabledByDisableSince({year: year, month: j, day: 1}, disableSince);
+        const disabled: boolean = this.utilService.isDisabledMonth(year, j, this.daysInMonth(j, year), this.opts);
         row.push({nbr: j, name: this.opts.monthLabels[j], currMonth: j === today.month && year === today.year, selected: j === monthNbr && year === this.selectedMonth.year, disabled});
       }
       this.months.push(row);
@@ -283,7 +281,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   generateYears(inputYear: number): void {
-    const {minYear, maxYear, disableUntil, disableSince} = this.opts;
+    const {minYear, maxYear} = this.opts;
 
     let y: number = inputYear - 12;
     if (inputYear < minYear) {
@@ -294,7 +292,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       y = maxYear - 24;
     }
 
-    const {year, monthNbr} = this.visibleMonth;
+    const {year} = this.visibleMonth;
 
     this.years.length = 0;
     const today: IMyDate = this.getToday();
@@ -302,14 +300,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     for (let i = y; i < y + 25; i += 5) {
       const row: Array<IMyCalendarYear> = [];
       for (let j = i; j < i + 5; j++) {
-        const disabled: boolean = this.utilService.isMonthDisabledByDisableUntil({
-            year: j,
-            month: monthNbr,
-            day: this.daysInMonth(monthNbr, j)
-          }, disableUntil) || this.utilService.isMonthDisabledByDisableSince({year: j, month: monthNbr, day: 1}, disableSince);
-
-        const minMax: boolean = j < minYear || j > maxYear;
-        row.push({year: j, currYear: j === today.year, selected: j === year, disabled: disabled || minMax});
+        const disabled: boolean = this.utilService.isDisabledYear(j, this.opts);
+        row.push({year: j, currYear: j === today.year, selected: j === year, disabled});
       }
       this.years.push(row);
     }
@@ -383,10 +375,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   onDayCellKeyDown(event: KeyboardEvent) {
     // Move focus by arrow keys
     const {sourceRow, sourceCol} = this.getSourceRowAndColumnFromEvent(event);
-    const {moveFocus, targetRow, targetCol} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, DATE_ROW_COUNT, DATE_COL_COUNT);
-
+    const {moveFocus, targetRow, targetCol, direction} = this.getTargetFocusRowAndColumn(event, sourceRow, sourceCol, DATE_ROW_COUNT, DATE_COL_COUNT);
     if (moveFocus) {
-      this.focusCellElement(D, targetRow, targetCol);
+      this.focusCellElement(D, targetRow, targetCol, direction, DATE_COL_COUNT);
     }
   }
 
@@ -406,6 +397,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     let moveFocus: boolean = false;
     let targetRow: number = row;
     let targetCol: number = col;
+    let direction: boolean = false;
 
     const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
     if (keyCode === KeyCode.upArrow && row > 0) {
@@ -415,6 +407,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     else if (keyCode === KeyCode.downArrow && row < rowCount) {
       moveFocus = true;
       targetRow++;
+      direction = true;
     }
     else if (keyCode === KeyCode.leftArrow && col > 0) {
       moveFocus = true;
@@ -423,15 +416,34 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     else if (keyCode === KeyCode.rightArrow && col < colCount) {
       moveFocus = true;
       targetCol++;
+      direction = true;
     }
-    return {moveFocus, targetRow, targetCol};
+    return {moveFocus, targetRow, targetCol, direction};
   }
 
-  focusCellElement(type: string, row: number, col: number): void {
-    const elem: any = this.selectorEl.nativeElement.querySelector(DOT + type + UNDER_LINE + row + UNDER_LINE + col);
-    if (elem) {
-      elem.focus();
+  focusCellElement(type: string, row: number, col: number, direction: boolean, colCount: number): void {
+    const className: string = type + UNDER_LINE + row + UNDER_LINE + col;
+    let elem: any = this.selectorEl.nativeElement.querySelector(DOT + className);
+
+    if (elem.getAttribute(TABINDEX) !== ZERO_STR) {
+      // if the selected element is disabled move a focus to next/previous enabled element
+      let tdList: any = Array.from(this.selectorEl.nativeElement.querySelectorAll(TD_SELECTOR));
+      const idx: number = row * (colCount + 1) + col;
+
+      let enabledElem: any = null;
+      if (direction) {
+        // find next enabled
+        enabledElem = tdList.slice(idx).find((td: any) => td.getAttribute(TABINDEX) === ZERO_STR);
+      }
+      else {
+        // find previous enabled
+        enabledElem = tdList.slice(0, idx).reverse().find((td: any) => td.getAttribute(TABINDEX) === ZERO_STR);
+      }
+
+      elem = enabledElem ? enabledElem : this.selectorEl.nativeElement;
     }
+    
+    elem.focus();
   }
 
   selectDate(date: IMyDate): void {

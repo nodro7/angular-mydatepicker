@@ -344,3 +344,14 @@
 ### Features
 
 * Added option showMonthNumber.
+
+
+# 0.3.5 (2020-01-22)
+
+### Bug Fixes
+
+* Fixed bug: Disabled dates on the calendar can get a focus.
+
+### Features
+
+* none

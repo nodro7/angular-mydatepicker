@@ -3,7 +3,7 @@
     <tr *ngFor="let yr of years; let yi = index">
       <td id="y_{{yi}}_{{i}}" class="y_{{yi}}_{{i}} myDpYearcell"
           [ngClass]="{'myDpSelectedYear': y.selected, 'myDpDisabled': y.disabled, 'myDpTableSingleYear': !y.disabled}"
-          *ngFor="let y of yr; let i = index" (click)="onYearCellClicked($event, y)" (keydown)="onYearCellKeyDown($event, y)" tabindex="0">
+          *ngFor="let y of yr; let i = index" (click)="onYearCellClicked($event, y)" (keydown)="onYearCellKeyDown($event, y)" [attr.tabindex]="!y.disabled ? 0 : -1">
         <span class="myDpYearValue" [ngClass]="{'myDpMarkCurrYear': y.currYear && opts.markCurrentYear}">{{y.year}}</span>
       </td>
     </tr>

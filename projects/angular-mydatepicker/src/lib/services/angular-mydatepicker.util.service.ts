@@ -155,11 +155,12 @@ export class UtilService {
     }
 
     const dateMs: number = this.getTimeInMilliseconds(date);
-    if (this.isInitializedDate(disableUntil) && dateMs <= this.getTimeInMilliseconds(disableUntil)) {
+
+    if (this.isDisableUntil(dateMs, disableUntil)) {
       return true;
     }
 
-    if (this.isInitializedDate(disableSince) && dateMs >= this.getTimeInMilliseconds(disableSince)) {
+    if (this.isDisableSince(dateMs, disableSince)) {
       return true;
     }
 
@@ -185,8 +186,71 @@ export class UtilService {
       }
     }
 
+    if (this.isDisableDateRange(dateMs, dateMs, disableDateRanges)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isDisabledMonth(year: number, month: number, daysInMonth: number, options: IMyOptions): boolean {
+    const {disableUntil, disableSince, disableDateRanges} = options;
+
+    const dateMsEnd: number = this.getTimeInMilliseconds({year, month, day: daysInMonth});
+    const dateMsBegin: number = this.getTimeInMilliseconds({year, month, day: 1});
+
+    if (this.isDisableUntil(dateMsEnd, disableUntil)) {
+      return true;
+    }
+
+    if (this.isDisableSince(dateMsBegin, disableSince)) {
+      return true;
+    }
+
+    if (this.isDisableDateRange(dateMsBegin, dateMsEnd, disableDateRanges)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isDisabledYear(year: number, options: IMyOptions): boolean {
+    const {disableUntil, disableSince, disableDateRanges, minYear, maxYear} = options;
+
+    const dateMsEnd: number = this.getTimeInMilliseconds({year, month: 12, day: 31});
+    const dateMsBegin: number = this.getTimeInMilliseconds({year, month: 1, day: 1});
+
+    if (this.isDisableUntil(dateMsEnd, disableUntil)) {
+      return true;
+    }
+
+    if (this.isDisableSince(dateMsBegin, disableSince)) {
+      return true;
+    }
+
+    if (this.isDisableDateRange(dateMsBegin, dateMsEnd, disableDateRanges)) {
+      return true;
+    }
+
+    if (year < minYear || year > maxYear) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isDisableUntil(dateMs: number, disableUntil: IMyDate): boolean {
+    return this.isInitializedDate(disableUntil) && dateMs <= this.getTimeInMilliseconds(disableUntil);
+  }
+
+  isDisableSince(dateMs: number, disableSince: IMyDate): boolean {
+    return this.isInitializedDate(disableSince) && dateMs >= this.getTimeInMilliseconds(disableSince);
+  }
+
+  isDisableDateRange(dateMsBegin: number, dateMsEnd: number, disableDateRanges: Array<IMyDateRange>): boolean {
     for (const d of disableDateRanges) {
-      if (this.isInitializedDate(d.begin) && this.isInitializedDate(d.end) && dateMs >= this.getTimeInMilliseconds(d.begin) && dateMs <= this.getTimeInMilliseconds(d.end)) {
+      if (this.isInitializedDate(d.begin) && this.isInitializedDate(d.end) 
+        && dateMsBegin >= this.getTimeInMilliseconds(d.begin) && dateMsEnd <= this.getTimeInMilliseconds(d.end)) {
         return true;
       }
     }

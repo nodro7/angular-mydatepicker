@@ -1,7 +1,3 @@
-:root {
-  --focus-color: #66afe9;
-}
-
 .ng-mydp {
   position: static;
 }
@@ -443,14 +439,14 @@
 .myDpHeaderBtn:focus,
 .myDpMonthLabel:focus,
 .myDpYearLabel:focus {
-  color: var(--focus-color);
+  color: #66afe9;
   outline: none;
 }
 
 .myDpDaycell:focus,
 .myDpMonthcell:focus,
 .myDpYearcell:focus {
-  box-shadow: inset 0 0 0 1px var(--focus-color);
+  box-shadow: inset 0 0 0 1px #66afe9;
 }
 
 .myDpTableSingleDay:hover,

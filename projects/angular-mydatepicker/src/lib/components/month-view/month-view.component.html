@@ -3,7 +3,7 @@
     <tr *ngFor="let mr of months; let mi = index">
       <td id="m_{{mi}}_{{i}}" class="m_{{mi}}_{{i}} myDpMonthcell"
           [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled, 'myDpTableSingleMonth': !m.disabled}"
-          *ngFor="let m of mr; let i = index" (click)="onMonthCellClicked($event, m)" (keydown)="onMonthCellKeyDown($event, m)" tabindex="0">
+          *ngFor="let m of mr; let i = index" (click)="onMonthCellClicked($event, m)" (keydown)="onMonthCellKeyDown($event, m)" [attr.tabindex]="!m.disabled ? 0 : -1">
         <span class="myDpMonthNbr" *ngIf="opts.showMonthNumber">{{m.nbr}}</span>
         <span class="myDpMonthValue" [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
       </td>
