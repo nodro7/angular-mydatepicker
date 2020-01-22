@@ -68,7 +68,7 @@ const IN = "In";
 const OUT = "Out";
 
 const TABINDEX = "tabindex";
-const TD_SELECTOR = "table tbody tr td";
+const TD_SELECTOR = "table tbody tr td:not(.myDpDaycellWeekNbr)";
 
 const PREVENT_CLOSE_TIMEOUT = 50;
 

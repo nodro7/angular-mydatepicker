@@ -355,3 +355,14 @@
 ### Features
 
 * none
+
+
+# 0.3.6 (2020-01-22)
+
+### Bug Fixes
+
+* Minor fix to previous version.
+
+### Features
+
+* none
