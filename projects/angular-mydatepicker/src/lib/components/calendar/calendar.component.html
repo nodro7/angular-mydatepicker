@@ -6,7 +6,7 @@
       'myDpSelectorArrowRight': opts.showSelectorArrow&&opts.alignSelectorRight, 'myDpSelectorAbsolute': !opts.inline, 'myDpSelectorPosInitial': opts.inline}" 
     (keyup)="onCloseSelector($event)" tabindex="0">
 
-    <lib-selection-bar [opts]="opts" [years]="years" [visibleMonth]="visibleMonth" [selectMonth]="selectMonth" [selectYear]="selectYear"
+    <lib-selection-bar [opts]="opts" [yearsDuration]="yearsDuration" [visibleMonth]="visibleMonth" [selectMonth]="selectMonth" [selectYear]="selectYear"
                     [prevViewDisabled]="prevViewDisabled" [nextViewDisabled]="nextViewDisabled"
                     (prevNavigateBtnClicked)="onPrevNavigateBtnClicked()" (nextNavigateBtnClicked)="onNextNavigateBtnClicked()"
                     (monthViewBtnClicked)="onMonthViewBtnClicked()" (yearViewBtnClicked)="onYearViewBtnClicked()"></lib-selection-bar>

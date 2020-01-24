@@ -1,8 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, SimpleChanges} from "@angular/core";
-import {IMyCalendarYear} from "../../interfaces/my-calendar-year.interface";
 import {IMyMonth} from "../../interfaces/my-month.interface";
 import {IMyOptions} from "../../interfaces/my-options.interface";
-import {OPTS, YEARS, VISIBLE_MONTH, SELECT_MONTH, SELECT_YEAR, PREV_VIEW_DISABLED, NEXT_VIEW_DISABLED} from "../../constants/constants"
+import {OPTS, YEARS_DURATION, VISIBLE_MONTH, SELECT_MONTH, SELECT_YEAR, PREV_VIEW_DISABLED, NEXT_VIEW_DISABLED} from "../../constants/constants"
 
 @Component({
   selector: "lib-selection-bar",
@@ -11,7 +10,7 @@ import {OPTS, YEARS, VISIBLE_MONTH, SELECT_MONTH, SELECT_YEAR, PREV_VIEW_DISABLE
 })
 export class SelectionBarComponent implements OnChanges {
   @Input() opts: IMyOptions;
-  @Input() years: Array<Array<IMyCalendarYear>>;
+  @Input() yearsDuration: string;
   @Input() visibleMonth: IMyMonth;
   @Input() selectMonth: boolean;
   @Input() selectYear: boolean;
@@ -29,8 +28,8 @@ export class SelectionBarComponent implements OnChanges {
     if (changes.hasOwnProperty(OPTS)) {
       this.opts = changes[OPTS].currentValue;
     }
-    if (changes.hasOwnProperty(YEARS)) {
-      this.years = changes[YEARS].currentValue;
+    if (changes.hasOwnProperty(YEARS_DURATION)) {
+      this.yearsDuration = changes[YEARS_DURATION].currentValue;
     }
     if (changes.hasOwnProperty(VISIBLE_MONTH)) {
       this.visibleMonth = changes[VISIBLE_MONTH].currentValue;

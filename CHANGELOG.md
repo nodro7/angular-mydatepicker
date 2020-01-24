@@ -366,3 +366,14 @@
 ### Features
 
 * none
+
+
+# 0.3.7 (2020-01-24)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Selection bar related changes.

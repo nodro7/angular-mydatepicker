@@ -19,6 +19,7 @@ const YEAR_COL_COUNT = 4;
 const DOT = ".";
 const UNDER_LINE = "_";
 const PIPE = "|";
+const YEAR_SEPARATOR = " - ";
 
 const SU = "su";
 const MO = "mo";
@@ -48,6 +49,7 @@ const STYLE = "style";
 const INNER_HTML = "innerHTML";
 
 const OPTS = "opts";
+const YEARS_DURATION = "yearsDuration";
 const YEARS = "years";
 const VISIBLE_MONTH = "visibleMonth";
 const SELECT_MONTH = "selectMonth";
@@ -89,6 +91,7 @@ export {
   DOT,
   UNDER_LINE,
   PIPE,
+  YEAR_SEPARATOR,
   SU,
   MO,
   TU,
@@ -113,6 +116,7 @@ export {
   STYLE,
   INNER_HTML,
   OPTS,
+  YEARS_DURATION,
   YEARS,
   VISIBLE_MONTH,
   SELECT_MONTH,

@@ -18,7 +18,7 @@ import {MonthId} from "../../enums/month-id.enum";
 import {DefaultView} from "../../enums/default-view.enum";
 import {CalAnimation} from "../../enums/cal-animation.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, 
-  SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT, TABINDEX, TD_SELECTOR, ZERO_STR} from "../../constants/constants";
+  SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT, TABINDEX, TD_SELECTOR, ZERO_STR, YEAR_SEPARATOR} from "../../constants/constants";
 
 @Component({
   selector: "lib-angular-mydatepicker-calendar",
@@ -42,6 +42,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   dates: Array<IMyWeek> = [];
   months: Array<Array<IMyCalendarMonth>> = [];
   years: Array<Array<IMyCalendarYear>> = [];
+  yearsDuration: string = "";
   dayIdx: number = 0;
   weekDayOpts: Array<string> = [SU, MO, TU, WE, TH, FR, SA];
 
@@ -154,7 +155,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       this.generateMonths();
     }
     else if (selectYear) {
-      this.generateYears(years[2][2].year);
+      this.generateYears(this.getYearValueByRowAndCol(2, 2)); 
     }
   }
 
@@ -200,12 +201,15 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   onMonthViewBtnClicked(): void {
     this.selectMonth = !this.selectMonth;
     this.selectYear = false;
+    
     this.cdr.detectChanges();
     if (this.selectMonth) {
       this.generateMonths();
     }
     else {
-      this.visibleMonth.year = this.selectedMonth.year;
+      const {year, monthNbr} = this.selectedMonth;
+      this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr, year};
+      this.generateCalendar(monthNbr, year, true);
     }
   }
 
@@ -231,14 +235,18 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   onYearViewBtnClicked(): void {
-    this.visibleMonth.year = this.selectedMonth.year;
-
-    this.cdr.detectChanges();
-    if (!this.selectYear) {
-      this.generateYears(this.visibleMonth.year);
-    }
     this.selectYear = !this.selectYear;
     this.selectMonth = false;
+
+    this.cdr.detectChanges();
+    if (this.selectYear) {
+      this.generateYears(this.visibleMonth.year);
+    }
+    else {
+      const {year, monthNbr} = this.selectedMonth;
+      this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr, year};
+      this.generateCalendar(monthNbr, year, true);
+    }
   }
 
   onYearCellClicked(cell: IMyCalendarYear): void {
@@ -306,7 +314,15 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       this.years.push(row);
     }
 
-    this.setYearViewHeaderBtnDisabledState(this.years[0][0].year, this.years[4][4].year);
+    const beginYear: number = this.getYearValueByRowAndCol(0, 0);
+    const endYear: number = beginYear + 24;
+    this.yearsDuration = beginYear + YEAR_SEPARATOR + endYear;
+
+    this.setYearViewHeaderBtnDisabledState(beginYear, endYear);
+  }
+
+  getYearValueByRowAndCol(row: number, col: number): number {
+    return this.years[row][col].year;
   }
 
   setCalendarVisibleMonth(): void {
@@ -327,7 +343,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       this.generateMonths();
     }
     else if (this.selectYear) {
-      this.generateYears(this.years[2][2].year - 25);
+      this.generateYears(this.getYearValueByRowAndCol(2, 2) - 25);
     }
   }
 
@@ -340,7 +356,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       this.generateMonths();
     }
     else if (this.selectYear) {
-      this.generateYears(this.years[2][2].year + 25);
+      this.generateYears(this.getYearValueByRowAndCol(2, 2) + 25);
     }
   }
 
@@ -644,8 +660,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
 
     if (disableHeaderButtons) {
-      dpm = this.utilService.isMonthDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, disableUntil);
-      dnm = this.utilService.isMonthDisabledByDisableSince({year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1}, disableSince);
+      dpm = this.utilService.isDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, disableUntil);
+      dnm = this.utilService.isDisabledByDisableSince({year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1}, disableSince);
     }
     this.prevViewDisabled = m === 1 && y === minYear || dpm;
     this.nextViewDisabled = m === 12 && y === maxYear || dnm;
@@ -658,8 +674,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
 
     if (disableHeaderButtons) {
-      dpm = this.utilService.isMonthDisabledByDisableUntil({year: y - 1, month: 12, day: 31}, disableUntil);
-      dnm = this.utilService.isMonthDisabledByDisableSince({year: y + 1, month: 1, day: 1}, disableSince);
+      dpm = this.utilService.isDisabledByDisableUntil({year: y - 1, month: 12, day: 31}, disableUntil);
+      dnm = this.utilService.isDisabledByDisableSince({year: y + 1, month: 1, day: 1}, disableSince);
     }
     this.prevViewDisabled = y === minYear || dpm;
     this.nextViewDisabled = y === maxYear || dnm;
@@ -672,8 +688,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
 
     if (disableHeaderButtons) {
-      dpy = this.utilService.isMonthDisabledByDisableUntil({year: yp - 1, month: 12, day: 31}, disableUntil);
-      dny = this.utilService.isMonthDisabledByDisableSince({year: yn + 1, month: 1, day: 1}, disableSince);
+      dpy = this.utilService.isDisabledByDisableUntil({year: yp - 1, month: 12, day: 31}, disableUntil);
+      dny = this.utilService.isDisabledByDisableSince({year: yn + 1, month: 1, day: 1}, disableSince);
     }
     this.prevViewDisabled = yp <= minYear || dpy;
     this.nextViewDisabled = yn >= maxYear || dny;
