@@ -377,3 +377,14 @@
 ### Features
 
 * Selection bar related changes.
+
+
+# 0.3.8 (2020-02-07)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added Angular 9 to the peer dependency of the package.
