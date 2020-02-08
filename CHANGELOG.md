@@ -388,3 +388,14 @@
 ### Features
 
 * Added Angular 9 to the peer dependency of the package.
+
+
+# 0.3.9 (2020-02-08)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Minor changes.

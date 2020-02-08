@@ -15,7 +15,7 @@ export class MonthViewComponent implements OnChanges {
   @Input() opts: IMyOptions;
   @Input() months: Array<Array<IMyCalendarMonth>>;
   @Output() monthCellClicked: EventEmitter<IMyCalendarMonth> = new EventEmitter<IMyCalendarMonth>();
-  @Output() monthCellKeyDown: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
+  @Output() monthCellKeyDown: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private utilService: UtilService) { }
 
@@ -38,7 +38,7 @@ export class MonthViewComponent implements OnChanges {
     this.monthCellClicked.emit(cell);
   }
 
-  onMonthCellKeyDown(event: KeyboardEvent, cell: IMyCalendarMonth) {
+  onMonthCellKeyDown(event: any, cell: IMyCalendarMonth) {
     const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
     if (keyCode !== KeyCode.tab) {
       event.preventDefault();

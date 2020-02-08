@@ -71,7 +71,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.parseOptions(this.opts);
   }
 
-  @HostListener(KEYUP, ["$event"]) onKeyUp(event: KeyboardEvent) {
+  @HostListener(KEYUP, ["$event"]) onKeyUp(event: any) {
     const keyCode: number = this.utilService.getKeyCodeFromEvent(event);
     if (this.ignoreKeyPress(keyCode)) {
       return;
@@ -146,9 +146,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.onTouchedCb();
   }
 
-  private onClickWrapper = (evt: MouseEvent) => this.onClick(evt);
+  private onClickWrapper = (evt: any) => this.onClick(evt);
 
-  private onClick(evt: MouseEvent) {
+  private onClick(evt: any) {
     if (this.opts.closeSelectorOnDocumentClick && !this.preventClose && evt.target && this.cRef !== null && this.elem.nativeElement !== evt.target && !this.cRef.location.nativeElement.contains(evt.target) && !this.disabled) {
       this.closeSelector(CalToggle.CloseByOutClick);
     }

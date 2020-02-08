@@ -58,12 +58,12 @@ export class SelectionBarComponent implements OnChanges {
     this.nextNavigateBtnClicked.emit();
   }
 
-  onMonthViewBtnClicked(event): void {
+  onMonthViewBtnClicked(event: any): void {
     event.stopPropagation();
     this.monthViewBtnClicked.emit();
   }
 
-  onYearViewBtnClicked(event): void {
+  onYearViewBtnClicked(event: any): void {
     event.stopPropagation();
     this.yearViewBtnClicked.emit();
   }
