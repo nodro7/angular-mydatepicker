@@ -81,17 +81,29 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       this.closeSelector(CalToggle.CloseByEsc);
     }
     else {
+      const {dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter} = this.opts;
       const value: string = this.getHostValue();
 
+      let dateModel: IMyDateModel = null;
       let valid: boolean = false;
-      if (!this.opts.dateRange) {
+      if (!dateRange) {
         const date: IMyDate = this.utilService.isDateValid(value, this.opts);
         valid = this.utilService.isInitializedDate(date);
+        if (valid) {
+          dateModel = this.utilService.getDateModel(date, null, dateFormat, monthLabels, dateRangeDatesDelimiter);
+        }
       }
       else {
-        const {begin, end} = this.utilService.isDateValidDateRange(value, this.opts);
+        const range = this.utilService.isDateValidDateRange(value, this.opts);
+        const {begin, end} = range;
         valid = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
+        if (valid) {
+          dateModel = this.utilService.getDateModel(null, range, dateFormat, monthLabels, dateRangeDatesDelimiter);
+        }
       }
+      this.onChangeCb(dateModel);
+      this.onTouchedCb();
+
       this.emitInputFieldChanged(value, valid);
     }
   }

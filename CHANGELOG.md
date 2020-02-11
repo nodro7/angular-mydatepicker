@@ -399,3 +399,14 @@
 ### Features
 
 * Minor changes.
+
+
+# 0.4.0 (2020-02-11)
+
+### Bug Fixes
+
+* Fixed: [On keyup event doesn't emit event from reactive forms valueChanges.subscribe #27](https://github.com/kekeh/angular-mydatepicker/issues/27)
+
+### Features
+
+* none
