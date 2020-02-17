@@ -42,8 +42,10 @@ export class DatePickerNgmodel implements OnInit {
     showMonthNumber: true,
     appendSelectorToBody: false,
     focusInputOnDateSelect: true,
+    dateRangeDatesDelimiter: " - ",
     defaultView: DefaultView.Date,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
+    rtl: false,
     stylesData:
       {
         selector: '',
@@ -367,6 +369,12 @@ export class DatePickerNgmodel implements OnInit {
   onShowMonthNumber(checked: boolean) {
     let copy = this.getCopyOfOptions();
     copy.showMonthNumber = checked;
+    this.myDatePickerOptions = copy;
+  }
+
+  onRtl(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+    copy.rtl = checked;
     this.myDatePickerOptions = copy;
   }
 

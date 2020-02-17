@@ -49,6 +49,7 @@ export class DefaultConfigService {
     inputFieldValidation: true,
     showMonthNumber: true,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
+    rtl: false,
     stylesData: {selector: "", styles: ""},
     divHostElement: {enabled: false, placeholder: ""},
     ariaLabelPrevMonth: "Previous Month",

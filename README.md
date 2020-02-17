@@ -32,12 +32,13 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 * popup mode
 * inline mode
 * supports keyboard
+* supports RTL
 * animation of calendar (open/close)
 * awesome configuration possibilities 
   * easily set styles to the component which are in line with your page theme
     * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
     * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
-  * 40+ [options](https://github.com/kekeh/angular-mydatepicker#options-attribute)
+  * 47 [options](https://github.com/kekeh/angular-mydatepicker#options-attribute)
     * change value of any option dynamically
 * well tested
   * coverage [report](https://codecov.io/gh/kekeh/angular-mydatepicker)
@@ -164,6 +165,7 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | __inputFieldValidation__   | true | boolean | Input field validation enabled or not after __blur__ event of input field. |
 | __showMonthNumber__   | true | boolean | Is month number shown or not on the month view. |
 | __calendarAnimation__   | no default value | [IMyCalendarAnimation](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-calendar-animation.interface.ts) | The type of open (__in__) and close (__out__) animation of calendar. One of the following ([CalAnimation](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/enums/cal-animation.enum.ts)) value: __None__, __Fade__, __ScaleTop__, __ScaleCenter__, __Rotate__,  __FlipDiagonal__ or __Own__. Try animations [here](https://kekeh.github.io/angular-mydatepicker/). |
+| __rtl__   | false | boolean | Is RTL enabled or not. |
 | __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example on how to use this option. See also [chapter](https://github.com/kekeh/angular-mydatepicker#override-styles-of-component) below. |
 | __divHostElement__   | no default value | [IMyDivHostElement](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-div-host-element.interface.ts) | Div as a host element. In case of non-editable date field enable this option and put a __angular-mydatepicker__ directive inside a __div__ element. Placeholder text is an additional property of this option. Functionality is limited if this option is enabled. |
 | __ariaLabelPrevMonth__   | Previous Month | string | Aria label text of previous month button. |

@@ -410,3 +410,14 @@
 ### Features
 
 * none
+
+
+# 0.4.1 (2020-02-17)
+
+### Bug Fixes
+
+* Fixed: [Invalid date range if I change dateRangeDatesDelimiter #29](https://github.com/kekeh/angular-mydatepicker/issues/29)
+
+### Features
+
+* Added support to RTL.

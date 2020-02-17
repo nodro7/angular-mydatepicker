@@ -195,7 +195,10 @@
           </label>
         </td>
         <td>
-
+        <label>
+            <span>RTL:</span>
+            <input style="cursor: pointer" type="checkbox" (change)="onRtl($event.currentTarget.checked)" [checked]="false">
+            </label>
         </td>
       </tr>
 

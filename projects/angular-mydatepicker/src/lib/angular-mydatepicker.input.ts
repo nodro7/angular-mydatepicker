@@ -301,9 +301,18 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (value === null || value === EMPTY_STR) {
       return null;
     }
-    const date: IMyDate = this.utilService.isDateValid(value, this.opts);
-    if (!this.utilService.isInitializedDate(date)) {
-      return {invalidDateFormat: true};
+
+    if (!this.opts.dateRange) {
+      const date: IMyDate = this.utilService.isDateValid(value, this.opts);
+      if (!this.utilService.isInitializedDate(date)) {
+        return {invalidDateFormat: true};
+      }
+    }
+    else {
+      const {begin, end} = this.utilService.isDateValidDateRange(value, this.opts);
+      if (!this.utilService.isInitializedDate(begin) || !this.utilService.isInitializedDate(end)) {
+        return {invalidDateFormat: true};
+      }
     }
     return null;
   }
@@ -403,13 +412,25 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   public isDateValid(): boolean {
     const value: string = this.getHostValue();
 
-    if (value !== EMPTY_STR) {
+    if (value === null || value === EMPTY_STR) {
+      return false;
+    }
+
+    if (!this.opts.dateRange) {
       const date: IMyDate = this.utilService.isDateValid(value, this.opts);
       if (this.utilService.isInitializedDate(date)) {
         this.emitInputFieldChanged(value, true);
         return true;
       }
     }
+    else {
+      const {begin, end} = this.utilService.isDateValidDateRange(value, this.opts);
+      if (this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end)) {
+        this.emitInputFieldChanged(value, true);
+        return true;
+      }
+    }
+    
     this.emitInputFieldChanged(value, false);
     return false;
   }

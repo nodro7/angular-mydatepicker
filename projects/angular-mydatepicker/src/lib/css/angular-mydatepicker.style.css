@@ -2,6 +2,10 @@
   position: static;
 }
 
+.ng-myrtl {
+  direction: rtl;
+}
+
 .ng-mydp * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

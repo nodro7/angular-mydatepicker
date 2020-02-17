@@ -1,4 +1,4 @@
-<table class="myDpCalTable">
+<table class="myDpCalTable" [ngClass]="{'ng-myrtl': opts.rtl}">
   <thead>
     <tr>
       <th class="myDpWeekDayTitle myDpWeekDayTitleWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">#</th>
@@ -6,9 +6,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let w of dates; let di = index">
+    <tr *ngFor="let w of dates">
       <td class="myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
-      <td id="d_{{di}}_{{i}}" class="d_{{di}}_{{i}} myDpDaycell" *ngFor="let d of w.week; let i = index"
+      <td id="d_{{d.row}}_{{d.col}}" class="d_{{d.row}}_{{d.col}} myDpDaycell" *ngFor="let d of w.week"
           [ngClass]="{'myDpRangeColor': isDateInRange(d.dateObj) || d.range,
                 'myDpPrevMonth': d.cmo === prevMonthId,
                 'myDpCurrMonth':d.cmo === currMonthId && !d.disabled,

@@ -9,4 +9,6 @@ export interface IMyCalendarDay {
   markedDate: IMyMarkedDate;
   highlight: boolean;
   range?: boolean;
+  row?: number;
+  col?: number
 }

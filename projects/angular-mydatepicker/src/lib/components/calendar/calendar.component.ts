@@ -279,21 +279,34 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.months.length = 0;
 
     const {year, monthNbr} = this.visibleMonth;
+    const {rtl, monthLabels} = this.opts;
 
+    let row: number = 0;
     for (let i = 1; i <= 12; i += 3) {
-      const row: Array<IMyCalendarMonth> = [];
+      const rowData: Array<IMyCalendarMonth> = [];
+      let col = rtl ? 2 : 0;
+
       for (let j = i; j < i + 3; j++) {
         const disabled: boolean = this.utilService.isDisabledMonth(year, j, this.daysInMonth(j, year), this.opts);
-        row.push({nbr: j, name: this.opts.monthLabels[j], currMonth: j === today.month && year === today.year, selected: j === monthNbr && year === this.selectedMonth.year, disabled});
+        rowData.push({
+          nbr: j, 
+          name: monthLabels[j], 
+          currMonth: j === today.month && year === today.year, 
+          selected: j === monthNbr && year === this.selectedMonth.year, 
+          disabled,
+          row,
+          col: rtl ? col-- : col++
+        });
       }
-      this.months.push(row);
+      row++;
+      this.months.push(rowData);
     }
 
     this.setMonthViewHeaderBtnDisabledState(year);
   }
 
   generateYears(inputYear: number): void {
-    const {minYear, maxYear} = this.opts;
+    const {minYear, maxYear, rtl} = this.opts;
 
     let y: number = inputYear - 12;
     if (inputYear < minYear) {
@@ -309,18 +322,29 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.years.length = 0;
     const today: IMyDate = this.getToday();
 
+    let row: number = 0;
     for (let i = y; i < y + 25; i += 5) {
-      const row: Array<IMyCalendarYear> = [];
+      const rowData: Array<IMyCalendarYear> = [];
+      let col: number = rtl ? 4 : 0;
+
       for (let j = i; j < i + 5; j++) {
         const disabled: boolean = this.utilService.isDisabledYear(j, this.opts);
-        row.push({year: j, currYear: j === today.year, selected: j === year, disabled});
+        rowData.push({
+          year: j, 
+          currYear: j === today.year, 
+          selected: j === year, 
+          disabled,
+          row,
+          col: rtl ? col-- : col++
+        });
       }
-      this.years.push(row);
+      row++;
+      this.years.push(rowData);
     }
 
     const beginYear: number = this.getYearValueByRowAndCol(0, 0);
     const endYear: number = beginYear + 24;
-    this.yearsDuration = beginYear + YEAR_SEPARATOR + endYear;
+    this.yearsDuration = (!rtl ? beginYear : endYear) + YEAR_SEPARATOR + (!rtl ? endYear : beginYear);
 
     this.setYearViewHeaderBtnDisabledState(beginYear, endYear);
   }
@@ -605,7 +629,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
     let dayNbr: number = 1;
     let cmo: number = MonthId.prev;
+    const {rtl, showWeekNumbers, firstDayOfWeek, markDates, markWeekends, sunHighlight, satHighlight, highlightDates} = this.opts;
     for (let i = 1; i < 7; i++) {
+      let col: number = rtl ? 6 : 0;
       const week: Array<IMyCalendarDay> = [];
       if (i === 1) {
         // First week
@@ -617,8 +643,11 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
             cmo,
             currDay: this.isCurrDay(j, m, y, cmo, today),
             disabled: this.utilService.isDisabledDate(date, this.opts),
-            markedDate: this.utilService.isMarkedDate(date, this.opts.markDates, this.opts.markWeekends),
-            highlight: this.utilService.isHighlightedDate(date, this.opts.sunHighlight, this.opts.satHighlight, this.opts.highlightDates)});
+            markedDate: this.utilService.isMarkedDate(date, markDates, markWeekends),
+            highlight: this.utilService.isHighlightedDate(date, sunHighlight, satHighlight, highlightDates),
+            row: i - 1,
+            col: rtl ? col-- : col++
+          }); 
         }
 
         cmo = MonthId.curr;
@@ -630,8 +659,11 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
             cmo,
             currDay: this.isCurrDay(dayNbr, m, y, cmo, today),
             disabled: this.utilService.isDisabledDate(date, this.opts),
-            markedDate: this.utilService.isMarkedDate(date, this.opts.markDates, this.opts.markWeekends),
-            highlight: this.utilService.isHighlightedDate(date, this.opts.sunHighlight, this.opts.satHighlight, this.opts.highlightDates)});
+            markedDate: this.utilService.isMarkedDate(date, markDates, markWeekends),
+            highlight: this.utilService.isHighlightedDate(date, sunHighlight, satHighlight, highlightDates),
+            row: i - 1,
+            col: rtl ? col-- : col++
+          });
           dayNbr++;
         }
       }
@@ -648,12 +680,15 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
             cmo,
             currDay: this.isCurrDay(dayNbr, m, y, cmo, today),
             disabled: this.utilService.isDisabledDate(date, this.opts),
-            markedDate: this.utilService.isMarkedDate(date, this.opts.markDates, this.opts.markWeekends),
-            highlight: this.utilService.isHighlightedDate(date, this.opts.sunHighlight, this.opts.satHighlight, this.opts.highlightDates)});
+            markedDate: this.utilService.isMarkedDate(date, markDates, markWeekends),
+            highlight: this.utilService.isHighlightedDate(date, sunHighlight, satHighlight, highlightDates),
+            row: i - 1,
+            col: rtl ? col-- : col++
+          });
           dayNbr++;
         }
       }
-      const weekNbr: number = this.opts.showWeekNumbers  && this.opts.firstDayOfWeek === MO ? this.utilService.getWeekNumber(week[0].dateObj) : 0;
+      const weekNbr: number = showWeekNumbers  && firstDayOfWeek === MO ? this.utilService.getWeekNumber(week[0].dateObj) : 0;
       this.dates.push({week, weekNbr});
     }
 

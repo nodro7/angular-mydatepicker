@@ -2196,6 +2196,152 @@ describe('AngularMyDatePickerComponent', () => {
     expect(input.value).toBe('28.10.2019');
   });
 
+  it('options - rtl', () => {
+    comp.setDefaultMonth('2020/02');
+
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd.mm.yyyy',
+      rtl: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let td = getElement('.d_0_0');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('2');
+
+    fixture.detectChanges();
+    td = getElement('.d_0_6');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('27');
+
+    fixture.detectChanges();
+    td = getElement('.d_5_0');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('8');
+
+    fixture.detectChanges();
+    td = getElement('.d_5_6');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('2');
+
+    fixture.detectChanges();
+    let prevBtn = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevBtn).not.toBe(null);
+    prevBtn.click();
+
+    fixture.detectChanges();
+    let monthBtn  = getElement('.myDpMonthBtn');
+    expect(monthBtn).not.toBe(null);
+    expect(monthBtn.textContent.trim()).toBe('Mar');
+    
+    fixture.detectChanges();
+    let nextBtn = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextBtn).not.toBe(null);
+    nextBtn.click();
+
+    fixture.detectChanges();
+    monthBtn  = getElement('.myDpMonthBtn');
+    expect(monthBtn).not.toBe(null);
+    expect(monthBtn.textContent.trim()).toBe('Feb');
+
+    fixture.detectChanges();
+    monthBtn = getElement('.myDpMonthBtn');
+    expect(monthBtn).not.toBe(null);
+    monthBtn.click();
+
+    fixture.detectChanges();
+    td = getElement('.m_0_0 .myDpMonthValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('Mar');
+
+    fixture.detectChanges();
+    td = getElement('.m_0_2 .myDpMonthValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('Jan');
+
+    fixture.detectChanges();
+    td = getElement('.m_3_0 .myDpMonthValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('Dec');
+
+    fixture.detectChanges();
+    td = getElement('.m_3_2 .myDpMonthValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('Oct');
+
+    fixture.detectChanges();
+    prevBtn = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevBtn).not.toBe(null);
+    prevBtn.click();
+
+    fixture.detectChanges();
+    let yearBtn  = getElement('.myDpYearBtn');
+    expect(yearBtn).not.toBe(null);
+    expect(yearBtn.textContent.trim()).toBe('2021');
+    
+    fixture.detectChanges();
+    nextBtn = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextBtn).not.toBe(null);
+    nextBtn.click();
+
+    fixture.detectChanges();
+    yearBtn  = getElement('.myDpYearBtn');
+    expect(yearBtn).not.toBe(null);
+    expect(yearBtn.textContent.trim()).toBe('2020');
+
+
+    fixture.detectChanges();
+    yearBtn.click();
+
+    fixture.detectChanges();
+    td = getElement('.y_0_0 .myDpYearValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('2012');
+
+    fixture.detectChanges();
+    td = getElement('.y_0_4 .myDpYearValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('2008');
+
+    fixture.detectChanges();
+    td = getElement('.y_4_0 .myDpYearValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('2032');
+
+    fixture.detectChanges();
+    td = getElement('.y_4_4 .myDpYearValue');
+    expect(td).not.toBe(null);
+    expect(td.textContent.trim()).toBe('2028');
+
+    
+
+    fixture.detectChanges();
+    prevBtn = getElement('.myDpPrevBtn .myDpHeaderBtn');
+    expect(prevBtn).not.toBe(null);
+    prevBtn.click();
+
+    fixture.detectChanges();
+    yearBtn  = getElement('.myDpYearBtn');
+    expect(yearBtn).not.toBe(null);
+    expect(yearBtn.textContent.trim()).toBe('2057 - 2033');
+    
+    fixture.detectChanges();
+    nextBtn = getElement('.myDpNextBtn .myDpHeaderBtn');
+    expect(nextBtn).not.toBe(null);
+    nextBtn.click();
+
+    fixture.detectChanges();
+    yearBtn  = getElement('.myDpYearBtn');
+    expect(yearBtn).not.toBe(null);
+    expect(yearBtn.textContent.trim()).toBe('2032 - 2008');
+
+    comp.closeCalendar();
+  });
+
   it('options - stylesData', () => {
     comp.setDefaultMonth('2019/10');
     let opts: IMyOptions = {

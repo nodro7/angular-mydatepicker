@@ -53,6 +53,7 @@ export interface IMyOptions {
   inputFieldValidation?: boolean;
   showMonthNumber?: boolean;
   calendarAnimation?: IMyCalendarAnimation;
+  rtl?: boolean;
   stylesData?: IMyStyles;
   divHostElement?: IMyDivHostElement;
   ariaLabelPrevMonth?: string;

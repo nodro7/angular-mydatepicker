@@ -3,4 +3,6 @@ export interface IMyCalendarYear {
   currYear: boolean;
   selected: boolean;
   disabled: boolean;
+  row?: number;
+  col?: number
 }
