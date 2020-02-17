@@ -21,7 +21,8 @@ export class DpOptionsComponent implements OnInit {
     showWeekNumbers: false,
     disableWeekdays: [],
     stylesData: {selector: '', styles: ''},
-    calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None}
+    calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
+    rtl: false
   };
 
   public model: IMyDateModel = null;
@@ -211,6 +212,12 @@ export class DpOptionsComponent implements OnInit {
         }
       `
       } : {selector: '', styles: ''};
+    this.myOptions = copy;
+  }
+
+  onRtl(checked: boolean): void {
+    let copy = this.getCopyOfOptions();
+    copy.rtl = checked;
     this.myOptions = copy;
   }
 

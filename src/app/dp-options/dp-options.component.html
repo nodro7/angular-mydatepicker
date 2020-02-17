@@ -80,7 +80,10 @@
     </div>
 
     <div class="form-check optionsItem">
-
+      <input class="form-check-input inputBox" type="checkbox" id="rtl" (change)="onRtl($event.currentTarget.checked)" [checked]="false">
+      <label class="form-check-label" for="rtl">
+        RTL
+      </label>
     </div>
 
     <div class="form-check optionsItem">
