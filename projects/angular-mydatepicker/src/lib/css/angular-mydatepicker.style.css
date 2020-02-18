@@ -334,9 +334,14 @@
   color: #003366;
 }
 
-.myDpCalTable th.myDpWeekDayTitleWeekNbr,
-.myDpCalTable td.myDpDaycellWeekNbr {
+.myDpCalTable th.myDpWeekNbrBorderNoRtl,
+.myDpCalTable td.myDpWeekNbrBorderNoRtl {
   border-right: 1px solid #CCC;
+}
+
+.myDpCalTable th.myDpWeekNbrBorderRtl,
+.myDpCalTable td.myDpWeekNbrBorderRtl {
+  border-left: 1px solid #CCC;
 }
 
 .myDpPrevMonth,

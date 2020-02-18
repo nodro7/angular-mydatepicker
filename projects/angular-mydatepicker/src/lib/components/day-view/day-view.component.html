@@ -1,13 +1,13 @@
 <table class="myDpCalTable" [ngClass]="{'ng-myrtl': opts.rtl}">
   <thead>
     <tr>
-      <th class="myDpWeekDayTitle myDpWeekDayTitleWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">#</th>
+      <th class="myDpWeekDayTitle myDpWeekDayTitleWeekNbr" [ngClass]="{'myDpWeekNbrBorderNoRtl': !opts.rtl, 'myDpWeekNbrBorderRtl': opts.rtl}" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">#</th>
       <th class="myDpWeekDayTitle" scope="col" *ngFor="let d of weekDays">{{d}}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let w of dates">
-      <td class="myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
+      <td class="myDpDaycellWeekNbr" [ngClass]="{'myDpWeekNbrBorderNoRtl': !opts.rtl, 'myDpWeekNbrBorderRtl': opts.rtl}" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
       <td id="d_{{d.row}}_{{d.col}}" class="d_{{d.row}}_{{d.col}} myDpDaycell" *ngFor="let d of w.week"
           [ngClass]="{'myDpRangeColor': isDateInRange(d.dateObj) || d.range,
                 'myDpPrevMonth': d.cmo === prevMonthId,

@@ -421,3 +421,14 @@
 ### Features
 
 * Added support to RTL.
+
+
+# 0.4.2 (2020-02-18)
+
+### Bug Fixes
+
+* Fixed: Week number th and td border in RTL mode.
+
+### Features
+
+* none
