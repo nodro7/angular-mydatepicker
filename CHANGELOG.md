@@ -428,6 +428,7 @@
 ### Bug Fixes
 
 * Fixed: Week number th and td border in RTL mode.
+* Fixed: [jsDateToMyDate method receive string type but expect JS Date type #30](https://github.com/kekeh/angular-mydatepicker/issues/30)
 
 ### Features
 

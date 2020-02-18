@@ -234,12 +234,13 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         this.cRef.instance.resetDateValue();
       }
     }
-    else if (value.isRange === false && value.singleDate) {
+    else if (!value.isRange && value.singleDate) {
       // single date
       let {date, jsDate} = value.singleDate;
-      if (jsDate) {
+      if (!date) {
         date = this.jsDateToMyDate(jsDate);
       }
+      
       const formatted: string = this.utilService.formatDate(date, dateFormat, monthLabels);
       const valid: boolean = this.utilService.isInitializedDate(this.utilService.isDateValid(formatted, this.opts));
       if (valid) {
@@ -251,28 +252,25 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         }
       }
     }
-    else if (value.isRange === true && value.dateRange) {
+    else if (value.isRange && value.dateRange) {
       // date range
       let {beginDate, beginJsDate, endDate, endJsDate} = value.dateRange;
-      if (beginJsDate && endJsDate) {
+      if (!beginDate || !endDate) {
         beginDate = this.jsDateToMyDate(beginJsDate);
         endDate = this.jsDateToMyDate(endJsDate);
       }
 
-      if (beginDate && endDate) {
-        const formatted: string =
-          this.utilService.formatDate(beginDate, dateFormat, monthLabels) +
-          dateRangeDatesDelimiter +
-          this.utilService.formatDate(endDate, dateFormat, monthLabels);
-        const {begin, end} = this.utilService.isDateValidDateRange(formatted, this.opts);
-        const valid: boolean = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
-        if (valid) {
-          this.setHostValue(formatted);
-          this.emitInputFieldChanged(formatted, valid);
+      const formatted: string =
+        this.utilService.formatDate(beginDate, dateFormat, monthLabels) + dateRangeDatesDelimiter +
+        this.utilService.formatDate(endDate, dateFormat, monthLabels);
+      const {begin, end} = this.utilService.isDateValidDateRange(formatted, this.opts);
+      const valid: boolean = this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end);
+      if (valid) {
+        this.setHostValue(formatted);
+        this.emitInputFieldChanged(formatted, valid);
 
-          if (this.cRef !== null) {
-            this.cRef.instance.setDateRangeValue(beginDate, endDate);
-          }
+        if (this.cRef !== null) {
+          this.cRef.instance.setDateRangeValue(beginDate, endDate);
         }
       }
     }
