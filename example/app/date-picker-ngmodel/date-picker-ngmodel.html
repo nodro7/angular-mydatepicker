@@ -233,10 +233,17 @@
                         <option *ngFor="let a of calAnimations">{{a}}</option>
                     </select>
                 </span>
-              </label>
+            </label>
         </td>
         <td>
-
+            <label>
+                <span style="margin-right: 10px">Override styles:</span>
+                <span>
+                    <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onOverrideCalColor($event.target.value)">
+                        <option *ngFor="let c of styleColor">{{c}}</option>
+                    </select>
+                </span>
+            </label>
         </td>
       </tr>
     </table>
