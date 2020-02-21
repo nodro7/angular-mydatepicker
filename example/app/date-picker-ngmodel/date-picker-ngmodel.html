@@ -165,10 +165,10 @@
                 </label>
             </td>
             <td>
-              <label>
-                <span>Override styles (change colors):</span>
-                <input style="cursor: pointer" type="checkbox" (change)="onOverrideStyles($event.currentTarget.checked)" [checked]="false">
-              </label>
+                <label>
+                <span>RTL:</span>
+                <input style="cursor: pointer" type="checkbox" (change)="onRtl($event.currentTarget.checked)" [checked]="false">
+            </label>
             </td>
         </tr>
 
@@ -195,10 +195,7 @@
           </label>
         </td>
         <td>
-        <label>
-            <span>RTL:</span>
-            <input style="cursor: pointer" type="checkbox" (change)="onRtl($event.currentTarget.checked)" [checked]="false">
-            </label>
+ 
         </td>
       </tr>
 
