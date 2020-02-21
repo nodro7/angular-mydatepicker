@@ -70,8 +70,7 @@ export class DatePickerNgmodel implements OnInit {
   public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
   public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop-ScaleCenter', 'ScaleCenter-ScaleTop', 'Rotate', 'FlipDiagonal');
-  public styleColor: Array<string> = new Array('Default', 'BlueViolet', 'Brown', 'DarkSlateGrey', 'MediumSeaGreen',
-    'OrangeRed', 'SeaGreen', 'SteelBlue', 'Teal', 'Tomato', 'YellowGreen');
+  public styleColor: Array<string> = new Array('Default', 'Blue', 'Green', 'Red', 'Yellow');
 
   public locale: string = 'en';
 
@@ -433,217 +432,240 @@ export class DatePickerNgmodel implements OnInit {
     let copy = this.getCopyOfOptions();
     copy.stylesData.selector = 'dp1';
  
-
     if (color === 'Default') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #ddd;
-          color: #003366;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-          color: #003366;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #003366;
-        }
-        `
+      copy.stylesData.styles = '';
     }
-    else if (color === 'BlueViolet') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #8A2BE2;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #8A2BE2;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #8A2BE2;
-        }
-        `
+    else if (color === 'Blue') {
+      copy.stylesData.styles = `
+      .dp1 .myDpIconLeftArrow,
+      .dp1 .myDpIconRightArrow,
+      .dp1 .myDpHeaderBtn {
+          color: #3855c1;
+      }
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #66afe9;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+          color: #3855c1;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+          color: #6495ED;
+      }
+      .dp1 .myDpWeekDayTitle {
+          background-color: #3855c1;
+          color: #ffffff;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover {
+          color: #add8e6;
+      }
+      .dp1 .myDpMarkCurrDay, 
+      .dp1 .myDpMarkCurrMonth, 
+      .dp1 .myDpMarkCurrYear {
+          border-bottom: 2px solid #3855c1;
+      }
+      .dp1 .myDpDisabled {
+          color: #999;
+      }
+      .dp1 .myDpHighlight {
+          color: #cd5c5c;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #add8e6;
+      }
+    `
     }
-    else if (color === 'Brown') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #A52A2A;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #A52A2A;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #A52A2A;
-        }
-        `
+    else if (color === 'Green') {
+      copy.stylesData.styles = `
+      .dp1 .myDpIconLeftArrow,
+      .dp1 .myDpIconRightArrow,
+      .dp1 .myDpHeaderBtn {
+          color: #228B22;
+      }
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #8FBC8F;
+      }
+      .myDpDaycell:focus,
+      .myDpMonthcell:focus,
+      .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #8FBC8F;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+          color: #228B22;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+          color: #8FBC8F;
+      }
+      .dp1 .myDpWeekDayTitle {
+          background-color: #228B22;
+          color: #ffffff;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover {
+          color: #90EE90;
+      }
+      .dp1 .myDpMarkCurrDay, 
+      .dp1 .myDpMarkCurrMonth, 
+      .dp1 .myDpMarkCurrYear {
+          border-bottom: 2px solid #228B22;
+      }
+      .dp1 .myDpDisabled {
+          color: #999;
+      }
+      .dp1 .myDpHighlight {
+          color: #cd5c5c;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #90EE90;
+      }
+      .dp1 .myDpRangeColor {
+        background-color: #90EE90;
+      }
+      .dp1 .myDpSelectedDay,
+      .dp1 .myDpSelectedMonth,
+      .dp1 .myDpSelectedYear {
+        background-color: #00FA9A;
+      }
+    `
     }
-    else if (color === 'DarkSlateGrey') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #2F4F4F;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #2F4F4F;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #2F4F4F;
-        }
-        `
+    else if (color === 'Red') {
+      copy.stylesData.styles = `
+      .dp1 .myDpIconLeftArrow,
+      .dp1 .myDpIconRightArrow,
+      .dp1 .myDpHeaderBtn {
+          color: #800000;
+      }
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #FF6347;
+      }
+      .myDpDaycell:focus,
+      .myDpMonthcell:focus,
+      .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #FF6347;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+          color: #800000;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+          color: #DB7093;
+      }
+      .dp1 .myDpWeekDayTitle {
+          background-color: #800000;
+          color: #ffffff;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover {
+          color: #F08080;
+      }
+      .dp1 .myDpMarkCurrDay, 
+      .dp1 .myDpMarkCurrMonth, 
+      .dp1 .myDpMarkCurrYear {
+          border-bottom: 2px solid #800000;
+      }
+      .dp1 .myDpDisabled {
+          color: #999;
+      }
+      .dp1 .myDpHighlight {
+          color: #008000;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #F08080;
+      }
+      .dp1 .myDpRangeColor {
+        background-color: #FFB6C1;
+      }
+      .dp1 .myDpSelectedDay,
+      .dp1 .myDpSelectedMonth,
+      .dp1 .myDpSelectedYear {
+        background-color: #CD5C5C;
+        color: #800000;
+      }
+    `
     }
-    else if (color === 'MediumSeaGreen') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #3CB371;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #3CB371;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #3CB371;
-        }
-        `
+    else if (color === 'Yellow') {
+      copy.stylesData.styles = `
+      .dp1 .myDpIconLeftArrow,
+      .dp1 .myDpIconRightArrow,
+      .dp1 .myDpHeaderBtn {
+          color: #DAA520;
+      }
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #FFDAB9;
+      }
+      .myDpDaycell:focus,
+      .myDpMonthcell:focus,
+      .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #F4A460;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+          color: #DAA520;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+          color: #DEB887;
+      }
+      .dp1 .myDpWeekDayTitle {
+          background-color: #DAA520;
+          color: #444;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover {
+          color: #F0E68C;
+      }
+      .dp1 .myDpMarkCurrDay, 
+      .dp1 .myDpMarkCurrMonth, 
+      .dp1 .myDpMarkCurrYear {
+          border-bottom: 2px solid #DAA520;
+      }
+      .dp1 .myDpDisabled {
+          color: #999;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #F0E68C;
+      }
+      .dp1 .myDpRangeColor {
+        background-color: #FFEBCD;
+      }
+      .dp1 .myDpSelectedDay,
+      .dp1 .myDpSelectedMonth,
+      .dp1 .myDpSelectedYear {
+        background-color: #F0E68C;
+        color: #B8860B;
+      }
+    `
     }
-    else if (color === 'OrangeRed') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #FF4500;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #FF4500;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #FF4500;
-        }
-        `
-    }
-    else if (color === 'SeaGreen') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #2E8B57;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #2E8B57;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #2E8B57;
-        }
-        `
-    }
-    else if (color === 'SteelBlue') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #4682B4;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #4682B4;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #4682B4;
-        }
-        `
-    }
-    else if (color === 'Tomato') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #FF6347;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #FF6347;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #FF6347;
-        }
-        `
-    }
-    else if (color === 'YellowGreen') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #9ACD32;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #9ACD32;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #9ACD32;
-        }
-        `
-    }
-    else if (color === 'Teal') {
-      copy.stylesData.styles =
-        ` 
-        .dp1 .myDpWeekDayTitle {
-          background-color: #008080;
-          color: #fff;
-        }
-        .dp1 .myDpCurrMonth,
-        .dp1 .myDpMonthcell,
-        .dp1 .myDpYearcell {
-            color: #008080;
-        }
-        .dp1 .myDpMarkCurrDay, 
-        .dp1 .myDpMarkCurrMonth, 
-        .dp1 .myDpMarkCurrYear {
-          border-bottom: 2px solid #008080;
-        }
-        `
-    }
-    
+
     this.myDatePickerOptions = copy;
   }
 
