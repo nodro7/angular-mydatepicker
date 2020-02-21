@@ -36,7 +36,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 * animation of calendar (open/close)
 * awesome configuration possibilities 
   * easily set styles to the component which are in line with your page theme
-    * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker))
+    * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(blue)))
     * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
   * 47 [options](https://github.com/kekeh/angular-mydatepicker#options-attribute)
     * change value of any option dynamically
@@ -47,7 +47,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
 ### Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8. The library is tested with Angular version 7.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version __7.3.8__.
 
 Source code of the component is in the [projects/angular-mydatepicker/src](https://github.com/kekeh/angular-mydatepicker/tree/master/projects/angular-mydatepicker/src) folder.
 
@@ -124,7 +124,7 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | Option         | Default        | Type | Description |
 | :------------- | :------------- | :----| :---------- |
 | __dateRange__   | false | boolean | Date picker mode (date picker or date range picker). |
-| __inline__   | false | boolean | Normal mode or inline mode. If __inline__ mode set the input box __type__ attribute to __hidden__ and this option to __true__. [Here](https://github.com/kekeh/angular-mydatepicker/blob/master/example/app/date-picker-inline/date-picker-inline.html#L10) is an example.|
+| __inline__   | false | boolean | Normal mode or inline mode. If __inline__ mode is used, set the input box __type__ attribute to __hidden__ and this option to __true__. [Here](https://github.com/kekeh/angular-mydatepicker/blob/master/example/app/date-picker-inline/date-picker-inline.html#L10) is an example.|
 | __dayLabels__     | {su: 'Sun', mo: 'Mon', tu: 'Tue', we: 'Wed', th: 'Thu', fr: 'Fri', sa: 'Sat'} | [IMyDayLabels](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-day-labels.interface.ts) | Day labels visible on the selector. |
 | __monthLabels__   | { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec' } | [IMyMonthLabels](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-month-labels.interface.ts) | Month labels visible on the selector. |
 | __dateFormat__    | yyyy-mm-dd | string |  Date format on the selection area and the callback. For example: d.m.yyyy, dd.mm.yyyy, yyyy-m-d, yyyy-mm-dd, d mmm yyyy, dd mmm yyyy (d = Day not leading zero, dd = Day with leading zero, m = Month not leading zero, mm = Month with leading zero, mmm = Month as a text, yyyy = Year four digit) |
@@ -140,8 +140,8 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | __yearSelector__  | true | boolean | If __true__ and if year label is selected opens a selector of years. |
 | __disableHeaderButtons__   | true | boolean | Prevent to change the calendar view with header buttons if previous or next month are fully disabled by the __disableUntil__ or the __disableSince__ options. |
 | __showWeekNumbers__   | false | boolean | Are week numbers visible or not on calendar. Can be used if __firstDayOfWeek = mo__. |
-| __selectorHeight__   | 232px | string | Selector height in pixels. |
-| __selectorWidth__   | 252px | string | Selector width in pixels. |
+| __selectorHeight__   | 232px | string | Selector height. |
+| __selectorWidth__   | 252px | string | Selector width. |
 | __disableUntil__   | no default value | [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) | Disable dates backward starting from the given date. For example: {year: 2019, month: 6, day: 26}. To reset the existing __disableUntil__ value set: {year: 0, month: 0, day: 0} |
 | __disableSince__   | no default value | [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) | Disable dates forward starting from the given date. For example: {year: 2019, month: 7, day: 22}. To reset the existing __disableSince__ value set: {year: 0, month: 0, day: 0} |
 | __disableDates__   | no default value | Array<[IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts)> | Disable single dates one by one. Array of disabled dates. For example: [{year: 2019, month: 11, day: 14}, {year: 2019, month: 1, day: 15}]. Value of year or month can be zero. If it is zero it affects all years/months. For example disable first day of every month: [{year: 0, month: 0, day: 1}]. To reset existing __disableDates__ value set empty array to it. |
@@ -165,7 +165,7 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | __inputFieldValidation__   | true | boolean | Input field validation enabled or not after __blur__ event of input field. |
 | __showMonthNumber__   | true | boolean | Is month number shown or not on the month view. |
 | __calendarAnimation__   | no default value | [IMyCalendarAnimation](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-calendar-animation.interface.ts) | The type of open (__in__) and close (__out__) animation of calendar. One of the following ([CalAnimation](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/enums/cal-animation.enum.ts)) value: __None__, __Fade__, __ScaleTop__, __ScaleCenter__, __Rotate__,  __FlipDiagonal__ or __Own__. Try animations [here](https://kekeh.github.io/angular-mydatepicker/). |
-| __rtl__   | false | boolean | Is RTL enabled or not. |
+| __rtl__   | false | boolean | Is RTL enabled or not. Try RTL [here](https://kekeh.github.io/angular-mydatepicker/). |
 | __stylesData__   | no default value | [IMyStyles](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-styles.interface.ts) | Overridden styles of the datepicker. [Here](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page) is an example on how to use this option. See also [chapter](https://github.com/kekeh/angular-mydatepicker#override-styles-of-component) below. |
 | __divHostElement__   | no default value | [IMyDivHostElement](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-div-host-element.interface.ts) | Div as a host element. In case of non-editable date field enable this option and put a __angular-mydatepicker__ directive inside a __div__ element. Placeholder text is an additional property of this option. Functionality is limited if this option is enabled. |
 | __ariaLabelPrevMonth__   | Previous Month | string | Aria label text of previous month button. |
@@ -249,7 +249,7 @@ Example of the __defaultMonth__ attribute is [here](https://github.com/kekeh/ang
 
 ## Functions
 
-You can can call functions of the directive. Define local variable to input field like below:
+You can can call functions of the directive. Define a local variable to the input field as follows:
 ```html
 <input angular-mydatepicker name="mydate" [(ngModel)]="model" 
     [options]="myOptions" #dp="angular-mydatepicker"/>
@@ -274,12 +274,12 @@ Closes the calendar if it is open and opens the calendar if it is closed. Return
 
 ### clearDate function
 
-Clears the date from the input box and model. Example of the __clearDate__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+Clears the date or date range from the input box and model. Example of the __clearDate__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
 
 
 ### isDateValid function
 
-Returns __true__ if the date in the input box is valid. Otherwise it returns __false__. This function also calls the __inputFieldChanged__ callback. Example of the __isDateValid__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
+Returns __true__ if the date or date range in the input box is valid. Otherwise it returns __false__. This function also calls the __inputFieldChanged__ callback. Example of the __isDateValid__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
 
 
 ## Callbacks
@@ -357,13 +357,17 @@ Returns __true__ if the date in the input box is valid. Otherwise it returns __f
 
 ## Override styles of component
 
-It is possible to override styles of datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
+It is possible to override styles of the datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
 It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.style.css) styles. 
 
 Usage examples of the __stylesData__ option:
 * [single date picker on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-single-datepicker)
 * [multiple datepickers on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page)
-* [change color theme of datepicker](https://github.com/kekeh/angular-mydatepicker/wiki/change-color-theme-of-datepicker)
+* [color theme (blue)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(blue))
+* [color theme (green)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(green))
+* [color theme (red)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(red))
+* [color theme (yellow)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(yellow))
+
 
 ## Development of this component
 

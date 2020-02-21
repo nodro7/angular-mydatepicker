@@ -433,3 +433,13 @@
 ### Features
 
 * none
+
+# 0.4.3 (2020-02-21)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Contents of the README file updated.
