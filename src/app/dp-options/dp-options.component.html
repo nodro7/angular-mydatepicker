@@ -73,17 +73,14 @@
 
   <div class="optionsContainer">
     <div class="form-check optionsItem">
-      <input class="form-check-input inputBox" type="checkbox" id="overrideStyles" (change)="onOverrideStyles($event.currentTarget.checked)" [checked]="false">
-      <label class="form-check-label" for="overrideStyles">
-        Override styles (changes color of some elements)
-      </label>
-    </div>
-
-    <div class="form-check optionsItem">
       <input class="form-check-input inputBox" type="checkbox" id="rtl" (change)="onRtl($event.currentTarget.checked)" [checked]="false">
       <label class="form-check-label" for="rtl">
         RTL
       </label>
+    </div>
+
+    <div class="form-check optionsItem">
+
     </div>
 
     <div class="form-check optionsItem">
@@ -99,6 +96,18 @@
       <select id="animation" class="custom-select col-sm-8" (change)="onChangeCalendarAnimation($event.target.value)">
         <option *ngFor="let a of animations">{{a}}</option>
       </select>
+    </div>
+
+    <div class="form-check selectItem">
+      <label for="animation" class="col-sm-4 col-form-label overrideStylesLabel">Override styles:</label>
+      <select id="animation" class="custom-select col-sm-8" (change)="onOverrideStyles($event.target.value)">
+        <option *ngFor="let c of styleColor">{{c}}</option>
+      </select>
+    </div>
+
+    <div class="form-check selectItem">
+
+      
     </div>
   
   </div>

@@ -24,12 +24,19 @@
 }
 
 .localeLabel,
-.calendarAnimationLabel {
+.calendarAnimationLabel,
+.overrideStylesLabel  {
   padding-left: 0;
+  min-width: 140px;
+}
+
+.custom-select {
+  width: 200px;
 }
 
 .selectItem {
-  width: 280px;
+  width: 33%;
+  min-width: 200px;
   padding-left: 0;
 }
 
@@ -40,6 +47,15 @@
 .linkToOptions {
   margin-top: 10px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1500px) {
+  .calendarAnimationOptions {
+    display: block;
+  }
+  .optionsItem {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 1000px) {
