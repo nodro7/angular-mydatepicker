@@ -259,9 +259,9 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpYearLabel:focus {
         color: #8FBC8F;
       }
-      .myDpDaycell:focus,
-      .myDpMonthcell:focus,
-      .myDpYearcell:focus {
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #8FBC8F;
       }
       .dp1 .myDpCurrMonth,
@@ -320,9 +320,9 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpYearLabel:focus {
         color: #FF6347;
       }
-      .myDpDaycell:focus,
-      .myDpMonthcell:focus,
-      .myDpYearcell:focus {
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #FF6347;
       }
       .dp1 .myDpCurrMonth,
@@ -382,9 +382,9 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpYearLabel:focus {
         color: #FFDAB9;
       }
-      .myDpDaycell:focus,
-      .myDpMonthcell:focus,
-      .myDpYearcell:focus {
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #F4A460;
       }
       .dp1 .myDpCurrMonth,
