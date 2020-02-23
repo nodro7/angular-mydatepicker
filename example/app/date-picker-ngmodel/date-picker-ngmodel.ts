@@ -390,6 +390,11 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpYearLabel:focus {
         color: #66afe9;
       }
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #66afe9;
+      }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
@@ -402,6 +407,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
           background-color: #3855c1;
           color: #ffffff;
+          font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -423,6 +429,15 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpTableSingleMonth:hover, 
       .dp1 .myDpTableSingleYear:hover {
           background-color: #add8e6;
+          color: #3855c1;
+      }
+      .dp1 .myDpRangeColor {
+        background-color: #dbeaff;
+      }
+      .dp1 .myDpSelectedDay,
+      .dp1 .myDpSelectedMonth,
+      .dp1 .myDpSelectedYear {
+        background-color: #8EBFFF;
       }
     `
     }
@@ -454,7 +469,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpWeekDayTitle {
           background-color: #228B22;
-          color: #ffffff;
+          color: #fff;
+          font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -476,9 +492,10 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpTableSingleMonth:hover, 
       .dp1 .myDpTableSingleYear:hover {
           background-color: #90EE90;
+          color: #228B22;
       }
       .dp1 .myDpRangeColor {
-        background-color: #90EE90;
+        background-color: #D1F8D1;
       }
       .dp1 .myDpSelectedDay,
       .dp1 .myDpSelectedMonth,
@@ -492,7 +509,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
-          color: #800000;
+          color: #B22222;
       }
       .dp1 .myDpHeaderBtn:focus,
       .dp1 .myDpMonthLabel:focus,
@@ -507,15 +524,16 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
-          color: #800000;
+          color: #B22222;
       }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
-          color: #DB7093;
+          color: #F08080;
       }
       .dp1 .myDpWeekDayTitle {
-          background-color: #800000;
-          color: #ffffff;
+          background-color: #B22222;
+          color: #fff;
+          font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -531,20 +549,21 @@ export class DatePickerNgmodel implements OnInit {
           color: #999;
       }
       .dp1 .myDpHighlight {
-          color: #008000;
+          color: #FF0000;
       }
       .dp1 .myDpTableSingleDay:hover, 
       .dp1 .myDpTableSingleMonth:hover, 
       .dp1 .myDpTableSingleYear:hover {
-          background-color: #F08080;
+          background-color: #F6B2B2;
+          color: #800000;
       }
       .dp1 .myDpRangeColor {
-        background-color: #FFB6C1;
+        background-color: #FFE1E6;
       }
       .dp1 .myDpSelectedDay,
       .dp1 .myDpSelectedMonth,
       .dp1 .myDpSelectedYear {
-        background-color: #CD5C5C;
+        background-color: #E6ADAD;
         color: #800000;
       }
     `
@@ -577,7 +596,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpWeekDayTitle {
           background-color: #DAA520;
-          color: #444;
+          color: #666;
+          font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -596,9 +616,10 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpTableSingleMonth:hover, 
       .dp1 .myDpTableSingleYear:hover {
           background-color: #F0E68C;
+          color: #DAA520;
       }
       .dp1 .myDpRangeColor {
-        background-color: #FFEBCD;
+        background-color: #FFF1DC;
       }
       .dp1 .myDpSelectedDay,
       .dp1 .myDpSelectedMonth,
