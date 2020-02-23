@@ -465,10 +465,10 @@ export class DatePickerNgmodel implements OnInit {
         box-shadow: inset 0 0 0 1px #8FBC8F;
       }
       .dp1 .myDpSelector:focus {
-        border: 1px solid #C7DDC7;
+        border: 1px solid #B0D0B0;
       }
       .dp1 .myDpSelectorArrow:focus:before {
-        border-bottom-color: #C7DDC7;
+        border-bottom-color: #B0D0B0;
       }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
