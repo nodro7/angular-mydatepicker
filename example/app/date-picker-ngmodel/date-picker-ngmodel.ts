@@ -395,6 +395,12 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #66afe9;
       }
+      .dp1 .myDpSelector:focus {
+        border: 1px solid #ADD8E6;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #ADD8E6;
+      }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
@@ -457,6 +463,12 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell:focus,
       .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #8FBC8F;
+      }
+      .dp1 .myDpSelector:focus {
+        border: 1px solid #C7DDC7;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #C7DDC7;
       }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
@@ -521,6 +533,12 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #FF6347;
       }
+      .dp1 .myDpSelector:focus {
+        border: 1px solid #F9CCCC;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #F9CCCC;
+      }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
@@ -584,6 +602,12 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell:focus,
       .dp1 .myDpYearcell:focus {
         box-shadow: inset 0 0 0 1px #F4A460;
+      }
+      .dp1 .myDpSelector:focus {
+        border: 1px solid #FADABF;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #FADABF;
       }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
