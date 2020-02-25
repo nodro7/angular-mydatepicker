@@ -443,3 +443,14 @@
 ### Features
 
 * Contents of the README file updated.
+
+
+# 0.4.4 (2020-02-25)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Current day marked previous and next months on day view.
