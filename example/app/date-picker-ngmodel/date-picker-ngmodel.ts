@@ -406,6 +406,9 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpYearcell {
           color: #3855c1;
       }
+      .dp1 .myDpDaycellWeekNbr {
+        color: #3855c1;
+      }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
           color: #6495ED;
@@ -474,6 +477,9 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #228B22;
+      }
+      .dp1 .myDpDaycellWeekNbr {
+        color: #228B22;
       }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
@@ -544,6 +550,9 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpYearcell {
           color: #B22222;
       }
+      .dp1 .myDpDaycellWeekNbr {
+        color: #B22222;
+      }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
           color: #F08080;
@@ -613,6 +622,9 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #DAA520;
+      }
+      .dp1 .myDpDaycellWeekNbr {
+        color: #DAA520;
       }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
