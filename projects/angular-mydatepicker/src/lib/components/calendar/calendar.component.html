@@ -1,5 +1,5 @@
 <span #styleEl></span>
-<div class="ng-mydp {{opts.stylesData.selector}}">
+<div class="ng-mydp {{opts.stylesData?.selector || ''}}">
   <div class="myDpSelector" #selectorEl 
     [libAngularMyDatePickerCalendar]="{inline: opts.inline, selectorWidth: opts.selectorWidth, selectorHeight: opts.selectorHeight, selectorPos: selectorPos}" 
     [ngClass]="{'myDpSelectorArrow': opts.showSelectorArrow, 'myDpSelectorArrowLeft': opts.showSelectorArrow && !opts.alignSelectorRight, 
