@@ -454,3 +454,14 @@
 ### Features
 
 * Current day marked previous and next months on day view.
+
+
+# 0.4.5 (2020-03-02)
+
+### Bug Fixes
+
+* Merged PR: Fix strictNullType check error of possibly undefined object #32.
+
+### Features
+
+* none
