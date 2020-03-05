@@ -363,6 +363,7 @@ It is possible override any of [these](https://github.com/kekeh/angular-mydatepi
 Usage examples of the __stylesData__ option:
 * [single date picker on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-single-datepicker)
 * [multiple datepickers on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-multiple-date-pickers-on-same-page)
+* [color theme (grey)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(grey))
 * [color theme (blue)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(blue))
 * [color theme (green)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(green))
 * [color theme (red)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(red))

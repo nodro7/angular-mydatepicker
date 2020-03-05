@@ -296,8 +296,9 @@
 }
 
 .myDpWeekDayTitle {
-  background-color: #DDD;
-  font-size: 11px;
+  background-color: transparent;
+  color: #555;
+  font-size: 12px;
   font-weight: normal;
   vertical-align: middle;
   max-width: 36px;
@@ -305,6 +306,11 @@
   white-space: nowrap;
   height: 23px;
   text-align: center;
+}
+
+.myDpCalTable th.myDpWeekDayTitle {
+  border-bottom: 1px solid #CCC;
+  padding-top: 2px;
 }
 
 .myDpWeekDayTitleWeekNbr {
@@ -355,10 +361,7 @@
   background-color: #fff;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
-
-.monthYearSelBarBorder {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #CCC;
 }
 
 .myDpPrevBtn {
