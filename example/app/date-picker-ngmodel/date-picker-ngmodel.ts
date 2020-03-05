@@ -70,7 +70,7 @@ export class DatePickerNgmodel implements OnInit {
   public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
   public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop-ScaleCenter', 'ScaleCenter-ScaleTop', 'Rotate', 'FlipDiagonal');
-  public styleColor: Array<string> = new Array('Default', 'Blue', 'Green', 'Red', 'Yellow');
+  public styleColor: Array<string> = new Array('Default', 'Blue', 'Green', 'Red', 'Yellow', 'Grey');
 
   public locale: string = 'en';
 
@@ -662,6 +662,84 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpSelectedYear {
         background-color: #F0E68C;
         color: #B8860B;
+      }
+    `
+    }
+    else if (color === 'Grey') {
+      copy.stylesData.styles = `
+      .dp1 .myDpIconLeftArrow,
+      .dp1 .myDpIconRightArrow,
+      .dp1 .myDpHeaderBtn {
+          color: #6c757d;
+      }
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #aaa;
+      }
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #ccc;
+      }
+      .dp1 .myDpSelector:focus {
+        box-shadow: -1px 1px 6px 0px #bbb;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #bbb;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+          color: #6c757d;
+      }
+      .dp1 .myDpDaycellWeekNbr {
+        color: #6c757d;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+          color: #aaa;
+      }
+      .dp1 .myDpWeekDayTitle {
+          background-color: transparent;
+          color: #6c757d;
+          border-bottom: 1px solid #ddd;
+          padding-top: 1px;
+          font-size: 12px;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #ddd;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover {
+          color: #212529;
+      }
+      .dp1 .myDpMarkCurrDay, 
+      .dp1 .myDpMarkCurrMonth, 
+      .dp1 .myDpMarkCurrYear {
+          border-bottom: 2px solid #6c757d;
+      }
+      .dp1 .myDpDisabled {
+          color: #999;
+      }
+      .dp1 .myDpHighlight {
+          color: #cd5c5c;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #ccc;
+          color: #222;
+      }
+      .dp1 .myDpRangeColor {
+        background-color: #eee;
+      }
+      .dp1 .myDpSelectedDay,
+      .dp1 .myDpSelectedMonth,
+      .dp1 .myDpSelectedYear {
+        background-color: #ccc;
+        color: #222;
       }
     `
     }
