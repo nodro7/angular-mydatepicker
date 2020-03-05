@@ -476,3 +476,15 @@
 ### Features
 
 * CSS styles related changes.
+
+
+# 0.4.7 (2020-03-05)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* CSS styles related changes.
+

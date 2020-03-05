@@ -192,7 +192,7 @@
 }
 
 .myDpSelector:focus {
-  border: 1px solid #ADD8E6;
+  box-shadow: -1px 1px 6px 0px #ADD8E6;
   outline: none;
 }
 
@@ -297,8 +297,8 @@
 
 .myDpWeekDayTitle {
   background-color: transparent;
-  color: #555;
-  font-size: 12px;
+  color: #333;
+  font-size: 13px;
   font-weight: normal;
   vertical-align: middle;
   max-width: 36px;
@@ -306,11 +306,6 @@
   white-space: nowrap;
   height: 23px;
   text-align: center;
-}
-
-.myDpCalTable th.myDpWeekDayTitle {
-  border-bottom: 1px solid #CCC;
-  padding-top: 2px;
 }
 
 .myDpWeekDayTitleWeekNbr {
@@ -334,20 +329,10 @@
 }
 
 .myDpDaycellWeekNbr {
-  font-size: 10px;
+  font-size: 9px;
   cursor: default;
   text-align: center;
-  color: #003366;
-}
-
-.myDpCalTable th.myDpWeekNbrBorderNoRtl,
-.myDpCalTable td.myDpWeekNbrBorderNoRtl {
-  border-right: 1px solid #CCC;
-}
-
-.myDpCalTable th.myDpWeekNbrBorderRtl,
-.myDpCalTable td.myDpWeekNbrBorderRtl {
-  border-left: 1px solid #CCC;
+  color: #333;
 }
 
 .myDpPrevMonth,
@@ -361,7 +346,6 @@
   background-color: #fff;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  border-bottom: 1px solid #CCC;
 }
 
 .myDpPrevBtn {
