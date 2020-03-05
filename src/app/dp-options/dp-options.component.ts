@@ -36,7 +36,7 @@ export class DpOptionsComponent implements OnInit {
     'FlipDiagonal'
   ];
 
-  public styleColor: Array<string> = new Array('Default', 'Blue', 'Green', 'Red', 'Yellow');
+  public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow');
 
   public locale: string = 'en';
   public locales: Array<string> = [
@@ -199,6 +199,87 @@ export class DpOptionsComponent implements OnInit {
     if (color === 'Default') {
       copy.stylesData.styles = '';
     }
+    else if (color === 'Grey') {
+      copy.stylesData.styles = `
+      .dp1 .myDpIconLeftArrow,
+      .dp1 .myDpIconRightArrow,
+      .dp1 .myDpHeaderBtn {
+          color: #6c757d;
+      }
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #aaa;
+      }
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #ccc;
+      }
+      .dp1 .myDpSelector:focus {
+        box-shadow: -1px 1px 6px 0px #bbb;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #bbb;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+          color: #6c757d;
+      }
+      .dp1 .myDpDaycellWeekNbr {
+        color: #6c757d;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+          color: #aaa;
+      }
+      .dp1 .myDpWeekDayTitle {
+        background-color: transparent;
+        color: #6c757d;
+      }
+      .dp1 .myDpCalTable th.myDpWeekDayTitle {
+        border-bottom: 1px solid #ddd;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #ddd;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #ddd;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover {
+          color: #212529;
+      }
+      .dp1 .myDpMarkCurrDay, 
+      .dp1 .myDpMarkCurrMonth, 
+      .dp1 .myDpMarkCurrYear {
+          border-bottom: 2px solid #6c757d;
+      }
+      .dp1 .myDpDisabled {
+          color: #999;
+      }
+      .dp1 .myDpHighlight {
+          color: #cd5c5c;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #ccc;
+          color: #222;
+      }
+      .dp1 .myDpRangeColor {
+        background-color: #eee;
+      }
+      .dp1 .myDpSelectedDay,
+      .dp1 .myDpSelectedMonth,
+      .dp1 .myDpSelectedYear {
+        background-color: #ccc;
+        color: #222;
+      }
+    `
+    }
     else if (color === 'Blue') {
       copy.stylesData.styles = `
       .dp1 .myDpIconLeftArrow,
@@ -235,9 +316,14 @@ export class DpOptionsComponent implements OnInit {
           color: #6495ED;
       }
       .dp1 .myDpWeekDayTitle {
-          background-color: #3855c1;
-          color: #ffffff;
-          font-weight: bold;
+          background-color: transparent;
+          color: #3855c1;
+      }
+      .dp1 .myDpCalTable th.myDpWeekDayTitle {
+        border-bottom: 1px solid #a9d2f3;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #a9d2f3;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -307,9 +393,14 @@ export class DpOptionsComponent implements OnInit {
           color: #8FBC8F;
       }
       .dp1 .myDpWeekDayTitle {
-          background-color: #228B22;
-          color: #fff;
-          font-weight: bold;
+        background-color: transparent;
+        color: #228B22;
+      }
+      .dp1 .myDpCalTable th.myDpWeekDayTitle {
+        border-bottom: 1px solid #B0D0B0;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #B0D0B0;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -341,7 +432,6 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpSelectedYear {
         background-color: #00FA9A;
       }
-
     `
     }
     else if (color === 'Red') {
@@ -380,9 +470,14 @@ export class DpOptionsComponent implements OnInit {
           color: #F08080;
       }
       .dp1 .myDpWeekDayTitle {
-          background-color: #B22222;
-          color: #fff;
-          font-weight: bold;
+        background-color: transparent;
+        color: #B22222;
+      }
+      .dp1 .myDpCalTable th.myDpWeekDayTitle {
+        border-bottom: 1px solid #fad8d8;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #fad8d8;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -453,9 +548,14 @@ export class DpOptionsComponent implements OnInit {
           color: #DEB887;
       }
       .dp1 .myDpWeekDayTitle {
-          background-color: #DAA520;
-          color: #666;
-          font-weight: bold;
+        background-color: transparent;
+        color: #DAA520;
+      }
+      .dp1 .myDpCalTable th.myDpWeekDayTitle {
+        border-bottom: 1px solid #FADABF;
+      }
+      .dp1 .monthYearSelBar {
+        border-bottom: 1px solid #FADABF;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,

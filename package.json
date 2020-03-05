@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.0-rc.6",
+    "@angular/cli": "^9.0.5",
     "@angular/common": "~9.0.0-rc.6",
     "@angular/compiler": "~9.0.0-rc.6",
     "@angular/core": "~9.0.0-rc.6",
@@ -20,7 +21,7 @@
     "@angular/platform-browser": "~9.0.0-rc.6",
     "@angular/platform-browser-dynamic": "~9.0.0-rc.6",
     "@angular/router": "~9.0.0-rc.6",
-    "angular-mydatepicker": "^0.4.4",
+    "angular-mydatepicker": "^0.4.6",
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
@@ -31,7 +32,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.1",
-    "@angular/cli": "^9.0.1",
     "@angular/compiler-cli": "~9.0.0",
     "@angular/language-service": "~9.0.0",
     "@types/jasmine": "~2.8.8",
