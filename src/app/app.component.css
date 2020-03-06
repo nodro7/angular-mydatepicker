@@ -8,7 +8,7 @@
 }
 
 .dpContainer {
-  margin: 0 120px;
+  margin: 0 120px 120px 120px;
 }
 
 .col {
@@ -21,12 +21,12 @@
 }
 
 .dpOptionsContainer {
-  margin: 140px 120px 300px 120px;
+  margin: 20px 120px 250px 120px;
 }
 
 @media only screen and (max-width: 1000px) {
   .dpContainer {
-    margin: 0 20px;
+    margin: 0 20px 80px 20px;
   }
 
   .infoText {
@@ -34,6 +34,6 @@
   }
 
   .dpOptionsContainer {
-    margin: 140px 20px 260px 20px;
+    margin: 20px 20px 260px 20px;
   }
 }

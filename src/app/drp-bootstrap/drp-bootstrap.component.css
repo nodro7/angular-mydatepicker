@@ -1,9 +1,10 @@
-.dpTitle {
-
-}
-
 .datePickerContainer {
-  margin: 0 auto;
   width: 280px;
+  margin: 0 auto;
 }
 
+@media only screen and (max-width: 645px) {
+  .datePickerContainer {
+    margin: 0 0;
+  }
+}

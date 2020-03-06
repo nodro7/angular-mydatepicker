@@ -106,9 +106,12 @@
     </div>
 
     <div class="form-check selectItem">
-
-      
+      <label for="locale" class="col-sm-4 col-form-label localeLabel">Locale:</label>
+      <select id="locale" class="custom-select col-sm-8" (change)="onChangeLocale($event.target.value)">
+        <option *ngFor="let l of locales">{{l}}</option>
+      </select>
     </div>
+
   
   </div>
 
@@ -116,12 +119,7 @@
 
   <div class="optionsContainer localeOptions">
 
-    <div class="form-check selectItem">
-      <label for="locale" class="col-sm-4 col-form-label localeLabel">Locale:</label>
-      <select id="locale" class="custom-select col-sm-8" (change)="onChangeLocale($event.target.value)">
-        <option *ngFor="let l of locales">{{l}}</option>
-      </select>
-    </div>
+
 
   </div>
 
