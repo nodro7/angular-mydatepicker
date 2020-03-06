@@ -238,15 +238,6 @@ export class DpOptionsComponent implements OnInit {
         background-color: transparent;
         color: #6c757d;
       }
-      .dp1 .myDpCalTable th.myDpWeekDayTitle {
-        border-bottom: 1px solid #ddd;
-      }
-      .dp1 .monthYearSelBar {
-        border-bottom: 1px solid #ddd;
-      }
-      .dp1 .monthYearSelBar {
-        border-bottom: 1px solid #ddd;
-      }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
       .dp1 .myDpYearLabel:hover {
@@ -298,7 +289,7 @@ export class DpOptionsComponent implements OnInit {
         box-shadow: inset 0 0 0 1px #66afe9;
       }
       .dp1 .myDpSelector:focus {
-        border: 1px solid #ADD8E6;
+        box-shadow: -1px 1px 6px 0px #ADD8E6;
       }
       .dp1 .myDpSelectorArrow:focus:before {
         border-bottom-color: #ADD8E6;
@@ -318,12 +309,6 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
           background-color: transparent;
           color: #3855c1;
-      }
-      .dp1 .myDpCalTable th.myDpWeekDayTitle {
-        border-bottom: 1px solid #a9d2f3;
-      }
-      .dp1 .monthYearSelBar {
-        border-bottom: 1px solid #a9d2f3;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -375,7 +360,7 @@ export class DpOptionsComponent implements OnInit {
         box-shadow: inset 0 0 0 1px #8FBC8F;
       }
       .dp1 .myDpSelector:focus {
-        border: 1px solid #B0D0B0;
+        box-shadow: -1px 1px 6px 0px #B0D0B0;
       }
       .dp1 .myDpSelectorArrow:focus:before {
         border-bottom-color: #B0D0B0;
@@ -395,12 +380,6 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #228B22;
-      }
-      .dp1 .myDpCalTable th.myDpWeekDayTitle {
-        border-bottom: 1px solid #B0D0B0;
-      }
-      .dp1 .monthYearSelBar {
-        border-bottom: 1px solid #B0D0B0;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -452,7 +431,7 @@ export class DpOptionsComponent implements OnInit {
         box-shadow: inset 0 0 0 1px #FF6347;
       }
       .dp1 .myDpSelector:focus {
-        border: 1px solid #F9CCCC;
+        box-shadow: -1px 1px 6px 0px #F9CCCC;
       }
       .dp1 .myDpSelectorArrow:focus:before {
         border-bottom-color: #F9CCCC;
@@ -472,12 +451,6 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #B22222;
-      }
-      .dp1 .myDpCalTable th.myDpWeekDayTitle {
-        border-bottom: 1px solid #fad8d8;
-      }
-      .dp1 .monthYearSelBar {
-        border-bottom: 1px solid #fad8d8;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -530,7 +503,7 @@ export class DpOptionsComponent implements OnInit {
         box-shadow: inset 0 0 0 1px #F4A460;
       }
       .dp1 .myDpSelector:focus {
-        border: 1px solid #FADABF;
+        box-shadow: -1px 1px 6px 0px #FADABF;
       }
       .dp1 .myDpSelectorArrow:focus:before {
         border-bottom-color: #FADABF;
@@ -550,12 +523,6 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #DAA520;
-      }
-      .dp1 .myDpCalTable th.myDpWeekDayTitle {
-        border-bottom: 1px solid #FADABF;
-      }
-      .dp1 .monthYearSelBar {
-        border-bottom: 1px solid #FADABF;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,

@@ -1,0 +1,34 @@
+{
+  "name": "angular-mydatepicker",
+  "version": "0.5.0",
+  "description": "Angular datepicker and date range picker",
+  "homepage": "https://kekeh.github.io/angular-mydatepicker/",
+  "keywords": [
+    "Angular",
+    "datepicker",
+    "date range picker"
+  ],
+  "author": "kekeh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kekeh/angular-mydatepicker.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0"
+  },
+  "main": "bundles/angular-mydatepicker.umd.js",
+  "module": "fesm5/angular-mydatepicker.js",
+  "es2015": "fesm2015/angular-mydatepicker.js",
+  "esm5": "esm5/angular-mydatepicker.js",
+  "esm2015": "esm2015/angular-mydatepicker.js",
+  "fesm5": "fesm5/angular-mydatepicker.js",
+  "fesm2015": "fesm2015/angular-mydatepicker.js",
+  "typings": "angular-mydatepicker.d.ts",
+  "metadata": "angular-mydatepicker.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
