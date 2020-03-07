@@ -488,3 +488,13 @@
 
 * CSS styles related changes.
 
+
+# 0.5.1 (2020-03-07)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* CSS styles related changes.

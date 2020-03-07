@@ -279,7 +279,7 @@
 .myDpMonthcell,
 .myDpYearcell {
   border-collapse: collapse;
-  color: #003366;
+  color: #333;
   line-height: 1.1;
 }
 
@@ -407,7 +407,7 @@
 .myDpMarkCurrDay,
 .myDpMarkCurrMonth,
 .myDpMarkCurrYear {
-  border-bottom: 2px solid #003366;
+  border-bottom: 2px solid #333;
 }
 
 .myDpRangeColor {
