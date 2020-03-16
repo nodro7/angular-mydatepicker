@@ -224,7 +224,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       return;
     }
 
-    const {dateFormat, monthLabels, dateRangeDatesDelimiter} = this.opts;
+    const {dateFormat, monthLabels, dateRangeDatesDelimiter, inline} = this.opts;
 
     if (!value) {
       this.setHostValue(EMPTY_STR);
@@ -249,6 +249,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
 
         if (this.cRef !== null) {
           this.cRef.instance.setDateValue(date);
+          if (inline) {
+            this.cRef.instance.setDefaultMonth(date.month, date.year);
+          }
         }
       }
     }
@@ -271,6 +274,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
 
         if (this.cRef !== null) {
           this.cRef.instance.setDateRangeValue(beginDate, endDate);
+          if (inline) {
+            this.cRef.instance.setDefaultMonth(beginDate.month, beginDate.year);
+          }
         }
       }
     }

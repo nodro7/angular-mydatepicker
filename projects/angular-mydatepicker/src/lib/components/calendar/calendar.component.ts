@@ -150,7 +150,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   refreshComponent(opts: IMyOptions): void {
     this.opts = opts;
 
-    const {selectMonth, selectYear, years} = this;
+    const {selectMonth, selectYear} = this;
     if (!selectMonth && !selectYear) {
       const {monthNbr, year} = this.visibleMonth;
       this.generateCalendar(monthNbr, year, false);
@@ -195,6 +195,12 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   setDateRangeValue(begin: IMyDate, end: IMyDate): void {
     this.selectedDateRange.begin = begin;
     this.selectedDateRange.end = end;
+  }
+
+  setDefaultMonth(monthNbr: number, year: number): void {
+    this.selectedMonth = {monthNbr, year};
+    this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr, year};
+    this.refreshComponent(this.opts);
   }
 
   resetMonthYearSelect(): void {

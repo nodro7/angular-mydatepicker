@@ -498,3 +498,14 @@
 ### Features
 
 * CSS styles related changes.
+
+
+# 0.5.2 (2020-03-16)
+
+### Bug Fixes
+
+* Fixed bug: [In Inline mode not able set date month year or default view #33](https://github.com/kekeh/angular-mydatepicker/issues/33)
+
+### Features
+
+* none
