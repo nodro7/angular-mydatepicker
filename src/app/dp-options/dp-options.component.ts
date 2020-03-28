@@ -637,6 +637,7 @@ export class DpOptionsComponent implements OnInit {
       }
       .dp1 .myDpDisabled {
         color: #ffcccc;
+        opacity: 0.9;
       }
       .dp1 .myDpHighlight {
         color: 	#960018;
