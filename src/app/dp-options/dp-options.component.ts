@@ -587,7 +587,8 @@ export class DpOptionsComponent implements OnInit {
           color: #fff;
       }
       .dp1 .myDpDaycellWeekNbr {
-        color: #DAA520;
+        color: #fff;
+        background-color: #6c757d;
       }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
@@ -606,12 +607,6 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMarkCurrMonth, 
       .dp1 .myDpMarkCurrYear {
           border-bottom: 2px solid #fff;
-      }
-      .dp1 .myDpDisabled {
-          color: #999;
-      }
-      .dp1 .myDpHighlight {
-        color: 	#960018;
       }
       .dp1 .myDpTableSingleDay:hover, 
       .dp1 .myDpTableSingleMonth:hover, 
@@ -639,6 +634,13 @@ export class DpOptionsComponent implements OnInit {
       }
       .dp1 .monthYearSelBar {
         background-color: #6c757d;
+      }
+      .dp1 .myDpDisabled {
+        text-decoration: line-through;
+        color: #ffcccc;
+      }
+      .dp1 .myDpHighlight {
+        color: 	#960018;
       }
     `
     }
