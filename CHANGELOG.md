@@ -509,3 +509,15 @@
 ### Features
 
 * none
+
+
+# 0.5.3 (2020-03-28)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Example app updated
+* README updated

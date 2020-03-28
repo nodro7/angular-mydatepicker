@@ -368,6 +368,7 @@ Usage examples of the __stylesData__ option:
 * [color theme (green)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(green))
 * [color theme (red)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(red))
 * [color theme (yellow)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(yellow))
+* [color theme (dark)](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(dark))
 
 
 ## Development of this component
