@@ -766,7 +766,8 @@ export class DatePickerNgmodel implements OnInit {
           color: #fff;
       }
       .dp1 .myDpDaycellWeekNbr {
-        color: #DAA520;
+        color: #fff;
+        background-color: #6c757d;
       }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
