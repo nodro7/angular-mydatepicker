@@ -18,7 +18,7 @@ import {D, DD, M, MM, MMM, YYYY, SU, MO, TU, WE, TH, FR, SA, ZERO_STR, EMPTY_STR
 export class UtilService {
   weekDays: Array<string> = [SU, MO, TU, WE, TH, FR, SA];
 
-  isDateValid(dateStr: string, options: IMyOptions): IMyDate {
+  isDateValid(dateStr: string, options: IMyOptions, validateDisabled: boolean = true): IMyDate {
     const {dateFormat, minYear, maxYear, monthLabels} = options;
 
     const returnDate: IMyDate = this.resetDate();
@@ -42,7 +42,7 @@ export class UtilService {
 
       const date: IMyDate = {year, month, day};
 
-      if (this.isDisabledDate(date, options)) {
+      if (validateDisabled && this.isDisabledDate(date, options)) {
         return returnDate;
       }
 
@@ -60,16 +60,16 @@ export class UtilService {
     return returnDate;
   }
 
-  isDateValidDateRange(dateRangeStr: string, options: IMyOptions): IMyDateRange {
+  isDateValidDateRange(dateRangeStr: string, options: IMyOptions, validateDisabled: boolean = true): IMyDateRange {
     let dateRange: IMyDateRange = {begin: this.resetDate(), end: this.resetDate()};
     if (dateRangeStr && dateRangeStr.length) {
       const dates: Array<string> = dateRangeStr.split(options.dateRangeDatesDelimiter);
       if (dates && dates.length === 2) {
         const [beginDate, endDate] = dates;
-        const begin: IMyDate = this.isDateValid(beginDate, options);
+        const begin: IMyDate = this.isDateValid(beginDate, options, validateDisabled);
 
         if (this.isInitializedDate(begin)) {
-          const end: IMyDate = this.isDateValid(endDate, options);
+          const end: IMyDate = this.isDateValid(endDate, options, validateDisabled);
 
           if (this.isInitializedDate(end) && this.isDateSameOrEarlier(begin, end)) {
             dateRange = {begin, end};

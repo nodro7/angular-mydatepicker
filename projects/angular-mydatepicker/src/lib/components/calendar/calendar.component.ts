@@ -120,7 +120,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
     if (!dateRange) {
       // Single date mode
-      const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts);
+      const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts, false);
 
       if (this.utilService.isInitializedDate(date)) {
         this.selectedDate = date;
@@ -129,7 +129,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
     else {
       // Date range mode
-      const {begin, end} = this.utilService.isDateValidDateRange(inputValue, this.opts);
+      const {begin, end} = this.utilService.isDateValidDateRange(inputValue, this.opts, false);
 
       if (this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end)) {
         this.selectedDateRange = {begin, end};

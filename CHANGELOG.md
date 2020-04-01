@@ -521,3 +521,14 @@
 
 * Example app updated
 * README updated
+
+
+# 0.5.4 (2020-04-01)
+
+### Bug Fixes
+
+* Fixed bug: [When disableUntil date is higher than the ngModel date, the date will not show #34](https://github.com/kekeh/angular-mydatepicker/issues/34)
+
+### Features
+
+* none

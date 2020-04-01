@@ -410,17 +410,6 @@
   border-bottom: 2px solid #333;
 }
 
-.myDpRangeColor {
-  background-color: #dbeaff;
-}
-
-.myDpSelectedDay,
-.myDpSelectedMonth,
-.myDpSelectedYear {
-  border: none;
-  background-color: #8EBFFF;
-}
-
 .myDpHeaderLabelBtnNotEdit {
   cursor: default;
 }
@@ -477,6 +466,17 @@
   cursor: default;
   color: #999;
   background: #FBEFEF;
+}
+
+.myDpRangeColor {
+  background-color: #dbeaff;
+}
+
+.myDpSelectedDay,
+.myDpSelectedMonth,
+.myDpSelectedYear {
+  border: none;
+  background-color: #8EBFFF;
 }
 
 @font-face {
