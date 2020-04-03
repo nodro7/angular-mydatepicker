@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
-    "angular-mydatepicker": "^0.5.3",
+    "angular-mydatepicker": "^0.5.6",
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
