@@ -532,3 +532,14 @@
 ### Features
 
 * none
+
+
+# 0.5.5 (2020-04-03)
+
+### Bug Fixes
+
+* Fixed bug: [dd/mm as dateFormat option gives errors #36](https://github.com/kekeh/angular-mydatepicker/issues/36)
+
+### Features
+
+* none

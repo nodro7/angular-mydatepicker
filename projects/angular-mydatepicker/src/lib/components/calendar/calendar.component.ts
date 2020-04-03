@@ -12,6 +12,7 @@ import {IMyCalendarViewChanged} from "../../interfaces/my-calendar-view-changed.
 import {IMyDateModel} from "../../interfaces/my-date-model.interface";
 import {IMyRangeDateSelection} from "../../interfaces/my-range-date-selection.interface";
 import {IMyCalendarAnimation} from "../../interfaces/my-calendar-animation.interface";
+import {IMyValidateOptions} from "../../interfaces/my-validate-options.interface";
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
@@ -90,7 +91,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.clickListener();
   }
 
-  initializeComponent(opts: IMyOptions, defaultMonth: string, selectorPos: IMySelectorPosition, inputValue: string, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, cbe: () => void): void {
+  initializeComponent(opts: IMyOptions, defaultMonth: string, selectedValue: any, inputValue: string, selectorPos: IMySelectorPosition, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, cbe: () => void): void {
     this.opts = opts;
     this.selectorPos = selectorPos;
     
@@ -111,16 +112,19 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       }
     }
 
-    const today: IMyDate = this.getToday();
+    const today: IMyDate = this.utilService.getToday();
     this.selectedMonth = {monthNbr: today.month, year: today.year};
 
     if (defaultMonth && defaultMonth.length) {
       this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
     }
 
+    let validateOpts: IMyValidateOptions = null;
+
     if (!dateRange) {
       // Single date mode
-      const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts, false);
+      validateOpts = {validateDisabledDates: false, selectedValue: this.utilService.getSelectedValue(selectedValue, dateRange)};
+      const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts, validateOpts);
 
       if (this.utilService.isInitializedDate(date)) {
         this.selectedDate = date;
@@ -129,7 +133,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
     else {
       // Date range mode
-      const {begin, end} = this.utilService.isDateValidDateRange(inputValue, this.opts, false);
+      validateOpts = {validateDisabledDates: false, selectedValue: this.utilService.getSelectedValue(selectedValue, dateRange)};
+      const {begin, end} = this.utilService.isDateValidDateRange(inputValue, this.opts, validateOpts);
 
       if (this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end)) {
         this.selectedDateRange = {begin, end};
@@ -281,7 +286,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   generateMonths(): void {
-    const today: IMyDate = this.getToday();
+    const today: IMyDate = this.utilService.getToday();
     this.months.length = 0;
 
     const {year, monthNbr} = this.visibleMonth;
@@ -326,7 +331,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     const {year} = this.visibleMonth;
 
     this.years.length = 0;
-    const today: IMyDate = this.getToday();
+    const today: IMyDate = this.utilService.getToday();
 
     let row: number = 0;
     for (let i = y; i < y + 25; i += 5) {
@@ -600,11 +605,6 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     return d === today.day && m === today.month && y === today.year;
   }
 
-  getToday(): IMyDate {
-    const date: Date = new Date();
-    return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
-  }
-
   getDayNumber(date: IMyDate): number {
     // Get day number: su=0, mo=1, tu=2, we=3 ...
     const d: Date = this.getDate(date.year, date.month, date.day);
@@ -628,7 +628,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
   generateCalendar(m: number, y: number, notifyChange: boolean): void {
     this.dates.length = 0;
-    const today: IMyDate = this.getToday();
+    const today: IMyDate = this.utilService.getToday();
     const monthStart: number = this.monthStartIdx(y, m);
     const dInThisM: number = this.daysInMonth(m, y);
     const dInPrevM: number = this.daysInPrevMonth(m, y);
