@@ -543,3 +543,14 @@
 ### Features
 
 * none
+
+
+# 0.5.6 (2020-04-03)
+
+### Bug Fixes
+
+* Fixed bug: [yyyy only form #5](https://github.com/kekeh/angular-mydatepicker/issues/5)
+
+### Features
+
+* Changed the style of disabled date.

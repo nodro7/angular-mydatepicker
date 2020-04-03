@@ -464,8 +464,8 @@
 
 .myDpDisabled {
   cursor: default;
-  color: #999;
-  background: #FBEFEF;
+  color: #777;
+  background: repeating-linear-gradient(-45deg, #ccc 7px, #ccc 8px, transparent 7px, transparent 14px);
 }
 
 .myDpRangeColor {

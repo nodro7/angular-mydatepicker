@@ -126,9 +126,12 @@ export class UtilService {
 
   getDateValue(dateStr: string, dateFormat: string, delimeters: Array<string>): Array<IMyDateFormat> {
     let del: string = EMPTY_STR;
-    for(const d of delimeters) {
-      if (del.indexOf(d) === -1) {
-        del += d;
+    
+    if (delimeters) {
+      for(const d of delimeters) {
+        if (del.indexOf(d) === -1) {
+          del += d;
+        }
       }
     }
 
