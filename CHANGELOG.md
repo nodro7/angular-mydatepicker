@@ -554,3 +554,14 @@
 ### Features
 
 * Changed the style of disabled date.
+
+
+# 0.5.7 (2020-04-07)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* RTL related changes.

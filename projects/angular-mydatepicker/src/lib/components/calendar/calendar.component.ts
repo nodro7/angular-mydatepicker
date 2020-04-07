@@ -712,7 +712,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     let dpm: boolean = false;
     let dnm: boolean = false;
 
-    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
+    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear, rtl} = this.opts;
 
     if (disableHeaderButtons) {
       dpm = this.utilService.isDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, disableUntil);
@@ -720,13 +720,17 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
     this.prevViewDisabled = m === 1 && y === minYear || dpm;
     this.nextViewDisabled = m === 12 && y === maxYear || dnm;
+
+    if (rtl) {
+      this.swapHeaderBtnDisabled();
+    }
   }
 
   setMonthViewHeaderBtnDisabledState(y: number): void {
     let dpm: boolean = false;
     let dnm: boolean = false;
 
-    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
+    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear, rtl} = this.opts;
 
     if (disableHeaderButtons) {
       dpm = this.utilService.isDisabledByDisableUntil({year: y - 1, month: 12, day: 31}, disableUntil);
@@ -734,13 +738,17 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
     this.prevViewDisabled = y === minYear || dpm;
     this.nextViewDisabled = y === maxYear || dnm;
+
+    if (rtl) {
+      this.swapHeaderBtnDisabled();
+    }
   }
 
   setYearViewHeaderBtnDisabledState(yp: number, yn: number): void {
     let dpy: boolean = false;
     let dny: boolean = false;
 
-    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear} = this.opts;
+    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear, rtl} = this.opts;
 
     if (disableHeaderButtons) {
       dpy = this.utilService.isDisabledByDisableUntil({year: yp - 1, month: 12, day: 31}, disableUntil);
@@ -748,5 +756,13 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
     this.prevViewDisabled = yp <= minYear || dpy;
     this.nextViewDisabled = yn >= maxYear || dny;
+
+    if (rtl) {
+      this.swapHeaderBtnDisabled();
+    }
+  }
+
+  swapHeaderBtnDisabled(): void {
+    [this.prevViewDisabled, this.nextViewDisabled] = [this.nextViewDisabled, this.prevViewDisabled];
   }
 }
