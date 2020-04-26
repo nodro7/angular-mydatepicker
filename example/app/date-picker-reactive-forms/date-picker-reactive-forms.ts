@@ -1,6 +1,6 @@
-import {Component, OnInit, Renderer2,} from '@angular/core';
+import {Component, OnInit, Renderer2, ViewChild, ChangeDetectorRef} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {IAngularMyDpOptions, IMyDateModel} from '../../../projects/angular-mydatepicker/src/public-api';
+import {IAngularMyDpOptions, IMyDateModel, AngularMyDatePickerDirective} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
   selector: 'date-picker-reactive-forms',
@@ -17,7 +17,9 @@ export class DatePickerReactiveForms implements OnInit {
 
   public myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private renderer: Renderer2) {
+  @ViewChild('dp') myDp: AngularMyDatePickerDirective;
+
+  constructor(private formBuilder: FormBuilder, private renderer: Renderer2, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -41,6 +43,11 @@ export class DatePickerReactiveForms implements OnInit {
       ' - Dirty: ', this.myForm.controls['myDate'].dirty,
       ' - Touched: ', this.myForm.controls['myDate'].touched
     );
+  }
+  
+  toggleCalendar(): void {
+    this.cdr.detectChanges();
+    this.myDp.toggleCalendar();
   }
 
   setTodayDate(): void {

@@ -17,7 +17,7 @@
 
         <div class="input-group">
           <input class="form-control" placeholder="Select a date" angular-mydatepicker name="reactiveFormsDate" formControlName="myDate"
-                 [options]="myDatePickerOptions" #dp="angular-mydatepicker" autocomplete="off"/>
+                 [options]="myDatePickerOptions" #dp="angular-mydatepicker" autocomplete="off" (click)="toggleCalendar()"/>
           <div class="input-group-append">
             <button type="button" class="btn btn-secondary" (click)="dp.clearDate()">
               <i class="fa fa-close"></i>
