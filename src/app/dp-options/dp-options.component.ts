@@ -639,7 +639,8 @@ export class DpOptionsComponent implements OnInit {
         font-weight: bold;
         box-shadow: inset 0 0 0 1px #fff;
       }
-      .dp1 .monthYearSelBar {
+      .dp1 .monthYearSelBar,
+      .dp1 .myDpBtnsBar {
         background-color: #6c757d;
       }
       .dp1 .myDpDisabled {
