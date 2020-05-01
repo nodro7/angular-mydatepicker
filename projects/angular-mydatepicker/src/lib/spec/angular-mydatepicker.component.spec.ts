@@ -2175,7 +2175,7 @@ describe('AngularMyDatePickerComponent', () => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'd.m.yyyy',
-      todayTxt: "Today",
+      todayTxt: "Today 123",
       showFooterToday: true
     };
 
@@ -2186,16 +2186,19 @@ describe('AngularMyDatePickerComponent', () => {
     let selector = getElement('.myDpSelector');
     expect(selector).not.toBe(null);
 
+    let today = getTodayDate();
+
     fixture.detectChanges();
     let todayBtn = getElement('.myDpFooterBtn');
     expect(todayBtn).not.toBe(null);
+    expect(todayBtn.textContent).toBe("Today 123 " + today);
 
     fixture.detectChanges();
     todayBtn.click();
 
     fixture.detectChanges();
     let input = getElement('.myDateInput');
-    let today = getTodayDate();
+    
     expect(input.value).toBe(today);
 
 
