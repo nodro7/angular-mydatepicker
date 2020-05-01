@@ -33,6 +33,7 @@ const DEFAULT_LOCALE = "en";
 
 const ZERO_STR = "0";
 const EMPTY_STR = "";
+const SPACE_STR = " ";
 
 const CLICK = "click";
 const KEYUP = "keyup";
@@ -102,6 +103,7 @@ export {
   DEFAULT_LOCALE,
   ZERO_STR,
   EMPTY_STR,
+  SPACE_STR,
   CLICK,
   KEYUP,
   BLUR,

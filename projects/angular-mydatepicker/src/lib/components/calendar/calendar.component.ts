@@ -360,6 +360,11 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.setYearViewHeaderBtnDisabledState(beginYear, endYear);
   }
 
+  onTodayFooterClicked(): void {
+    const date = this.utilService.getToday();
+    this.selectDate(date);
+  }
+
   getYearValueByRowAndCol(row: number, col: number): number {
     return this.years[row][col].year;
   }

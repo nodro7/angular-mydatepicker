@@ -52,6 +52,8 @@ export interface IMyOptions {
   dateRangeDatesDelimiter?: string;
   inputFieldValidation?: boolean;
   showMonthNumber?: boolean;
+  todayTxt?: string;
+  showFooterToday?: boolean;
   calendarAnimation?: IMyCalendarAnimation;
   rtl?: boolean;
   stylesData?: IMyStyles;

@@ -245,19 +245,20 @@
 
 .myDpCalTable,
 .myDpMonthTable,
-.myDpYearTable {
+.myDpYearTable,
+.myDpBtnsBar {
   border-radius: 0 0 4px 4px;
 }
 
-.myDpCalTable tbody tr:nth-child(6) td:first-child,
-.myDpMonthTable tbody tr:nth-child(4) td:first-child,
-.myDpYearTable tbody tr:nth-child(5) td:first-child {
+.myDpCalTable.myDpNoFooter tbody tr:nth-child(6) td:first-child,
+.myDpMonthTable.myDpNoFooter tbody tr:nth-child(4) td:first-child,
+.myDpYearTable.myDpNoFooter tbody tr:nth-child(5) td:first-child {
   border-bottom-left-radius: 4px;
 }
 
-.myDpCalTable tbody tr:nth-child(6) td:last-child,
-.myDpMonthTable tbody tr:nth-child(4) td:last-child,
-.myDpYearTable tbody tr:nth-child(5) td:last-child {
+.myDpCalTable.myDpNoFooter tbody tr:nth-child(6) td:last-child,
+.myDpMonthTable.myDpNoFooter tbody tr:nth-child(4) td:last-child,
+.myDpYearTable.myDpNoFooter tbody tr:nth-child(5) td:last-child {
   border-bottom-right-radius: 4px;
 }
 
@@ -266,9 +267,16 @@
 .myDpYearTable {
   table-layout: fixed;
   width: 100%;
-  height: calc(100% - 30px);
   background-color: #FFF;
   font-size: 14px;
+}
+
+.myDpFooter {
+  height: calc(100% - 60px);
+}
+
+.myDpNoFooter {
+  height: calc(100% - 30px);
 }
 
 .myDpCalTable,
@@ -363,6 +371,16 @@
   text-align: center;
 }
 
+.myDpBtnsBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  background-color: #fff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
 .myDpHeaderBtn {
   background: transparent;
   padding: 0;
@@ -373,6 +391,13 @@
   color: #000;
   outline: none;
   cursor: default;
+}
+
+.myDpFooterBtn {
+  margin: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .myDpMonthBtn,
@@ -422,7 +447,8 @@
 
 .myDpHeaderBtn:focus,
 .myDpMonthLabel:focus,
-.myDpYearLabel:focus {
+.myDpYearLabel:focus,
+.myDpFooterBtn:focus {
   color: #66afe9;
   outline: none;
 }
@@ -449,7 +475,8 @@
 
 .myDpHeaderBtnEnabled:hover,
 .myDpMonthLabel:hover,
-.myDpYearLabel:hover {
+.myDpYearLabel:hover,
+.myDpFooterBtn:hover {
   color: #777;
 }
 

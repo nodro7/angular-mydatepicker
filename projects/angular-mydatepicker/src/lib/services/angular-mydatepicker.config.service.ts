@@ -48,6 +48,8 @@ export class DefaultConfigService {
     dateRangeDatesDelimiter: " - ",
     inputFieldValidation: true,
     showMonthNumber: true,
+    todayTxt: "",
+    showFooterToday: false,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
     rtl: false,
     stylesData: {selector: "", styles: ""},

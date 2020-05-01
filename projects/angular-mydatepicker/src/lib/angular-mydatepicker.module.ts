@@ -7,6 +7,7 @@ import {SelectionBarComponent} from "./components/selection-bar/selection-bar.co
 import {DayViewComponent} from "./components/day-view/day-view.component";
 import {MonthViewComponent} from "./components/month-view/month-view.component";
 import {YearViewComponent} from "./components/year-view/year-view.component";
+import {FooterBarComponent} from "./components/footer-bar/footer-bar.component";
 
 import {AngularMyDatePickerDirective} from "./angular-mydatepicker.input";
 import {AngularMyDatePickerCalendarDirective} from "./directives/angular-mydatepicker-calendar.directive";
@@ -19,6 +20,7 @@ import {AngularMyDatePickerCalendarDirective} from "./directives/angular-mydatep
     DayViewComponent,
     MonthViewComponent,
     YearViewComponent,
+    FooterBarComponent,
     AngularMyDatePickerDirective,
     AngularMyDatePickerCalendarDirective
   ],
@@ -29,6 +31,7 @@ import {AngularMyDatePickerCalendarDirective} from "./directives/angular-mydatep
     DayViewComponent,
     MonthViewComponent,
     YearViewComponent,
+    FooterBarComponent,
     AngularMyDatePickerDirective,
     AngularMyDatePickerCalendarDirective
   ]

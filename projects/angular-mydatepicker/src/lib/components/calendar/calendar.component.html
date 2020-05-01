@@ -24,5 +24,7 @@
                     (yearCellClicked)="onYearCellClicked($event)"
                     (yearCellKeyDown)="onYearCellKeyDown($event)"></lib-year-view>
 
+    <lib-footer-bar *ngIf="opts.showFooterToday" [opts]="opts"
+                    (footerBarTxtClicked)="onTodayFooterClicked()"></lib-footer-bar>
   </div>
 </div>

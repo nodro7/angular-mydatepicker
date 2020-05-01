@@ -565,3 +565,14 @@
 ### Features
 
 * RTL related changes.
+
+
+# 0.5.8 (2020-05-01)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added options todayTxt and showFooterToday. [Added today button. #38](https://github.com/kekeh/angular-mydatepicker/pull/38)

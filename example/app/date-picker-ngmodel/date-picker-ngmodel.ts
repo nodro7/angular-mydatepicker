@@ -44,6 +44,7 @@ export class DatePickerNgmodel implements OnInit {
     focusInputOnDateSelect: true,
     dateRangeDatesDelimiter: " - ",
     defaultView: DefaultView.Date,
+    showFooterToday: false,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
     rtl: false,
     stylesData:
@@ -313,6 +314,12 @@ export class DatePickerNgmodel implements OnInit {
   onShowMonthNumber(checked: boolean) {
     let copy = this.getCopyOfOptions();
     copy.showMonthNumber = checked;
+    this.myDatePickerOptions = copy;
+  }
+
+  onShowFooterBar(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+    copy.showFooterToday = checked;
     this.myDatePickerOptions = copy;
   }
 

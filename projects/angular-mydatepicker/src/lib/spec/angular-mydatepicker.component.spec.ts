@@ -23,6 +23,11 @@ function getElements(id: string): any {
   return document.body.querySelectorAll(id);
 }
 
+function getTodayDate(): string {
+  let today = new Date();
+  return today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
+}
+
 @Component({
   template: '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" [options]="options" name="mydate" angular-mydatepicker #dp="angular-mydatepicker" />'
 })
@@ -2161,6 +2166,50 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     monthsNbrs = getElement('.myDpMonthNbr');
     expect(monthsNbrs).toBe(null);
+
+    comp.closeCalendar();
+  });
+
+  it('options - showFooterToday and todayTxt', () => {
+    comp.setDefaultMonth('2020/01');
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'd.m.yyyy',
+      todayTxt: "Today",
+      showFooterToday: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let todayBtn = getElement('.myDpFooterBtn');
+    expect(todayBtn).not.toBe(null);
+
+    fixture.detectChanges();
+    todayBtn.click();
+
+    fixture.detectChanges();
+    let input = getElement('.myDateInput');
+    let today = getTodayDate();
+    expect(input.value).toBe(today);
+
+
+    opts.showFooterToday = false;
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let myDpBtnsBar = getElement('.myDpFooterBtn');
+    expect(myDpBtnsBar).toBe(null);
 
     comp.closeCalendar();
   });
