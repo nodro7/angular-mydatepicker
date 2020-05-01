@@ -246,7 +246,7 @@
 .myDpCalTable,
 .myDpMonthTable,
 .myDpYearTable,
-.myDpBtnsBar {
+.myDpFooterBar {
   border-radius: 0 0 4px 4px;
 }
 
@@ -348,7 +348,7 @@
   color: #999;
 }
 
-.monthYearSelBar {
+.myDpMonthYearSelBar {
   display: flex;
   height: 30px;
   background-color: #fff;
@@ -371,14 +371,12 @@
   text-align: center;
 }
 
-.myDpBtnsBar {
+.myDpFooterBar {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 30px;
   background-color: #fff;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
 }
 
 .myDpHeaderBtn {

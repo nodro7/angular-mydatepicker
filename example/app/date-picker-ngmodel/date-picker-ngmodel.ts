@@ -426,7 +426,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
-      .dp1 .myDpYearLabel:hover {
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
           color: #212529;
       }
       .dp1 .myDpMarkCurrDay, 
@@ -498,7 +499,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
-      .dp1 .myDpYearLabel:hover {
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
           color: #add8e6;
       }
       .dp1 .myDpMarkCurrDay, 
@@ -569,7 +571,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
-      .dp1 .myDpYearLabel:hover {
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
           color: #90EE90;
       }
       .dp1 .myDpMarkCurrDay, 
@@ -640,7 +643,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
-      .dp1 .myDpYearLabel:hover {
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
           color: #F08080;
       }
       .dp1 .myDpMarkCurrDay, 
@@ -712,7 +716,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
-      .dp1 .myDpYearLabel:hover {
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
           color: #F0E68C;
       }
       .dp1 .myDpMarkCurrDay, 
@@ -786,7 +791,8 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
-      .dp1 .myDpYearLabel:hover {
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
           color: #ddd;
       }
       .dp1 .myDpMarkCurrDay, 
@@ -824,7 +830,8 @@ export class DatePickerNgmodel implements OnInit {
         font-weight: bold;
         box-shadow: inset 0 0 0 1px #fff;
       }
-      .dp1 .monthYearSelBar {
+      .dp1 .myDpMonthYearSelBar,
+      .dp1 .myDpFooterBar {
         background-color: #6c757d;
       }
     `

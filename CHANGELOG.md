@@ -576,3 +576,14 @@
 ### Features
 
 * Added options todayTxt and showFooterToday. [Added today button. #38](https://github.com/kekeh/angular-mydatepicker/pull/38)
+
+
+# 0.6.0 (2020-05-01)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* CSS style related changes.

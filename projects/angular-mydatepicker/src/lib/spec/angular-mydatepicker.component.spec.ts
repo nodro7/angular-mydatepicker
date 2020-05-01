@@ -2189,12 +2189,12 @@ describe('AngularMyDatePickerComponent', () => {
     let today = getTodayDate();
 
     fixture.detectChanges();
-    let todayBtn = getElement('.myDpFooterBtn');
-    expect(todayBtn).not.toBe(null);
-    expect(todayBtn.textContent).toBe("Today 123 " + today);
+    let footerBtn = getElement('.myDpFooterBtn');
+    expect(footerBtn).not.toBe(null);
+    expect(footerBtn.textContent).toBe("Today 123 " + today);
 
     fixture.detectChanges();
-    todayBtn.click();
+    footerBtn.click();
 
     fixture.detectChanges();
     let input = getElement('.myDateInput');
@@ -2211,8 +2211,8 @@ describe('AngularMyDatePickerComponent', () => {
     expect(selector).not.toBe(null);
 
     fixture.detectChanges();
-    let myDpBtnsBar = getElement('.myDpFooterBtn');
-    expect(myDpBtnsBar).toBe(null);
+    footerBtn = getElement('.myDpFooterBtn');
+    expect(footerBtn).toBe(null);
 
     comp.closeCalendar();
   });
