@@ -21,6 +21,7 @@ export class DpOptionsComponent implements OnInit {
     showWeekNumbers: false,
     disableWeekdays: [],
     stylesData: {selector: '', styles: ''},
+    showFooterToday: false,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
     rtl: false
   };
@@ -164,6 +165,12 @@ export class DpOptionsComponent implements OnInit {
   onRtl(checked: boolean): void {
     let copy = this.getCopyOfOptions();
     copy.rtl = checked;
+    this.myOptions = copy;
+  }
+
+  onShowTodayFooter(checked: boolean): void {
+    let copy = this.getCopyOfOptions();
+    copy.showFooterToday = checked;
     this.myOptions = copy;
   }
 
