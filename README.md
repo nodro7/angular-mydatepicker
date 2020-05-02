@@ -233,7 +233,7 @@ file. If you want to add a new locale create a pull request.
 
 [Here](https://github.com/kekeh/angular-mydatepicker/wiki/locale-attribute) is an example on how to use the __locale__ attribute.
 
-Try locales [here](https://kekeh.github.io/angular-mydatepicker/) (last datepicker on the page).
+Try locales [here](https://kekeh.github.io/angular-mydatepicker/).
 
 ### defaultMonth attribute
 
