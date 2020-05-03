@@ -129,7 +129,8 @@
 
   <div class="input-group datePicker">
     <input class="form-control" placeholder="{{myOptions.dateRange ? 'Select a date range' : 'Select a date'}}" angular-mydatepicker name="mydate" [locale]="locale"
-           [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"/>
+           [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"
+           (calendarToggle)="onCalendarToggle()"/>
     <div class="input-group-append">
       <button type="button" class="btn btn-secondary" *ngIf="model" (click)="dp.clearDate()">
         <i class="fa fa-close"></i>

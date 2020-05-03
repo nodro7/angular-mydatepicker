@@ -34,8 +34,11 @@ export class DpOptionsComponent implements OnInit {
     'ScaleTop-ScaleCenter', 
     'ScaleCenter-ScaleTop', 
     'Rotate', 
-    'FlipDiagonal'
+    'FlipDiagonal',
+    'Random'
   ];
+
+  public animation: string = "None";
 
   public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark');
 
@@ -175,6 +178,8 @@ export class DpOptionsComponent implements OnInit {
   }
 
   onChangeCalendarAnimation(animation: string): void {
+    this.animation = animation;
+
     let copy = this.getCopyOfOptions();
    
     if (animation === 'None') {
@@ -671,7 +676,20 @@ export class DpOptionsComponent implements OnInit {
     console.log('onDateChanged(): ', event);
   }
 
+  onCalendarToggle(): void {
+    if (this.animation === 'Random') {
+      let copy = this.getCopyOfOptions();
+      copy.calendarAnimation = {in: this.getRandomNbr(), out: this.getRandomNbr()};
+ 
+      this.myOptions = copy;
+    }
+  }
+
   getCopyOfOptions(): IAngularMyDpOptions {
     return JSON.parse(JSON.stringify(this.myOptions));
+  }
+
+  getRandomNbr(): number {
+    return Math.floor(Math.random() * 4) + 1;
   }
 }
