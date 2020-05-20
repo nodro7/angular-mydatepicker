@@ -587,3 +587,14 @@
 ### Features
 
 * CSS style related changes.
+
+
+# 0.6.1 (2020-05-20)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added: [Allow multiple styles for Marked Dates #40](https://github.com/kekeh/angular-mydatepicker/issues/40)

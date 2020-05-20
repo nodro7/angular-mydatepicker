@@ -8,7 +8,7 @@
   <tbody>
     <tr *ngFor="let w of dates">
       <td class="myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
-      <td id="d_{{d.row}}_{{d.col}}" class="d_{{d.row}}_{{d.col}} myDpDaycell" *ngFor="let d of w.week"
+      <td id="d_{{d.row}}_{{d.col}}" class="d_{{d.row}}_{{d.col}} myDpDaycell {{d.markedDate.styleClass}}" *ngFor="let d of w.week"
           [ngClass]="{'myDpRangeColor': isDateInRange(d.dateObj) || d.range,
                 'myDpPrevMonth': d.cmo === prevMonthId,
                 'myDpCurrMonth':d.cmo === currMonthId && !d.disabled,
@@ -18,7 +18,7 @@
                 'myDpTableSingleDay': !d.disabled}"
           (click)="onDayCellClicked($event, d)" (keydown)="onDayCellKeyDown($event, d)"
           (mouseenter)="onDayCellMouseEnter(d)" (mouseleave)="onDayCellMouseLeave()" [attr.tabindex]="!d.disabled ? 0 : -1">
-        <span *ngIf="d.markedDate.marked" class="myDpMarkDate" [ngStyle]="{'border-top': '8px solid ' + d.markedDate.color}"></span>
+        <span *ngIf="d.markedDate.marked && d.markedDate.color" class="myDpMarkDate" [ngStyle]="{'border-top': '8px solid ' + d.markedDate.color}"></span>
         <span  class="myDpDayValue" [ngClass]="{'myDpMarkCurrDay': d.currDay && opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabled), 'myDpHighlight': d.highlight}">{{d.dateObj.day}}</span>
       </td>
     </tr>

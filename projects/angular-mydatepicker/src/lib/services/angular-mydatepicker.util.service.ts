@@ -311,7 +311,7 @@ export class UtilService {
     for (const md of markedDates) {
       for (const d of md.dates) {
         if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
-          return {marked: true, color: md.color};
+          return {marked: true, color: md.color ? md.color : EMPTY_STR, styleClass: md.styleClass ? md.styleClass : EMPTY_STR};
         }
       }
     }

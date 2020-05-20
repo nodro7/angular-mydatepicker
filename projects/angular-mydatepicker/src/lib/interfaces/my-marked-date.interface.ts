@@ -1,4 +1,5 @@
 export interface IMyMarkedDate {
   marked: boolean;
-  color: string;
+  color?: string;
+  styleClass?: string;
 }
