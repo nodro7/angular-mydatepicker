@@ -106,9 +106,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
           dateModel = this.utilService.getDateModel(null, range, dateFormat, monthLabels, dateRangeDatesDelimiter);
         }
       }
-      this.onChangeCb(dateModel);
-      this.onTouchedCb();
 
+      this.onChangeCb(dateModel);
       this.emitInputFieldChanged(value, valid);
     }
   }
@@ -428,7 +427,6 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       }
     });
     this.onChangeCb(null);
-    this.onTouchedCb();
     this.closeSelector(CalToggle.CloseByCalBtn);
   }
 

@@ -598,3 +598,16 @@
 ### Features
 
 * Added: [Allow multiple styles for Marked Dates #40](https://github.com/kekeh/angular-mydatepicker/issues/40)
+
+
+# 0.7.0 (2020-05-20)
+
+### Bug Fixes
+
+* Fixed: [Keypress should not set the "touched" value #41](https://github.com/kekeh/angular-mydatepicker/issues/41)
+* Reference document: [Validating form input](https://angular.io/guide/form-validation)
+
+### Features
+
+* none
+
