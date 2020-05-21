@@ -387,6 +387,9 @@ export class DatePickerNgmodel implements OnInit {
     }
     else if (color === 'Grey') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -424,6 +427,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #6c757d;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -461,6 +465,9 @@ export class DatePickerNgmodel implements OnInit {
     }
     else if (color === 'Blue') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -498,6 +505,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
           background-color: transparent;
           color: #3855c1;
+          font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -534,6 +542,9 @@ export class DatePickerNgmodel implements OnInit {
     }
     else if (color === 'Green') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -571,6 +582,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #228B22;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -607,6 +619,9 @@ export class DatePickerNgmodel implements OnInit {
     }
     else if (color === 'Red') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -644,6 +659,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #B22222;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -681,6 +697,9 @@ export class DatePickerNgmodel implements OnInit {
     }
     else if (color === 'Yellow') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -718,6 +737,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #DAA520;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -752,6 +772,9 @@ export class DatePickerNgmodel implements OnInit {
     }
     else if (color === 'Dark') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -794,6 +817,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: #6c757d;
         color: #fff;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
