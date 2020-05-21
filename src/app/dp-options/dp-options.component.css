@@ -39,6 +39,11 @@
   padding-left: 0;
 }
 
+.numberField {
+  width: 200px;
+  display: inline-block;
+}
+
 .inputBox {
   cursor: pointer;
 }

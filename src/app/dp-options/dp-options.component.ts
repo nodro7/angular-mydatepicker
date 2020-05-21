@@ -42,6 +42,8 @@ export class DpOptionsComponent implements OnInit {
 
   public animation: string = "None";
 
+  //public calendarSize: any = 266;
+
   public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark');
 
   public locale: string = 'en';
@@ -212,6 +214,26 @@ export class DpOptionsComponent implements OnInit {
     this.myOptions = copy;
   }
 
+  /*
+  onChangeCalendarSize(size: number): void {
+    if (size < 226) {
+      size = 226;
+    }
+    else if (size > 306) {
+      size = 306;
+    }
+
+    this.calendarSize = size;
+
+    let copy = this.getCopyOfOptions();
+
+    copy.selectorHeight = size + 'px';
+    copy.selectorWidth = size + 'px';
+   
+    this.myOptions = copy;
+  }
+  */
+
   onOverrideStyles(color: string) {
     let copy = this.getCopyOfOptions();
     copy.stylesData.selector = 'dp1';
@@ -221,6 +243,9 @@ export class DpOptionsComponent implements OnInit {
     }
     else if (color === 'Grey') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -296,6 +321,9 @@ export class DpOptionsComponent implements OnInit {
     }
     else if (color === 'Blue') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -370,6 +398,9 @@ export class DpOptionsComponent implements OnInit {
     }
     else if (color === 'Green') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -444,6 +475,9 @@ export class DpOptionsComponent implements OnInit {
     }
     else if (color === 'Red') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -519,6 +553,9 @@ export class DpOptionsComponent implements OnInit {
     }
     else if (color === 'Yellow') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
@@ -591,6 +628,9 @@ export class DpOptionsComponent implements OnInit {
     }
     else if (color === 'Dark') {
       copy.stylesData.styles = `
+      .dp1 .myDpSelector {
+        padding: 4px;
+      }
       .dp1 .myDpIconLeftArrow,
       .dp1 .myDpIconRightArrow,
       .dp1 .myDpHeaderBtn {
