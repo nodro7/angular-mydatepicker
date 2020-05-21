@@ -87,7 +87,10 @@
     </div>
 
     <div class="form-check optionsItem">
-
+      <input class="form-check-input inputBox" type="checkbox" id="viewChangeAnimation" (change)="onViewChangeAnimation($event.currentTarget.checked)" [checked]="true">
+      <label class="form-check-label" for="viewChangeAnimation">
+        View change animation
+      </label>
     </div>
 
   </div>

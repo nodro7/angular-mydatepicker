@@ -23,7 +23,9 @@ export class DpOptionsComponent implements OnInit {
     stylesData: {selector: '', styles: ''},
     showFooterToday: false,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
-    rtl: false
+    rtl: false,
+    selectorHeight: '266px',
+    selectorWidth: '266px'
   };
 
   public model: IMyDateModel = null;
@@ -177,6 +179,12 @@ export class DpOptionsComponent implements OnInit {
     this.myOptions = copy;
   }
 
+  onViewChangeAnimation(checked: boolean): void {
+    let copy = this.getCopyOfOptions();
+    copy.viewChangeAnimation = checked;
+    this.myOptions = copy;
+  }
+
   onChangeCalendarAnimation(animation: string): void {
     this.animation = animation;
 
@@ -238,6 +246,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #6c757d;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #6c757d;
@@ -249,6 +258,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #6c757d;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -311,6 +321,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #3855c1;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #3855c1;
@@ -322,6 +333,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
           background-color: transparent;
           color: #3855c1;
+          font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -383,6 +395,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #228B22;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #228B22;
@@ -394,6 +407,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #228B22;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -455,6 +469,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #B22222;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #B22222;
@@ -466,6 +481,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #B22222;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -528,6 +544,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #DAA520;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #DAA520;
@@ -539,6 +556,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: transparent;
         color: #DAA520;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -602,6 +620,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #fff;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #fff;
@@ -614,6 +633,7 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpWeekDayTitle {
         background-color: #6c757d;
         color: #fff;
+        font-weight: bold;
       }
       .dp1 .myDpHeaderBtnEnabled:hover,
       .dp1 .myDpMonthLabel:hover,
@@ -625,6 +645,13 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMarkCurrMonth, 
       .dp1 .myDpMarkCurrYear {
           border-bottom: 2px solid #fff;
+      }
+      .dp1 .myDpDisabled {
+          color: #fff;
+          background: repeating-linear-gradient(-45deg, #6c757d 7px, #d3d3d3 8px, transparent 7px, transparent 14px);
+      }
+      .dp1 .myDpHighlight {
+        color: 	#960018;
       }
       .dp1 .myDpTableSingleDay:hover, 
       .dp1 .myDpTableSingleMonth:hover, 
@@ -650,15 +677,10 @@ export class DpOptionsComponent implements OnInit {
         font-weight: bold;
         box-shadow: inset 0 0 0 1px #fff;
       }
+      .dp1 .myDpSelector,
       .dp1 .myDpMonthYearSelBar,
       .dp1 .myDpFooterBar {
         background-color: #6c757d;
-      }
-      .dp1 .myDpDisabled {
-        color: #eee;
-      }
-      .dp1 .myDpHighlight {
-        color: 	#960018;
       }
     `
     }
