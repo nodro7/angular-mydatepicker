@@ -2248,6 +2248,80 @@ describe('AngularMyDatePickerComponent', () => {
     expect(input.value).toBe('28.10.2019');
   });
 
+  it('options - viewChangeAnimation', () => {
+    comp.setDefaultMonth('2019/11');
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd.mm.yyyy',
+      viewChangeAnimation: true
+    };
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let animationElem = getElement('.myDpViewChangeAnimation');
+    expect(animationElem).not.toBe(null);
+
+    fixture.detectChanges();
+    let btn = getElement('.myDpMonthBtn');
+    expect(btn).not.toBe(null);
+
+    fixture.detectChanges();
+    btn.click();
+
+    fixture.detectChanges();
+    animationElem = getElement('.myDpViewChangeAnimation');
+    expect(animationElem).not.toBe(null);
+
+    fixture.detectChanges();
+    btn = getElement('.myDpYearBtn');
+    expect(btn).not.toBe(null);
+
+    fixture.detectChanges();
+    btn.click();
+
+    fixture.detectChanges();
+    animationElem = getElement('.myDpViewChangeAnimation');
+    expect(animationElem).not.toBe(null);
+
+    comp.closeCalendar();
+
+
+    opts.viewChangeAnimation = false;
+
+    comp.parseOptions(opts);
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    animationElem = getElement('.myDpViewChangeAnimation');
+    expect(animationElem).toBe(null);
+
+    fixture.detectChanges();
+    btn = getElement('.myDpMonthBtn');
+    expect(btn).not.toBe(null);
+
+    fixture.detectChanges();
+    btn.click();
+
+    fixture.detectChanges();
+    animationElem = getElement('.myDpViewChangeAnimation');
+    expect(animationElem).toBe(null);
+
+    fixture.detectChanges();
+    btn = getElement('.myDpYearBtn');
+    expect(btn).not.toBe(null);
+
+    fixture.detectChanges();
+    btn.click();
+
+    fixture.detectChanges();
+    animationElem = getElement('.myDpViewChangeAnimation');
+    expect(animationElem).toBe(null);
+
+    comp.closeCalendar();
+  });
+
   it('options - rtl', () => {
     comp.setDefaultMonth('2020/02');
 

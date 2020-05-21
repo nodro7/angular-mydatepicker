@@ -1,4 +1,4 @@
-<table class="myDpMonthTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday}">
+<table class="myDpMonthTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation}">
   <tbody>
     <tr *ngFor="let mr of months">
       <td id="m_{{m.row}}_{{m.col}}" class="m_{{m.row}}_{{m.col}} myDpMonthcell"

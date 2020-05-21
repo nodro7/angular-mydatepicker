@@ -611,3 +611,14 @@
 
 * none
 
+
+# 0.7.1 (2020-05-21)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added view change animation and new option (viewChangeAnimation) to it.
+

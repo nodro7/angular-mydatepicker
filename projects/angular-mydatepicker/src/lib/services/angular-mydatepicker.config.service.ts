@@ -51,6 +51,7 @@ export class DefaultConfigService {
     todayTxt: "",
     showFooterToday: false,
     calendarAnimation: {in: CalAnimation.None, out: CalAnimation.None},
+    viewChangeAnimation: true,
     rtl: false,
     stylesData: {selector: "", styles: ""},
     divHostElement: {enabled: false, placeholder: ""},

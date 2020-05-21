@@ -55,6 +55,7 @@ export interface IMyOptions {
   todayTxt?: string;
   showFooterToday?: boolean;
   calendarAnimation?: IMyCalendarAnimation;
+  viewChangeAnimation?: boolean;
   rtl?: boolean;
   stylesData?: IMyStyles;
   divHostElement?: IMyDivHostElement;

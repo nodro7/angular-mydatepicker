@@ -35,8 +35,8 @@ export class DatePickerNgmodel implements OnInit {
     disableWeekdays: [],
     markDates: [],
     markWeekends: <IMyMarkedDate>{},
-    selectorHeight: '232px',
-    selectorWidth: '252px',
+    selectorHeight: '266px',
+    selectorWidth: '266px',
     closeSelectorOnDateSelect: true,
     closeSelectorOnDocumentClick: true,
     showMonthNumber: true,
@@ -68,7 +68,7 @@ export class DatePickerNgmodel implements OnInit {
     defMonth: ''
   };
 
-  public selectorSizes: Array<string> = new Array('232px x 252px', '200px x 220px', '260px x 290px');
+  public selectorSizes: Array<string> = new Array('266px x 266px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
   public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop-ScaleCenter', 'ScaleCenter-ScaleTop', 'Rotate', 'FlipDiagonal');
   public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark');
@@ -336,9 +336,9 @@ export class DatePickerNgmodel implements OnInit {
   onSelectorSize(size: string) {
     let copy = this.getCopyOfOptions();
 
-    if (size === '232px x 252px') {
-      copy.selectorHeight = '232px';
-      copy.selectorWidth = '252px';
+    if (size === '266px x 266px') {
+      copy.selectorHeight = '266px';
+      copy.selectorWidth = '266px';
     }
     else if (size === '200px x 220px') {
       copy.selectorHeight = '200px';
@@ -412,6 +412,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #6c757d;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #6c757d;
@@ -485,6 +486,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #3855c1;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #3855c1;
@@ -557,6 +559,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #228B22;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #228B22;
@@ -629,6 +632,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #B22222;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #B22222;
@@ -702,6 +706,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #DAA520;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #DAA520;
@@ -776,6 +781,7 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
           color: #fff;
+          font-weight: bold;
       }
       .dp1 .myDpDaycellWeekNbr {
         color: #fff;
@@ -801,7 +807,8 @@ export class DatePickerNgmodel implements OnInit {
           border-bottom: 2px solid #fff;
       }
       .dp1 .myDpDisabled {
-          color: #999;
+          color: #fff;
+          background: repeating-linear-gradient(-45deg, #6c757d 7px, #d3d3d3 8px, transparent 7px, transparent 14px);
       }
       .dp1 .myDpHighlight {
         color: 	#960018;
@@ -830,6 +837,7 @@ export class DatePickerNgmodel implements OnInit {
         font-weight: bold;
         box-shadow: inset 0 0 0 1px #fff;
       }
+      .dp1 .myDpSelector,
       .dp1 .myDpMonthYearSelBar,
       .dp1 .myDpFooterBar {
         background-color: #6c757d;

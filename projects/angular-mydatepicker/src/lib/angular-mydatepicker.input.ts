@@ -427,6 +427,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       }
     });
     this.onChangeCb(null);
+    this.onTouchedCb();
     this.closeSelector(CalToggle.CloseByCalBtn);
   }
 
