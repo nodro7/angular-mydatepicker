@@ -29,7 +29,7 @@
 }
 
 .myDpSelector {
-  padding: 0;
+  padding: 4px;
   border: 1px solid #CCC;
   border-radius: 4px;
   z-index: 100000;
@@ -41,7 +41,7 @@
 
 @keyframes myDpViewChangeAnimation {
   0% {
-    transform: scale(0.8);
+    transform: scale(0.7);
     opacity: 0.1;
   }
   100% {
@@ -213,7 +213,6 @@
 
 .myDpSelectorArrow {
   background: #FFF;
-  padding: 0;
 }
 
 .myDpSelectorArrow:after,
