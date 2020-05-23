@@ -634,3 +634,14 @@
 * Added 4px padding to calendar. Default height and width of the calendar changed to 266px.
 
 
+# 0.8.1 (2020-05-23)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added 4px padding to calendar. Default height and width of the calendar changed to 266px.
+
+

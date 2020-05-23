@@ -140,8 +140,8 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 | __yearSelector__  | true | boolean | If __true__ and if year label is selected opens a selector of years. |
 | __disableHeaderButtons__   | true | boolean | Prevent to change the calendar view with header buttons if previous or next month are fully disabled by the __disableUntil__ or the __disableSince__ options. |
 | __showWeekNumbers__   | false | boolean | Are week numbers visible or not on calendar. Can be used if __firstDayOfWeek = mo__. |
-| __selectorHeight__   | 232px | string | Selector height. |
-| __selectorWidth__   | 252px | string | Selector width. |
+| __selectorHeight__   | 266px | string | Selector height. |
+| __selectorWidth__   | 266px | string | Selector width. |
 | __disableUntil__   | no default value | [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) | Disable dates backward starting from the given date. For example: __{year: 2019, month: 6, day: 26}__. To reset the existing __disableUntil__ value set: __{year: 0, month: 0, day: 0}__ |
 | __disableSince__   | no default value | [IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts) | Disable dates forward starting from the given date. For example: __{year: 2019, month: 7, day: 22}__. To reset the existing __disableSince__ value set: __{year: 0, month: 0, day: 0}__ |
 | __disableDates__   | no default value | Array<[IMyDate](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date.interface.ts)> | Disable single dates one by one. Array of disabled dates. For example: __[{year: 2019, month: 11, day: 14}, {year: 2019, month: 1, day: 15}]__. Value of year or month can be zero. If it is zero it affects all years/months. For example disable first day of every month: __[{year: 0, month: 0, day: 1}]__. To reset existing __disableDates__ value set empty array to it. |
