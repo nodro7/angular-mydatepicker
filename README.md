@@ -176,7 +176,7 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 
 ### locale attribute
 
-An __ISO 639-1__ language code can be provided as shorthand for the following options (__dayLabels__, __monthLabels__, __dateFormat__, __firstDayOfWeek__ and __sunHighlight__).
+An __ISO 639-1__ language code can be provided as shorthand for the following options (__dayLabels__, __monthLabels__, __dateFormat__, __firstDayOfWeek__, __sunHighlight__ and __todayTxt__).
 Currently supported languages are: 
 
 | Language code | Description |
