@@ -323,6 +323,72 @@ export class DatePickerNgmodel implements OnInit {
     this.myDatePickerOptions = copy;
   }
 
+  onDisableOwnStyle(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+
+    let d: Date = new Date();
+    d.setDate(d.getDate() - 1);
+    let yesterday: IMyDate = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+
+    d.setDate(d.getDate() + 1);
+    let today: IMyDate = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+    
+    d.setDate(d.getDate() + 1);
+    let tomorrow: IMyDate = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+
+    copy.disableDates = checked ? [{dates: [yesterday, today, tomorrow], styleClass: 'disabledDates'}] : [];
+    copy.stylesData = 
+    {
+      selector: 'dp1',
+      styles: this.disableAndMarkOwnStyles()
+    }
+
+    this.myDatePickerOptions = copy;
+  }
+
+  onMarkOwnStyle(checked: boolean) {
+    let copy = this.getCopyOfOptions();
+
+    let d: Date = new Date();
+    d.setDate(d.getDate() + 2);
+    let yesterday: IMyDate = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+
+    d.setDate(d.getDate() + 1);
+    let today: IMyDate = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+    
+    d.setDate(d.getDate() + 1);
+    let tomorrow: IMyDate = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+
+    copy.markDates = checked ? [
+      {dates: [yesterday], styleClass: 'pilatesDates'}, 
+      {dates: [today], styleClass: 'boxingDates'},
+      {dates: [tomorrow], color: 'red', styleClass: 'pilatesDatesAndBoxingDates'}
+    ] : [];
+    copy.stylesData = 
+    {
+      selector: 'dp1',
+      styles: this.disableAndMarkOwnStyles()
+    }
+    this.myDatePickerOptions = copy;
+  }
+
+  disableAndMarkOwnStyles(): string {
+    return `
+      .dp1 .disabledDates {
+        background: repeating-linear-gradient(-45deg, red 7px, #ccc 8px, transparent 7px, transparent 14px);
+      }
+      .dp1 .pilatesDates {
+        background: repeating-linear-gradient(-45deg, green 7px, #ccc 8px, transparent 7px, transparent 14px);
+      }
+      .dp1 .boxingDates {
+        background: repeating-linear-gradient(-45deg, yellow 7px, #ccc 8px, transparent 7px, transparent 14px);
+      }
+      .dp1 .pilatesDatesAndBoxingDates {
+        background: repeating-linear-gradient(-45deg, blue 7px, #ccc 8px, transparent 7px, transparent 14px);
+      }
+    `;
+  }
+
   onRtl(checked: boolean) {
     let copy = this.getCopyOfOptions();
     copy.rtl = checked;

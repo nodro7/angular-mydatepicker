@@ -641,7 +641,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     let dayNbr: number = 1;
     let month: number = m;
     let cmo: number = MonthId.prev;
-    const {rtl, showWeekNumbers, firstDayOfWeek, markDates, markWeekends, sunHighlight, satHighlight, highlightDates} = this.opts;
+    const {rtl, showWeekNumbers, firstDayOfWeek} = this.opts;
     for (let i = 1; i < 7; i++) {
       let col: number = rtl ? 6 : 0;
       const week: Array<IMyCalendarDay> = [];
@@ -651,12 +651,13 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
         // Previous month
         for (let j = pm; j <= dInPrevM; j++) {
           const date: IMyDate = {year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: j};
-          week.push({dateObj: date,
+          week.push({
+            dateObj: date,
             cmo,
             currDay: this.isCurrDay(j, month - 1, y, today),
-            disabled: this.utilService.isDisabledDate(date, this.opts),
-            markedDate: this.utilService.isMarkedDate(date, markDates, markWeekends),
-            highlight: this.utilService.isHighlightedDate(date, sunHighlight, satHighlight, highlightDates),
+            disabledDate: this.utilService.isDisabledDate(date, this.opts),
+            markedDate: this.utilService.isMarkedDate(date, this.opts),
+            highlight: this.utilService.isHighlightedDate(date, this.opts),
             row: i - 1,
             col: rtl ? col-- : col++
           }); 
@@ -667,12 +668,13 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
         const daysLeft: number = 7 - week.length;
         for (let j = 0; j < daysLeft; j++) {
           const date: IMyDate = {year: y, month: m, day: dayNbr};
-          week.push({dateObj: date,
+          week.push({
+            dateObj: date,
             cmo,
             currDay: this.isCurrDay(dayNbr, m, y, today),
-            disabled: this.utilService.isDisabledDate(date, this.opts),
-            markedDate: this.utilService.isMarkedDate(date, markDates, markWeekends),
-            highlight: this.utilService.isHighlightedDate(date, sunHighlight, satHighlight, highlightDates),
+            disabledDate: this.utilService.isDisabledDate(date, this.opts),
+            markedDate: this.utilService.isMarkedDate(date, this.opts),
+            highlight: this.utilService.isHighlightedDate(date, this.opts),
             row: i - 1,
             col: rtl ? col-- : col++
           });
@@ -689,12 +691,13 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
             month = m + 1;
           }
           const date: IMyDate = {year: cmo === MonthId.next && m === 12 ? y + 1 : y, month: cmo === MonthId.curr ? m : cmo === MonthId.next && m < 12 ? m + 1 : 1, day: dayNbr};
-          week.push({dateObj: date,
+          week.push({
+            dateObj: date,
             cmo,
             currDay: this.isCurrDay(dayNbr, month, y, today),
-            disabled: this.utilService.isDisabledDate(date, this.opts),
-            markedDate: this.utilService.isMarkedDate(date, markDates, markWeekends),
-            highlight: this.utilService.isHighlightedDate(date, sunHighlight, satHighlight, highlightDates),
+            disabledDate: this.utilService.isDisabledDate(date, this.opts),
+            markedDate: this.utilService.isMarkedDate(date, this.opts),
+            highlight: this.utilService.isHighlightedDate(date, this.opts),
             row: i - 1,
             col: rtl ? col-- : col++
           });

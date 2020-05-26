@@ -4,6 +4,7 @@ import {IMyDate} from "./my-date.interface";
 import {IMyDateRange} from "./my-date-range.interface";
 import {IMyMarkedDates} from "./my-marked-dates.interface";
 import {IMyMarkedDate} from "./my-marked-date.interface";
+import {IMyDisabledDates} from "./my-disabled-dates.interface";
 import {IMyStyles} from "./my-styles.interface";
 import {IMyDivHostElement} from "./my-div-host-element.interface";
 import {IMyCalendarAnimation} from "./my-calendar-animation.interface";
@@ -32,7 +33,7 @@ export interface IMyOptions {
   selectorWidth?: string;
   disableUntil?: IMyDate;
   disableSince?: IMyDate;
-  disableDates?: Array<IMyDate>;
+  disableDates?: Array<IMyDate> | Array<IMyDisabledDates>;
   disableDateRanges?: Array<IMyDateRange>;
   disableWeekends?: boolean;
   disableWeekdays?: Array<string>;

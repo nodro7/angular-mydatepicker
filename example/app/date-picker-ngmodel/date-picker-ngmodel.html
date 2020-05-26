@@ -205,6 +205,21 @@
       <tr>
         <td>
           <label>
+            <span>Disable +-1 today (own style):</span>
+            <input style="cursor: pointer" type="checkbox" (change)="onDisableOwnStyle($event.currentTarget.checked)" [checked]="false">
+          </label>
+        </td>
+        <td>
+          <label>
+             <span>Mark day after tomorrow + 2 (own style):</span>
+             <input style="cursor: pointer" type="checkbox" (change)="onMarkOwnStyle($event.currentTarget.checked)" [checked]="false">
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>
             <span style="margin-right: 10px">Default view:</span>
             <span>
                 <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onDefaultView($event.target.value)">
