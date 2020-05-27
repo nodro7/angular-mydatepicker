@@ -645,3 +645,15 @@
 * Added 4px padding to calendar. Default height and width of the calendar changed to 266px.
 
 
+# 0.9.0 (2020-05-27)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Merged: [Add new locale en-gb #43](https://github.com/kekeh/angular-mydatepicker/pull/43)
+* Added to the __disableDates_ option a way to disable dates with an own style.
+
+
