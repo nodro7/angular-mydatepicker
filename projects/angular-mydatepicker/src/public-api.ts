@@ -28,6 +28,8 @@ export {IMyDayLabels} from "./lib/interfaces/my-day-labels.interface";
 export {IMyDefaultMonth} from "./lib/interfaces/my-default-month.interface";
 export {IMyInputFieldChanged} from "./lib/interfaces/my-input-field-changed.interface";
 export {IMyLocales} from "./lib/interfaces/my-locale.interface";
+export {IMyDisabledDate} from "./lib/interfaces/my-disabled-date.interface";
+export {IMyDisabledDates} from "./lib/interfaces/my-disabled-dates.interface";
 export {IMyMarkedDate} from "./lib/interfaces/my-marked-date.interface";
 export {IMyMarkedDates} from "./lib/interfaces/my-marked-dates.interface";
 export {IMyMonth} from "./lib/interfaces/my-month.interface";

@@ -6,8 +6,8 @@ import {IMyDate} from "../interfaces/my-date.interface";
 import {IMyDateRange} from "../interfaces/my-date-range.interface";
 import {IMyMonth} from "../interfaces/my-month.interface";
 import {IMyMonthLabels} from "../interfaces/my-month-labels.interface";
-import {IMyMarkedDates} from "../interfaces/my-marked-dates.interface";
 import {IMyMarkedDate} from "../interfaces/my-marked-date.interface";
+import {IMyDisabledDate} from "../interfaces/my-disabled-date.interface";
 import {IMyDateFormat} from "../interfaces/my-date-format.interface";
 import {IMyValidateOptions} from "../interfaces/my-validate-options.interface";
 import {IMyOptions} from "../interfaces/my-options.interface";
@@ -76,7 +76,7 @@ export class UtilService {
 
       const date: IMyDate = {year, month, day};
 
-      if (validateDisabledDates && this.isDisabledDate(date, options)) {
+      if (validateDisabledDates && this.isDisabledDate(date, options).disabled) {
         return returnDate;
       }
 
@@ -190,31 +190,47 @@ export class UtilService {
     return month;
   }
 
-  isDisabledDate(date: IMyDate, options: IMyOptions): boolean {
+  isDisabledDate(date: IMyDate, options: IMyOptions): IMyDisabledDate {
     const {minYear, maxYear, disableUntil, disableSince, disableWeekends, disableDates, disableDateRanges, disableWeekdays, enableDates} = options;
 
-    for (const d of enableDates) {
-      if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
-        return false;
-      }
+    if (this.dateMatchToDates(date, enableDates)) {
+      return this.getDisabledValue(false, EMPTY_STR);
     }
 
     if (date.year < minYear && date.month === 12 || date.year > maxYear && date.month === 1) {
-      return true;
+      return this.getDisabledValue(true, EMPTY_STR);
+    }
+
+    const inputDates: any = disableDates as any;
+    const result = inputDates.find((d) => {
+      return d.dates;
+    });
+
+    if (!result) {
+      if (this.dateMatchToDates(date, inputDates)) {
+        return this.getDisabledValue(true, EMPTY_STR);
+      }
+    }
+    else {
+      for (const dd of inputDates) {
+        if (this.dateMatchToDates(date, dd.dates)) {
+          return this.getDisabledValue(true, dd.styleClass);
+        }
+      }
     }
 
     if (this.isDisabledByDisableUntil(date, disableUntil)) {
-      return true;
+      return this.getDisabledValue(true, EMPTY_STR);
     }
 
     if (this.isDisabledByDisableSince(date, disableSince)) {
-      return true;
+      return this.getDisabledValue(true, EMPTY_STR);
     }
 
     if (disableWeekends) {
       const dayNbr = this.getDayNumber(date);
       if (dayNbr === 0 || dayNbr === 6) {
-        return true;
+        return this.getDisabledValue(true, EMPTY_STR);
       }
     }
 
@@ -222,21 +238,28 @@ export class UtilService {
     if (disableWeekdays.length > 0) {
       for (const wd of disableWeekdays) {
         if (dn === this.getWeekdayIndex(wd)) {
-          return true;
+          return this.getDisabledValue(true, EMPTY_STR);
         }
       }
     }
 
-    for (const d of disableDates) {
+    if (this.isDisabledByDisableDateRange(date, date, disableDateRanges)) {
+      return this.getDisabledValue(true, EMPTY_STR);
+    }
+
+    return this.getDisabledValue(false, EMPTY_STR);
+  }
+
+  getDisabledValue(disabled: boolean, styleClass: string): IMyDisabledDate {
+    return {disabled, styleClass};
+  }
+
+  dateMatchToDates(date: IMyDate, dates: Array<IMyDate>): boolean {
+    for (const d of dates) {
       if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
         return true;
       }
     }
-
-    if (this.isDisabledByDisableDateRange(date, date, disableDateRanges)) {
-      return true;
-    }
-
     return false;
   }
 
@@ -307,33 +330,39 @@ export class UtilService {
     return false;
   }
 
-  isMarkedDate(date: IMyDate, markedDates: Array<IMyMarkedDates>, markWeekends: IMyMarkedDate): IMyMarkedDate {
-    for (const md of markedDates) {
-      for (const d of md.dates) {
-        if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
-          return {marked: true, color: md.color ? md.color : EMPTY_STR, styleClass: md.styleClass ? md.styleClass : EMPTY_STR};
-        }
+  isMarkedDate(date: IMyDate, options: IMyOptions): IMyMarkedDate {
+    const {markDates, markWeekends} = options;
+
+    for (const md of markDates) {
+      if (this.dateMatchToDates(date, md.dates)) {
+        return this.getMarkedValue(true, md.color, md.styleClass);
       }
     }
     if (markWeekends && markWeekends.marked) {
       const dayNbr = this.getDayNumber(date);
       if (dayNbr === 0 || dayNbr === 6) {
-        return {marked: true, color: markWeekends.color};
+        return this.getMarkedValue(true, markWeekends.color, EMPTY_STR);
       }
     }
-    return {marked: false, color: EMPTY_STR};
+    return this.getMarkedValue(false, EMPTY_STR, EMPTY_STR);
   }
 
-  isHighlightedDate(date: IMyDate, sunHighlight: boolean, satHighlight: boolean, highlightDates: Array<IMyDate>): boolean {
+  getMarkedValue(marked: boolean, color: string, styleClass: string): IMyMarkedDate {
+    return {marked, color: color ? color : EMPTY_STR, styleClass: styleClass ? styleClass : EMPTY_STR};
+  }
+
+  isHighlightedDate(date: IMyDate, options: IMyOptions): boolean {
+    const {sunHighlight, satHighlight, highlightDates} = options;
+
     const dayNbr: number = this.getDayNumber(date);
     if (sunHighlight && dayNbr === 0 || satHighlight && dayNbr === 6) {
       return true;
     }
-    for (const d of highlightDates) {
-      if ((d.year === 0 || d.year === date.year) && (d.month === 0 || d.month === date.month) && d.day === date.day) {
-        return true;
-      }
+
+    if (this.dateMatchToDates(date, highlightDates)) {
+      return true;
     }
+
     return false;
   }
 

@@ -52,7 +52,7 @@ export class DayViewComponent implements OnChanges {
   onDayCellClicked(event: any, cell: IMyCalendarDay): void {
     event.stopPropagation();
 
-    if (cell.disabled) {
+    if (cell.disabledDate.disabled) {
       return;
     }
 
