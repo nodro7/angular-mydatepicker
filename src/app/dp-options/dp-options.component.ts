@@ -76,6 +76,7 @@ export class DpOptionsComponent implements OnInit {
     'ca | Catalan',
     'id | Indonesian',
     'en-au | English - Australia',
+    'en-gb | English - British',
     'am-et | Amharic',
     'cs | Czech',
     'el | Greek',
