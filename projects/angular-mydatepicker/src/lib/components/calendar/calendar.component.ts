@@ -298,7 +298,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       let col = rtl ? 2 : 0;
 
       for (let j = i; j < i + 3; j++) {
-        const disabled: boolean = this.utilService.isDisabledMonth(year, j, this.daysInMonth(j, year), this.opts);
+        const disabled: boolean = this.utilService.isDisabledMonth(year, j, this.utilService.datesInMonth(j, year), this.opts);
         rowData.push({
           nbr: j, 
           name: monthLabels[j], 
@@ -409,7 +409,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
     const {year, monthNbr} = this.visibleMonth;
 
-    const d: Date = this.getDate(year, monthNbr, 1);
+    const d: Date = this.utilService.getJsDate(year, monthNbr, 1);
     d.setMonth(d.getMonth() + change);
 
     const y: number = d.getFullYear();
@@ -528,7 +528,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
         this.rangeDateSelection({
           isBegin: true,
           date,
-          jsDate: this.utilService.getDate(date),
+          jsDate: this.utilService.myDateToJsDate(date),
           dateFormat: dateFormat,
           formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
           epoc: this.utilService.getEpocTime(date)
@@ -540,7 +540,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
         this.rangeDateSelection({
           isBegin: true,
           date,
-          jsDate: this.utilService.getDate(date),
+          jsDate: this.utilService.myDateToJsDate(date),
           dateFormat: dateFormat,
           formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
           epoc: this.utilService.getEpocTime(date)
@@ -555,7 +555,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
           this.rangeDateSelection({
             isBegin: true,
             date,
-            jsDate: this.utilService.getDate(date),
+            jsDate: this.utilService.myDateToJsDate(date),
             dateFormat: dateFormat,
             formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
             epoc: this.utilService.getEpocTime(date)
@@ -566,7 +566,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
           this.rangeDateSelection({
             isBegin: false,
             date,
-            jsDate: this.utilService.getDate(date),
+            jsDate: this.utilService.myDateToJsDate(date),
             dateFormat: dateFormat,
             formatted: this.utilService.formatDate(date, dateFormat, monthLabels),
             epoc: this.utilService.getEpocTime(date)
@@ -593,18 +593,6 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     return idx >= 7 ? idx - 7 : idx;
   }
 
-  daysInMonth(m: number, y: number): number {
-    // Return number of days of current month
-    return new Date(y, m, 0).getDate();
-  }
-
-  daysInPrevMonth(m: number, y: number): number {
-    // Return number of days of the previous month
-    const d: Date = this.getDate(y, m, 1);
-    d.setMonth(d.getMonth() - 1);
-    return this.daysInMonth(d.getMonth() + 1, d.getFullYear());
-  }
-
   isCurrDay(d: number, m: number, y: number, today: IMyDate): boolean {
     // Check is a given date the today
     return d === today.day && m === today.month && y === today.year;
@@ -612,18 +600,14 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
   getDayNumber(date: IMyDate): number {
     // Get day number: su=0, mo=1, tu=2, we=3 ...
-    const d: Date = this.getDate(date.year, date.month, date.day);
+    const {year, month, day} = date;
+    const d: Date = this.utilService.getJsDate(year, month, day);
     return d.getDay();
   }
 
   getWeekday(date: IMyDate): string {
     // Get weekday: su, mo, tu, we ...
     return this.weekDayOpts[this.getDayNumber(date)];
-  }
-
-  getDate(year: number, month: number, day: number): Date {
-    // Creates a date object from given year, month and day
-    return new Date(year, month - 1, day, 0, 0, 0, 0);
   }
 
   sundayIdx(): number {
@@ -635,8 +619,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.dates.length = 0;
     const today: IMyDate = this.utilService.getToday();
     const monthStart: number = this.monthStartIdx(y, m);
-    const dInThisM: number = this.daysInMonth(m, y);
-    const dInPrevM: number = this.daysInPrevMonth(m, y);
+    const dInThisM: number = this.utilService.datesInMonth(m, y);
+    const dInPrevM: number = this.utilService.datesInPrevMonth(m, y);
 
     let dayNbr: number = 1;
     let month: number = m;
@@ -720,12 +704,18 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     let dpm: boolean = false;
     let dnm: boolean = false;
 
-    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear, rtl} = this.opts;
+    const {disableHeaderButtons, disableUntil, disableSince, enableDates, minYear, maxYear, rtl} = this.opts;
 
     if (disableHeaderButtons) {
-      dpm = this.utilService.isDisabledByDisableUntil({year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.daysInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)}, disableUntil);
-      dnm = this.utilService.isDisabledByDisableSince({year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1}, disableSince);
+      const duDate: IMyDate = {year: m === 1 ? y - 1 : y, month: m === 1 ? 12 : m - 1, day: this.utilService.datesInMonth(m === 1 ? 12 : m - 1, m === 1 ? y - 1 : y)};
+      const dsDate: IMyDate = {year: m === 12 ? y + 1 : y, month: m === 12 ? 1 : m + 1, day: 1};
+      
+      dpm = this.utilService.isDisabledByDisableUntil(duDate, disableUntil) 
+        && !this.utilService.isPastDatesEnabled(duDate, enableDates);
+      dnm = this.utilService.isDisabledByDisableSince(dsDate, disableSince)
+        && !this.utilService.isFutureDatesEnabled(dsDate, enableDates);
     }
+
     this.prevViewDisabled = m === 1 && y === minYear || dpm;
     this.nextViewDisabled = m === 12 && y === maxYear || dnm;
 
@@ -738,12 +728,18 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     let dpm: boolean = false;
     let dnm: boolean = false;
 
-    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear, rtl} = this.opts;
+    const {disableHeaderButtons, disableUntil, disableSince, enableDates, minYear, maxYear, rtl} = this.opts;
 
     if (disableHeaderButtons) {
-      dpm = this.utilService.isDisabledByDisableUntil({year: y - 1, month: 12, day: 31}, disableUntil);
-      dnm = this.utilService.isDisabledByDisableSince({year: y + 1, month: 1, day: 1}, disableSince);
+      const duDate: IMyDate = {year: y - 1, month: 12, day: 31};
+      const dsDate: IMyDate = {year: y + 1, month: 1, day: 1};
+
+      dpm = this.utilService.isDisabledByDisableUntil(duDate, disableUntil)
+        && !this.utilService.isPastDatesEnabled(duDate, enableDates);
+      dnm = this.utilService.isDisabledByDisableSince(dsDate, disableSince)
+        && !this.utilService.isFutureDatesEnabled(dsDate, enableDates);
     }
+
     this.prevViewDisabled = y === minYear || dpm;
     this.nextViewDisabled = y === maxYear || dnm;
 
@@ -756,11 +752,16 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     let dpy: boolean = false;
     let dny: boolean = false;
 
-    const {disableHeaderButtons, disableUntil, disableSince, minYear, maxYear, rtl} = this.opts;
+    const {disableHeaderButtons, disableUntil, disableSince, enableDates, minYear, maxYear, rtl} = this.opts;
 
     if (disableHeaderButtons) {
-      dpy = this.utilService.isDisabledByDisableUntil({year: yp - 1, month: 12, day: 31}, disableUntil);
-      dny = this.utilService.isDisabledByDisableSince({year: yn + 1, month: 1, day: 1}, disableSince);
+      const duDate: IMyDate = {year: yp - 1, month: 12, day: 31};
+      const dsDate: IMyDate = {year: yn + 1, month: 1, day: 1};
+
+      dpy = this.utilService.isDisabledByDisableUntil(duDate, disableUntil)
+        && !this.utilService.isPastDatesEnabled(duDate, enableDates);
+      dny = this.utilService.isDisabledByDisableSince(dsDate, disableSince)
+        && !this.utilService.isFutureDatesEnabled(dsDate, enableDates);
     }
     this.prevViewDisabled = yp <= minYear || dpy;
     this.nextViewDisabled = yn >= maxYear || dny;

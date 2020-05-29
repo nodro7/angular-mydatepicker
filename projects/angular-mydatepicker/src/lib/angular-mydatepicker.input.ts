@@ -246,7 +246,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       // single date
       let {date, jsDate} = value.singleDate;
       if (!date) {
-        date = this.jsDateToMyDate(jsDate);
+        date = this.utilService.jsDateToMyDate(jsDate);
       }
       
       const formatted: string = this.utilService.formatDate(date, dateFormat, monthLabels);
@@ -270,8 +270,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       // date range
       let {beginDate, beginJsDate, endDate, endJsDate} = value.dateRange;
       if (!beginDate || !endDate) {
-        beginDate = this.jsDateToMyDate(beginJsDate);
-        endDate = this.jsDateToMyDate(endJsDate);
+        beginDate = this.utilService.jsDateToMyDate(beginJsDate);
+        endDate = this.utilService.jsDateToMyDate(endJsDate);
       }
 
       const formatted: string = this.utilService.formatDate(beginDate, dateFormat, monthLabels) + dateRangeDatesDelimiter +
@@ -554,10 +554,6 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
 
   private emitCalendarToggle(reason: number): void {
     this.calendarToggle.emit(reason);
-  }
-
-  private jsDateToMyDate(date: Date): IMyDate {
-    return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
   }
 
   private appendSelector(elem: any): void {

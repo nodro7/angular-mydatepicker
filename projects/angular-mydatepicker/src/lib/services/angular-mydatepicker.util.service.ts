@@ -23,7 +23,7 @@ export class UtilService {
     const {dateFormat, minYear, maxYear, monthLabels} = options;
 
     const returnDate: IMyDate = this.resetDate();
-    const daysInMonth: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const datesInMonth: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const isMonthStr: boolean = dateFormat.indexOf(MMM) !== -1;
     const delimeters: Array<string> = dateFormat.match(/[^(dmy)]{1,}/g);
 
@@ -81,10 +81,10 @@ export class UtilService {
       }
 
       if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) {
-        daysInMonth[1] = 29;
+        datesInMonth[1] = 29;
       }
 
-      if (day < 1 || day > daysInMonth[month - 1]) {
+      if (day < 1 || day > datesInMonth[month - 1]) {
         return returnDate;
       }
 
@@ -263,11 +263,15 @@ export class UtilService {
     return false;
   }
 
-  isDisabledMonth(year: number, month: number, daysInMonth: number, options: IMyOptions): boolean {
-    const {disableUntil, disableSince, disableDateRanges} = options;
+  isDisabledMonth(year: number, month: number, datesInMonth: number, options: IMyOptions): boolean {
+    const {disableUntil, disableSince, disableDateRanges, enableDates} = options;
 
-    const dateEnd: IMyDate = {year, month, day: daysInMonth};
+    const dateEnd: IMyDate = {year, month, day: datesInMonth};
     const dateBegin: IMyDate = {year, month, day: 1};
+
+    if (this.isDatesEnabled(dateBegin, dateEnd, enableDates)) {
+      return false;
+    }
 
     if (this.isDisabledByDisableUntil(dateEnd, disableUntil)) {
       return true;
@@ -285,10 +289,14 @@ export class UtilService {
   }
 
   isDisabledYear(year: number, options: IMyOptions): boolean {
-    const {disableUntil, disableSince, disableDateRanges, minYear, maxYear} = options;
+    const {disableUntil, disableSince, disableDateRanges, enableDates, minYear, maxYear} = options;
 
     const dateEnd: IMyDate = {year, month: 12, day: 31};
     const dateBegin: IMyDate = {year, month: 1, day: 1};
+
+    if (this.isDatesEnabled(dateBegin, dateEnd, enableDates)) {
+      return false;
+    }
 
     if (this.isDisabledByDisableUntil(dateEnd, disableUntil)) {
       return true;
@@ -315,6 +323,34 @@ export class UtilService {
 
   isDisabledByDisableSince(date: IMyDate, disableSince: IMyDate): boolean {
     return this.isInitializedDate(disableSince) && this.getTimeInMilliseconds(date) >= this.getTimeInMilliseconds(disableSince);
+  }
+
+  isPastDatesEnabled(date: IMyDate, enableDates: Array<IMyDate>): boolean {
+    for(const d of enableDates) {
+      if (this.getTimeInMilliseconds(d) <= this.getTimeInMilliseconds(date)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  isFutureDatesEnabled(date: IMyDate, enableDates: Array<IMyDate>): boolean {
+    for(const d of enableDates) {
+      if (this.getTimeInMilliseconds(d) >= this.getTimeInMilliseconds(date)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  isDatesEnabled(dateBegin: IMyDate, dateEnd: IMyDate, enableDates: Array<IMyDate>): boolean {
+    for(const d of enableDates) {
+      if (this.getTimeInMilliseconds(d) >= this.getTimeInMilliseconds(dateBegin) 
+        && this.getTimeInMilliseconds(d) <= this.getTimeInMilliseconds(dateEnd)) {
+          return true;
+        }
+    }
+    return false;
   }
 
   isDisabledByDisableDateRange(dateBegin: IMyDate, dateEnd: IMyDate, disableDateRanges: Array<IMyDateRange>): boolean {
@@ -379,7 +415,7 @@ export class UtilService {
     if (date) {
       singleDateModel = {
         date,
-        jsDate: this.getDate(date),
+        jsDate: this.myDateToJsDate(date),
         formatted: dateStr.length ? dateStr : this.formatDate(date, dateFormat, monthLabels),
         epoc: this.getEpocTime(date)
       };
@@ -387,10 +423,10 @@ export class UtilService {
     else {
       dateRangeModel = {
         beginDate: dateRange.begin,
-        beginJsDate: this.getDate(dateRange.begin),
+        beginJsDate: this.myDateToJsDate(dateRange.begin),
         beginEpoc: this.getEpocTime(dateRange.begin),
         endDate: dateRange.end,
-        endJsDate: this.getDate(dateRange.end),
+        endJsDate: this.myDateToJsDate(dateRange.end),
         endEpoc: this.getEpocTime(dateRange.end),
         formatted: this.formatDate(dateRange.begin, dateFormat, monthLabels) + rangeDelimiter + this.formatDate(dateRange.end, dateFormat, monthLabels)
       };
@@ -466,11 +502,7 @@ export class UtilService {
   }
 
   getTimeInMilliseconds(date: IMyDate): number {
-    return this.getDate(date).getTime();
-  }
-
-  getDate(date: IMyDate): Date {
-    return new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
+    return this.myDateToJsDate(date).getTime();
   }
 
   getToday(): IMyDate {
@@ -488,6 +520,29 @@ export class UtilService {
 
   getEpocTime(date: IMyDate): number {
     return Math.round(this.getTimeInMilliseconds(date) / 1000.0);
+  }
+
+  jsDateToMyDate(date: Date): IMyDate {
+    return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
+  }
+
+  myDateToJsDate(date: IMyDate): Date {
+    const {year, month, day} = date;
+    return new Date(year, month - 1, day, 0, 0, 0, 0);
+  }
+
+  datesInMonth(m: number, y: number): number {
+    return new Date(y, m, 0).getDate();
+  }
+
+  datesInPrevMonth(m: number, y: number): number {
+    const d: Date = this.getJsDate(y, m, 1);
+    d.setMonth(d.getMonth() - 1);
+    return this.datesInMonth(d.getMonth() + 1, d.getFullYear());
+  }
+
+  getJsDate(year: number, month: number, day: number): Date {
+    return new Date(year, month - 1, day, 0, 0, 0, 0);
   }
 
   getSelectedValue(selectedValue: any, dateRange: boolean): any {

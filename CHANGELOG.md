@@ -657,3 +657,12 @@
 * Added to the __disableDates_ option a way to disable dates with an own style.
 
 
+# 0.9.1 (2020-05-29)
+
+### Bug Fixes
+
+* Fixed: [Next months arrow disabled even having enabled date in next month in Inline mode. #44](https://github.com/kekeh/angular-mydatepicker/issues/44)
+
+### Features
+
+* none
