@@ -666,3 +666,14 @@
 ### Features
 
 * none
+
+
+# 0.9.2 (2020-05-31)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Changes to the viewChangeAnimation option functionality. Animation is not shown when the calendar is opened.

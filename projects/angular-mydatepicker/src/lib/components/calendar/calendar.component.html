@@ -12,15 +12,15 @@
                     (monthViewBtnClicked)="onMonthViewBtnClicked()" (yearViewBtnClicked)="onYearViewBtnClicked()"></lib-selection-bar>
 
     <lib-day-view *ngIf="!selectMonth && !selectYear" [opts]="opts" [dates]="dates" [weekDays]="weekDays"
-                    [selectedDate]="selectedDate" [selectedDateRange]="selectedDateRange"
+                    [selectedDate]="selectedDate" [selectedDateRange]="selectedDateRange" [viewChanged]="viewChanged"
                     (dayCellClicked)="onDayCellClicked($event)"
                     (dayCellKeyDown)="onDayCellKeyDown($event)"></lib-day-view>
 
-    <lib-month-view *ngIf="selectMonth" [opts]="opts" [months]="months"
+    <lib-month-view *ngIf="selectMonth" [opts]="opts" [months]="months" [viewChanged]="viewChanged"
                     (monthCellClicked)="onMonthCellClicked($event)"
                     (monthCellKeyDown)="onMonthCellKeyDown($event)"></lib-month-view>
 
-    <lib-year-view *ngIf="selectYear" [opts]="opts" [years]="years"
+    <lib-year-view *ngIf="selectYear" [opts]="opts" [years]="years" [viewChanged]="viewChanged"
                     (yearCellClicked)="onYearCellClicked($event)"
                     (yearCellKeyDown)="onYearCellKeyDown($event)"></lib-year-view>
 

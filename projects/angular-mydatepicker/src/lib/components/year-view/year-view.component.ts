@@ -14,6 +14,7 @@ import {YEARS, OPTS} from "../../constants/constants";
 export class YearViewComponent implements OnChanges {
   @Input() opts: IMyOptions;
   @Input() years: Array<Array<IMyCalendarYear>>;
+  @Input() viewChanged: boolean;
   @Output() yearCellClicked: EventEmitter<IMyCalendarYear> = new EventEmitter<IMyCalendarYear>();
   @Output() yearCellKeyDown: EventEmitter<any> = new EventEmitter<any>();
 

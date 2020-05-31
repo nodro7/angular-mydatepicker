@@ -1,4 +1,4 @@
-<table class="myDpYearTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation}">
+<table class="myDpYearTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation && viewChanged}">
   <tbody>
     <tr *ngFor="let yr of years">
       <td id="y_{{y.row}}_{{y.col}}" class="y_{{y.row}}_{{y.col}} myDpYearcell"

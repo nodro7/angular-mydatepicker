@@ -14,6 +14,7 @@ import {OPTS, MONTHS} from "../../constants/constants";
 export class MonthViewComponent implements OnChanges {
   @Input() opts: IMyOptions;
   @Input() months: Array<Array<IMyCalendarMonth>>;
+  @Input() viewChanged: boolean;
   @Output() monthCellClicked: EventEmitter<IMyCalendarMonth> = new EventEmitter<IMyCalendarMonth>();
   @Output() monthCellKeyDown: EventEmitter<any> = new EventEmitter<any>();
 

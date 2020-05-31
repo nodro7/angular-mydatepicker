@@ -50,6 +50,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   selectMonth: boolean = false;
   selectYear: boolean = false;
 
+  viewChanged: boolean = false;
+
   dateChanged: (dm: IMyDateModel, close: boolean) => void;
   calendarViewChanged: (cvc: IMyCalendarViewChanged) => void;
   rangeDateSelection: (rds: IMyRangeDateSelection) => void;
@@ -145,10 +147,10 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.setCalendarVisibleMonth();
 
     if (defaultView === DefaultView.Month) {
-      this.onMonthViewBtnClicked();
+      this.monthViewBtnClicked();
     }
     else if (defaultView === DefaultView.Year) {
-      this.onYearViewBtnClicked();
+      this.yearViewBtnClicked();
     }
   }
 
@@ -214,6 +216,11 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   onMonthViewBtnClicked(): void {
+    this.viewChanged = true;
+    this.monthViewBtnClicked();
+  }
+
+  monthViewBtnClicked(): void {
     this.selectMonth = !this.selectMonth;
     this.selectYear = false;
     
@@ -229,8 +236,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   onMonthCellClicked(cell: IMyCalendarMonth): void {
-    const {year, monthNbr} = this.visibleMonth;
+    this.viewChanged = true;
 
+    const {year, monthNbr} = this.visibleMonth;
     const mc: boolean = cell.nbr !== monthNbr;
     this.visibleMonth = {monthTxt: this.opts.monthLabels[cell.nbr], monthNbr: cell.nbr, year: year};
     this.selectedMonth.year = this.visibleMonth.year;
@@ -250,6 +258,11 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   onYearViewBtnClicked(): void {
+    this.viewChanged = true;
+    this.yearViewBtnClicked();
+  }
+
+  yearViewBtnClicked(): void {
     this.selectYear = !this.selectYear;
     this.selectMonth = false;
 
@@ -265,8 +278,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   onYearCellClicked(cell: IMyCalendarYear): void {
-    const {year, monthNbr, monthTxt} = this.visibleMonth;
+    this.viewChanged = true;
 
+    const {year, monthNbr, monthTxt} = this.visibleMonth;
     const yc: boolean = cell.year !== year;
     this.visibleMonth = {monthTxt: monthTxt, monthNbr: monthNbr, year: cell.year};
     this.selectedMonth.year = this.visibleMonth.year;

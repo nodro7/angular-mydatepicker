@@ -21,6 +21,7 @@ export class DayViewComponent implements OnChanges {
   @Input() weekDays: Array<string>;
   @Input() selectedDate: IMyDate;
   @Input() selectedDateRange: IMyDateRange;
+  @Input() viewChanged: boolean;
 
   @Output() dayCellClicked: EventEmitter<IMyCalendarDay> = new EventEmitter<IMyCalendarDay>();
   @Output() dayCellKeyDown: EventEmitter<any> = new EventEmitter<any>();

@@ -2260,10 +2260,6 @@ describe('AngularMyDatePickerComponent', () => {
     comp.openCalendar();
 
     fixture.detectChanges();
-    let animationElem = getElement('.myDpViewChangeAnimation');
-    expect(animationElem).not.toBe(null);
-
-    fixture.detectChanges();
     let btn = getElement('.myDpMonthBtn');
     expect(btn).not.toBe(null);
 
@@ -2271,7 +2267,7 @@ describe('AngularMyDatePickerComponent', () => {
     btn.click();
 
     fixture.detectChanges();
-    animationElem = getElement('.myDpViewChangeAnimation');
+    let animationElem = getElement('.myDpViewChangeAnimation');
     expect(animationElem).not.toBe(null);
 
     fixture.detectChanges();
