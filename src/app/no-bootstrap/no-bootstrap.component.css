@@ -1,6 +1,5 @@
 .datePickerContainer {
-  width: 280px;
-  margin: 0 auto;
+  max-width: 280px;
 }
 
 .inputGroup {
@@ -19,10 +18,4 @@
 
 .closeIcon:hover {
   color: #ccc;
-}
-
-@media only screen and (max-width: 1154px) {
-  .datePickerContainer {
-    margin: 0 0;
-  }
 }
