@@ -323,7 +323,7 @@ Returns __true__ if the date or date range in the input box is valid. Otherwise 
 
 
 ### calendarViewChanged callback
-  * called when the calendar view changes
+  * called when the calendar view is changed. The date selection view activated or month/year changed on the date selection view.
   * event parameter:
     * __event.year__: Year number in calendar. For example: 2018
     * __event.month__: Month number in calendar. For example: 11

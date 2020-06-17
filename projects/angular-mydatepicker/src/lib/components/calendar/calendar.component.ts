@@ -145,28 +145,36 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
 
     this.setCalendarVisibleMonth();
+    this.setDefaultView(defaultView);
+  }
 
+  refreshComponent(opts: IMyOptions): void {
+    this.opts = opts;
+    const {defaultView} = opts;
+
+    this.selectMonth = false;
+    this.selectYear = false;
+
+    if (defaultView === DefaultView.Date) {
+      const {monthNbr, year} = this.visibleMonth;
+      this.generateCalendar(monthNbr, year, false);
+    }
+    else if (defaultView === DefaultView.Month) {
+      this.generateMonths();
+      this.selectMonth = true;
+    }
+    else if (defaultView === DefaultView.Year) {
+      this.generateYears(this.getYearValueByRowAndCol(2, 2)); 
+      this.selectYear = true;
+    }
+  }
+
+  setDefaultView(defaultView: DefaultView): void {
     if (defaultView === DefaultView.Month) {
       this.monthViewBtnClicked();
     }
     else if (defaultView === DefaultView.Year) {
       this.yearViewBtnClicked();
-    }
-  }
-
-  refreshComponent(opts: IMyOptions): void {
-    this.opts = opts;
-
-    const {selectMonth, selectYear} = this;
-    if (!selectMonth && !selectYear) {
-      const {monthNbr, year} = this.visibleMonth;
-      this.generateCalendar(monthNbr, year, false);
-    }
-    else if (selectMonth) {
-      this.generateMonths();
-    }
-    else if (selectYear) {
-      this.generateYears(this.getYearValueByRowAndCol(2, 2)); 
     }
   }
 
@@ -380,13 +388,18 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   }
 
   getYearValueByRowAndCol(row: number, col: number): number {
-    return this.years[row][col].year;
+    const {years} = this;
+    if (!years || years.length === 0) {
+      const {year} = this.utilService.getToday();
+      return year;
+    }
+    return years[row][col].year;
   }
 
   setCalendarVisibleMonth(): void {
     // Sets visible month of calendar
     const {year, monthNbr} = this.selectedMonth;
-    this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr: monthNbr, year: year};
+    this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr, year};
 
     // Create current month
     this.generateCalendar(monthNbr, year, true);
