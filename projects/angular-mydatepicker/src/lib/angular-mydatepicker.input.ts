@@ -18,6 +18,7 @@ import {CalToggle} from "./enums/cal-toggle.enum";
 import {Year} from "./enums/year.enum";
 import {KeyCode} from "./enums/key-code.enum";
 import {CalAnimation} from "./enums/cal-animation.enum";
+import {HeaderAction} from "./enums/header-action.enum";
 import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, 
   LOCALE, OBJECT, PX, INNER_HTML, ANIMATION_END, ANIMATION_TIMEOUT} from "./constants/constants";
 
@@ -458,6 +459,12 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     
     this.emitInputFieldChanged(value, false);
     return false;
+  }
+
+  public headerAction(headerAction: HeaderAction): void {
+    if (this.cRef !== null) {
+      this.cRef.instance.headerAction(headerAction);
+    }
   }
 
   private ignoreKeyPress(keyCode: number): boolean {

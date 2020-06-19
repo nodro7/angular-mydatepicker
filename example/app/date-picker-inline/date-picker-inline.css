@@ -2,7 +2,8 @@
   margin-top: 20px
 }
 
-.submitButton {
+.submitButton,
+.headerActionButton {
   margin-top: 20px;
   cursor: pointer;
 }

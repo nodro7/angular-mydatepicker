@@ -18,6 +18,7 @@ import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
 import {DefaultView} from "../../enums/default-view.enum";
 import {CalAnimation} from "../../enums/cal-animation.enum";
+import {HeaderAction} from "../../enums/header-action.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, 
   SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT, TABINDEX, TD_SELECTOR, ZERO_STR, YEAR_SEPARATOR} from "../../constants/constants";
 
@@ -166,6 +167,31 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     else if (defaultView === DefaultView.Year) {
       this.generateYears(this.getYearValueByRowAndCol(2, 2)); 
       this.selectYear = true;
+    }
+  }
+
+  headerAction(headerAction: HeaderAction): void {
+    const {monthSelector, yearSelector} = this.opts;
+
+    if (headerAction === HeaderAction.PrevBtnClick) {
+      if (!this.prevViewDisabled) {
+        this.onPrevNavigateBtnClicked();
+      }
+    }
+    else if (headerAction === HeaderAction.NextBtnClick) {
+      if (!this.nextViewDisabled) {
+        this.onNextNavigateBtnClicked();
+      }
+    }
+    else if (headerAction === HeaderAction.MonthBtnClick) {
+      if (monthSelector) {
+        this.onMonthViewBtnClicked();
+      }
+    }
+    else if (headerAction === HeaderAction.YearBtnClick) {
+      if (yearSelector) {
+        this.onYearViewBtnClicked();
+      }
     }
   }
 

@@ -51,5 +51,6 @@ export {MonthId} from "./lib/enums/month-id.enum";
 export {Year} from "./lib/enums/year.enum";
 export {DefaultView} from "./lib/enums/default-view.enum";
 export {CalAnimation} from "./lib/enums/cal-animation.enum";
+export {HeaderAction} from "./lib/enums/header-action.enum";
 
 export * from "./lib/constants/constants";
