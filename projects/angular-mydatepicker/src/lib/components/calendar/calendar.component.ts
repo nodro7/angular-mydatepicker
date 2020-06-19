@@ -103,7 +103,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.rangeDateSelection = rds;
     this.closedByEsc = cbe;
 
-    const {defaultView, dateRange, firstDayOfWeek, dayLabels} = this.opts;
+    const {defaultView, firstDayOfWeek, dayLabels} = opts;
 
     this.weekDays.length = 0;
     this.dayIdx = this.weekDayOpts.indexOf(firstDayOfWeek);
@@ -115,17 +115,27 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       }
     }
 
+    this.setSelectedMonth(defaultMonth, selectedValue, inputValue);
+
+    this.setCalendarVisibleMonth();
+    this.setDefaultView(defaultView);
+  }
+
+  setSelectedMonth(defaultMonth: string, selectedValue: any, inputValue: string): void {
+    const {dateRange} = this.opts;
+
+    // use today as a selected month
     const today: IMyDate = this.utilService.getToday();
     this.selectedMonth = {monthNbr: today.month, year: today.year};
 
+    // If default month attribute valur given use it as a selected month
     if (defaultMonth && defaultMonth.length) {
       this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
     }
 
     let validateOpts: IMyValidateOptions = null;
-
     if (!dateRange) {
-      // Single date mode
+      // Single date mode - If date selected use it as selected month
       validateOpts = {validateDisabledDates: false, selectedValue: this.utilService.getSelectedValue(selectedValue, dateRange)};
       const date: IMyDate = this.utilService.isDateValid(inputValue, this.opts, validateOpts);
 
@@ -135,7 +145,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       }
     }
     else {
-      // Date range mode
+      // Date range mode - If date range selected use begin date as selected month
       validateOpts = {validateDisabledDates: false, selectedValue: this.utilService.getSelectedValue(selectedValue, dateRange)};
       const {begin, end} = this.utilService.isDateValidDateRange(inputValue, this.opts, validateOpts);
 
@@ -144,30 +154,17 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
         this.selectedMonth = {monthNbr: begin.month, year: begin.year};
       }
     }
+  }
+
+  refreshComponent(opts: IMyOptions, defaultMonth: string, selectedValue: any, inputValue: string): void {
+    this.opts = opts;
+
+    const {defaultView} = opts;
+
+    this.setSelectedMonth(defaultMonth, selectedValue, inputValue);
 
     this.setCalendarVisibleMonth();
     this.setDefaultView(defaultView);
-  }
-
-  refreshComponent(opts: IMyOptions): void {
-    this.opts = opts;
-    const {defaultView} = opts;
-
-    this.selectMonth = false;
-    this.selectYear = false;
-
-    if (defaultView === DefaultView.Date) {
-      const {monthNbr, year} = this.visibleMonth;
-      this.generateCalendar(monthNbr, year, false);
-    }
-    else if (defaultView === DefaultView.Month) {
-      this.generateMonths();
-      this.selectMonth = true;
-    }
-    else if (defaultView === DefaultView.Year) {
-      this.generateYears(this.getYearValueByRowAndCol(2, 2)); 
-      this.selectYear = true;
-    }
   }
 
   headerAction(headerAction: HeaderAction): void {
@@ -229,6 +226,15 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  clearDate(): void {
+    const {month, year} = this.utilService.getToday();
+    this.selectedMonth = {monthNbr: month, year: year};
+    
+    this.resetDateValue();
+    this.setCalendarVisibleMonth();
+    this.resetMonthYearSelect();
+  }
+
   setDateValue(date: IMyDate): void {
     this.selectedDate = date;
   }
@@ -240,8 +246,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
   setDefaultMonth(monthNbr: number, year: number): void {
     this.selectedMonth = {monthNbr, year};
-    this.visibleMonth = {monthTxt: this.opts.monthLabels[monthNbr], monthNbr, year};
-    this.refreshComponent(this.opts);
+    this.setCalendarVisibleMonth();
+    this.resetMonthYearSelect();
   }
 
   resetMonthYearSelect(): void {
@@ -273,10 +279,10 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.viewChanged = true;
 
     const {year, monthNbr} = this.visibleMonth;
-    const mc: boolean = cell.nbr !== monthNbr;
-    this.visibleMonth = {monthTxt: this.opts.monthLabels[cell.nbr], monthNbr: cell.nbr, year: year};
-    this.selectedMonth.year = this.visibleMonth.year;
-    this.generateCalendar(cell.nbr, year, mc);
+    const monthChange: boolean = cell.nbr !== monthNbr;
+    this.visibleMonth = {monthTxt: this.opts.monthLabels[cell.nbr], monthNbr: cell.nbr, year};
+    this.selectedMonth.year = year;
+    this.generateCalendar(cell.nbr, year, monthChange);
     this.selectMonth = false;
     this.focusToSelector();
   }
@@ -316,8 +322,8 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
     const {year, monthNbr, monthTxt} = this.visibleMonth;
     const yc: boolean = cell.year !== year;
-    this.visibleMonth = {monthTxt: monthTxt, monthNbr: monthNbr, year: cell.year};
-    this.selectedMonth.year = this.visibleMonth.year;
+    this.visibleMonth = {monthTxt, monthNbr, year: cell.year};
+    this.selectedMonth.year = cell.year;
     this.generateCalendar(monthNbr, cell.year, yc);
     this.selectYear = false;
     this.focusToSelector();
@@ -346,7 +352,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       let col = rtl ? 2 : 0;
 
       for (let j = i; j < i + 3; j++) {
-        const disabled: boolean = this.utilService.isDisabledMonth(year, j, this.utilService.datesInMonth(j, year), this.opts);
+        const disabled: boolean = this.utilService.isDisabledMonth(year, j, this.opts);
         rowData.push({
           nbr: j, 
           name: monthLabels[j], 

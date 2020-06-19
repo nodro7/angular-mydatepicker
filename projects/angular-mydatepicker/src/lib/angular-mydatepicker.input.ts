@@ -192,7 +192,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     }
 
     if (this.cRef !== null) {
-      this.cRef.instance.refreshComponent(this.opts);
+      this.cRef.instance.refreshComponent(this.opts, this.defaultMonth, this.selectedValue, this.getHostValue());
     }
   }
 
@@ -408,6 +408,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (this.disabled) {
       return;
     }
+
+    const {inline} = this.opts;
+
     this.setHostValue(EMPTY_STR);
     this.emitDateChanged({
       isRange: this.opts.dateRange,
@@ -427,9 +430,17 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         formatted: EMPTY_STR
       }
     });
+
     this.onChangeCb(null);
     this.onTouchedCb();
-    this.closeSelector(CalToggle.CloseByCalBtn);
+
+    if (this.cRef !== null) {
+      this.cRef.instance.clearDate();
+    }
+
+    if (!inline) {
+      this.closeSelector(CalToggle.CloseByCalBtn);
+    }
   }
 
   public isDateValid(): boolean {

@@ -698,4 +698,15 @@
 
 ### Features
 
-* Added headerAction method to the directive.
+* Added headerAction() method to the directive.
+
+
+# 0.9.5 (2020-06-19)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Minor changes.

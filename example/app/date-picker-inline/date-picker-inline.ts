@@ -39,6 +39,14 @@ export class DatePickerInline implements OnInit {
     console.log('onSubmit(): model: ', this.model);
   }
 
+  onDisableUntilYesterday(): void {
+    let copy = this.getCopyOfOptions();
+    let d: Date = new Date();
+    d.setDate(d.getDate() - 1);
+    copy.disableUntil = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+    this.myDatePickerOptions = copy;
+  }
+
   onTodayPlus3(): void {
     let today: Date = new Date();
     let date: Date = new Date();

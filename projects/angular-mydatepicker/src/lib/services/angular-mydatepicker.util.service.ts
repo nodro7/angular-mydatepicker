@@ -263,10 +263,10 @@ export class UtilService {
     return false;
   }
 
-  isDisabledMonth(year: number, month: number, datesInMonth: number, options: IMyOptions): boolean {
+  isDisabledMonth(year: number, month: number, options: IMyOptions): boolean {
     const {disableUntil, disableSince, disableDateRanges, enableDates} = options;
 
-    const dateEnd: IMyDate = {year, month, day: datesInMonth};
+    const dateEnd: IMyDate = {year, month, day: this.datesInMonth(month, year)};
     const dateBegin: IMyDate = {year, month, day: 1};
 
     if (this.isDatesEnabled(dateBegin, dateEnd, enableDates)) {
