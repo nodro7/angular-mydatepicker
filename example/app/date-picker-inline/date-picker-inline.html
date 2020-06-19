@@ -18,13 +18,14 @@
     <button type="button" class="submitButton" (click)="onSubmit()">Submit</button>
     <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onTodayPlus3()">Range today + 3</button>
     <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onYesterdayPlus3()">Range yesterday + 3</button>
-  
+  </div>
+
+  <div class="headerActionButtons">
     <!-- header action method calls -->
     <button type="button" class="headerActionButton" (click)="dp.headerAction(1)">Prev</button>
     <button type="button" class="headerActionButton" (click)="dp.headerAction(2)">Next</button>
     <button type="button" class="headerActionButton" (click)="dp.headerAction(3)">Month</button>
     <button type="button" class="headerActionButton" (click)="dp.headerAction(4)">Year</button>
-  
   </div>
 
 </div>
