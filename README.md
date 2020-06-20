@@ -1,4 +1,4 @@
-# angular-mydatepicker
+<img src="https://github.com/kekeh/angular-mydatepicker/blob/gh-pages/.images/wiki-footer-img.png" width="100%">
 
 **Angular datepicker and date range picker**
 
