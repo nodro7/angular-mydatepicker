@@ -701,7 +701,7 @@
 * Added headerAction() method to the directive.
 
 
-# 0.9.5 (2020-06-19)
+# 0.9.7 (2020-06-20)
 
 ### Bug Fixes
 
@@ -709,15 +709,4 @@
 
 ### Features
 
-* Minor changes.
-
-
-# 0.9.6 (2020-06-20)
-
-### Bug Fixes
-
-* none
-
-### Features
-
-* Minor changes to styles.
+* Minor changes to styles. README updated.
