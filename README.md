@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/kekeh/angular-mydatepicker/gh-pages/.images/wiki-footer-img.png" width="100%">
 
-Screenshots using a predefined styles and the marked dates option. The predefined styles and some options can tested [here](https://kekeh.github.io/angular-mydatepicker).
+Screenshots using a predefined styles and the marked dates option. The predefined styles and some of the options can tested [here](https://kekeh.github.io/angular-mydatepicker).
 
 ![](https://raw.githubusercontent.com/kekeh/angular-mydatepicker/gh-pages/.images/dateView.png)
 ![](https://raw.githubusercontent.com/kekeh/angular-mydatepicker/gh-pages/.images/monthView.png)
