@@ -710,3 +710,14 @@
 ### Features
 
 * Minor changes to styles. README updated.
+
+
+# 0.9.8 (2020-06-21)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README updated. Added screenshots.
