@@ -721,3 +721,14 @@
 ### Features
 
 * README updated. Added screenshots.
+
+
+# 0.9.9 (2020-06-21)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README updated. Example app updated..
