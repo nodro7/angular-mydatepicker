@@ -297,7 +297,8 @@
                            [(ngModel)]="model" [options]="myDatePickerOptions" [defaultMonth]="defMonth" [locale]="locale" #dp="angular-mydatepicker"
                            (dateChanged)="onDateChanged($event)" (calendarViewChanged)="onCalendarViewChanged($event)"
                            (calendarToggle)="onCalendarToggle($event)" (inputFieldChanged)="onInputFieldChanged($event)"
-                           (rangeDateSelection)="onRangeDateSelection($event)" [attr.disabled]="disabled?'':null" autocomplete="off"/>
+                           (rangeDateSelection)="onRangeDateSelection($event)" (viewActivated)="onViewActivated($event)" 
+                           [attr.disabled]="disabled?'':null" autocomplete="off"/>
                     <div class="input-group-append">
                       <button type="button" class="btn btn-secondary" (click)="dp.clearDate()">
                         <i class="fa fa-close"></i>

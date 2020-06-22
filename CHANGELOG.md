@@ -743,3 +743,14 @@
 ### Features
 
 * README updated. Example app updated. Code refactored.
+
+
+# 0.9.11 (2020-06-22)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added a new callback: viewActivated(view).

@@ -50,6 +50,7 @@ export {KeyName} from "./lib/enums/key-name.enum";
 export {MonthId} from "./lib/enums/month-id.enum";
 export {Year} from "./lib/enums/year.enum";
 export {DefaultView} from "./lib/enums/default-view.enum";
+export {ActiveView} from "./lib/enums/active-view.enum";
 export {CalAnimation} from "./lib/enums/cal-animation.enum";
 export {HeaderAction} from "./lib/enums/header-action.enum";
 

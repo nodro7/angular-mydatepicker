@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, AfterViewInit, Output, SimpleChanges, ViewEncapsulation} from "@angular/core";
 import {IMyCalendarMonth} from "../../interfaces/my-calendar-month.interface";
 import {IMyOptions} from "../../interfaces/my-options.interface";
 import {KeyCode} from "../../enums/key-code.enum";
+import {ActiveView} from "../../enums/active-view.enum";
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {OPTS, MONTHS} from "../../constants/constants";
 
@@ -11,12 +12,14 @@ import {OPTS, MONTHS} from "../../constants/constants";
   providers: [UtilService],
   encapsulation: ViewEncapsulation.None
 })
-export class MonthViewComponent implements OnChanges {
+export class MonthViewComponent implements OnChanges, AfterViewInit {
   @Input() opts: IMyOptions;
   @Input() months: Array<Array<IMyCalendarMonth>>;
   @Input() viewChanged: boolean;
+
   @Output() monthCellClicked: EventEmitter<IMyCalendarMonth> = new EventEmitter<IMyCalendarMonth>();
   @Output() monthCellKeyDown: EventEmitter<any> = new EventEmitter<any>();
+  @Output() viewActivated: EventEmitter<ActiveView> = new EventEmitter<ActiveView>();
 
   constructor(private utilService: UtilService) { }
 
@@ -27,6 +30,10 @@ export class MonthViewComponent implements OnChanges {
     if (changes.hasOwnProperty(MONTHS)) {
       this.months = changes[MONTHS].currentValue;
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.viewActivated.emit(ActiveView.Month);
   }
 
   onMonthCellClicked(event: any, cell: IMyCalendarMonth): void {

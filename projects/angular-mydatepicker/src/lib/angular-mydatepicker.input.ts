@@ -19,9 +19,9 @@ import {Year} from "./enums/year.enum";
 import {KeyCode} from "./enums/key-code.enum";
 import {CalAnimation} from "./enums/cal-animation.enum";
 import {HeaderAction} from "./enums/header-action.enum";
+import {ActiveView} from "./enums/active-view.enum";
 import {KEYUP, BLUR, EMPTY_STR, DISABLED, CLICK, BODY, VALUE, PREVENT_CLOSE_TIMEOUT, OPTIONS, DEFAULT_MONTH, 
   LOCALE, OBJECT, PX, INNER_HTML, ANIMATION_END, ANIMATION_TIMEOUT} from "./constants/constants";
-
 
 const NGX_DP_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -50,6 +50,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   @Output() calendarViewChanged: EventEmitter<IMyCalendarViewChanged> = new EventEmitter<IMyCalendarViewChanged>();
   @Output() calendarToggle: EventEmitter<number> = new EventEmitter<number>();
   @Output() rangeDateSelection: EventEmitter<IMyRangeDateSelection> = new EventEmitter<IMyRangeDateSelection>();
+  @Output() viewActivated: EventEmitter<ActiveView> = new EventEmitter<ActiveView>();
 
   private cRef: ComponentRef<CalendarComponent> = null;
   private hostText: string = EMPTY_STR;
@@ -363,6 +364,9 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         (rds: IMyRangeDateSelection) => {
           this.emitRangeDateSelection(rds);
         },
+        (va: ActiveView) => {
+          this.emitViewActivated(va);
+        },
         () => {
           this.closeSelector(CalToggle.CloseByEsc);
         }
@@ -556,12 +560,16 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.inputFieldChanged.emit({value, dateFormat: this.opts.dateFormat, valid});
   }
 
-  private emitCalendarChanged(cvc: IMyCalendarViewChanged) {
+  private emitCalendarChanged(cvc: IMyCalendarViewChanged): void {
     this.calendarViewChanged.emit(cvc);
   }
 
-  private emitRangeDateSelection(rds: IMyRangeDateSelection) {
+  private emitRangeDateSelection(rds: IMyRangeDateSelection): void {
     this.rangeDateSelection.emit(rds);
+  }
+
+  private emitViewActivated(va: ActiveView): void {
+    this.viewActivated.emit(va);
   }
 
   private emitCalendarToggle(reason: number): void {

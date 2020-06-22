@@ -14,15 +14,18 @@
     <lib-day-view *ngIf="!selectMonth && !selectYear" [opts]="opts" [dates]="dates" [weekDays]="weekDays"
                     [selectedDate]="selectedDate" [selectedDateRange]="selectedDateRange" [viewChanged]="viewChanged"
                     (dayCellClicked)="onDayCellClicked($event)"
-                    (dayCellKeyDown)="onDayCellKeyDown($event)"></lib-day-view>
+                    (dayCellKeyDown)="onDayCellKeyDown($event)"
+                    (viewActivated)="onViewActivated($event)"></lib-day-view>
 
     <lib-month-view *ngIf="selectMonth" [opts]="opts" [months]="months" [viewChanged]="viewChanged"
                     (monthCellClicked)="onMonthCellClicked($event)"
-                    (monthCellKeyDown)="onMonthCellKeyDown($event)"></lib-month-view>
+                    (monthCellKeyDown)="onMonthCellKeyDown($event)"
+                    (viewActivated)="onViewActivated($event)"></lib-month-view>
 
     <lib-year-view *ngIf="selectYear" [opts]="opts" [years]="years" [viewChanged]="viewChanged"
                     (yearCellClicked)="onYearCellClicked($event)"
-                    (yearCellKeyDown)="onYearCellKeyDown($event)"></lib-year-view>
+                    (yearCellKeyDown)="onYearCellKeyDown($event)"
+                    (viewActivated)="onViewActivated($event)"></lib-year-view>
 
     <lib-footer-bar *ngIf="opts.showFooterToday" [opts]="opts"
                     (footerBarTxtClicked)="onTodayFooterClicked()"></lib-footer-bar>

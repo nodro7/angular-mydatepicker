@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, SimpleChanges} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, AfterViewInit, Output, ViewEncapsulation, SimpleChanges} from "@angular/core";
 import {IMyCalendarDay} from "../../interfaces/my-calendar-day.interface";
 import {IMyDate} from "../../interfaces/my-date.interface";
 import {IMyDateRange} from "../../interfaces/my-date-range.interface";
@@ -7,6 +7,7 @@ import {IMyWeek} from "../../interfaces/my-week.interface";
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
+import {ActiveView} from "../../enums/active-view.enum";
 import {OPTS, DATES, WEEK_DAYS, SELECTED_DATE, SELECTED_DATE_RANGE} from "../../constants/constants";
 
 @Component({
@@ -15,7 +16,7 @@ import {OPTS, DATES, WEEK_DAYS, SELECTED_DATE, SELECTED_DATE_RANGE} from "../../
   providers: [UtilService],
   encapsulation: ViewEncapsulation.None
 })
-export class DayViewComponent implements OnChanges {
+export class DayViewComponent implements OnChanges, AfterViewInit {
   @Input() opts: IMyOptions;
   @Input() dates: Array<IMyWeek>;
   @Input() weekDays: Array<string>;
@@ -25,6 +26,7 @@ export class DayViewComponent implements OnChanges {
 
   @Output() dayCellClicked: EventEmitter<IMyCalendarDay> = new EventEmitter<IMyCalendarDay>();
   @Output() dayCellKeyDown: EventEmitter<any> = new EventEmitter<any>();
+  @Output() viewActivated: EventEmitter<ActiveView> = new EventEmitter<ActiveView>();
 
   prevMonthId: number = MonthId.prev;
   currMonthId: number = MonthId.curr;
@@ -48,6 +50,10 @@ export class DayViewComponent implements OnChanges {
     if (changes.hasOwnProperty(SELECTED_DATE_RANGE)) {
       this.selectedDateRange = changes[SELECTED_DATE_RANGE].currentValue;
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.viewActivated.emit(ActiveView.Date);
   }
 
   onDayCellClicked(event: any, cell: IMyCalendarDay): void {

@@ -19,6 +19,7 @@ import {MonthId} from "../../enums/month-id.enum";
 import {DefaultView} from "../../enums/default-view.enum";
 import {CalAnimation} from "../../enums/cal-animation.enum";
 import {HeaderAction} from "../../enums/header-action.enum";
+import {ActiveView} from "../../enums/active-view.enum";
 import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUNT, MONTH_COL_COUNT, YEAR_ROW_COUNT, YEAR_COL_COUNT, 
   SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT, TABINDEX, TD_SELECTOR, ZERO_STR, YEAR_SEPARATOR} from "../../constants/constants";
 
@@ -56,7 +57,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
   dateChanged: (dm: IMyDateModel, close: boolean) => void;
   calendarViewChanged: (cvc: IMyCalendarViewChanged) => void;
   rangeDateSelection: (rds: IMyRangeDateSelection) => void;
+  viewActivated: (va: ActiveView) => void;
   closedByEsc: () => void;
+  
   selectorPos: IMySelectorPosition = null;
 
   prevViewDisabled: boolean = false;
@@ -94,13 +97,14 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.clickListener();
   }
 
-  initializeComponent(opts: IMyOptions, defaultMonth: string, selectedValue: any, inputValue: string, selectorPos: IMySelectorPosition, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, cbe: () => void): void {
+  initializeComponent(opts: IMyOptions, defaultMonth: string, selectedValue: any, inputValue: string, selectorPos: IMySelectorPosition, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, va: (va: ActiveView) => void, cbe: () => void): void {
     this.opts = opts;
     this.selectorPos = selectorPos;
     
     this.dateChanged = dc;
     this.calendarViewChanged = cvc;
     this.rangeDateSelection = rds;
+    this.viewActivated = va;
     this.closedByEsc = cbe;
 
     const {defaultView, firstDayOfWeek, dayLabels} = opts;
@@ -418,6 +422,10 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
     // Create current month
     this.generateCalendar(monthNbr, year, true);
+  }
+
+  onViewActivated(event: any): void {
+    this.viewActivated(event);
   }
 
   onPrevNavigateBtnClicked(): void {

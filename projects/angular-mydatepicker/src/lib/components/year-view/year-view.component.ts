@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, AfterViewInit, Output, SimpleChanges, ViewEncapsulation} from "@angular/core";
 import {IMyCalendarYear} from "../../interfaces/my-calendar-year.interface";
 import {IMyOptions} from "../../interfaces/my-options.interface";
 import {KeyCode} from "../../enums/key-code.enum";
+import {ActiveView} from "../../enums/active-view.enum";
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {YEARS, OPTS} from "../../constants/constants";
 
@@ -11,12 +12,14 @@ import {YEARS, OPTS} from "../../constants/constants";
   providers: [UtilService],
   encapsulation: ViewEncapsulation.None
 })
-export class YearViewComponent implements OnChanges {
+export class YearViewComponent implements OnChanges, AfterViewInit {
   @Input() opts: IMyOptions;
   @Input() years: Array<Array<IMyCalendarYear>>;
   @Input() viewChanged: boolean;
+
   @Output() yearCellClicked: EventEmitter<IMyCalendarYear> = new EventEmitter<IMyCalendarYear>();
   @Output() yearCellKeyDown: EventEmitter<any> = new EventEmitter<any>();
+  @Output() viewActivated: EventEmitter<ActiveView> = new EventEmitter<ActiveView>();
 
   constructor(private utilService: UtilService) { }
 
@@ -27,6 +30,10 @@ export class YearViewComponent implements OnChanges {
     if (changes.hasOwnProperty(YEARS)) {
       this.years = changes[YEARS].currentValue;
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.viewActivated.emit(ActiveView.Year);
   }
 
   onYearCellClicked(event: any, cell: IMyCalendarYear): void {

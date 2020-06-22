@@ -370,6 +370,16 @@ Header button (previous, month, year or next) action. Calling this function has 
   * Example of the __rangeDateSelection__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/rangeDateSelection-callback).
 
 
+### viewActivated callback
+  * called when the calendar view (date, month or year) change
+    * __event__: View number as an enum value [ActiveView](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/enums/active-view.enum.ts)
+      * __1__ = date view
+      * __2__ = month view
+      * __3__ = year view
+
+  * Example of the __viewActivated__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/viewActivated-callback).
+
+
 ## Override styles of component
 
 It is possible to override styles of the datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
