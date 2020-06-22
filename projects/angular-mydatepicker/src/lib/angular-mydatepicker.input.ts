@@ -169,7 +169,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   private onClickWrapper = (evt: any) => this.onClick(evt);
 
   private onClick(evt: any) {
-    if (this.opts.closeSelectorOnDocumentClick && !this.preventClose && evt.target && this.cRef !== null && this.elem.nativeElement !== evt.target && !this.cRef.location.nativeElement.contains(evt.target) && !this.disabled) {
+    if (this.opts.closeSelectorOnDocumentClick && !this.preventClose && evt.target && this.cRef && this.elem.nativeElement !== evt.target && !this.cRef.location.nativeElement.contains(evt.target) && !this.disabled) {
       this.closeSelector(CalToggle.CloseByOutClick);
     }
   }
@@ -191,7 +191,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       this.parseOptions(changes[OPTIONS].currentValue);
     }
 
-    if (this.cRef !== null) {
+    if (this.cRef) {
       this.cRef.instance.refreshComponent(this.opts, this.defaultMonth, this.selectedValue, this.getHostValue());
     }
   }
@@ -239,7 +239,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
       this.setHostValue(EMPTY_STR);
       this.emitInputFieldChanged(EMPTY_STR, false);
 
-      if (this.cRef !== null) {
+      if (this.cRef) {
         this.cRef.instance.resetDateValue();
       }
     }
@@ -259,11 +259,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         this.emitInputFieldChanged(formatted, valid);
         this.setSelectedValue(this.utilService.getDateModel(date, null, dateFormat, monthLabels, dateRangeDatesDelimiter));
 
-        if (this.cRef !== null) {
-          this.cRef.instance.setDateValue(date);
-          if (inline) {
-            this.cRef.instance.setDefaultMonth(date.month, date.year);
-          }
+        if (this.cRef) {
+          this.cRef.instance.refreshComponent(this.opts, this.defaultMonth, this.selectedValue, this.getHostValue());
         }
       }
     }
@@ -287,11 +284,8 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
         const dateRange: IMyDateRange = {begin: beginDate, end: endDate};
         this.setSelectedValue(this.utilService.getDateModel(null, dateRange, dateFormat, monthLabels, dateRangeDatesDelimiter));
 
-        if (this.cRef !== null) {
-          this.cRef.instance.setDateRangeValue(beginDate, endDate);
-          if (inline) {
-            this.cRef.instance.setDefaultMonth(beginDate.month, beginDate.year);
-          }
+        if (this.cRef) {
+          this.cRef.instance.refreshComponent(this.opts, this.defaultMonth, this.selectedValue, this.getHostValue());
         }
       }
     }
@@ -434,7 +428,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.onChangeCb(null);
     this.onTouchedCb();
 
-    if (this.cRef !== null) {
+    if (this.cRef) {
       this.cRef.instance.clearDate();
     }
 
@@ -473,7 +467,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   public headerAction(headerAction: HeaderAction): void {
-    if (this.cRef !== null) {
+    if (this.cRef) {
       this.cRef.instance.headerAction(headerAction);
     }
   }
@@ -485,7 +479,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   private onAnimateWrapper = (reason: number) => this.animationEnd(reason);
 
   private animationEnd(reason: number): void {
-    if (this.cRef !== null) {
+    if (this.cRef) {
       this.cRef.instance.selectorEl.nativeElement.removeEventListener(ANIMATION_END, this.onAnimateWrapper);
       this.removeComponent();
       this.emitCalendarToggle(reason);
@@ -495,7 +489,7 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   private closeSelector(reason: number): void {
     const {inline, calendarAnimation} = this.opts;
     
-    if (this.cRef !== null && !inline) {
+    if (this.cRef && !inline) {
       if (calendarAnimation.out !== CalAnimation.None) {
         const {instance} = this.cRef;
         instance.selectorEl.nativeElement.addEventListener(ANIMATION_END, this.onAnimateWrapper.bind(this, reason));

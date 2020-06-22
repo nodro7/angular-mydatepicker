@@ -115,13 +115,12 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
       }
     }
 
-    this.setSelectedMonth(defaultMonth, selectedValue, inputValue);
-
+    this.initializeView(defaultMonth, selectedValue, inputValue);
     this.setCalendarVisibleMonth();
     this.setDefaultView(defaultView);
   }
 
-  setSelectedMonth(defaultMonth: string, selectedValue: any, inputValue: string): void {
+  initializeView(defaultMonth: string, selectedValue: any, inputValue: string): void {
     const {dateRange} = this.opts;
 
     // use today as a selected month
@@ -161,8 +160,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
     const {defaultView} = opts;
 
-    this.setSelectedMonth(defaultMonth, selectedValue, inputValue);
-
+    this.initializeView(defaultMonth, selectedValue, inputValue);
     this.setCalendarVisibleMonth();
     this.setDefaultView(defaultView);
   }
@@ -231,21 +229,6 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.selectedMonth = {monthNbr: month, year: year};
     
     this.resetDateValue();
-    this.setCalendarVisibleMonth();
-    this.resetMonthYearSelect();
-  }
-
-  setDateValue(date: IMyDate): void {
-    this.selectedDate = date;
-  }
-
-  setDateRangeValue(begin: IMyDate, end: IMyDate): void {
-    this.selectedDateRange.begin = begin;
-    this.selectedDateRange.end = end;
-  }
-
-  setDefaultMonth(monthNbr: number, year: number): void {
-    this.selectedMonth = {monthNbr, year};
     this.setCalendarVisibleMonth();
     this.resetMonthYearSelect();
   }

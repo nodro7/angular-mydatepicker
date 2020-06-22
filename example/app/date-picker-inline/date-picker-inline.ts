@@ -47,6 +47,17 @@ export class DatePickerInline implements OnInit {
     this.myDatePickerOptions = copy;
   }
 
+  onInitToPastMonth(): void {
+    let d: Date = new Date();
+    d.setMonth(d.getMonth() - 1);
+    this.model = {
+      isRange: false, 
+      singleDate: {
+        date: {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()}
+      }, 
+      dateRange: null};
+  }
+
   onTodayPlus3(): void {
     let today: Date = new Date();
     let date: Date = new Date();

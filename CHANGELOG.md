@@ -731,4 +731,15 @@
 
 ### Features
 
-* README updated. Example app updated..
+* README updated. Example app updated.
+
+
+# 0.9.10 (2020-06-22)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* README updated. Example app updated. Code refactored.

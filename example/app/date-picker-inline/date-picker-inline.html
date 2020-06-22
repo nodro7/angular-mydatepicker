@@ -16,8 +16,15 @@
     <button type="button" class="submitButton" (click)="onSubmit()">Submit</button>
     <button type="button" class="submitButton" (click)="dp.clearDate()">Clear</button>
     <button type="button" class="submitButton" (click)="onDisableUntilYesterday()">Disable until yesterday</button>
+  </div>
+
+  <div>
     <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onTodayPlus3()">Range today + 3</button>
     <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onYesterdayPlus3()">Range yesterday + 3</button>
+  </div>
+
+  <div>
+    <button type="button" class="submitButton" (click)="onInitToPastMonth()">Init to past month</button>
   </div>
 
   <div>
