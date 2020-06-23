@@ -8,6 +8,7 @@ import {AngularMyDatePickerDirective} from '../angular-mydatepicker.input';
 import {IAngularMyDpOptions, IMyOptions} from '../interfaces/my-options.interface';
 import {IMyDateModel} from '../interfaces/my-date-model.interface';
 import {DefaultView} from '../enums/default-view.enum';
+import {HeaderAction} from '../enums/header-action.enum';
 import {CalAnimation} from '../enums/cal-animation.enum';
 
 let comp: AngularMyDatepickerTestComponent;
@@ -52,6 +53,10 @@ class AngularMyDatepickerTestComponent {
 
   clearDate(): void {
     this.vcDp.clearDate();
+  }
+
+  headerAction(headerAction: HeaderAction): void {
+    this.vcDp.headerAction(headerAction);
   }
 
   parseOptions(opts: IMyOptions): void {
@@ -301,6 +306,98 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     selector = getElement('.myDpSelector');
     expect(selector).toBe(null);
+  });
+
+  it('test clearDate function', () => {
+    let opts: IMyOptions = {
+      dateRange: false,
+      dateFormat: 'dd.mm.yyyy'
+    };
+
+    comp.parseOptions(opts);
+    comp.setDefaultMonth('2020/06');
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let dateCell = getElement('.d_0_0');
+    expect(dateCell).not.toBe(null);
+
+    dateCell.click();
+
+    fixture.detectChanges();
+    let selection = getElement('.myDateInput');
+    expect(selection.value).toBe('01.06.2020');
+
+    comp.clearDate();
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('');
+
+    comp.closeCalendar();
+  });
+
+  it('test headerAction function', () => {
+    comp.setDefaultMonth('2020/06');
+    comp.openCalendar();
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent).toBe('Jun');
+
+    let yearlabel = getElement('.myDpMonthYearText .myDpYearBtn');
+    expect(yearlabel).not.toBe(null);
+    expect(yearlabel.textContent).toBe('2020');
+
+    fixture.detectChanges();
+    comp.headerAction(HeaderAction.PrevBtnClick);
+
+    fixture.detectChanges();
+    monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent).toBe('May');
+
+    comp.closeCalendar();
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    comp.headerAction(HeaderAction.NextBtnClick);
+
+    fixture.detectChanges();
+    monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
+    expect(monthlabel).not.toBe(null);
+    expect(monthlabel.textContent).toBe('Jul');
+
+    comp.closeCalendar();
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let dateCell = getElement('.d_0_0');
+    expect(dateCell).not.toBe(null);
+
+    fixture.detectChanges();
+    comp.headerAction(HeaderAction.MonthBtnClick);
+
+    fixture.detectChanges();
+    let monthCell = getElement('.m_0_0');
+    expect(monthCell).not.toBe(null);
+
+    fixture.detectChanges();
+    comp.headerAction(HeaderAction.YearBtnClick);
+
+    fixture.detectChanges();
+    let yearCell = getElement('.y_0_0');
+    expect(yearCell).not.toBe(null);
+
+    comp.closeCalendar();
   });
 
   it('select and clear date', () => {
