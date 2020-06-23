@@ -400,6 +400,24 @@ describe('AngularMyDatePickerComponent', () => {
     comp.closeCalendar();
   });
 
+  it('test document click', () => {
+    comp.setDefaultMonth('2020/06');
+    comp.openCalendar();
+
+    fixture.detectChanges();
+    let selector = getElement('.myDpSelector');
+    expect(selector).not.toBe(null);
+
+    fixture.detectChanges();
+    document.dispatchEvent(new Event('click'));
+
+    setTimeout(() => {
+      fixture.detectChanges();
+      selector = getElement('.myDpSelector');
+      expect(selector).toBe(null);
+    }, 1000)
+  });
+
   it('select and clear date', () => {
     comp.setDefaultMonth('2019/05');
     comp.openCalendar();
