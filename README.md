@@ -13,6 +13,7 @@ Screenshots using [predefined styles](https://github.com/kekeh/angular-mydatepic
 [![codecov](https://codecov.io/gh/kekeh/angular-mydatepicker/branch/master/graph/badge.svg)](https://codecov.io/gh/kekeh/angular-mydatepicker)
 [![npm](https://img.shields.io/npm/v/angular-mydatepicker.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/angular-mydatepicker)
 [![npm](https://img.shields.io/npm/dt/angular-mydatepicker.svg)](https://www.npmjs.com/package/angular-mydatepicker)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/kekeh/angular-mydatepicker/blob/master/LICENSE)
 
 
 ## Browser support (tested)
