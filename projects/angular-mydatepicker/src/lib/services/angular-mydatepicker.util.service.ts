@@ -559,8 +559,8 @@ export class UtilService {
     }
   }
 
-  getKeyCodeFromEvent(evt: any): number {
-    let key: any = evt.key || evt.keyCode || evt.which;
+  getKeyCodeFromEvent(event: any): number {
+    let key: any = event.key || event.keyCode || event.which;
 
     if (this.checkKeyName(key, KeyName.enter) || key === KeyCode.enter) {
       return KeyCode.enter;

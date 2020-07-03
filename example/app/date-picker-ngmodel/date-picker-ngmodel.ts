@@ -16,7 +16,7 @@ export class DatePickerNgmodel implements OnInit {
     markCurrentDay: true,
     alignSelectorRight: false,
     openSelectorTopOfInput: false,
-    minYear: 1870,
+    minYear: 1971,
     maxYear: 2200,
     showSelectorArrow: true,
     monthSelector: true,

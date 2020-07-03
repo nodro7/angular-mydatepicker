@@ -167,10 +167,12 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.onTouchedCb();
   }
 
-  private onClickWrapper = (evt: any) => this.onClick(evt);
+  private onClickWrapper = (event: any) => this.onClick(event);
 
-  private onClick(evt: any) {
-    if (this.opts.closeSelectorOnDocumentClick && !this.preventClose && evt.target && this.cRef && this.elem.nativeElement !== evt.target && !this.cRef.location.nativeElement.contains(evt.target) && !this.disabled) {
+  private onClick(event: any) {
+    if (this.opts.closeSelectorOnDocumentClick && !this.preventClose && event.target && this.cRef 
+        && this.elem.nativeElement !== event.target && !this.cRef.location.nativeElement.contains(event.target) 
+        && !this.disabled) {
       this.closeSelector(CalToggle.CloseByOutClick);
     }
   }
@@ -209,21 +211,27 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
   }
 
   public parseOptions(opts: IMyOptions): void {
-    if (opts !== undefined) {
+    if (opts) {
       Object.keys(opts).forEach((k) => {
         (<IMyOptions> this.opts)[k] = opts[k];
       });
     }
-    if (this.opts.minYear < Year.min) {
+
+    const {minYear, maxYear, openSelectorTopOfInput, inline} = this.opts;
+
+    if (minYear < Year.min) {
       this.opts.minYear = Year.min;
     }
-    if (this.opts.maxYear > Year.max) {
+
+    if (maxYear > Year.max) {
       this.opts.maxYear = Year.max;
     }
-    if (this.opts.openSelectorTopOfInput || this.opts.inline) {
+
+    if (openSelectorTopOfInput || inline) {
       this.opts.showSelectorArrow = false;
     }
-    if (this.opts.inline) {
+
+    if (inline) {
       this.openCalendar();
     }
   }

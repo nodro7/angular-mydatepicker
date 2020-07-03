@@ -754,3 +754,14 @@
 ### Features
 
 * Added a new callback: viewActivated(view).
+
+
+# 0.9.12 (2020-07-03)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Minor changes. Refactoring code.
