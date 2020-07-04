@@ -44,7 +44,7 @@ export class DpOptionsComponent implements OnInit {
 
   //public calendarSize: any = 266;
 
-  public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark');
+  public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark', 'Bold');
 
   public locale: string = 'en';
   public locales: Array<string> = [
@@ -706,6 +706,41 @@ export class DpOptionsComponent implements OnInit {
         background-color: #6c757d;
       }
     `
+    }
+    else if (color === 'Bold') {
+      copy.stylesData.styles = `
+      .dp1 .myDpHeaderBtn {
+        font-size: 20px;
+        font-weight: bold;
+        color: #191aa5;
+      }
+      .dp1 .myDpWeekDayTitle {
+        font-size: 16px;
+        font-weight: bold;
+        color: #191aa5;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+        font-size: 18px;
+        font-weight: bold;
+        color: #191aa5;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+        color: cornflowerblue;
+        font-weight: bold;
+      }
+      .dp1 .myDpMonthNbr {
+        font-size: 14px;
+      }
+      .dp1 .myDpMarkCurrDay,
+      .dp1 .myDpMarkCurrMonth,
+      .dp1 .myDpMarkCurrYear {
+        border-bottom: 2px solid #191aa5;
+      }
+
+      `
     }
 
     this.myOptions = copy;
