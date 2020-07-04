@@ -238,6 +238,8 @@ export class DpOptionsComponent implements OnInit {
   onOverrideStyles(color: string) {
     let copy = this.getCopyOfOptions();
     copy.stylesData.selector = 'dp1';
+    copy.selectorHeight = '266px';
+    copy.selectorWidth = '266px';
  
     if (color === 'Default') {
       copy.stylesData.styles = '';
@@ -741,6 +743,8 @@ export class DpOptionsComponent implements OnInit {
       }
 
       `
+      copy.selectorHeight = '300px';
+      copy.selectorWidth = '300px';
     }
 
     this.myOptions = copy;
