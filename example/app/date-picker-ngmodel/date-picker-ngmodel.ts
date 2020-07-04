@@ -921,19 +921,19 @@ export class DatePickerNgmodel implements OnInit {
       .dp1 .myDpHeaderBtn {
         font-size: 20px;
         font-weight: bold;
-        color: #141E83;
+        color: #191aa5;
       }
       .dp1 .myDpWeekDayTitle {
         font-size: 16px;
         font-weight: bold;
-        color: #141E83;
+        color: #191aa5;
       }
       .dp1 .myDpCurrMonth,
       .dp1 .myDpMonthcell,
       .dp1 .myDpYearcell {
         font-size: 18px;
         font-weight: bold;
-        color: #141E83;
+        color: #191aa5;
       }
       .dp1 .myDpPrevMonth,
       .dp1 .myDpNextMonth {
@@ -942,6 +942,11 @@ export class DatePickerNgmodel implements OnInit {
       }
       .dp1 .myDpMonthNbr {
         font-size: 14px;
+      }
+      .dp1 .myDpMarkCurrDay,
+      .dp1 .myDpMarkCurrMonth,
+      .dp1 .myDpMarkCurrYear {
+        border-bottom: 2px solid #191aa5;
       }
 
       `
