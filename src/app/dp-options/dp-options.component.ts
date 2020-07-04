@@ -741,6 +741,9 @@ export class DpOptionsComponent implements OnInit {
       .dp1 .myDpMarkCurrYear {
         border-bottom: 2px solid #191aa5;
       }
+      .dp1 .myDpDisabled {
+        color: #999;
+      }
 
       `
       copy.selectorHeight = '300px';
