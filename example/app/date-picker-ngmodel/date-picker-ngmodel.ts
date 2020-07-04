@@ -71,7 +71,7 @@ export class DatePickerNgmodel implements OnInit {
   public selectorSizes: Array<string> = new Array('266px x 266px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
   public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop-ScaleCenter', 'ScaleCenter-ScaleTop', 'Rotate', 'FlipDiagonal');
-  public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark');
+  public styleColor: Array<string> = new Array('Default', 'Grey', 'Blue', 'Green', 'Red', 'Yellow', 'Dark', 'Bold');
 
   public locale: string = 'en';
 
@@ -915,6 +915,36 @@ export class DatePickerNgmodel implements OnInit {
         background-color: #6c757d;
       }
     `
+    }
+    else if (color === 'Bold') {
+      copy.stylesData.styles = `
+      .dp1 .myDpHeaderBtn {
+        font-size: 20px;
+        font-weight: bold;
+        color: #141E83;
+      }
+      .dp1 .myDpWeekDayTitle {
+        font-size: 16px;
+        font-weight: bold;
+        color: #141E83;
+      }
+      .dp1 .myDpCurrMonth,
+      .dp1 .myDpMonthcell,
+      .dp1 .myDpYearcell {
+        font-size: 18px;
+        font-weight: bold;
+        color: #141E83;
+      }
+      .dp1 .myDpPrevMonth,
+      .dp1 .myDpNextMonth {
+        color: cornflowerblue;
+        font-weight: bold;
+      }
+      .dp1 .myDpMonthNbr {
+        font-size: 14px;
+      }
+
+      `
     }
 
     this.myDatePickerOptions = copy;
