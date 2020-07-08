@@ -954,6 +954,34 @@ export class DatePickerNgmodel implements OnInit {
         color: #999;
       }
 
+      .dp1 .myDpHeaderBtn:focus,
+      .dp1 .myDpMonthLabel:focus,
+      .dp1 .myDpYearLabel:focus {
+        color: #FFDAB9;
+      }
+      .dp1 .myDpDaycell:focus,
+      .dp1 .myDpMonthcell:focus,
+      .dp1 .myDpYearcell:focus {
+        box-shadow: inset 0 0 0 1px #F4A460;
+      }
+      .dp1 .myDpSelector:focus {
+        box-shadow: -1px 1px 6px 0px #FADABF;
+      }
+      .dp1 .myDpSelectorArrow:focus:before {
+        border-bottom-color: #FADABF;
+      }
+      .dp1 .myDpHeaderBtnEnabled:hover,
+      .dp1 .myDpMonthLabel:hover,
+      .dp1 .myDpYearLabel:hover,
+      .dp1 .myDpFooterBtn:hover {
+          color: #F0E68C;
+      }
+      .dp1 .myDpTableSingleDay:hover, 
+      .dp1 .myDpTableSingleMonth:hover, 
+      .dp1 .myDpTableSingleYear:hover {
+          background-color: #F0E68C;
+          color: #113B08;
+      }
       `
       copy.selectorHeight = '300px';
       copy.selectorWidth = '300px';
