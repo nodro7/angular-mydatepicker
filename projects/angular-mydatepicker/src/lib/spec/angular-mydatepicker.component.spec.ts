@@ -68,8 +68,8 @@ class AngularMyDatepickerTestComponent {
     this.vcDp.setLocaleOptions();
   }
 
-  setDefaultMonth(defMonth: string): void {
-    this.vcDp.defaultMonth = defMonth;
+  setDefaultMonth(defMonth: any): void {
+    this.vcDp.defaultMonth = {defMonth: defMonth, overrideSelection: false};
   }
 
   setInputType(type: string): void {

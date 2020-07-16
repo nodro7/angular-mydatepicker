@@ -13,6 +13,7 @@ import {IMyDateModel} from "../../interfaces/my-date-model.interface";
 import {IMyRangeDateSelection} from "../../interfaces/my-range-date-selection.interface";
 import {IMyCalendarAnimation} from "../../interfaces/my-calendar-animation.interface";
 import {IMyValidateOptions} from "../../interfaces/my-validate-options.interface";
+import {IMyDefaultMonth} from "../../interfaces/my-default-month.interface";
 import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {KeyCode} from "../../enums/key-code.enum";
 import {MonthId} from "../../enums/month-id.enum";
@@ -97,7 +98,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.clickListener();
   }
 
-  initializeComponent(opts: IMyOptions, defaultMonth: string, selectedValue: any, inputValue: string, selectorPos: IMySelectorPosition, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, va: (va: ActiveView) => void, cbe: () => void): void {
+  initializeComponent(opts: IMyOptions, defaultMonth: IMyDefaultMonth, selectedValue: any, inputValue: string, selectorPos: IMySelectorPosition, dc: (dm: IMyDateModel, close: boolean) => void, cvc: (cvc: IMyCalendarViewChanged) => void, rds: (rds: IMyRangeDateSelection) => void, va: (va: ActiveView) => void, cbe: () => void): void {
     this.opts = opts;
     this.selectorPos = selectorPos;
     
@@ -124,7 +125,7 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.setDefaultView(defaultView);
   }
 
-  initializeView(defaultMonth: string, selectedValue: any, inputValue: string): void {
+  initializeView(defaultMonth: IMyDefaultMonth, selectedValue: any, inputValue: string): void {
     const {dateRange} = this.opts;
 
     // use today as a selected month
@@ -132,8 +133,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
     this.selectedMonth = {monthNbr: today.month, year: today.year};
 
     // If default month attribute valur given use it as a selected month
-    if (defaultMonth && defaultMonth.length) {
-      this.selectedMonth = this.utilService.parseDefaultMonth(defaultMonth);
+    const {defMonth, overrideSelection} = defaultMonth;
+    if (defMonth && defMonth.length) {
+      this.selectedMonth = this.utilService.parseDefaultMonth(defMonth);
     }
 
     let validateOpts: IMyValidateOptions = null;
@@ -144,7 +146,9 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
       if (this.utilService.isInitializedDate(date)) {
         this.selectedDate = date;
-        this.selectedMonth = {monthNbr: date.month, year: date.year};
+        if (!overrideSelection) {
+          this.selectedMonth = {monthNbr: date.month, year: date.year};
+        }
       }
     }
     else {
@@ -154,12 +158,14 @@ export class CalendarComponent implements AfterViewInit, OnDestroy {
 
       if (this.utilService.isInitializedDate(begin) && this.utilService.isInitializedDate(end)) {
         this.selectedDateRange = {begin, end};
-        this.selectedMonth = {monthNbr: begin.month, year: begin.year};
+        if (!overrideSelection) {
+          this.selectedMonth = {monthNbr: begin.month, year: begin.year};
+        }
       }
     }
   }
 
-  refreshComponent(opts: IMyOptions, defaultMonth: string, selectedValue: any, inputValue: string): void {
+  refreshComponent(opts: IMyOptions, defaultMonth: IMyDefaultMonth, selectedValue: any, inputValue: string): void {
     this.opts = opts;
 
     const {defaultView} = opts;

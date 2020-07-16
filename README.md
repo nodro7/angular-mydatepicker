@@ -248,10 +248,11 @@ Try locales [here](https://kekeh.github.io/angular-mydatepicker/).
 ### defaultMonth attribute
 
 Visible month/year when calendar is opened:
-* If date is already selected => calendar opens to the month and year of the selected date
-  * In date range mode => calendar opens to the month and year of the selected begin date
-* If the __defaultMonth__ is set => calendar opens to the month and year specified in the the __defaultMonth__ attribute
-* If none of above => calendar opens to the month and year of current date
+* If date is already selected => calendar opens to the month and the year of the selected date
+  * In date range mode => calendar opens to the month and the year of the selected begin date
+  * If an __overrideSelection__ property is set to __true__ in the [IMyDefaultMonth](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-default-month.interface.ts) the calendar opens to the month and the year specified in the the __defaultMonth__ attribute even the date is selected.
+* If the __defaultMonth__ is set => calendar opens to the month and the year specified in the the __defaultMonth__ attribute
+* If none of above => calendar opens to the month and the year of current date
 
 Value of the __defaultMonth__ attribute can be:
   * [IMyDefaultMonth](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-default-month.interface.ts) object. The value of __defMonth__ property can be a string which contain year number and month number separated by delimiter. The delimiter can be any special character. For example: __08-2019__ or __08/2019__.

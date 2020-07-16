@@ -765,3 +765,14 @@
 ### Features
 
 * Minor changes. Refactoring code.
+
+
+# 0.10.0 (2020-07-16)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added optional override selection property to the defaultMonth attribute.

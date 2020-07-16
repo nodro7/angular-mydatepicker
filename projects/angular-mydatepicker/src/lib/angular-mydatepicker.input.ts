@@ -11,6 +11,7 @@ import {IMyCalendarViewChanged} from "./interfaces/my-calendar-view-changed.inte
 import {IMyInputFieldChanged} from "./interfaces/my-input-field-changed.interface";
 import {IMySelectorPosition} from "./interfaces/my-selector-pos.interface";
 import {IMyValidateOptions} from "./interfaces/my-validate-options.interface";
+import {IMyDefaultMonth} from "./interfaces/my-default-month.interface";
 import {LocaleService} from "./services/angular-mydatepicker.locale.service";
 import {UtilService} from "./services/angular-mydatepicker.util.service";
 import {DefaultConfigService} from "./services/angular-mydatepicker.config.service";
@@ -43,7 +44,7 @@ const NGX_DP_VALIDATORS = {
 export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, ControlValueAccessor, Validator {
   @Input() options: IMyOptions;
   @Input() locale: string;
-  @Input() defaultMonth: string;
+  @Input() defaultMonth: IMyDefaultMonth = {defMonth: EMPTY_STR, overrideSelection: false};
 
   @Output() dateChanged: EventEmitter<IMyDateModel> = new EventEmitter<IMyDateModel>();
   @Output() inputFieldChanged: EventEmitter<IMyInputFieldChanged> = new EventEmitter<IMyInputFieldChanged>();
@@ -185,8 +186,14 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     if (changes.hasOwnProperty(DEFAULT_MONTH)) {
       let dm: any = changes[DEFAULT_MONTH].currentValue;
       if (typeof dm === OBJECT) {
-        dm = dm.defMonth;
+        if (!dm.overrideSelection) {
+          dm.overrideSelection = false;
+        }
       }
+      else {
+        dm = {defMonth: dm, overrideSelection: false};
+      }
+      
       this.defaultMonth = dm;
     }
 

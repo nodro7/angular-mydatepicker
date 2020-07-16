@@ -65,9 +65,10 @@ export class DatePickerNgmodel implements OnInit {
   public model: IMyDateModel = null;   // not initial date set
 
   public defMonth: IMyDefaultMonth = {
-    defMonth: ''
+    defMonth: '',
+    overrideSelection: false
   };
-
+  
   public selectorSizes: Array<string> = new Array('266px x 266px', '200px x 220px', '260px x 290px');
   public defaultViews: Array<string> = new Array('date', 'month', 'year');
   public calAnimations: Array<string> = new Array('None', 'Fade', 'ScaleTop-ScaleCenter', 'ScaleCenter-ScaleTop', 'Rotate', 'FlipDiagonal');
