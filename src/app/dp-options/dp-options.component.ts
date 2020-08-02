@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyCalendarAnimation, CalAnimation} from 'angular-mydatepicker';
+import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyCalendarAnimation, CalAnimation, AngularMyDatePickerDirective} from 'angular-mydatepicker';
 
 @Component({
   selector: 'app-dp-options',
@@ -8,6 +8,8 @@ import {IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyCalendarAnimation,
   styleUrls: ['./dp-options.component.css']
 })
 export class DpOptionsComponent implements OnInit {
+
+  @ViewChild('dp') mydp: AngularMyDatePickerDirective;
 
   public myOptions: IAngularMyDpOptions = {
     dateRange: false,
@@ -41,6 +43,8 @@ export class DpOptionsComponent implements OnInit {
   ];
 
   public animation: string = "None";
+  public showInputButtons: boolean = true;
+  public placeHolderText: string = "Select a date";
 
   //public calendarSize: any = 266;
 
@@ -97,6 +101,12 @@ export class DpOptionsComponent implements OnInit {
   ];
 
   ngOnInit() {
+  }
+
+  onInputBoxClicked(): void {
+    if (!this.showInputButtons) {
+      this.mydp.toggleCalendar();
+    }
   }
 
   onDisableUntilYesterday(checked: boolean): void {
@@ -168,6 +178,8 @@ export class DpOptionsComponent implements OnInit {
     let copy = this.getCopyOfOptions();
     copy.dateRange = checked;
     this.myOptions = copy;
+
+    this.setPlaceholderText();
   }
 
   onRtl(checked: boolean): void {
@@ -186,6 +198,11 @@ export class DpOptionsComponent implements OnInit {
     let copy = this.getCopyOfOptions();
     copy.viewChangeAnimation = checked;
     this.myOptions = copy;
+  }
+
+  onHideInputButtons(checked: boolean): void {
+    this.showInputButtons = !checked;
+    this.setPlaceholderText();
   }
 
   onChangeCalendarAnimation(animation: string): void {
@@ -806,5 +823,20 @@ export class DpOptionsComponent implements OnInit {
 
   getRandomNbr(): number {
     return Math.floor(Math.random() * 5) + 1;
+  }
+
+  setPlaceholderText(): void {
+    if (this.myOptions.dateRange && this.showInputButtons) {
+      this.placeHolderText = "Select a date range"
+    }
+    else if (!this.myOptions.dateRange && this.showInputButtons) {
+      this.placeHolderText = "Select a date"
+    }
+    else if (this.myOptions.dateRange && !this.showInputButtons) {
+      this.placeHolderText = "Click to select a date range"
+    }
+    else if (!this.myOptions.dateRange && !this.showInputButtons) {
+      this.placeHolderText = "Click to select a date"
+    }
   }
 }

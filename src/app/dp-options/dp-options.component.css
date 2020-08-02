@@ -46,6 +46,25 @@
   font-weight: bold;
 }
 
+.closeIconContainer {
+  margin-left: -26px;
+  z-index: 100;
+}
+
+.closeIcon {
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.closeIcon:hover {
+  color: #ccc;
+}
+
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 @media screen and (max-width: 1500px) {
   .calendarAnimationOptions {
     display: block;

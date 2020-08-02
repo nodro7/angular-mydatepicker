@@ -95,6 +95,24 @@
 
   </div>
 
+  <div class="optionsContainer">
+    <div class="form-check optionsItem">
+      <input class="form-check-input inputBox" type="checkbox" id="inputButtons" (change)="onHideInputButtons($event.currentTarget.checked)" [checked]="false">
+      <label class="form-check-label" for="inputButtons">
+        Hide input buttons
+      </label>
+    </div>
+
+    <div class="form-check optionsItem">
+
+    </div>
+
+    <div class="form-check optionsItem">
+
+    </div>
+
+  </div>
+
   <div class="optionsContainer calendarAnimationOptions">
 
     <div class="form-check selectItem">
@@ -150,18 +168,22 @@
 
 
   <div class="input-group datePicker">
-    <input class="form-control" placeholder="{{myOptions.dateRange ? 'Select a date range' : 'Select a date'}}" angular-mydatepicker name="mydate" [locale]="locale"
+    <input class="form-control" placeholder="{{placeHolderText}}" angular-mydatepicker name="mydate" [locale]="locale"
            [(ngModel)]="model" [options]="myOptions" #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"
-           (calendarToggle)="onCalendarToggle()"/>
-    <div class="input-group-append">
+           (calendarToggle)="onCalendarToggle()" (click)="onInputBoxClicked()"/>
+    <div class="input-group-append" *ngIf="showInputButtons">
       <button type="button" class="btn btn-secondary" *ngIf="model" (click)="dp.clearDate()">
         <i class="fa fa-close"></i>
       </button>
     </div>
-    <div class="input-group-append">
+    <div class="input-group-append" *ngIf="showInputButtons">
       <button type="button" class="btn btn-secondary" (click)="dp.toggleCalendar()">
         <i class="fa fa-calendar-o"></i>
       </button>
+    </div>
+
+    <div class="input-group-append" *ngIf="model && !showInputButtons">
+      <div class="closeIconContainer"><i class="fa fa-close closeIcon" (click)="dp.clearDate()"></i></div>
     </div>
   </div>
 

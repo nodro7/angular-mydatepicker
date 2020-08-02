@@ -23,7 +23,7 @@
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3",
-    "angular-mydatepicker": "^0.9.12",
+    "angular-mydatepicker": "^0.10.1",
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
