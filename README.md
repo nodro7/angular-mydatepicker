@@ -418,12 +418,12 @@ In order the following commands work you need a __git client__ and __npm__.
   
 * Run tests and lint:
   1. Tests: __npm run test-lib__
-     * the __test-output__ folder will be generated under the root folder and it contain a coverage report
+     * the __test-output__ folder is created under the root folder and it contains a coverage report
   2. Lint: __npm run lint-lib__
   
 * Build datepicker library:
   1. __npm run build-lib__ 
-     * the __dist/angular-mydatepicker__ folder will be created under the root folder
+     * the __dist/angular-mydatepicker__ folder is created under the root folder
 
 * Build a local npm installation package:
   1. __npm run build-lib__
@@ -431,7 +431,7 @@ In order the following commands work you need a __git client__ and __npm__.
   3. __npm pack__
     * local installation package is created to the __dist/angular-mydatepicker__ folder. For example: __angular-mydatepicker-0.0.1.tgz__
 
-* Install local npm package to your project:
+* Install local __npm__ package to your project:
   1. __npm install path_to_folder/angular-mydatepicker-0.0.1.tgz__
 
 ## Demo

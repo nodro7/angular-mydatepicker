@@ -776,3 +776,14 @@
 ### Features
 
 * Added optional override selection property to the defaultMonth attribute.
+
+
+# 0.10.1 (2020-08-02)
+
+### Bug Fixes
+
+* Added __outline: none__ style to date, month and year cells.
+
+### Features
+
+* none
