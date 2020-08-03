@@ -787,3 +787,15 @@
 ### Features
 
 * none
+
+
+# 0.10.2 (2020-08-03)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Merged: [Update angular-mydatepicker.locale.service.ts #57](https://github.com/kekeh/angular-mydatepicker/pull/57)
+

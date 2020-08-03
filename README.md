@@ -34,7 +34,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 ### Main features
 
 * no dependencies to other libraries
-* currently localized to 46 [languages](https://github.com/kekeh/angular-mydatepicker#locale-attribute)
+* currently localized to 47 [languages](https://github.com/kekeh/angular-mydatepicker#locale-attribute)
 * datepicker
 * date range picker
 * popup mode
@@ -200,6 +200,7 @@ Currently supported languages are:
 | __nl__ | Dutch |
 | __ru__ | Russian |
 | __uk__ | Ukrainian |
+| __uz__ | Uzbek |
 | __no__ | Norwegian |
 | __tr__ | Turkish |
 | __pt-br__ | Portuguese - Brazil |
