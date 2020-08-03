@@ -63,6 +63,7 @@ export class DpOptionsComponent implements OnInit {
     'nl | Dutch',
     'ru | Russian',
     'uk | Ukrainian',
+    'uz | Uzbek',
     'no | Norwegian',
     'tr | Turkish',
     'pt-br | Portuguese - Brazil',
