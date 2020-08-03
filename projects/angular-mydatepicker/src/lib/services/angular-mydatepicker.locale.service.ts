@@ -102,6 +102,14 @@ export class LocaleService {
       sunHighlight: true,
       todayTxt: "Сьогодні"
     },
+    "uz": {
+      dayLabels: {su: "Yak", mo: "Du", tu: "Se", we: "Cho", th: "Pay", fr: "Ju", sa: "Sha"},
+      monthLabels: { 1: "Yan", 2: "Fev", 3: "Mar", 4: "Apr", 5: "May", 6: "Iyn", 7: "Iyl", 8: "Avg", 9: "Sen", 10: "Okt", 11: "Noy", 12: "Dek" },
+      dateFormat: "dd.mm.yyyy",
+      firstDayOfWeek: "mo",
+      sunHighlight: true,
+      todayTxt: "Bugun"
+    },
     "no": {
       dayLabels: {su: "Søn", mo: "Man", tu: "Tir", we: "Ons", th: "Tor", fr: "Fre", sa: "Lør"},
       monthLabels: { 1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "Mai", 6: "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Okt", 11: "Nov", 12: "Des" },
