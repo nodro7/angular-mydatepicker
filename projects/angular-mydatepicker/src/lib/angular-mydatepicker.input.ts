@@ -491,6 +491,14 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     }
   }
 
+  public setHostValue(value: string): void {
+    const {divHostElement} = this.opts;
+    this.hostText = value;
+    const valueType: string = !divHostElement.enabled ? VALUE : INNER_HTML;
+    value = valueType === INNER_HTML && value === EMPTY_STR ? divHostElement.placeholder : value;
+    this.renderer.setProperty(this.elem.nativeElement, valueType, value);
+  }
+
   private ignoreKeyPress(keyCode: number): boolean {
     return keyCode === KeyCode.leftArrow || keyCode === KeyCode.rightArrow || keyCode === KeyCode.upArrow || keyCode === KeyCode.downArrow || keyCode === KeyCode.tab || keyCode === KeyCode.shift;
   }
@@ -537,14 +545,6 @@ export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, Contr
     this.setHostValue(this.utilService.getFormattedDate(model));
     this.onChangeCb(model);
     this.onTouchedCb();
-  }
-
-  private setHostValue(value: string): void {
-    const {divHostElement} = this.opts;
-    this.hostText = value;
-    const valueType: string = !divHostElement.enabled ? VALUE : INNER_HTML;
-    value = valueType === INNER_HTML && value === EMPTY_STR ? divHostElement.placeholder : value;
-    this.renderer.setProperty(this.elem.nativeElement, valueType, value);
   }
 
   private getHostValue(): string {

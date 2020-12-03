@@ -1022,6 +1022,7 @@ export class DatePickerNgmodel implements OnInit {
   // callbacks
   onDateChanged(event: IMyDateModel): void {
     console.log('onDateChanged(): ', event);
+
     if (!event.isRange) {
       let {date, jsDate, formatted, epoc} = event.singleDate;
       if (formatted !== '') {
@@ -1044,6 +1045,7 @@ export class DatePickerNgmodel implements OnInit {
         this.selectedTextNormal = '';
       }
     }
+
   }
 
   onInputFieldChanged(event: IMyInputFieldChanged): void {
@@ -1062,6 +1064,52 @@ export class DatePickerNgmodel implements OnInit {
 
   onRangeDateSelection(event: IMyRangeDateSelection): void {
     console.log('onRangeDateSelection(): event: ', event);
+/*
+    let {isBegin, date, jsDate} = event;
+
+    let options: IAngularMyDpOptions = this.getCopyOfOptions();
+    if(isBegin) {
+        // start date selection - set disable since (selected date + 7 days)
+        this.ngxdp.writeValue({
+          isRange: true, 
+          singleDate: null, 
+          dateRange: {
+            beginDate: {year: 0, month: 0, day: 0},
+            endDate: {year: 0, month: 0, day: 0}
+          }
+        });
+
+        this.ngxdp.setHostValue("");
+
+        let d = new Date(jsDate.getTime());
+        d.setDate(d.getDate() + 7);
+        
+        options.disableSince = {year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate()};
+        this.myDatePickerOptions = options;
+
+        this.defMonth = {
+          defMonth: date.month + '.' + date.year,
+          overrideSelection: true
+        };
+    }
+    else {
+        // end date selection - remove disableSince option
+        options.disableSince = {year: 0, month: 0, day: 0};
+        this.myDatePickerOptions = options;
+
+        let d: Date = new Date();
+
+        let month: any = d.getMonth() + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+
+        this.defMonth = {
+          defMonth: month + '.' + d.getFullYear(),
+          overrideSelection: false
+        };
+    }
+*/
   }
 
   onViewActivated(event: ActiveView): void {

@@ -300,6 +300,11 @@ Returns __true__ if the date or date range in the input box is valid. Otherwise 
 
 Header button (previous, month, year or next) action. Calling this function has same behaviour as clicking of the header button. Function has one parameter [HeaderAction](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/enums/header-action.enum.ts). Example of the __headerAction__ function is [here](https://github.com/kekeh/angular-mydatepicker/wiki/call-function-of-the-directive).
 
+
+### setHostValue function
+
+Sets host (input box) value.
+
 ## Callbacks
 
 ### dateChanged callback
