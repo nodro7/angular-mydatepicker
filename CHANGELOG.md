@@ -799,3 +799,13 @@
 
 * Merged: [Update angular-mydatepicker.locale.service.ts #57](https://github.com/kekeh/angular-mydatepicker/pull/57)
 
+
+# 0.11.0 (2021-02-19)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Peer dependencies removed from the package.json file.

@@ -1,6 +1,6 @@
 {
   "name": "angular-mydatepicker",
-  "version": "0.10.3",
+  "version": "0.11.0",
   "description": "Angular datepicker and date range picker",
   "homepage": "https://kekeh.github.io/angular-mydatepicker/",
   "keywords": [
@@ -13,9 +13,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/kekeh/angular-mydatepicker.git"
-  },
-  "peerDependencies": {
-    "@angular/common": "^9.0.0",
-    "@angular/core": "^9.0.0"
   }
 }
