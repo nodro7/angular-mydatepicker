@@ -811,7 +811,7 @@
 * Peer dependencies removed from the package.json file.
 
 
-# 0.11.1 (2021-04-11)
+# 0.11.2 (2021-04-11)
 
 ### Bug Fixes
 
@@ -820,5 +820,3 @@
 ### Features
 
 * none
-
-

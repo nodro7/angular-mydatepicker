@@ -38,7 +38,12 @@ export class UtilService {
     let day: number = 0;
 
     for(const dv of dateValues) {
-      const {format} = dv;
+      const {value, format} = dv;
+
+      if (value && /^\d+$/.test(value) && Number(value) === 0) {
+        return returnDate;
+      }
+      
       if (format.indexOf(YYYY) !== -1) {
         year = this.getNumberByValue(dv);
       }
@@ -48,10 +53,6 @@ export class UtilService {
       else if (format.indexOf(D) !== -1) {
         day = this.getNumberByValue(dv);
       }
-    }
-
-    if (year === 0 || month === 0 || day === 0) {
-      return returnDate;
     }
 
     const {validateDisabledDates, selectedValue} = validateOpts;
