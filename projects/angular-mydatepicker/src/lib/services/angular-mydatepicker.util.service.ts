@@ -50,6 +50,10 @@ export class UtilService {
       }
     }
 
+    if (year === 0 || month === 0 || day === 0) {
+      return returnDate;
+    }
+
     const {validateDisabledDates, selectedValue} = validateOpts;
 
     year = year === 0 && selectedValue ? selectedValue.year : year;

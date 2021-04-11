@@ -809,3 +809,16 @@
 ### Features
 
 * Peer dependencies removed from the package.json file.
+
+
+# 0.11.1 (2021-04-11)
+
+### Bug Fixes
+
+* Fixed bug: [Date & Month defaulting to current month and Date #79](https://github.com/kekeh/angular-mydatepicker/issues/79)
+
+### Features
+
+* none
+
+
