@@ -820,3 +820,15 @@
 ### Features
 
 * none
+
+
+# 0.11.3 (2021-05-19)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Merged: [Provide different classes for the first and last days in date range. #85](https://github.com/kekeh/angular-mydatepicker/pull/85)
+
