@@ -495,6 +495,16 @@ export class UtilService {
     return this.getTimeInMilliseconds(dateRange.begin) === dateMs || this.getTimeInMilliseconds(dateRange.end) === dateMs;
   }
 
+  isDateRangeBegin(dateRange: IMyDateRange, date: IMyDate): boolean {
+    const dateMs: number = this.getTimeInMilliseconds(date);
+    return this.getTimeInMilliseconds(dateRange.begin) === dateMs;
+  }
+
+  isDateRangeEnd(dateRange: IMyDateRange, date: IMyDate): boolean {
+    const dateMs: number = this.getTimeInMilliseconds(date);
+    return this.getTimeInMilliseconds(dateRange.end) === dateMs;
+  }
+
   isDateInRange(date: IMyDate, dateRange: IMyDateRange): boolean {
     if (!this.isInitializedDate(dateRange.begin) || !this.isInitializedDate(dateRange.end)) {
       return false;

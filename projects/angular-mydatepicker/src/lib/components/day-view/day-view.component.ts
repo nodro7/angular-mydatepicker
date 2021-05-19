@@ -109,4 +109,12 @@ export class DayViewComponent implements OnChanges, AfterViewInit {
   isDateRangeBeginOrEndSame(date: IMyDate): boolean {
     return this.utilService.isDateRangeBeginOrEndSame(this.selectedDateRange, date);
   }
+
+  isDateRangeBegin(date: IMyDate): boolean {
+    return this.utilService.isDateRangeBegin(this.selectedDateRange, date);
+  }
+
+  isDateRangeEnd(date: IMyDate): boolean {
+    return this.utilService.isDateRangeEnd(this.selectedDateRange, date);
+  }
 }

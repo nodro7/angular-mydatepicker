@@ -14,6 +14,8 @@
                 'myDpCurrMonth':d.cmo === currMonthId && !d.disabledDate.disabled,
                 'myDpNextMonth': d.cmo === nextMonthId,
                 'myDpSelectedDay':!this.opts.dateRange && isDateSame(d.dateObj) || this.opts.dateRange && isDateRangeBeginOrEndSame(d.dateObj),
+                'myDpRangeBegin':this.opts.dateRange && isDateRangeBegin(d.dateObj),
+                'myDpRangeEnd':this.opts.dateRange && isDateRangeEnd(d.dateObj),
                 'myDpDisabled': d.disabledDate.disabled && !d.disabledDate.styleClass.length,
                 'myDpTableSingleDay': !d.disabledDate.disabled}"
           (click)="onDayCellClicked($event, d)" (keydown)="onDayCellKeyDown($event, d)"
