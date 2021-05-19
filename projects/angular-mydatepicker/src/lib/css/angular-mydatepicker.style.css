@@ -513,6 +513,8 @@
   background-color: #dbeaff;
 }
 
+.myDpRangeBegin,
+.myDpRangeEnd,
 .myDpSelectedDay,
 .myDpSelectedMonth,
 .myDpSelectedYear {
