@@ -832,3 +832,14 @@
 
 * Merged: [Provide different classes for the first and last days in date range. #85](https://github.com/kekeh/angular-mydatepicker/pull/85)
 
+
+# 0.11.4 (2021-07-02)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Merged: [Add aria-label for screen readers #87](https://github.com/kekeh/angular-mydatepicker/pull/87)
+

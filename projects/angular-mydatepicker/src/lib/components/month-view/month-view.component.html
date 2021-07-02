@@ -5,7 +5,9 @@
           [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled, 'myDpTableSingleMonth': !m.disabled}"
           *ngFor="let m of mr" (click)="onMonthCellClicked($event, m)" (keydown)="onMonthCellKeyDown($event, m)" [attr.tabindex]="!m.disabled ? 0 : -1">
         <span class="myDpMonthNbr" *ngIf="opts.showMonthNumber">{{m.nbr}}</span>
-        <span class="myDpMonthValue" [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
+        <span class="myDpMonthValue" 
+          [attr.aria-label]="[(m.nbr + '/' + 1 + '/' + m.year | date:'MMMM yyyy')]"
+          [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
       </td>
     </tr>
   </tbody>
