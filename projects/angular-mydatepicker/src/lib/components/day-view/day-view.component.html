@@ -21,7 +21,7 @@
           (click)="onDayCellClicked($event, d)" (keydown)="onDayCellKeyDown($event, d)"
           (mouseenter)="onDayCellMouseEnter(d)" (mouseleave)="onDayCellMouseLeave()" [attr.tabindex]="!d.disabledDate.disabled ? 0 : -1">
         <span *ngIf="d.markedDate.marked && d.markedDate.color.length" class="myDpMarkDate" [ngStyle]="{'border-top': '8px solid ' + d.markedDate.color}"></span>
-        <span  class="myDpDayValue" [ngClass]="{'myDpMarkCurrDay': d.currDay && opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabledDate.disabled), 'myDpHighlight': d.highlight}">{{d.dateObj.day}}</span>
+        <span  class="myDpDayValue" [attr.aria-label]="[( d.dateObj.month + '/' + d.dateObj.day + '/' + d.dateObj.year | date:'fullDate' )]" [ngClass]="{'myDpMarkCurrDay': d.currDay && opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabledDate.disabled), 'myDpHighlight': d.highlight}">{{d.dateObj.day}}</span>
       </td>
     </tr>
   </tbody>
