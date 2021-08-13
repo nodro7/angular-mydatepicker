@@ -20,14 +20,14 @@
     "@angular/platform-browser": "~11.0.1",
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
-    "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "angular-mydatepicker": "^0.10.2",
+    "angular-mydatepicker": "^0.11.5",
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
-    "web-animations-js": "^2.3.2"
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "web-animations-js": "^2.3.2",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.2",

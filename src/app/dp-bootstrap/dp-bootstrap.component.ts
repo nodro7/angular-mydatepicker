@@ -11,7 +11,7 @@ export class DpBootstrapComponent implements OnInit {
 
   public myOptions: IAngularMyDpOptions = {
     dateRange: false,
-    dateFormat: 'd. of mmm yyyy',
+    dateFormat: 'd## of mmm yyyy',
     monthLabels: { 
       1: 'January', 
       2: 'February', 
