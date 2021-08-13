@@ -156,13 +156,23 @@ describe('AngularMyDatePickerComponent', () => {
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('12.10.2019 - 14.10.2019');
 
-
     fixture.detectChanges();
     comp.initDateModel(null);
 
     fixture.detectChanges();
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('');
+
+    opts.dateFormat = 'd## of mmm yyyy';
+
+    comp.parseOptions(opts);
+
+    fixture.detectChanges();
+    comp.initDateModel({isRange: false, singleDate: {date: {year: 2021, month: 8, day: 3}}});
+
+    fixture.detectChanges();
+    selection = getElement('.myDateInput');
+    expect(selection.value).toBe('3rd of Aug 2021');
 
     comp.closeCalendar();
   });

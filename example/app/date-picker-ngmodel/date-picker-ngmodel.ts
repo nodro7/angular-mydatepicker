@@ -10,7 +10,7 @@ export class DatePickerNgmodel implements OnInit {
 
   public myDatePickerOptions: IAngularMyDpOptions = {
     dateRange: false,
-    dateFormat: 'dd.mm.yyyy',
+    dateFormat: 'd## of mmm yyyy',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
     markCurrentDay: true,

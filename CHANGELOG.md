@@ -843,3 +843,14 @@
 
 * Merged: [Add aria-label for screen readers #87](https://github.com/kekeh/angular-mydatepicker/pull/87)
 
+
+# 0.11.5 (2021-08-13)
+
+### Bug Fixes
+
+* none
+
+### Features
+
+* Added support to ordinal dates.
+

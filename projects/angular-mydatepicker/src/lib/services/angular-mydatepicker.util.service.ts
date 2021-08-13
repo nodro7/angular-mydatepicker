@@ -13,7 +13,7 @@ import {IMyValidateOptions} from "../interfaces/my-validate-options.interface";
 import {IMyOptions} from "../interfaces/my-options.interface";
 import {KeyCode} from "../enums/key-code.enum";
 import {KeyName} from "../enums/key-name.enum";
-import {D, DD, M, MM, MMM, YYYY, SU, MO, TU, WE, TH, FR, SA, ZERO_STR, EMPTY_STR, PIPE} from "../constants/constants";
+import {D, DD, M, MM, MMM, YYYY, ORDINAL, ST, ND, RD, SU, MO, TU, WE, TH, FR, SA, ZERO_STR, EMPTY_STR, PIPE} from "../constants/constants";
 
 @Injectable()
 export class UtilService {
@@ -25,7 +25,7 @@ export class UtilService {
     const returnDate: IMyDate = this.resetDate();
     const datesInMonth: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const isMonthStr: boolean = dateFormat.indexOf(MMM) !== -1;
-    const delimeters: Array<string> = dateFormat.match(/[^(dmy)]{1,}/g);
+    const delimeters: Array<string> = dateFormat.match(/[^(d#my)]{1,}/g);
 
     if (!dateStr || dateStr === EMPTY_STR) {
       return returnDate;
@@ -37,7 +37,20 @@ export class UtilService {
     let month: number = 0;
     let day: number = 0;
 
-    for(const dv of dateValues) {
+    for(let dv of dateValues) {
+      if (dv.format.indexOf(ORDINAL) != -1) {
+        const dayNumber: number = parseInt(dv.value.replace(/\D/g, ''));
+        const ordinalStr: string = dv.value.replace(/[0-9]/g, '');
+        const ordinal: string = this.getOrdinal(dayNumber);
+
+        if (ordinal !== ordinalStr) {
+          return returnDate;
+        }
+
+        dv.value = dv.value.replace(ST, EMPTY_STR).replace(ND, EMPTY_STR).replace(RD, EMPTY_STR).replace(TH, EMPTY_STR);
+        dv.format = dv.format.replace(ORDINAL, EMPTY_STR);
+      }
+
       const {value, format} = dv;
 
       if (value && /^\d+$/.test(value) && Number(value) === 0) {
@@ -463,7 +476,29 @@ export class UtilService {
     else {
       formatted = formatted.replace(D, String(date.day));
     }
+
+    if (dateFormat.indexOf(ORDINAL) !== -1) {
+      formatted = formatted.replace(ORDINAL, this.getOrdinal(date.day));
+    }
+
     return formatted;
+  }
+
+  getOrdinal(date: number): string {
+    if (date > 3 && date < 21) {
+      return TH;
+    }
+
+    switch (date % 10) {
+      case 1:
+        return ST;
+      case 2:
+        return ND;
+      case 3:
+        return RD;
+      default:
+        return TH;
+    }
   }
 
   getFormattedDate(model: IMyDateModel): string {
