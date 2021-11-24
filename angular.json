@@ -26,8 +26,7 @@
             "styles": [
               "example/styles.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {

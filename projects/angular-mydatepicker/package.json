@@ -10,6 +10,9 @@
   ],
   "author": "kekeh",
   "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kekeh/angular-mydatepicker.git"
