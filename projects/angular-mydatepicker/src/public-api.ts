@@ -8,6 +8,7 @@ export {DayViewComponent} from "./lib/components/day-view/day-view.component";
 export {MonthViewComponent} from "./lib/components/month-view/month-view.component";
 export {YearViewComponent} from "./lib/components/year-view/year-view.component";
 export {SelectionBarComponent} from "./lib/components/selection-bar/selection-bar.component";
+export { FooterBarComponent } from './lib/components/footer-bar/footer-bar.component';
 
 export {UtilService} from "./lib/services/angular-mydatepicker.util.service";
 export {DefaultConfigService} from "./lib/services/angular-mydatepicker.config.service";
