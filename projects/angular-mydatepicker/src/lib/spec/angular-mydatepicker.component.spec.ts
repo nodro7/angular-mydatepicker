@@ -30,10 +30,11 @@ function getTodayDate(): string {
 }
 
 @Component({
-  template: '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" [options]="options" name="mydate" angular-mydatepicker #dp="angular-mydatepicker" />'
+  template:
+    '<input style="width: 400px;" class="myDateInput" type="{{inputType}}" id="myDateInput" [options]="options" name="mydate" angular-mydatepicker #dp="angular-mydatepicker" />'
 })
 class AngularMyDatepickerTestComponent {
-  @ViewChild('dp') vcDp: AngularMyDatePickerDirective;
+  @ViewChild('dp', { static: true }) vcDp: AngularMyDatePickerDirective;
 
   inputType: string = 'text';
 
@@ -69,7 +70,7 @@ class AngularMyDatepickerTestComponent {
   }
 
   setDefaultMonth(defMonth: any): void {
-    this.vcDp.defaultMonth = {defMonth: defMonth, overrideSelection: false};
+    this.vcDp.defaultMonth = { defMonth: defMonth, overrideSelection: false };
   }
 
   setInputType(type: string): void {
@@ -102,7 +103,7 @@ describe('AngularMyDatePickerComponent', () => {
     expect(comp).toBeTruthy();
   });
 
-  it('init date model',() => {
+  it('init date model', () => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'd.m.yyyy'
@@ -113,20 +114,18 @@ describe('AngularMyDatePickerComponent', () => {
     comp.openCalendar();
 
     fixture.detectChanges();
-    comp.initDateModel({isRange: false, singleDate: {date: { year: 2019, month: 5, day: 21 }}});
+    comp.initDateModel({ isRange: false, singleDate: { date: { year: 2019, month: 5, day: 21 } } });
 
     fixture.detectChanges();
     let selection = getElement('.myDateInput');
     expect(selection.value).toBe('21.5.2019');
 
-
     fixture.detectChanges();
-    comp.initDateModel({isRange: false, singleDate: {jsDate: new Date(2019, 5, 22)}});
+    comp.initDateModel({ isRange: false, singleDate: { jsDate: new Date(2019, 5, 22) } });
 
     fixture.detectChanges();
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('22.6.2019');
-
 
     fixture.detectChanges();
     comp.initDateModel(null);
@@ -135,22 +134,26 @@ describe('AngularMyDatePickerComponent', () => {
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('');
 
-
     opts.dateRange = true;
     comp.parseOptions(opts);
 
     fixture.detectChanges();
-    comp.initDateModel({isRange: true, dateRange: {beginDate: {year: 2019, month: 5, day: 24}, endDate: {year: 2019, month: 6, day: 10}}});
+    comp.initDateModel({
+      isRange: true,
+      dateRange: {
+        beginDate: { year: 2019, month: 5, day: 24 },
+        endDate: { year: 2019, month: 6, day: 10 }
+      }
+    });
 
     fixture.detectChanges();
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('24.5.2019 - 10.6.2019');
 
-
     fixture.detectChanges();
     let begin = new Date(2019, 9, 12);
     let end = new Date(2019, 9, 14);
-    comp.initDateModel({isRange: true, dateRange: {beginJsDate: begin, endJsDate: end}});
+    comp.initDateModel({ isRange: true, dateRange: { beginJsDate: begin, endJsDate: end } });
 
     fixture.detectChanges();
     selection = getElement('.myDateInput');
@@ -168,7 +171,7 @@ describe('AngularMyDatePickerComponent', () => {
     comp.parseOptions(opts);
 
     fixture.detectChanges();
-    comp.initDateModel({isRange: false, singleDate: {date: {year: 2021, month: 8, day: 3}}});
+    comp.initDateModel({ isRange: false, singleDate: { date: { year: 2021, month: 8, day: 3 } } });
 
     fixture.detectChanges();
     selection = getElement('.myDateInput');
@@ -177,7 +180,7 @@ describe('AngularMyDatePickerComponent', () => {
     comp.closeCalendar();
   });
 
-  it('validate date selection on calendar',() => {
+  it('validate date selection on calendar', () => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'dd.mm.yyyy',
@@ -187,7 +190,7 @@ describe('AngularMyDatePickerComponent', () => {
     comp.parseOptions(opts);
 
     fixture.detectChanges();
-    comp.initDateModel({isRange: false, singleDate: {date: {year: 2020, month: 8, day: 24}}});
+    comp.initDateModel({ isRange: false, singleDate: { date: { year: 2020, month: 8, day: 24 } } });
 
     fixture.detectChanges();
     let selection = getElement('.myDateInput');
@@ -233,7 +236,7 @@ describe('AngularMyDatePickerComponent', () => {
     comp.closeCalendar();
   });
 
-  it('validate date range selection on calendar',() => {
+  it('validate date range selection on calendar', () => {
     let opts: IMyOptions = {
       dateRange: true,
       dateFormat: 'dd.mm.yyyy',
@@ -243,7 +246,13 @@ describe('AngularMyDatePickerComponent', () => {
     comp.parseOptions(opts);
 
     fixture.detectChanges();
-    comp.initDateModel({isRange: true, dateRange: {beginDate: {year: 2021, month: 9, day: 14}, endDate: {year: 2021, month: 9, day: 19}}});
+    comp.initDateModel({
+      isRange: true,
+      dateRange: {
+        beginDate: { year: 2021, month: 9, day: 14 },
+        endDate: { year: 2021, month: 9, day: 19 }
+      }
+    });
 
     fixture.detectChanges();
     let selection = getElement('.myDateInput');
@@ -425,7 +434,7 @@ describe('AngularMyDatePickerComponent', () => {
       fixture.detectChanges();
       selector = getElement('.myDpSelector');
       expect(selector).toBe(null);
-    }, 1000)
+    }, 1000);
   });
 
   it('select and clear date', () => {
@@ -452,7 +461,20 @@ describe('AngularMyDatePickerComponent', () => {
 
   it('select previous month', () => {
     let opts: IMyOptions = {
-      monthLabels: {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12"}
+      monthLabels: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
+        11: '11',
+        12: '12'
+      }
     };
 
     comp.parseOptions(opts);
@@ -463,7 +485,7 @@ describe('AngularMyDatePickerComponent', () => {
     let prevmonth = getElement('.myDpPrevBtn .myDpHeaderBtn');
     expect(prevmonth).not.toBe(null);
 
-    for(let i = 12; i > 0; i--) {
+    for (let i = 12; i > 0; i--) {
       fixture.detectChanges();
 
       let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
@@ -478,7 +500,20 @@ describe('AngularMyDatePickerComponent', () => {
 
   it('select next month', () => {
     let opts: IMyOptions = {
-      monthLabels: {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12"}
+      monthLabels: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
+        11: '11',
+        12: '12'
+      }
     };
 
     comp.parseOptions(opts);
@@ -489,7 +524,7 @@ describe('AngularMyDatePickerComponent', () => {
     let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
     expect(nextmonth).not.toBe(null);
 
-    for(let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 12; i++) {
       fixture.detectChanges();
 
       let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
@@ -567,7 +602,6 @@ describe('AngularMyDatePickerComponent', () => {
     selection = getElement('.myDateInput');
     expect(selection.value).toBe('12 Feb 2017');
 
-
     opts.dateRange = true;
 
     comp.parseOptions(opts);
@@ -628,10 +662,23 @@ describe('AngularMyDatePickerComponent', () => {
     expect(yearlabel).not.toBe(null);
     expect(yearlabel.textContent.trim()).toBe('2016');
 
-    let beginDate: Array<string> = ['28', '1', '29', '28', '25', '30', '27', '1', '29', '26', '31', '28'];
+    let beginDate: Array<string> = [
+      '28',
+      '1',
+      '29',
+      '28',
+      '25',
+      '30',
+      '27',
+      '1',
+      '29',
+      '26',
+      '31',
+      '28'
+    ];
     let endDate: Array<string> = ['7', '13', '10', '8', '5', '10', '7', '11', '9', '6', '11', '8'];
 
-    for(let i = 0; i < 12; i++) {
+    for (let i = 0; i < 12; i++) {
       fixture.detectChanges();
       let currmonth = getElements('.myDpDaycell');
       expect(currmonth).not.toBe(null);
@@ -668,10 +715,23 @@ describe('AngularMyDatePickerComponent', () => {
     expect(yearlabel).not.toBe(null);
     expect(yearlabel.textContent.trim()).toBe('2016');
 
-    let beginDate: Array<string> = ['28', '1', '29', '28', '25', '30', '27', '1', '29', '26', '31', '28'];
+    let beginDate: Array<string> = [
+      '28',
+      '1',
+      '29',
+      '28',
+      '25',
+      '30',
+      '27',
+      '1',
+      '29',
+      '26',
+      '31',
+      '28'
+    ];
     let endDate: Array<string> = ['7', '13', '10', '8', '5', '10', '7', '11', '9', '6', '11', '8'];
 
-    for(let i = 11; i > 0; i--) {
+    for (let i = 11; i > 0; i--) {
       fixture.detectChanges();
       let currmonth = getElements('.myDpDaycell');
       expect(currmonth).not.toBe(null);
@@ -700,8 +760,8 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.openCalendar();
 
-    const arrowEvent = new KeyboardEvent('keydown',{
-      'key': 'ArrowRight'
+    const arrowEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowRight'
     });
 
     fixture.detectChanges();
@@ -716,8 +776,8 @@ describe('AngularMyDatePickerComponent', () => {
     daycell = getElement('.d_0_1');
     expect(daycell).not.toBe(null);
 
-    const enterEvent = new KeyboardEvent('keydown',{
-      'key': 'Enter'
+    const enterEvent = new KeyboardEvent('keydown', {
+      key: 'Enter'
     });
 
     daycell.dispatchEvent(enterEvent);
@@ -745,8 +805,8 @@ describe('AngularMyDatePickerComponent', () => {
     expect(monthbtn).not.toBe(null);
     monthbtn.click();
 
-    const arrowEvent = new KeyboardEvent('keydown',{
-      'key': 'ArrowRight'
+    const arrowEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowRight'
     });
 
     fixture.detectChanges();
@@ -757,8 +817,8 @@ describe('AngularMyDatePickerComponent', () => {
 
     expect(document.activeElement.id).toBe('m_0_1');
 
-    const enterEvent = new KeyboardEvent('keydown',{
-      'key': 'Enter'
+    const enterEvent = new KeyboardEvent('keydown', {
+      key: 'Enter'
     });
 
     fixture.detectChanges();
@@ -796,8 +856,8 @@ describe('AngularMyDatePickerComponent', () => {
     expect(yearbtn).not.toBe(null);
     yearbtn.click();
 
-    const arrowEvent = new KeyboardEvent('keydown',{
-      'key': 'ArrowRight'
+    const arrowEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowRight'
     });
 
     fixture.detectChanges();
@@ -808,8 +868,8 @@ describe('AngularMyDatePickerComponent', () => {
 
     expect(document.activeElement.id).toBe('y_0_1');
 
-    const enterEvent = new KeyboardEvent('keydown',{
-      'key': 'Enter'
+    const enterEvent = new KeyboardEvent('keydown', {
+      key: 'Enter'
     });
 
     fixture.detectChanges();
@@ -846,8 +906,8 @@ describe('AngularMyDatePickerComponent', () => {
 
     input.click();
 
-    const keyupEvent1 = new KeyboardEvent('keyup',{
-      'key': '1'
+    const keyupEvent1 = new KeyboardEvent('keyup', {
+      key: '1'
     });
 
     input.dispatchEvent(keyupEvent1);
@@ -858,14 +918,14 @@ describe('AngularMyDatePickerComponent', () => {
 
     input.dispatchEvent(keyupEvent1);
 
-    const keyupEventEsc = new KeyboardEvent('keyup',{
-      'key': 'Escape'
+    const keyupEventEsc = new KeyboardEvent('keyup', {
+      key: 'Escape'
     });
 
     input.dispatchEvent(keyupEventEsc);
 
-    const keyupEventIgnore = new KeyboardEvent('keyup',{
-      'key': 'Tab'
+    const keyupEventIgnore = new KeyboardEvent('keyup', {
+      key: 'Tab'
     });
 
     input.dispatchEvent(keyupEventIgnore);
@@ -913,7 +973,6 @@ describe('AngularMyDatePickerComponent', () => {
     const mouseLeaveEvent = new MouseEvent('mouseleave');
     daycell.dispatchEvent(mouseLeaveEvent);
 
-
     fixture.detectChanges();
     daycell = getElement('.d_0_1');
     expect(daycell).not.toBe(null);
@@ -921,8 +980,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
   });
-
-
 
   // options
   it('options - dateRange (true/false)', () => {
@@ -934,7 +991,6 @@ describe('AngularMyDatePickerComponent', () => {
     comp.setDefaultMonth('2019/05');
     comp.parseOptions(options);
 
-
     comp.openCalendar();
     fixture.detectChanges();
     let date = getElement('.d_0_0');
@@ -942,7 +998,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     fixture.detectChanges();
     date.click();
-
 
     fixture.detectChanges();
     date = getElement('.d_0_1');
@@ -956,7 +1011,6 @@ describe('AngularMyDatePickerComponent', () => {
     expect(input.value).toBe('29.04.2019 - 30.04.2019');
 
     comp.clearDate();
-
 
     options.dateRange = false;
     comp.parseOptions(options);
@@ -996,7 +1050,10 @@ describe('AngularMyDatePickerComponent', () => {
   });
 
   it('options - dayLabels', () => {
-    let options: IMyOptions = {dayLabels:  {su: '1', mo: '2', tu: '3', we: '4', th: '5', fr: '6', sa: '7'}, firstDayOfWeek: 'su'};
+    let options: IMyOptions = {
+      dayLabels: { su: '1', mo: '2', tu: '3', we: '4', th: '5', fr: '6', sa: '7' },
+      firstDayOfWeek: 'su'
+    };
 
     comp.setDefaultMonth('2019/05');
     comp.parseOptions(options);
@@ -1007,7 +1064,7 @@ describe('AngularMyDatePickerComponent', () => {
     let ths = getElements('.myDpWeekDayTitle');
     expect(ths.length).toBe(7);
 
-    for(let i = 0; i < ths.length; i++) {
+    for (let i = 0; i < ths.length; i++) {
       let el = ths[i];
       expect(parseInt(el.textContent.trim())).toBe(i + 1);
     }
@@ -1017,7 +1074,20 @@ describe('AngularMyDatePickerComponent', () => {
 
   it('options - monthLabels', () => {
     let opts: IMyOptions = {
-      monthLabels: {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12"}
+      monthLabels: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
+        11: '11',
+        12: '12'
+      }
     };
 
     comp.parseOptions(opts);
@@ -1028,7 +1098,7 @@ describe('AngularMyDatePickerComponent', () => {
     let nextmonth = getElement('.myDpNextBtn .myDpHeaderBtn');
     expect(nextmonth).not.toBe(null);
 
-    for(let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 12; i++) {
       fixture.detectChanges();
 
       let monthlabel = getElement('.myDpMonthYearText .myDpMonthBtn');
@@ -1059,7 +1129,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-
     // dd.mm.yyyy
     let opts: IMyOptions = {
       dateFormat: 'dd.mm.yyyy'
@@ -1082,7 +1151,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-
     // dd mmm yyyy
     opts.dateFormat = 'dd mmm yyyy';
     comp.parseOptions(opts);
@@ -1101,7 +1169,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
   });
-
 
   it('options - defaultView', () => {
     // default
@@ -1191,7 +1258,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-
     let opts: IMyOptions = {
       firstDayOfWeek: 'su'
     };
@@ -1210,7 +1276,6 @@ describe('AngularMyDatePickerComponent', () => {
     expect(last.textContent).toBe('Sat');
 
     comp.closeCalendar();
-
 
     opts.firstDayOfWeek = 'we';
 
@@ -1248,7 +1313,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-
     opts.sunHighlight = false;
 
     comp.parseOptions(opts);
@@ -1281,7 +1345,6 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-
     opts.satHighlight = false;
 
     comp.parseOptions(opts);
@@ -1301,7 +1364,11 @@ describe('AngularMyDatePickerComponent', () => {
     let opts: IMyOptions = {
       sunHighlight: false,
       satHighlight: false,
-      highlightDates: [{year: 2019, month: 1, day: 10}, {year: 2019, month: 1, day: 12}, {year: 2019, month: 1, day: 13}]
+      highlightDates: [
+        { year: 2019, month: 1, day: 10 },
+        { year: 2019, month: 1, day: 12 },
+        { year: 2019, month: 1, day: 13 }
+      ]
     };
 
     comp.parseOptions(opts);
@@ -1314,7 +1381,6 @@ describe('AngularMyDatePickerComponent', () => {
     expect(highlight.length).toBe(3);
 
     comp.closeCalendar();
-
 
     opts.highlightDates = [];
 
@@ -1342,7 +1408,6 @@ describe('AngularMyDatePickerComponent', () => {
     expect(markcurrday).not.toBe(null);
 
     comp.closeCalendar();
-
 
     opts.markCurrentDay = false;
 
@@ -1490,7 +1555,7 @@ describe('AngularMyDatePickerComponent', () => {
 
     let opts: IMyOptions = {
       disableHeaderButtons: true,
-      disableUntil: {year: 2016, month: 4, day: 10}
+      disableUntil: { year: 2016, month: 4, day: 10 }
     };
 
     comp.parseOptions(opts);
@@ -1525,8 +1590,7 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-
-    opts.disableSince = {year: 2016, month: 6, day: 10};
+    opts.disableSince = { year: 2016, month: 6, day: 10 };
     comp.parseOptions(opts);
     comp.openCalendar();
 
@@ -1660,7 +1724,7 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - disableUntil', () => {
     comp.setDefaultMonth('2017/01');
     let opts: IMyOptions = {
-      disableUntil: {year: 2017, month: 1, day: 26},
+      disableUntil: { year: 2017, month: 1, day: 26 },
       disableHeaderButtons: false
     };
 
@@ -1689,7 +1753,7 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - disableSince', () => {
     comp.setDefaultMonth('2017/01');
     let opts: IMyOptions = {
-      disableSince: {year: 2017, month: 1, day: 12},
+      disableSince: { year: 2017, month: 1, day: 12 },
       disableHeaderButtons: false
     };
 
@@ -1718,7 +1782,10 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - disableDates', () => {
     comp.setDefaultMonth('2017/01');
     let opts: IMyOptions = {
-      disableDates: [{year: 2017, month: 1, day: 12}, {year: 2017, month: 1, day: 14}]
+      disableDates: [
+        { year: 2017, month: 1, day: 12 },
+        { year: 2017, month: 1, day: 14 }
+      ]
     };
 
     comp.parseOptions(opts);
@@ -1761,8 +1828,8 @@ describe('AngularMyDatePickerComponent', () => {
     comp.setDefaultMonth('2019/10');
     let opts: IMyOptions = {
       disableDateRanges: [
-        {begin: {year: 2019, month: 10, day: 5}, end: {year: 2019, month: 10, day: 7}},
-        {begin: {year: 2019, month: 10, day: 10}, end: {year: 2019, month: 10, day: 12}}
+        { begin: { year: 2019, month: 10, day: 5 }, end: { year: 2019, month: 10, day: 7 } },
+        { begin: { year: 2019, month: 10, day: 10 }, end: { year: 2019, month: 10, day: 12 } }
       ]
     };
 
@@ -1806,13 +1873,11 @@ describe('AngularMyDatePickerComponent', () => {
     let secondDisabled = disabled[1];
     expect(secondDisabled.textContent.trim()).toBe('6');
 
-
     let thirdDisabled = disabled[2];
     expect(thirdDisabled.textContent.trim()).toBe('12');
 
     let fourthDisabled = disabled[3];
     expect(fourthDisabled.textContent.trim()).toBe('13');
-
 
     let lastDisabled = disabled[disabled.length - 1];
     expect(lastDisabled.textContent.trim()).toBe('10');
@@ -1841,13 +1906,11 @@ describe('AngularMyDatePickerComponent', () => {
     let secondDisabled = disabled[1];
     expect(secondDisabled.textContent.trim()).toBe('5');
 
-
     let thirdDisabled = disabled[2];
     expect(thirdDisabled.textContent.trim()).toBe('12');
 
     let fourthDisabled = disabled[3];
     expect(fourthDisabled.textContent.trim()).toBe('19');
-
 
     let lastDisabled = disabled[4];
     expect(lastDisabled.textContent.trim()).toBe('26');
@@ -1858,8 +1921,11 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - enableDates', () => {
     comp.setDefaultMonth('2017/01');
     let opts: IMyOptions = {
-      disableUntil: {year: 2017, month: 1, day: 31},
-      enableDates: [{year: 2017, month: 1, day: 14}, {year: 2017, month: 1, day: 15}],
+      disableUntil: { year: 2017, month: 1, day: 31 },
+      enableDates: [
+        { year: 2017, month: 1, day: 14 },
+        { year: 2017, month: 1, day: 15 }
+      ],
       dateFormat: 'yyyy-mm-dd'
     };
 
@@ -1888,7 +1954,15 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - markDates', () => {
     comp.setDefaultMonth('2017/01');
     let opts: IMyOptions = {
-      markDates: [{dates: [{year: 2017, month: 1, day: 14}, {year: 2017, month: 1, day: 15}], color: 'red'}]
+      markDates: [
+        {
+          dates: [
+            { year: 2017, month: 1, day: 14 },
+            { year: 2017, month: 1, day: 15 }
+          ],
+          color: 'red'
+        }
+      ]
     };
 
     comp.parseOptions(opts);
@@ -1918,7 +1992,7 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - markWeekends', () => {
     comp.setDefaultMonth('2017/01');
     let opts: IMyOptions = {
-      markWeekends: {marked: true, color: 'blue'}
+      markWeekends: { marked: true, color: 'blue' }
     };
 
     comp.parseOptions(opts);
@@ -1932,7 +2006,7 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-    opts.markWeekends = {marked: false, color: ''};
+    opts.markWeekends = { marked: false, color: '' };
 
     comp.parseOptions(opts);
     comp.openCalendar();
@@ -2206,7 +2280,6 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     date.click();
 
-
     fixture.detectChanges();
     date = getElement('.d_0_1');
     expect(date).not.toBe(null);
@@ -2300,7 +2373,7 @@ describe('AngularMyDatePickerComponent', () => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'd.m.yyyy',
-      todayTxt: "Today 123",
+      todayTxt: 'Today 123',
       showFooterToday: true
     };
 
@@ -2316,16 +2389,15 @@ describe('AngularMyDatePickerComponent', () => {
     fixture.detectChanges();
     let footerBtn = getElement('.myDpFooterBtn');
     expect(footerBtn).not.toBe(null);
-    expect(footerBtn.textContent).toBe("Today 123 " + today);
+    expect(footerBtn.textContent).toBe('Today 123 ' + today);
 
     fixture.detectChanges();
     footerBtn.click();
 
     fixture.detectChanges();
     let input = getElement('.myDateInput');
-    
-    expect(input.value).toBe(today);
 
+    expect(input.value).toBe(today);
 
     opts.showFooterToday = false;
     comp.parseOptions(opts);
@@ -2347,7 +2419,7 @@ describe('AngularMyDatePickerComponent', () => {
     let opts: IMyOptions = {
       dateRange: false,
       dateFormat: 'dd.mm.yyyy',
-      calendarAnimation: {in: CalAnimation.ScaleTop, out: CalAnimation.Rotate}
+      calendarAnimation: { in: CalAnimation.ScaleTop, out: CalAnimation.Rotate }
     };
 
     comp.parseOptions(opts);
@@ -2407,7 +2479,6 @@ describe('AngularMyDatePickerComponent', () => {
     expect(animationElem).not.toBe(null);
 
     comp.closeCalendar();
-
 
     opts.viewChangeAnimation = false;
 
@@ -2481,17 +2552,17 @@ describe('AngularMyDatePickerComponent', () => {
     prevBtn.click();
 
     fixture.detectChanges();
-    let monthBtn  = getElement('.myDpMonthBtn');
+    let monthBtn = getElement('.myDpMonthBtn');
     expect(monthBtn).not.toBe(null);
     expect(monthBtn.textContent.trim()).toBe('Mar');
-    
+
     fixture.detectChanges();
     let nextBtn = getElement('.myDpNextBtn .myDpHeaderBtn');
     expect(nextBtn).not.toBe(null);
     nextBtn.click();
 
     fixture.detectChanges();
-    monthBtn  = getElement('.myDpMonthBtn');
+    monthBtn = getElement('.myDpMonthBtn');
     expect(monthBtn).not.toBe(null);
     expect(monthBtn.textContent.trim()).toBe('Feb');
 
@@ -2526,20 +2597,19 @@ describe('AngularMyDatePickerComponent', () => {
     prevBtn.click();
 
     fixture.detectChanges();
-    let yearBtn  = getElement('.myDpYearBtn');
+    let yearBtn = getElement('.myDpYearBtn');
     expect(yearBtn).not.toBe(null);
     expect(yearBtn.textContent.trim()).toBe('2021');
-    
+
     fixture.detectChanges();
     nextBtn = getElement('.myDpNextBtn .myDpHeaderBtn');
     expect(nextBtn).not.toBe(null);
     nextBtn.click();
 
     fixture.detectChanges();
-    yearBtn  = getElement('.myDpYearBtn');
+    yearBtn = getElement('.myDpYearBtn');
     expect(yearBtn).not.toBe(null);
     expect(yearBtn.textContent.trim()).toBe('2020');
-
 
     fixture.detectChanges();
     yearBtn.click();
@@ -2564,25 +2634,23 @@ describe('AngularMyDatePickerComponent', () => {
     expect(td).not.toBe(null);
     expect(td.textContent.trim()).toBe('2028');
 
-    
-
     fixture.detectChanges();
     prevBtn = getElement('.myDpPrevBtn .myDpHeaderBtn');
     expect(prevBtn).not.toBe(null);
     prevBtn.click();
 
     fixture.detectChanges();
-    yearBtn  = getElement('.myDpYearBtn');
+    yearBtn = getElement('.myDpYearBtn');
     expect(yearBtn).not.toBe(null);
     expect(yearBtn.textContent.trim()).toBe('2057 - 2033');
-    
+
     fixture.detectChanges();
     nextBtn = getElement('.myDpNextBtn .myDpHeaderBtn');
     expect(nextBtn).not.toBe(null);
     nextBtn.click();
 
     fixture.detectChanges();
-    yearBtn  = getElement('.myDpYearBtn');
+    yearBtn = getElement('.myDpYearBtn');
     expect(yearBtn).not.toBe(null);
     expect(yearBtn.textContent.trim()).toBe('2032 - 2008');
 
@@ -2592,7 +2660,7 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - stylesData', () => {
     comp.setDefaultMonth('2019/10');
     let opts: IMyOptions = {
-      stylesData: {selector: '', styles: ''}
+      stylesData: { selector: '', styles: '' }
     };
 
     comp.parseOptions(opts);
@@ -2614,18 +2682,17 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-    opts.stylesData =
-      {
-        selector: 'dp1',
-        styles: `
+    opts.stylesData = {
+      selector: 'dp1',
+      styles: `
         .dp1 .myDpIconLeftArrow {
           color: red;
         }
         .dp1 .myDpIconRightArrow {
           color: blue;
-        }  
+        }
       `
-      };
+    };
 
     comp.parseOptions(opts);
     comp.openCalendar();
@@ -2748,7 +2815,6 @@ describe('AngularMyDatePickerComponent', () => {
     expect(yearlabel.textContent.trim()).toBe('2016');
 
     comp.closeCalendar();
-
 
     comp.setDefaultMonth('2019/08');
     comp.openCalendar();

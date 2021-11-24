@@ -54,7 +54,7 @@ export class DatePickerNgmodel implements OnInit {
       }
   };
 
-  @ViewChild('dp') ngxdp: AngularMyDatePickerDirective;
+  @ViewChild('dp', { static: true }) ngxdp: AngularMyDatePickerDirective;
 
   public selectedTextNormal: string = '';
 

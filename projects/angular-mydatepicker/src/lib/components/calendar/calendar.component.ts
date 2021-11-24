@@ -32,8 +32,8 @@ import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUN
   encapsulation: ViewEncapsulation.None
 })
 export class CalendarComponent implements AfterViewInit, OnDestroy {
-  @ViewChild("selectorEl") selectorEl: ElementRef;
-  @ViewChild("styleEl") styleEl: ElementRef;
+  @ViewChild("selectorEl", { static: true }) selectorEl: ElementRef;
+  @ViewChild("styleEl", { static: true }) styleEl: ElementRef;
   
   @HostBinding("style.position") position = "static";
 
