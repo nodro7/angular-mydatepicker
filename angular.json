@@ -129,13 +129,13 @@
           "options": {
             "tsConfig": "projects/angular-mydatepicker/tsconfig.lib.json",
             "project": "projects/angular-mydatepicker/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/angular-mydatepicker/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -143,9 +143,21 @@
             "tsConfig": "projects/angular-mydatepicker/tsconfig.spec.json",
             "karmaConfig": "projects/angular-mydatepicker/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/angular-mydatepicker/**/*.ts",
+              "projects/angular-mydatepicker/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "angular-mydatepicker-example"
+  "defaultProject": "angular-mydatepicker-example",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
