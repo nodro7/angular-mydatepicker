@@ -44,4 +44,3 @@ testem.log
 Thumbs.db
 
 build.sh
-package-lock.json
