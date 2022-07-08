@@ -1,4 +1,8 @@
-<img src="https://raw.githubusercontent.com/kekeh/angular-mydatepicker/gh-pages/.images/wiki-footer-img.png" width="100%">
+# angular-mydatepicker
+
+*Note:* This repository was originally forked from `kekeh/angular-mydatepicker` but the original repository was deleted without any notice :confused:. Hence this detached fork.
+
+---
 
 Screenshots using [predefined styles](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(grey)) and the [markDates](https://github.com/kekeh/angular-mydatepicker/wiki/usage-of-markDates-option) option. The predefined styles and some of the options can be tested [here](https://kekeh.github.io/angular-mydatepicker).
 
@@ -24,9 +28,9 @@ Screenshots using [predefined styles](https://github.com/kekeh/angular-mydatepic
 
 ## Description
 
-Highly configurable Angular datepicker and date range picker. 
+Highly configurable Angular datepicker and date range picker.
 
-Basic idea to create this library was to make it as configurable as possible. The library is implemented as a directive. It is done this way, because then there is more choices to configure it. 
+Basic idea to create this library was to make it as configurable as possible. The library is implemented as a directive. It is done this way, because then there is more choices to configure it.
 
 Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 
@@ -42,7 +46,7 @@ Online demo is [here](http://kekeh.github.io/angular-mydatepicker)
 * supports keyboard
 * supports RTL
 * animation of calendar (open/close)
-* awesome configuration possibilities 
+* awesome configuration possibilities
   * easily set styles to the component which are in line with your page theme
     * calendar ([example](https://github.com/kekeh/angular-mydatepicker/wiki/color-theme-(blue)))
     * input box and input box controls ([bootstrap 4 and font-awesome example](https://github.com/kekeh/angular-mydatepicker/wiki/bootstrap-4-and-font-awesome-example))
@@ -77,15 +81,15 @@ To install this component to an external project, follow the procedure:
     import { NgModule } from '@angular/core';
     import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     import { AngularMyDatePickerModule } from 'angular-mydatepicker';
-    
+
     @NgModule({
       declarations: [
         AppComponent
       ],
       imports: [
-        BrowserModule, 
-        ReactiveFormsModule, 
-        FormsModule, 
+        BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
         AngularMyDatePickerModule
       ],
       providers: [],
@@ -93,7 +97,7 @@ To install this component to an external project, follow the procedure:
     })
     export class AppModule { }
     ```
-    
+
 ## Usage
 
 Use one of the following two options.
@@ -113,7 +117,7 @@ There are two ways to initialize date or date range to the model.
 Examples:
 * [initialize date model (single date mode)](https://github.com/kekeh/angular-mydatepicker/wiki/initialize-date-model-(single-date-mode))
 * [initialize date model (date range mode)](https://github.com/kekeh/angular-mydatepicker/wiki/initialize-date-model-(date-range-mode))
-  
+
 ### 2. Reactive forms
 
 In this option the value accessor of reactive forms is used.
@@ -185,7 +189,7 @@ The [options](https://github.com/kekeh/angular-mydatepicker/wiki/options-attribu
 ### locale attribute
 
 An __ISO 639-1__ language code can be provided as shorthand for the following options (__dayLabels__, __monthLabels__, __dateFormat__, __firstDayOfWeek__, __sunHighlight__ and __todayTxt__).
-Currently supported languages are: 
+Currently supported languages are:
 
 | Language code | Description |
 | :------------- | :------------- |
@@ -265,7 +269,7 @@ Example of the __defaultMonth__ attribute is [here](https://github.com/kekeh/ang
 
 You can can call functions of the directive. Define a local variable to the input field as follows:
 ```html
-<input angular-mydatepicker name="mydate" [(ngModel)]="model" 
+<input angular-mydatepicker name="mydate" [(ngModel)]="model"
     [options]="myOptions" #dp="angular-mydatepicker"/>
 ```
 The __#dp="angular-mydatepicker"__ defines the local variable named __dp__. You can use it to call functions of the directive
@@ -324,7 +328,7 @@ Sets host (input box) value.
       * __endJsDate__: Javascript Date object
       * __endEpoc__: Epoc time stamp. For example: 1479765600
       * __formatted__: Date range as a string. The date is in the same format as the __dateFormat__ option is. For example '2019-11-22 - 2019-11-24'
-  
+
   * Type of event parameter is [IMyDateModel](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/interfaces/my-date-model.interface.ts)
 
   * Example of the __dateChanged__ callback is [here](https://github.com/kekeh/angular-mydatepicker/wiki/dateChanged-callback).
@@ -391,7 +395,7 @@ Sets host (input box) value.
 ## Override styles of component
 
 It is possible to override styles of the datepicker. Each datepicker can define unique styles in case of multiple datepickers on the same page.
-It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.style.css) styles. 
+It is possible override any of [these](https://github.com/kekeh/angular-mydatepicker/blob/master/projects/angular-mydatepicker/src/lib/css/angular-mydatepicker.style.css) styles.
 
 Usage examples of the __stylesData__ option:
 * [single date picker on page](https://github.com/kekeh/angular-mydatepicker/wiki/override-styles-single-datepicker)
@@ -417,18 +421,18 @@ In order the following commands work you need a __git client__ and __npm__.
 
 * Install dependencies:
   1. __npm install__
-  
+
 * Run sample application:
   1. __ng serve__
   2. Navigate to __http://localhost:4200__
-  
+
 * Run tests and lint:
   1. Tests: __npm run test-lib__
      * the __test-output__ folder is created under the root folder and it contains a coverage report
   2. Lint: __npm run lint-lib__
-  
+
 * Build datepicker library:
-  1. __npm run build-lib__ 
+  1. **npm run build-lib**
      * the __dist/angular-mydatepicker__ folder is created under the root folder
 
 * Build a local npm installation package:
