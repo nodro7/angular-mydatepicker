@@ -1,5 +1,5 @@
 import {Component, OnInit, Renderer2, ViewChild, ChangeDetectorRef} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormGroup, UntypedFormBuilder, Validators} from '@angular/forms';
 import {IAngularMyDpOptions, IMyDateModel, AngularMyDatePickerDirective} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
@@ -15,11 +15,11 @@ export class DatePickerReactiveForms implements OnInit {
 
   public disabled: boolean = false;
 
-  public myForm: FormGroup;
+  public myForm: UntypedFormGroup;
 
   @ViewChild('dp', { static: true }) myDp: AngularMyDatePickerDirective;
 
-  constructor(private formBuilder: FormBuilder, private renderer: Renderer2, private cdr: ChangeDetectorRef) {
+  constructor(private formBuilder: UntypedFormBuilder, private renderer: Renderer2, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {

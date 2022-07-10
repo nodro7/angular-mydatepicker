@@ -13,27 +13,26 @@ import {AngularMyDatePickerDirective} from "./angular-mydatepicker.input";
 import {AngularMyDatePickerCalendarDirective} from "./directives/angular-mydatepicker-calendar.directive";
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
-  declarations: [
-    CalendarComponent,
-    SelectionBarComponent,
-    DayViewComponent,
-    MonthViewComponent,
-    YearViewComponent,
-    FooterBarComponent,
-    AngularMyDatePickerDirective,
-    AngularMyDatePickerCalendarDirective
-  ],
-  entryComponents: [CalendarComponent],
-  exports: [
-    CalendarComponent,
-    SelectionBarComponent,
-    DayViewComponent,
-    MonthViewComponent,
-    YearViewComponent,
-    FooterBarComponent,
-    AngularMyDatePickerDirective,
-    AngularMyDatePickerCalendarDirective
-  ]
+    imports: [CommonModule, FormsModule],
+    declarations: [
+        CalendarComponent,
+        SelectionBarComponent,
+        DayViewComponent,
+        MonthViewComponent,
+        YearViewComponent,
+        FooterBarComponent,
+        AngularMyDatePickerDirective,
+        AngularMyDatePickerCalendarDirective
+    ],
+    exports: [
+        CalendarComponent,
+        SelectionBarComponent,
+        DayViewComponent,
+        MonthViewComponent,
+        YearViewComponent,
+        FooterBarComponent,
+        AngularMyDatePickerDirective,
+        AngularMyDatePickerCalendarDirective
+    ]
 })
 export class AngularMyDatePickerModule { }
