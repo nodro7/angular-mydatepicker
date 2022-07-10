@@ -21,8 +21,7 @@
     "build-lib": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker && node scripts/copy-artifacts.js",
     "build-all": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker && node scripts/copy-artifacts.js && ng build",
     "test-lib": "node scripts/delete-test-output-folder.js && ng test --code-coverage=true AngularMyDatePicker",
-    "lint-lib": "ng lint AngularMyDatePicker",
-    "e2e": "ng e2e"
+    "lint-lib": "ng lint AngularMyDatePicker"
   },
   "private": true,
   "dependencies": {
@@ -57,15 +56,12 @@
     "eslint": "^8.18.0",
     "fs-extra": "^8.0.1",
     "jasmine-core": "^3.10.1",
-    "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.9",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "^2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^14.0.3",
-    "protractor": "~7.0.0",
-    "ts-node": "~7.0.0",
     "typescript": "~4.7.4"
   }
 }
