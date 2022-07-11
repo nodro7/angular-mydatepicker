@@ -1,20 +1,22 @@
 {
-  "name": "angular-mydatepicker",
-  "version": "0.11.5",
-  "description": "Angular datepicker and date range picker",
-  "homepage": "https://kekeh.github.io/angular-mydatepicker/",
+  "name": "@nodro7/angular-mydatepicker",
+  "version": "0.12.0",
+  "description": "Angular datepicker",
   "keywords": [
-    "Angular",
+    "angular",
+    "date",
+    "picker",
     "datepicker",
-    "date range picker"
+    "calendar",
+    "range"
   ],
-  "author": "kekeh",
+  "author": "nodro7",
   "license": "MIT",
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kekeh/angular-mydatepicker.git"
+    "url": "https://github.com/nodro7/angular-mydatepicker.git"
   }
 }
