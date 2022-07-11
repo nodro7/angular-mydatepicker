@@ -1,4 +1,4 @@
-name: NPM Publish 
+name: NPM Publish
 
 on:
   release:
@@ -22,6 +22,6 @@ jobs:
         run: npm run build-lib
       - name: Publish Library
         run: npm publish
-        working-directory: ./dist
+        working-directory: ./dist/angular-mydatepicker
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
