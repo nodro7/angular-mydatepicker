@@ -22,7 +22,7 @@ jobs:
       - name: Build Library
         run: npm run build-lib
       - name: Publish Library
-        run: npm publish
+        run: npm publish --access=public
         working-directory: ./dist/angular-mydatepicker
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
