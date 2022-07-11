@@ -19,8 +19,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-lib": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker && node scripts/copy-artifacts.js",
-    "build-all": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker && node scripts/copy-artifacts.js && ng build",
+    "build-lib": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker --configuration production && node scripts/copy-artifacts.js",
+    "build-all": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker --configuration production && node scripts/copy-artifacts.js && ng build",
     "test-lib": "node scripts/delete-test-output-folder.js && ng test --code-coverage=true AngularMyDatePicker",
     "lint-lib": "ng lint AngularMyDatePicker"
   },
