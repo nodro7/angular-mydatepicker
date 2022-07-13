@@ -18,6 +18,10 @@ If you are looking for the original package, it can be found [here.](https://www
 
 ---
 
+## Changelog
+
+CHANGELOG.md has been deprecated, for recent changes see [GitHub releases](https://github.com/nodro7/angular-mydatepicker/releases).
+
 ## Browser support (tested)
 
 | Chrome | Firefox | Edge | IE11 | Safari | iOS Safari |

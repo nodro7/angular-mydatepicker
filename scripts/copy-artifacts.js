@@ -3,7 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const artifacts = ['LICENSE', 'FONT-LICENSE', 'CSS-ANIMATION-LICENSE', 'CHANGELOG.md', 'README.md'];
+const artifacts = ['LICENSE', 'FONT-LICENSE', 'CSS-ANIMATION-LICENSE', 'README.md'];
 
 artifacts.forEach(file => {
   let from = path.resolve(__dirname, '..', './', file);

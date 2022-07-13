@@ -1,3 +1,9 @@
+# Changelog Deprecated
+
+This Changelog has been deprecated in favour of [GitHub releases](https://github.com/nodro7/angular-mydatepicker/releases).
+
+---
+
 # 0.0.1 (2019-05-08)
 
 ### Bug Fixes
