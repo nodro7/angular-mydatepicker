@@ -2,6 +2,16 @@
 
 ## Angular datepicker and date range picker
 
+![npm (scoped)](https://img.shields.io/npm/v/@nodro7/angular-mydatepicker?logoColor=green&style=for-the-badge)
+![npm](https://img.shields.io/npm/dm/@nodro7/angular-mydatepicker?style=for-the-badge)
+![Codecov](https://img.shields.io/codecov/c/gh/nodro7/angular-mydatepicker?style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nodro7/angular-mydatepicker/NPM%20Publish?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/nodro7/angular-mydatepicker?style=for-the-badge)
+
+```console
+npm install @nodro7/angular-mydatepicker
+```
+
 ---
 
 **Note:** This repository was originally forked from `kekeh/angular-mydatepicker` but the original repository had not been maintained for a year and was then deleted without any notice :confused:. Hence this detached fork.
@@ -10,17 +20,11 @@ If you are looking for the original package, it can be found [here.](https://www
 
 ---
 
-![npm (scoped)](https://img.shields.io/npm/v/@nodro7/angular-mydatepicker?logoColor=green&style=for-the-badge)
-![npm](https://img.shields.io/npm/dm/@nodro7/angular-mydatepicker?style=for-the-badge)
-![Codecov](https://img.shields.io/codecov/c/gh/nodro7/angular-mydatepicker?style=for-the-badge)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nodro7/angular-mydatepicker/NPM%20Publish?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/nodro7/angular-mydatepicker?style=for-the-badge)
-
----
-
 ## Changelog
 
 CHANGELOG.md has been deprecated, for recent changes see [GitHub releases](https://github.com/nodro7/angular-mydatepicker/releases).
+
+---
 
 ## Browser support (tested)
 
