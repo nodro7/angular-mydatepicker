@@ -20,7 +20,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build-lib": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker --configuration production && node scripts/copy-artifacts.js",
-    "build-all": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker --configuration production && node scripts/copy-artifacts.js && ng build",
+    "build-example": "ng build --base-href=\"https://nodro7.github.io/angular-mydatepicker/\"",
     "test-lib": "node scripts/delete-test-output-folder.js && ng test --code-coverage=true AngularMyDatePicker",
     "lint-lib": "ng lint AngularMyDatePicker"
   },
