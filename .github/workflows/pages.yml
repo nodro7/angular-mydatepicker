@@ -18,7 +18,7 @@ jobs:
       - name: Test Library
         run: npm run test-lib
       - name: Build Example
-        run: npm run build-all
+        run: npm run build-example
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
