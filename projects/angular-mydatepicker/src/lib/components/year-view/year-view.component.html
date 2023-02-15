@@ -1,10 +1,17 @@
 <table class="myDpYearTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation && viewChanged}">
   <tbody>
     <tr *ngFor="let yr of years">
-      <td id="y_{{y.row}}_{{y.col}}" class="y_{{y.row}}_{{y.col}} myDpYearcell"
+      <td *ngFor="let y of yr"
+          id="y_{{y.row}}_{{y.col}}"
+          class="y_{{y.row}}_{{y.col}} myDpYearcell"
           [ngClass]="{'myDpSelectedYear': y.selected, 'myDpDisabled': y.disabled, 'myDpTableSingleYear': !y.disabled}"
-          *ngFor="let y of yr" (click)="onYearCellClicked($event, y)" (keydown)="onYearCellKeyDown($event, y)" [attr.tabindex]="!y.disabled ? 0 : -1">
-        <span class="myDpYearValue" 
+          [attr.aria-current]="y.currYear ? 'date' : null"
+          [attr.aria-disabled]="y.disabled || null"
+          [attr.aria-selected]="y.selected || null"
+          [attr.tabindex]="!y.disabled ? 0 : -1"
+          (click)="onYearCellClicked($event, y)"
+          (keydown)="onYearCellKeyDown($event, y)">
+        <span class="myDpYearValue"
           [attr.aria-label]="[(1 + '/' + 1 + '/' + y.year | date:'yyyy')]"
           [ngClass]="{'myDpMarkCurrYear': y.currYear && opts.markCurrentYear}">{{y.year}}</span>
       </td>

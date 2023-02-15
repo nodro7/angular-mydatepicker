@@ -8,21 +8,29 @@
   <tbody>
     <tr *ngFor="let w of dates">
       <td class="myDpDaycellWeekNbr" *ngIf="opts.showWeekNumbers && opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
-      <td id="d_{{d.row}}_{{d.col}}" class="d_{{d.row}}_{{d.col}} myDpDaycell {{d.markedDate.styleClass}} {{d.disabledDate.styleClass}}" *ngFor="let d of w.week"
+      <td *ngFor="let d of w.week"
+          id="d_{{d.row}}_{{d.col}}"
+          class="d_{{d.row}}_{{d.col}} myDpDaycell {{d.markedDate.styleClass}} {{d.disabledDate.styleClass}}"
           [ngClass]="{'myDpRangeColor': isDateInRange(d.dateObj) || d.range,
                 'myDpPrevMonth': d.cmo === prevMonthId,
                 'myDpCurrMonth':d.cmo === currMonthId && !d.disabledDate.disabled,
                 'myDpNextMonth': d.cmo === nextMonthId,
-                'myDpSelectedDay':!this.opts.dateRange && isDateSame(d.dateObj) || this.opts.dateRange && isDateRangeBeginOrEndSame(d.dateObj),
+                'myDpSelectedDay':isDaySelected(d),
                 'myDpRangeBegin':this.opts.dateRange && isDateRangeBegin(d.dateObj),
                 'myDpRangeEnd':this.opts.dateRange && isDateRangeEnd(d.dateObj),
                 'myDpDisabled': d.disabledDate.disabled && !d.disabledDate.styleClass.length,
                 'myDpTableSingleDay': !d.disabledDate.disabled}"
-          (click)="onDayCellClicked($event, d)" (keydown)="onDayCellKeyDown($event, d)"
-          (mouseenter)="onDayCellMouseEnter(d)" (mouseleave)="onDayCellMouseLeave()" [attr.tabindex]="!d.disabledDate.disabled ? 0 : -1">
+          [attr.aria-current]="d.currDay ? 'date' : null"
+          [attr.aria-disabled]="d.disabledDate.disabled || null"
+          [attr.aria-selected]="isDaySelected(d) || null"
+          [attr.tabindex]="!d.disabledDate.disabled ? 0 : -1"
+          (click)="onDayCellClicked($event, d)"
+          (keydown)="onDayCellKeyDown($event, d)"
+          (mouseenter)="onDayCellMouseEnter(d)"
+          (mouseleave)="onDayCellMouseLeave()">
         <span *ngIf="d.markedDate.marked && d.markedDate.color.length" class="myDpMarkDate" [ngStyle]="{'border-top': '8px solid ' + d.markedDate.color}"></span>
-        <span  class="myDpDayValue" 
-          [attr.aria-label]="[(d.dateObj.month + '/' + d.dateObj.day + '/' + d.dateObj.year | date:'fullDate')]" 
+        <span  class="myDpDayValue"
+          [attr.aria-label]="[(d.dateObj.month + '/' + d.dateObj.day + '/' + d.dateObj.year | date:'fullDate')]"
           [ngClass]="{'myDpMarkCurrDay': d.currDay && opts.markCurrentDay, 'myDpDimDay': d.highlight && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabledDate.disabled), 'myDpHighlight': d.highlight}">{{d.dateObj.day}}</span>
       </td>
     </tr>
