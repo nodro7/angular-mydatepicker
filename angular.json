@@ -18,8 +18,13 @@
             "main": "example/main.ts",
             "polyfills": "example/polyfills.ts",
             "tsConfig": "example/tsconfig.app.json",
-            "assets": ["example/favicon.ico", "example/assets"],
-            "styles": ["example/styles.css"],
+            "assets": [
+              "example/favicon.ico",
+              "example/assets"
+            ],
+            "styles": [
+              "example/styles.css"
+            ],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -82,9 +87,14 @@
             "polyfills": "example/polyfills.ts",
             "tsConfig": "example/tsconfig.spec.json",
             "karmaConfig": "example/karma.conf.js",
-            "styles": ["example/styles.css"],
+            "styles": [
+              "example/styles.css"
+            ],
             "scripts": [],
-            "assets": ["example/favicon.ico", "example/assets"]
+            "assets": [
+              "example/favicon.ico",
+              "example/assets"
+            ]
           }
         }
       }
@@ -131,5 +141,13 @@
     "schematicCollections": [
       "@angular-eslint/schematics"
     ]
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }
