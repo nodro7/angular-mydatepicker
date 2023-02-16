@@ -22,7 +22,7 @@
   </a>&nbsp;
 
   <a href="https://github.com/nodro7/angular-mydatepicker/actions">
-    <img src="https://img.shields.io/github/workflow/status/nodro7/angular-mydatepicker/NPM%20Publish?logo=github&style=for-the-badge" alt="Build Status" />
+    <img src="https://img.shields.io/github/actions/workflow/status/nodro7/angular-mydatepicker/npm-publish.yml?logo=github&style=for-the-badge" alt="Build Status" />
   </a>&nbsp;
 
   <a href="https://github.com/nodro7/angular-mydatepicker/blob/master/LICENSE">
