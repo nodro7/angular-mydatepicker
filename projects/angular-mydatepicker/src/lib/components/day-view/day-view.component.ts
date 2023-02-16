@@ -117,4 +117,8 @@ export class DayViewComponent implements OnChanges, AfterViewInit {
   isDateRangeEnd(date: IMyDate): boolean {
     return this.utilService.isDateRangeEnd(this.selectedDateRange, date);
   }
+
+  isDaySelected(day: IMyCalendarDay) {
+    return !this.opts.dateRange && this.isDateSame(day.dateObj) || this.opts.dateRange && this.isDateRangeBeginOrEndSame(day.dateObj);
+  }
 }
