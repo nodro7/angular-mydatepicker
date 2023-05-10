@@ -86,6 +86,14 @@ export class LocaleService {
       sunHighlight: false,
       todayTxt: "Vandaag"
     },
+    "nl-be": {
+      dayLabels: {su: "Zon", mo: "Maa", tu: "Din", we: "Woe", th: "Don", fr: "Vri", sa: "Zat"},
+      monthLabels: { 1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "Mei", 6: "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Okt", 11: "Nov", 12: "Dec" },
+      dateFormat: "d/m/yyyy",
+      firstDayOfWeek: "mo",
+      sunHighlight: false,
+      todayTxt: "Vandaag"
+    },
     "ru": {
       dayLabels: {su: "Вс", mo: "Пн", tu: "Вт", we: "Ср", th: "Чт", fr: "Пт", sa: "Сб"},
       monthLabels: { 1: "Янв", 2: "Фев", 3: "Март", 4: "Апр", 5: "Май", 6: "Июнь", 7: "Июль", 8: "Авг", 9: "Сент", 10: "Окт", 11: "Ноя", 12: "Дек" },
