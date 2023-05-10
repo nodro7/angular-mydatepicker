@@ -392,12 +392,10 @@ export class LocaleService {
     }
   };
 
-  getLocaleOptions(locale: string): IMyOptions {
-    if (locale && this.locales.hasOwnProperty(locale)) {
-      // User given locale
-      return this.locales[locale];
-    }
-    // Default: en
-    return this.locales[DEFAULT_LOCALE];
+  getLocaleOptions(locale = DEFAULT_LOCALE): IMyOptions {
+    // Convert locale to lowercase - i.e. support passing uppercase region subtags
+    const lowerCaseLocale = locale.toLowerCase()
+    // If locale exists, return it, else return default locale (en)
+    return this.locales.hasOwnProperty(lowerCaseLocale) ? this.locales[lowerCaseLocale] : this.locales[DEFAULT_LOCALE];
   }
 }
