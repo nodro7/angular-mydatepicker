@@ -44,8 +44,8 @@ export interface IMyOptions {
   openSelectorTopOfInput?: boolean;
   closeSelectorOnDateSelect?: boolean;
   closeSelectorOnDocumentClick?: boolean;
-  minYear?: Year;
-  maxYear?: Year;
+  minYear?: Year | number;
+  maxYear?: Year | number;
   showSelectorArrow?: boolean;
   appendSelectorToBody?: boolean;
   focusInputOnDateSelect?: boolean;

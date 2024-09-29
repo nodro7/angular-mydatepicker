@@ -1,6 +1,6 @@
 {
   "name": "angular-mydatepicker-example",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Angular datepicker",
   "keywords": [
     "angular",
@@ -9,18 +9,18 @@
     "datepicker",
     "range"
   ],
-  "author": "nodro7",
+  "author": "gramli",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodro7/angular-mydatepicker.git"
+    "url": "https://github.com/gramli/angular-mydatepicker.git"
   },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build-lib": "node scripts/delete-dist-folder.js && ng build AngularMyDatePicker --configuration production && node scripts/copy-artifacts.js",
-    "build-example": "ng build --base-href=\"https://nodro7.github.io/angular-mydatepicker/\"",
+    "build-example": "ng build --base-href=\"https://gramli.github.io/angular-mydatepicker/\"",
     "test-lib": "node scripts/delete-test-output-folder.js && ng test --code-coverage=true AngularMyDatePicker",
     "lint-lib": "ng lint AngularMyDatePicker"
   },

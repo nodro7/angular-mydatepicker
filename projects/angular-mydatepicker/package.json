@@ -1,5 +1,5 @@
 {
-  "name": "@nodro7/angular-mydatepicker",
+  "name": "@gramli/angular-mydatepicker",
   "version": "0.14.0",
   "description": "Angular datepicker",
   "keywords": [
@@ -10,13 +10,13 @@
     "calendar",
     "range"
   ],
-  "author": "nodro7",
+  "author": "gramli",
   "license": "MIT",
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodro7/angular-mydatepicker.git"
+    "url": "https://github.com/gramli/angular-mydatepicker.git"
   }
 }
