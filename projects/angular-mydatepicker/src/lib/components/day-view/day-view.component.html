@@ -4,18 +4,18 @@
       @if (opts.showWeekNumbers && opts.firstDayOfWeek==='mo') {
         <th class="myDpWeekDayTitle myDpWeekDayTitleWeekNbr">#</th>
       }
-      @for (d of weekDays; track d) {
+      @for (d of weekDays; track $index) {
         <th class="myDpWeekDayTitle" scope="col">{{d}}</th>
       }
     </tr>
   </thead>
   <tbody>
-    @for (w of dates; track w) {
+    @for (w of dates; track $index) {
       <tr>
         @if (opts.showWeekNumbers && opts.firstDayOfWeek==='mo') {
           <td class="myDpDaycellWeekNbr">{{w.weekNbr}}</td>
         }
-        @for (d of w.week; track d) {
+        @for (d of w.week; track $index) {
           <td
             id="d_{{d.row}}_{{d.col}}"
             class="d_{{d.row}}_{{d.col}} myDpDaycell {{d.markedDate.styleClass}} {{d.disabledDate.styleClass}}"

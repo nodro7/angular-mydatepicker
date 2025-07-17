@@ -5,7 +5,7 @@
         <span style="margin-right: 10px">Locale:</span>
         <span>
           <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onChangeLocale($event.target.value)">
-            @for (l of locales; track l) {
+            @for (l of locales; track $index) {
               <option>{{l}}</option>
             }
           </select>
@@ -225,7 +225,7 @@
           <span style="margin-right: 10px">Default view:</span>
           <span>
             <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onDefaultView($event.target.value)">
-              @for (df of defaultViews; track df) {
+              @for (df of defaultViews; track $index) {
                 <option>{{df}}</option>
               }
             </select>
@@ -237,7 +237,7 @@
           <span style="margin-right: 10px">Selector size:</span>
           <span>
             <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onSelectorSize($event.target.value)">
-              @for (s of selectorSizes; track s) {
+              @for (s of selectorSizes; track $index) {
                 <option>{{s}}</option>
               }
             </select>
@@ -251,7 +251,7 @@
           <span style="margin-right: 10px">Calendar animation:</span>
           <span>
             <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onCalendarAnimation($event.target.value)">
-              @for (a of calAnimations; track a) {
+              @for (a of calAnimations; track $index) {
                 <option>{{a}}</option>
               }
             </select>
@@ -263,7 +263,7 @@
           <span style="margin-right: 10px">Override styles:</span>
           <span>
             <select style="padding: 2px;cursor: pointer;font-size: 11px;min-width: 60px;" (change)="onOverrideCalColor($event.target.value)">
-              @for (c of styleColor; track c) {
+              @for (c of styleColor; track $index) {
                 <option>{{c}}</option>
               }
             </select>

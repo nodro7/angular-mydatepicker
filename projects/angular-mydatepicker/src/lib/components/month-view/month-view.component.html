@@ -1,8 +1,8 @@
 <table class="myDpMonthTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation && viewChanged}">
   <tbody>
-    @for (mr of months; track mr) {
+    @for (mr of months; track $index) {
       <tr>
-        @for (m of mr; track m) {
+        @for (m of mr; track $index) {
           <td
             id="m_{{m.row}}_{{m.col}}"
             class="m_{{m.row}}_{{m.col}} myDpMonthcell"

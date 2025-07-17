@@ -1,8 +1,8 @@
 <table class="myDpYearTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation && viewChanged}">
   <tbody>
-    @for (yr of years; track yr) {
+    @for (yr of years; track $index) {
       <tr>
-        @for (y of yr; track y) {
+        @for (y of yr; track $index) {
           <td
             id="y_{{y.row}}_{{y.col}}"
             class="y_{{y.row}}_{{y.col}} myDpYearcell"
