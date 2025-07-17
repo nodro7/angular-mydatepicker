@@ -10,12 +10,12 @@ describe('DefaultConfigService', () => {
   }));
 
   it('should be created', () => {
-    const service: DefaultConfigService = TestBed.get(DefaultConfigService);
+    const service: DefaultConfigService = TestBed.inject(DefaultConfigService);
     expect(service).toBeTruthy();
   });
 
   it('get default config', () => {
-    const service: DefaultConfigService = TestBed.get(DefaultConfigService);
+    const service: DefaultConfigService = TestBed.inject(DefaultConfigService);
     expect(service).toBeTruthy();
 
     let config = service.getDefaultConfig();

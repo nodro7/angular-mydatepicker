@@ -1,21 +1,27 @@
 <table class="myDpMonthTable" [ngClass]="{'ng-myrtl': opts.rtl, 'myDpFooter': opts.showFooterToday, 'myDpNoFooter': !opts.showFooterToday, 'myDpViewChangeAnimation': opts.viewChangeAnimation && viewChanged}">
   <tbody>
-    <tr *ngFor="let mr of months">
-      <td *ngFor="let m of mr"
-          id="m_{{m.row}}_{{m.col}}"
-          class="m_{{m.row}}_{{m.col}} myDpMonthcell"
-          [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled, 'myDpTableSingleMonth': !m.disabled}"
-          [attr.aria-current]="m.currMonth ? 'date' : null"
-          [attr.aria-disabled]="m.disabled || null"
-          [attr.aria-selected]="m.selected || null"
-          [attr.tabindex]="!m.disabled ? 0 : -1"
-          (click)="onMonthCellClicked($event, m)"
-          (keydown)="onMonthCellKeyDown($event, m)">
-        <span class="myDpMonthNbr" *ngIf="opts.showMonthNumber" aria-hidden="true">{{m.nbr}}</span>
-        <span class="myDpMonthValue"
-          [attr.aria-label]="[(m.nbr + '/' + 1 + '/' + m.year | date:'MMMM yyyy')]"
-          [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
-      </td>
-    </tr>
+    @for (mr of months; track mr) {
+      <tr>
+        @for (m of mr; track m) {
+          <td
+            id="m_{{m.row}}_{{m.col}}"
+            class="m_{{m.row}}_{{m.col}} myDpMonthcell"
+            [ngClass]="{'myDpSelectedMonth': m.selected, 'myDpDisabled': m.disabled, 'myDpTableSingleMonth': !m.disabled}"
+            [attr.aria-current]="m.currMonth ? 'date' : null"
+            [attr.aria-disabled]="m.disabled || null"
+            [attr.aria-selected]="m.selected || null"
+            [attr.tabindex]="!m.disabled ? 0 : -1"
+            (click)="onMonthCellClicked($event, m)"
+            (keydown)="onMonthCellKeyDown($event, m)">
+            @if (opts.showMonthNumber) {
+              <span class="myDpMonthNbr" aria-hidden="true">{{m.nbr}}</span>
+            }
+            <span class="myDpMonthValue"
+              [attr.aria-label]="[(m.nbr + '/' + 1 + '/' + m.year | date:'MMMM yyyy')]"
+            [ngClass]="{'myDpMarkCurrMonth': m.currMonth && opts.markCurrentMonth}">{{m.name}}</span>
+          </td>
+        }
+      </tr>
+    }
   </tbody>
 </table>

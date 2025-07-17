@@ -8,8 +8,8 @@
 
   <div>
     <input angular-mydatepicker class="datePicker" type="hidden" [(ngModel)]="model" [options]="myDatePickerOptions"
-        (dateChanged)="onDateChanged($event)" (calendarViewChanged)="onCalendarViewChanged($event)"
-        (rangeDateSelection)="onDateRangeSelection($event)" #dp="angular-mydatepicker"/>
+      (dateChanged)="onDateChanged($event)" (calendarViewChanged)="onCalendarViewChanged($event)"
+      (rangeDateSelection)="onDateRangeSelection($event)" #dp="angular-mydatepicker"/>
   </div>
 
   <div>
@@ -19,8 +19,12 @@
   </div>
 
   <div>
-    <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onTodayPlus3()">Range today + 3</button>
-    <button *ngIf="myDatePickerOptions.dateRange" type="button" class="submitButton" (click)="onYesterdayPlus3()">Range yesterday + 3</button>
+    @if (myDatePickerOptions.dateRange) {
+      <button type="button" class="submitButton" (click)="onTodayPlus3()">Range today + 3</button>
+    }
+    @if (myDatePickerOptions.dateRange) {
+      <button type="button" class="submitButton" (click)="onYesterdayPlus3()">Range yesterday + 3</button>
+    }
   </div>
 
   <div>

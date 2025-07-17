@@ -12,7 +12,7 @@ describe('LocaleService', () => {
   }));
 
   it('should be created', () => {
-    const service: LocaleService = TestBed.get(LocaleService);
+    const service: LocaleService = TestBed.inject(LocaleService);
     expect(service).toBeTruthy();
   });
 

@@ -1,17 +1,19 @@
 <div class="datepickercontainer">
-    <div class="datepickerelement" name="mydivdate" [(ngModel)]="model" [options]="myDatePickerOptions"
-        angular-mydatepicker #dp="angular-mydatepicker" [ngClass]="{'placeholdercolor': !dp.isDateValid()}"
-        (dateChanged)="onDateChanged($event)" (click)="dp.toggleCalendar()"></div>
+  <div class="datepickerelement" name="mydivdate" [(ngModel)]="model" [options]="myDatePickerOptions"
+    angular-mydatepicker #dp="angular-mydatepicker" [ngClass]="{'placeholdercolor': !dp.isDateValid()}"
+  (dateChanged)="onDateChanged($event)" (click)="dp.toggleCalendar()"></div>
 
-    <div class="closeIconContainer">
-        <i *ngIf="dp.isDateValid()" class="fa fa-close" (click)="dp.clearDate()"></i>
-    </div>
+  <div class="closeIconContainer">
+    @if (dp.isDateValid()) {
+      <i class="fa fa-close" (click)="dp.clearDate()"></i>
+    }
+  </div>
 </div>
 
 <!--
 <div class="buttons">
-    <button class="button" type="button" (click)="setTodayDate()">Set Today</button>
-    <button class="button" type="button" (click)="resetTomorrowDate()">Reset Tomorrow</button>
-    <button class="button" type="button" (click)="dp.clearDate()">Set Empty</button>
+  <button class="button" type="button" (click)="setTodayDate()">Set Today</button>
+  <button class="button" type="button" (click)="resetTomorrowDate()">Reset Tomorrow</button>
+  <button class="button" type="button" (click)="dp.clearDate()">Set Empty</button>
 </div>
 -->

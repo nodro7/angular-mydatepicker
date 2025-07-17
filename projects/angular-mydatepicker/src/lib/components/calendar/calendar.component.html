@@ -1,33 +1,41 @@
 <span #styleEl></span>
 <div class="ng-mydp {{opts.stylesData?.selector || ''}}">
-  <div class="myDpSelector" #selectorEl 
-    [libAngularMyDatePickerCalendar]="{inline: opts.inline, selectorWidth: opts.selectorWidth, selectorHeight: opts.selectorHeight, selectorPos: selectorPos}" 
+  <div class="myDpSelector" #selectorEl
+    [libAngularMyDatePickerCalendar]="{inline: opts.inline, selectorWidth: opts.selectorWidth, selectorHeight: opts.selectorHeight, selectorPos: selectorPos}"
     [ngClass]="{'myDpSelectorArrow': opts.showSelectorArrow, 'myDpSelectorArrowLeft': opts.showSelectorArrow && !opts.alignSelectorRight, 
       'myDpSelectorArrowRight': opts.showSelectorArrow&&opts.alignSelectorRight, 'myDpSelectorAbsolute': !opts.inline, 'myDpSelectorPosInitial': opts.inline}" 
     (keyup)="onCloseSelector($event)" tabindex="0">
 
     <lib-selection-bar [opts]="opts" [yearsDuration]="yearsDuration" [visibleMonth]="visibleMonth" [selectMonth]="selectMonth" [selectYear]="selectYear"
-                    [prevViewDisabled]="prevViewDisabled" [nextViewDisabled]="nextViewDisabled"
-                    (prevNavigateBtnClicked)="onPrevNavigateBtnClicked()" (nextNavigateBtnClicked)="onNextNavigateBtnClicked()"
-                    (monthViewBtnClicked)="onMonthViewBtnClicked()" (yearViewBtnClicked)="onYearViewBtnClicked()"></lib-selection-bar>
+      [prevViewDisabled]="prevViewDisabled" [nextViewDisabled]="nextViewDisabled"
+      (prevNavigateBtnClicked)="onPrevNavigateBtnClicked()" (nextNavigateBtnClicked)="onNextNavigateBtnClicked()"
+    (monthViewBtnClicked)="onMonthViewBtnClicked()" (yearViewBtnClicked)="onYearViewBtnClicked()"></lib-selection-bar>
 
-    <lib-day-view *ngIf="!selectMonth && !selectYear" [opts]="opts" [dates]="dates" [weekDays]="weekDays"
-                    [selectedDate]="selectedDate" [selectedDateRange]="selectedDateRange" [viewChanged]="viewChanged"
-                    (dayCellClicked)="onDayCellClicked($event)"
-                    (dayCellKeyDown)="onDayCellKeyDown($event)"
-                    (viewActivated)="onViewActivated($event)"></lib-day-view>
+    @if (!selectMonth && !selectYear) {
+      <lib-day-view [opts]="opts" [dates]="dates" [weekDays]="weekDays"
+        [selectedDate]="selectedDate" [selectedDateRange]="selectedDateRange" [viewChanged]="viewChanged"
+        (dayCellClicked)="onDayCellClicked($event)"
+        (dayCellKeyDown)="onDayCellKeyDown($event)"
+      (viewActivated)="onViewActivated($event)"></lib-day-view>
+    }
 
-    <lib-month-view *ngIf="selectMonth" [opts]="opts" [months]="months" [viewChanged]="viewChanged"
-                    (monthCellClicked)="onMonthCellClicked($event)"
-                    (monthCellKeyDown)="onMonthCellKeyDown($event)"
-                    (viewActivated)="onViewActivated($event)"></lib-month-view>
+    @if (selectMonth) {
+      <lib-month-view [opts]="opts" [months]="months" [viewChanged]="viewChanged"
+        (monthCellClicked)="onMonthCellClicked($event)"
+        (monthCellKeyDown)="onMonthCellKeyDown($event)"
+      (viewActivated)="onViewActivated($event)"></lib-month-view>
+    }
 
-    <lib-year-view *ngIf="selectYear" [opts]="opts" [years]="years" [viewChanged]="viewChanged"
-                    (yearCellClicked)="onYearCellClicked($event)"
-                    (yearCellKeyDown)="onYearCellKeyDown($event)"
-                    (viewActivated)="onViewActivated($event)"></lib-year-view>
+    @if (selectYear) {
+      <lib-year-view [opts]="opts" [years]="years" [viewChanged]="viewChanged"
+        (yearCellClicked)="onYearCellClicked($event)"
+        (yearCellKeyDown)="onYearCellKeyDown($event)"
+      (viewActivated)="onViewActivated($event)"></lib-year-view>
+    }
 
-    <lib-footer-bar *ngIf="opts.showFooterToday" [opts]="opts"
-                    (footerBarTxtClicked)="onTodayFooterClicked()"></lib-footer-bar>
+    @if (opts.showFooterToday) {
+      <lib-footer-bar [opts]="opts"
+      (footerBarTxtClicked)="onTodayFooterClicked()"></lib-footer-bar>
+    }
   </div>
 </div>
