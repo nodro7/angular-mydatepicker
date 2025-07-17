@@ -6,7 +6,6 @@
   },
   "files": [
     "main.ts",
-    "polyfills.ts"
   ],
   "include": [
     "example/**/*.d.ts"

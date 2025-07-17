@@ -18,9 +18,7 @@
               "browser": ""
             },
             "index": "example/index.html",
-            "polyfills": [
-              "example/polyfills.ts"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "example/tsconfig.app.json",
             "assets": [
               "example/favicon.ico",
@@ -84,10 +82,8 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "main": "example/test.ts",
-            "polyfills": "example/polyfills.ts",
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "example/tsconfig.spec.json",
-            "karmaConfig": "example/karma.conf.js",
             "styles": [
               "example/styles.css"
             ],
@@ -121,9 +117,8 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "main": "projects/angular-mydatepicker/src/test.ts",
-            "tsConfig": "projects/angular-mydatepicker/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-mydatepicker/karma.conf.js"
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/angular-mydatepicker/tsconfig.spec.json"
           }
         }
       }
