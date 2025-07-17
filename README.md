@@ -405,10 +405,9 @@ In order the following commands work you need a **git client** and **npm**.
   1. **ng serve**
   2. Navigate to __<http://localhost:4200>__
 
-* Run tests and lint:
+* Run tests:
   1. Tests: **npm run test-lib**
      * the **test-output** folder is created under the root folder and it contains a coverage report
-  2. Lint: **npm run lint-lib**
 
 * Build datepicker library:
   1. **npm run build-lib**
