@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["example/app/date-picker-div-host-element/date-picker-div-host-element.css"],
+  "sourcesContent": [".datepickercontainer {\n  position: relative;\n  display: flex;\n}\n\n.datepickerelement {\n  border: 1px solid #ced4da;\n  border-radius: 4px;\n  padding: 6px 8px;\n  width: 260px;\n  font-size: 16px;\n  color: #495057;\n  cursor: pointer;\n}\n\n.placeholdercolor {\n  color: #bbb;\n}\n\n.closeIconContainer {\n  margin: auto 0 auto -26px;\n  cursor: pointer;\n}\n\n.closeIconContainer:hover {\n  color: #bbb;\n}\n\n.buttons {\n  margin-top: 20px;\n}"],
+  "mappings": ";AAAA,CAAC;AACC,YAAU;AACV,WAAS;AACX;AAEA,CAAC;AACC,UAAQ,IAAI,MAAM;AAClB,iBAAe;AACf,WAAS,IAAI;AACb,SAAO;AACP,aAAW;AACX,SAAO;AACP,UAAQ;AACV;AAEA,CAAC;AACC,SAAO;AACT;AAEA,CAAC;AACC,UAAQ,KAAK,EAAE,KAAK;AACpB,UAAQ;AACV;AAEA,CALC,kBAKkB;AACjB,SAAO;AACT;AAEA,CAAC;AACC,cAAY;AACd;",
+  "names": []
+}

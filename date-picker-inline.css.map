@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["example/app/date-picker-inline/date-picker-inline.css"],
+  "sourcesContent": [".datePicker {\n  margin-top: 20px\n}\n\n.submitButton,\n.headerActionButton {\n  margin-top: 20px;\n  cursor: pointer;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,cAAY;AACd;AAEA,CAAC;AACD,CAAC;AACC,cAAY;AACZ,UAAQ;AACV;",
+  "names": []
+}
