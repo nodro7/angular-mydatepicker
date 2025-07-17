@@ -7,10 +7,11 @@ import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {YEARS, OPTS} from "../../constants/constants";
 
 @Component({
-  selector: "lib-year-view",
-  templateUrl: "./year-view.component.html",
-  providers: [UtilService],
-  encapsulation: ViewEncapsulation.None
+    selector: "lib-year-view",
+    templateUrl: "./year-view.component.html",
+    providers: [UtilService],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class YearViewComponent implements OnChanges, AfterViewInit {
   @Input() opts: IMyOptions;

@@ -37,9 +37,10 @@ const NGX_DP_VALIDATORS = {
 };
 
 @Directive({
-  selector: "[angular-mydatepicker]",
-  exportAs: "angular-mydatepicker",
-  providers: [UtilService, LocaleService, DefaultConfigService, NGX_DP_VALUE_ACCESSOR, NGX_DP_VALIDATORS]
+    selector: "[angular-mydatepicker]",
+    exportAs: "angular-mydatepicker",
+    providers: [UtilService, LocaleService, DefaultConfigService, NGX_DP_VALUE_ACCESSOR, NGX_DP_VALIDATORS],
+    standalone: false
 })
 export class AngularMyDatePickerDirective implements OnChanges, OnDestroy, ControlValueAccessor, Validator {
   @Input() options: IMyOptions;

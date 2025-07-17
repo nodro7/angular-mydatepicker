@@ -4,10 +4,11 @@ import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {OPTS, SPACE_STR, EMPTY_STR} from "../../constants/constants";
 
 @Component({
-  selector: "lib-footer-bar",
-  templateUrl: "./footer-bar.component.html",
-  providers: [UtilService],
-  encapsulation: ViewEncapsulation.None
+    selector: "lib-footer-bar",
+    templateUrl: "./footer-bar.component.html",
+    providers: [UtilService],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class FooterBarComponent implements OnChanges {
   @Input() opts: IMyOptions;

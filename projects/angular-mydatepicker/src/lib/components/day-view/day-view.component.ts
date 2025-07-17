@@ -11,10 +11,11 @@ import {ActiveView} from "../../enums/active-view.enum";
 import {OPTS, DATES, WEEK_DAYS, SELECTED_DATE, SELECTED_DATE_RANGE} from "../../constants/constants";
 
 @Component({
-  selector: "lib-day-view",
-  templateUrl: "./day-view.component.html",
-  providers: [UtilService],
-  encapsulation: ViewEncapsulation.None
+    selector: "lib-day-view",
+    templateUrl: "./day-view.component.html",
+    providers: [UtilService],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DayViewComponent implements OnChanges, AfterViewInit {
   @Input() opts: IMyOptions;

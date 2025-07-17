@@ -4,9 +4,10 @@ import {IMyOptions} from "../../interfaces/my-options.interface";
 import {OPTS, YEARS_DURATION, VISIBLE_MONTH, SELECT_MONTH, SELECT_YEAR, PREV_VIEW_DISABLED, NEXT_VIEW_DISABLED} from "../../constants/constants"
 
 @Component({
-  selector: "lib-selection-bar",
-  templateUrl: "./selection-bar.component.html",
-  encapsulation: ViewEncapsulation.None
+    selector: "lib-selection-bar",
+    templateUrl: "./selection-bar.component.html",
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SelectionBarComponent implements OnChanges {
   @Input() opts: IMyOptions;

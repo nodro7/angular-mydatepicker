@@ -2,9 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection, CalAnimation, ActiveView, Year} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
-  selector: 'date-picker-ngmodel',
-  templateUrl: './date-picker-ngmodel.html',
-  styleUrls: ['./date-picker-ngmodel.css']
+    selector: 'date-picker-ngmodel',
+    templateUrl: './date-picker-ngmodel.html',
+    styleUrls: ['./date-picker-ngmodel.css'],
+    standalone: false
 })
 export class DatePickerNgmodel implements OnInit {
 

@@ -25,11 +25,12 @@ import {DOT, UNDER_LINE, D, M, Y, DATE_ROW_COUNT, DATE_COL_COUNT, MONTH_ROW_COUN
   SU, MO, TU, WE, TH, FR, SA, EMPTY_STR, CLICK, STYLE, MY_DP_ANIMATION, ANIMATION_NAMES, IN, OUT, TABINDEX, TD_SELECTOR, ZERO_STR, YEAR_SEPARATOR} from "../../constants/constants";
 
 @Component({
-  selector: "lib-angular-mydatepicker-calendar",
-  templateUrl: './calendar.component.html',
-  styleUrls: ['../../css/angular-mydatepicker.style.css'],
-  providers: [UtilService],
-  encapsulation: ViewEncapsulation.None
+    selector: "lib-angular-mydatepicker-calendar",
+    templateUrl: './calendar.component.html',
+    styleUrls: ['../../css/angular-mydatepicker.style.css'],
+    providers: [UtilService],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class CalendarComponent implements AfterViewInit, OnDestroy {
   @ViewChild("selectorEl", { static: true }) selectorEl: ElementRef;

@@ -3,9 +3,10 @@ import {UntypedFormGroup, UntypedFormBuilder, Validators} from '@angular/forms';
 import {IAngularMyDpOptions, IMyDateModel, AngularMyDatePickerDirective} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
-  selector: 'date-picker-reactive-forms',
-  templateUrl: './date-picker-reactive-forms.html',
-  styleUrls: ['./date-picker-reactive-forms.css']
+    selector: 'date-picker-reactive-forms',
+    templateUrl: './date-picker-reactive-forms.html',
+    styleUrls: ['./date-picker-reactive-forms.css'],
+    standalone: false
 })
 export class DatePickerReactiveForms implements OnInit {
   public myDatePickerOptions: IAngularMyDpOptions = {

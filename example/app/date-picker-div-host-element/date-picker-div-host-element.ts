@@ -2,9 +2,10 @@ import {Component, OnInit, Renderer2,} from '@angular/core';
 import {IAngularMyDpOptions, IMyDateModel, IMyCalendarViewChanged} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
-  selector: 'date-picker-div-host-element',
-  templateUrl: './date-picker-div-host-element.html',
-  styleUrls: ['./date-picker-div-host-element.css']
+    selector: 'date-picker-div-host-element',
+    templateUrl: './date-picker-div-host-element.html',
+    styleUrls: ['./date-picker-div-host-element.css'],
+    standalone: false
 })
 export class DatePickerDivHostElement implements OnInit {
   public myDatePickerOptions: IAngularMyDpOptions = {

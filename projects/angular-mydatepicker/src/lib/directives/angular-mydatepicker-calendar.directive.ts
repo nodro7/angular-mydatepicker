@@ -1,7 +1,8 @@
 import {Directive, ElementRef, AfterViewInit, Input} from "@angular/core";
 
 @Directive({
-  selector: "[libAngularMyDatePickerCalendar]"
+    selector: "[libAngularMyDatePickerCalendar]",
+    standalone: false
 })
 export class AngularMyDatePickerCalendarDirective implements AfterViewInit {
   @Input() libAngularMyDatePickerCalendar: any;

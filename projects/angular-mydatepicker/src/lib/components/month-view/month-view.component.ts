@@ -7,10 +7,11 @@ import {UtilService} from "../../services/angular-mydatepicker.util.service";
 import {OPTS, MONTHS} from "../../constants/constants";
 
 @Component({
-  selector: "lib-month-view",
-  templateUrl: "./month-view.component.html",
-  providers: [UtilService],
-  encapsulation: ViewEncapsulation.None
+    selector: "lib-month-view",
+    templateUrl: "./month-view.component.html",
+    providers: [UtilService],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class MonthViewComponent implements OnChanges, AfterViewInit {
   @Input() opts: IMyOptions;
