@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-mydatepicker-example:build"
+            "buildTarget": "angular-mydatepicker-example:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-mydatepicker-example:build:production"
+              "buildTarget": "angular-mydatepicker-example:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-mydatepicker-example:build"
+            "buildTarget": "angular-mydatepicker-example:build"
           }
         },
         "test": {

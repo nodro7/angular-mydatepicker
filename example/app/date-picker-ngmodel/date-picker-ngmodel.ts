@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection, CalAnimation, ActiveView} from '../../../projects/angular-mydatepicker/src/public-api';
+import {AngularMyDatePickerDirective, DefaultView, IAngularMyDpOptions, IMyCalendarViewChanged, IMyDate, IMyDateModel, IMyDefaultMonth, IMyInputFieldChanged, IMyMarkedDate, IMyRangeDateSelection, CalAnimation, ActiveView, Year} from '../../../projects/angular-mydatepicker/src/public-api';
 
 @Component({
   selector: 'date-picker-ngmodel',
@@ -16,8 +16,8 @@ export class DatePickerNgmodel implements OnInit {
     markCurrentDay: true,
     alignSelectorRight: false,
     openSelectorTopOfInput: false,
-    minYear: 1971,
-    maxYear: 2200,
+    minYear: 1971 as Year,
+    maxYear: 2200 as Year,
     showSelectorArrow: true,
     monthSelector: true,
     yearSelector: true,

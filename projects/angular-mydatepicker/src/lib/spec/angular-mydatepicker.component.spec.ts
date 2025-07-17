@@ -10,6 +10,7 @@ import {IMyDateModel} from '../interfaces/my-date-model.interface';
 import {DefaultView} from '../enums/default-view.enum';
 import {HeaderAction} from '../enums/header-action.enum';
 import {CalAnimation} from '../enums/cal-animation.enum';
+import { Year } from '../enums/year.enum';
 
 let comp: AngularMyDatepickerTestComponent;
 let fixture: ComponentFixture<AngularMyDatepickerTestComponent>;
@@ -2106,7 +2107,7 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - minYear', () => {
     comp.setDefaultMonth('2018/01');
     let opts: IMyOptions = {
-      minYear: 2018
+      minYear: 2018 as Year
     };
 
     comp.parseOptions(opts);
@@ -2132,7 +2133,7 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-    opts.minYear = 2017;
+    opts.minYear = 2017 as Year;
 
     comp.parseOptions(opts);
     comp.openCalendar();
@@ -2154,7 +2155,7 @@ describe('AngularMyDatePickerComponent', () => {
   it('options - maxYear', () => {
     comp.setDefaultMonth('2019/12');
     let opts: IMyOptions = {
-      maxYear: 2019
+      maxYear: 2019 as Year
     };
 
     comp.parseOptions(opts);
@@ -2180,7 +2181,7 @@ describe('AngularMyDatePickerComponent', () => {
 
     comp.closeCalendar();
 
-    opts.maxYear = 2020;
+    opts.maxYear = 2020 as Year;
 
     comp.parseOptions(opts);
     comp.openCalendar();
