@@ -11,12 +11,16 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-mydatepicker-example",
+            "outputPath": {
+              "base": "dist/angular-mydatepicker-example",
+              "browser": ""
+            },
             "index": "example/index.html",
-            "main": "example/main.ts",
-            "polyfills": "example/polyfills.ts",
+            "polyfills": [
+              "example/polyfills.ts"
+            ],
             "tsConfig": "example/tsconfig.app.json",
             "assets": [
               "example/favicon.ico",
@@ -26,12 +30,11 @@
               "example/styles.css"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "example/main.ts"
           },
           "configurations": {
             "production": {
@@ -46,8 +49,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
