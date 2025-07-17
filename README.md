@@ -38,6 +38,8 @@ This updated version uses `"compilationMode": "partial"` for use in Ivy-enabled 
 
 If you need a version compatible with an older (View Engine) Angular application, the original package can be found [here.](https://www.npmjs.com/package/angular-mydatepicker)
 
+**Note:** As of version `20.0.0` version numbers are aligned with major angular versions
+
 ---
 ## Install
 
